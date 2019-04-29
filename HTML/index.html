@@ -1,0 +1,208 @@
+<html>
+<head>
+<style>
+* {box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0)}
+h1, h2, h3, h4, h5, h6, a, p {margin: 0; text-decoration: none}
+
+body {
+font-family: -apple-system, serif;
+margin-top: 40px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom: 40px;
+background-color: #fff;
+}
+
+h5.date {
+color: #96969B;
+font-weight: 600;
+font-size: 9pt;
+}
+
+h1.cydia {
+font-size: 24pt;
+font-weight: 700;
+margin-bottom: 15px;
+color: #000;
+}
+
+h5.desc {
+color: #000;
+opacity: 0.5;
+font-weight: 700;
+font-size: 10pt;
+}
+
+h1.title {
+font-size: 24pt;
+font-weight: 700;
+color: #000;
+}
+
+img.cardimg {
+	max-width: 400px;
+	width: 100%;
+	object-fit: contain;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+div.card {
+	width: 100%;
+	border-radius: 15px;
+	background-color: #fff;
+	box-shadow: 0 13px 60px -10px #aaa;
+	padding: 20px;
+	margin-bottom: 30px;
+  transition: transform .2s ease-in-out;
+  -webkit-transition: transform .2s ease-in-out;
+}
+
+#twotw {
+	background: linear-gradient(to right, #ec008c, #fc6767)
+}
+
+#thotw {
+	background-image: url("com.lazynagy.fold.png");
+	background-size: cover;
+}
+
+img.icon {
+	height: 50px;
+	border-radius: 11px;
+}
+
+h5.iname {
+	font-weight: 500;
+}
+
+h5.idesc {
+	font-weight: 400;
+	opacity: 0.5;
+}
+
+button.itembtn {
+	width: 74px;
+	background-color: #F1F0F6;
+	height: 30px;
+	border: none;
+	border-radius: 15px;
+	color: #027AFF;
+	font-weight: 700;
+}
+
+hr {
+	border: 0 none;
+	background-color: #CECED0;
+	height: .5px;
+	margin-top: 2px;
+	margin-left: 70px;
+}
+
+#community {
+	background: linear-gradient(to bottom right, #ff375d, #b91635)
+}
+</style>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Cydia</title>
+</head>
+<body>
+
+<table style="width: 100%;">
+<tr><td>
+<h5 class="date" id="demo"></h5><h1 class="cydia">Lime</h1></td>
+</tr>
+</table>
+
+<a href="cydia://package/com.muirey03.hive" id="twotwl" target="_blank">
+<div class="card" id="twotw" ontouchstart="shrink(event)" ontouchend="extend(event)">
+	<h5 class="desc" id="twotwd" style="color: #fff">TWEAK OF THE MONTH</h5>
+	<h1 class="title" id="twotwt" style="color: #fff">Hive</h1>
+	<img class="cardimg" id="twotwi" src="com.muirey03.hive.png">
+</div>
+</a>
+
+<a href="cydia://package/com.lazynagy.folds" id="thotwl" target="_blank">
+<div class="card" id="thotw" ontouchstart="shrink(event)" ontouchend="extend(event)">
+	<h5 class="desc" id="thotwd" style="color: #fff">THEME OF THE MONTH</h5>
+	<h1 class="title" id="thotwt" style="color: #fff">Folds</h1>
+	<img class="cardimg" id="thotwi" src="com.lazynagy.folds.png">
+</div>
+</a>
+
+<div class="card" ontouchstart="shrink(event)" ontouchend="extend(event)">
+	<h5 class="desc">FIRST PACKAGES TO INSTALL</h5>
+	<h1 class="title" style="margin-bottom: 17px;">Essential Tweaks</h1>
+	<a href="cydia://package/com.tigisoftware.filza" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="filza.png"></td><td style="text-align: left;"><h5 class="iname">Filza</h5><h5 class="idesc">File Manager for iOS. Supports iOS 7+</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">GET</h5></td></tr></a></table></a>
+	<hr><a href="cydia://package/com.officialscheduler.mterminal" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="mterminal.png"></td><td style="text-align: left;"><h5 class="iname">MTerminal</h5><h5 class="idesc">A MobileTerminal fork</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">GET</h5></td></tr></a></table></a>
+	<hr><a href="cydia://package/com.spark.snowboard" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="snowboard.png"></td><td style="text-align: left;"><h5 class="iname">Snowboard</h5><h5 class="idesc">Snowboard theming engine</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">GET</h5></td></tr></a></table></a>
+	<hr><a href="cydia://package/co.dynastic.ios.tweak.shortlook" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="shortlook.png"></td><td style="text-align: left;"><h5 class="iname">Shortlook</h5><h5 class="idesc">Your Notifications. At a glance.</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">$3.99</h5></td></tr></a></table></a>
+	<hr><a href="cydia://package/applebetas.ios.tweak.willow" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="ultrasound.png"></td><td style="text-align: left;"><h5 class="iname">Ultrasound</h5><h5 class="idesc">The volume HUD you deserve.</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">$2.99</h5></td></tr></a></table></a>
+</div>
+
+<div class="card" ontouchstart="shrink(event)" ontouchend="extend(event)">
+	<h5 class="desc">REPOS TO GET YOUR PACKAGES</h5>
+	<h1 class="title" style="margin-bottom: 17px;">Essential Repos</h1>
+	<a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.packix.com" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="packix.jpg"></td><td style="text-align: left;"><h5 class="iname">Packix</h5><h5 class="idesc">repo.packix.com</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5></td></tr></a></table></a>
+	<hr><a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.dynastic.co" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="dynastic.jpg"></td><td style="text-align: left;"><h5 class="iname">Dynastic</h5><h5 class="idesc">repo.dynastic.co</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5></td></tr></a></table></a>
+	<hr><a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.chariz.io" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="chariz.jpg"></td><td style="text-align: left;"><h5 class="iname">Chariz</h5><h5 class="idesc">repo.chariz.io</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5></td></tr></a></table></a>
+	<hr><a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.modmyi.com" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="modmy.jpg"></td><td style="text-align: left;"><h5 class="iname">ModMyi</h5><h5 class="idesc">apt.modmyi.com</h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5></td></tr></a></table></a>
+	<hr><a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.thebigboss.org/repofiles/cydia" target="_blank"><table style="width: 100%;"><a href="#"><td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="bigboss.jpg"></td><td style="text-align: left;"><h5 class="iname">BigBoss</h5><h5 class="idesc">apt.thebigboss.org/r...<h5></td><td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5></td></tr></a></table></a>
+</div>
+
+<a href="cydia://url/https://reddit.com/r/jailbreak" target="_blank">
+<div class="card" id="community" ontouchstart="shrink(event)" ontouchend="extend(event)">
+	<h5 class="desc" style="color: #fff">THE PEOPLE BEHIND IT</h5>
+	<h1 class="title" style="color: #fff">Community</h1>
+	<img class="cardimg" src="reddit.png">
+	<h5 class="desc" style="color: #fff">Subscribe to stay up to date!</h5>
+</div>
+</a>
+
+<center><h5 style="font-weight: 400; color: #aaa">Made by EvenDev &bull; CydiaXI 2.1</h5></center><br><br>
+
+<script>
+function getToday() {
+    var d = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "SUNDAY";
+    weekday[1] = "MONDAY";
+    weekday[2] = "TUESDAY";
+    weekday[3] = "WEDNESDAY";
+    weekday[4] = "THURSDAY";
+    weekday[5] = "FRIDAY";
+    weekday[6] = "SATURDAY";
+
+		var month = new Array();
+    month[0] = "JANUARY";
+    month[1] = "FEBRUARY";
+    month[2] = "MARCH";
+    month[3] = "APRIL";
+    month[4] = "MAY";
+    month[5] = "JUNE";
+    month[6] = "JULY";
+    month[7] = "AUGUST";
+    month[8] = "SEPTEMBER";
+    month[9] = "OCTOBER";
+    month[10] = "NOVEMBER";
+    month[11] = "DECEMBER";
+
+    var n1 = weekday[d.getDay()];
+		var n2 = d.getDate();
+		var n3 = month[d.getMonth()];
+    document.getElementById("demo").innerHTML = n1 + " " + n2 + " " + n3;
+}
+
+function shrink(evt) {
+	evt.currentTarget.style.transform = "scale(0.95)";
+}
+
+function extend(evt) {
+	evt.currentTarget.style.transform = "scale(1.0)";
+}
+
+window.addEventListener("load", getToday, true);
+</script>
+</body>
+</html>
