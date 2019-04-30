@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <style>
-        *,html {
+        *,
+        html {
             box-sizing: border-box;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
         }
@@ -133,27 +134,29 @@
             position: relative;
             overflow: hidden !important;
             width: 100%;
-            height: 300px;
+            height: 400px;
             max-width: 100%;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-bottom: 30px;
             box-shadow: 0 13px 60px -10px #aaa;
         }
+
         .card-wrapper .block-img-bg {
             height: 100%;
             width: 100%;
             position: relative;
-            background: rgb(197, 197, 197);
-            border-radius: 10px;
+            background: rgb(219, 219, 219);
+            border-radius: 15px;
         }
 
-        .card-wrapper .block-img-bg .cover{
+        .card-wrapper .block-img-bg .cover {
             position: absolute;
             top: 0;
             left: 0;
             bottom: 0;
             right: 0;
-            border-radius: 10px;
+            border-radius: 15px;
+            z-index: 0;
         }
 
         .page-wrapper {
@@ -184,7 +187,7 @@
             top: auto;
             right: 0%;
             bottom: 0%;
-            z-index: 1;
+            z-index: 3;
             display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;
@@ -199,31 +202,36 @@
             background-color: hsla(0, 0%, 100%, .68);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             backdrop-filter: saturate(180%) blur(20px);
-            -webkit-border-bottom-right-radius: 10px;
-            -webkit-border-bottom-left-radius: 10px;
-            -moz-border-radius-bottomright: 10px;
-            -moz-border-radius-bottomleft: 10px;
-            border-bottom-right-radius: 10px;
-            border-bottom-left-radius: 10px;
+            -webkit-border-bottom-right-radius: 15px;
+            -webkit-border-bottom-left-radius: 15px;
+            -moz-border-radius-bottomright: 15px;
+            -moz-border-radius-bottomleft: 15px;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
         }
 
         .icon {
             width: 50px;
             height: 50px;
         }
+
         @supports ((-webkit-mask-position: initial) or (mask-position: initial)) {
             .ios-app-icon::before {
                 background: url(https://itunes.apple.com//assets/images/masks/icon-app-mask-border-61226afcae6a8f2b3d2755728daaf4f2.svg) center / 100% 100% no-repeat;
             }
+
             .ios-app-icon .we-artwork__image {
                 -webkit-mask: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill-rule%3D%22evenodd%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%221.41%22%20clip-rule%3D%22evenodd%22%20version%3D%221.1%22%20viewBox%3D%220%200%20460%20460%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20d%3D%22M460%20316.1c0%205.5%200%2010.99-.04%2016.48-.03%204.63-.08%209.26-.2%2013.88a201.73%20201.73%200%200%201-2.66%2030.21c-1.71%2010-4.9%2019.68-9.47%2028.73a96.6%2096.6%200%200%201-42.23%2042.23%20101.86%20101.86%200%200%201-28.71%209.46c-10%201.65-20.1%202.54-30.22%202.66a649%20649%200%200%201-13.88.21c-5.5.03-10.99.03-16.48.03H143.89c-5.49%200-10.98%200-16.48-.03a648.8%20648.8%200%200%201-13.88-.2%20201.46%20201.46%200%200%201-30.22-2.67c-9.99-1.7-19.67-4.9-28.71-9.46a96.61%2096.61%200%200%201-42.23-42.22%20101.96%20101.96%200%200%201-9.47-28.74%20201.6%20201.6%200%200%201-2.66-30.2c-.12-4.63-.18-9.26-.2-13.89C0%20327.08%200%20321.6%200%20316.1V143.9c0-5.5%200-11%20.04-16.5.02-4.62.08-9.25.2-13.87a201.64%20201.64%200%200%201%202.66-30.2c1.71-10%204.9-19.68%209.47-28.74A96.6%2096.6%200%200%201%2054.6%2012.36%20101.96%20101.96%200%200%201%2083.3%202.9c10-1.64%2020.1-2.53%2030.22-2.66%204.63-.12%209.26-.18%2013.88-.2%205.5-.03%2011-.03%2016.48-.03H316.1c5.5%200%2011%200%2016.49.03a649%20649%200%200%201%2013.88.2c10.12.13%2020.22%201.02%2030.21%202.66%2010%201.71%2019.67%204.9%2028.72%209.46a96.58%2096.58%200%200%201%2042.24%2042.23%20101.92%20101.92%200%200%201%209.46%2028.73%20201.7%20201.7%200%200%201%202.66%2030.21c.12%204.63.18%209.26.2%2013.88.04%205.5.04%2010.99.04%2016.48V316.1z%22%2F%3E%3C%2Fsvg%3E%0A") center / 100% 100% no-repeat;
                 mask: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill-rule%3D%22evenodd%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%221.41%22%20clip-rule%3D%22evenodd%22%20version%3D%221.1%22%20viewBox%3D%220%200%20460%20460%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20d%3D%22M460%20316.1c0%205.5%200%2010.99-.04%2016.48-.03%204.63-.08%209.26-.2%2013.88a201.73%20201.73%200%200%201-2.66%2030.21c-1.71%2010-4.9%2019.68-9.47%2028.73a96.6%2096.6%200%200%201-42.23%2042.23%20101.86%20101.86%200%200%201-28.71%209.46c-10%201.65-20.1%202.54-30.22%202.66a649%20649%200%200%201-13.88.21c-5.5.03-10.99.03-16.48.03H143.89c-5.49%200-10.98%200-16.48-.03a648.8%20648.8%200%200%201-13.88-.2%20201.46%20201.46%200%200%201-30.22-2.67c-9.99-1.7-19.67-4.9-28.71-9.46a96.61%2096.61%200%200%201-42.23-42.22%20101.96%20101.96%200%200%201-9.47-28.74%20201.6%20201.6%200%200%201-2.66-30.2c-.12-4.63-.18-9.26-.2-13.89C0%20327.08%200%20321.6%200%20316.1V143.9c0-5.5%200-11%20.04-16.5.02-4.62.08-9.25.2-13.87a201.64%20201.64%200%200%201%202.66-30.2c1.71-10%204.9-19.68%209.47-28.74A96.6%2096.6%200%200%201%2054.6%2012.36%20101.96%20101.96%200%200%201%2083.3%202.9c10-1.64%2020.1-2.53%2030.22-2.66%204.63-.12%209.26-.18%2013.88-.2%205.5-.03%2011-.03%2016.48-.03H316.1c5.5%200%2011%200%2016.49.03a649%20649%200%200%201%2013.88.2c10.12.13%2020.22%201.02%2030.21%202.66%2010%201.71%2019.67%204.9%2028.72%209.46a96.58%2096.58%200%200%201%2042.24%2042.23%20101.92%20101.92%200%200%201%209.46%2028.73%20201.7%20201.7%200%200%201%202.66%2030.21c.12%204.63.18%209.26.2%2013.88.04%205.5.04%2010.99.04%2016.48V316.1z%22%2F%3E%3C%2Fsvg%3E%0A") center / 100% 100% no-repeat
             }
-            .ios-app-icon .we-artwork__image, .ios-app-icon::before {
+
+            .ios-app-icon .we-artwork__image,
+            .ios-app-icon::before {
                 border: none;
                 border-radius: 0;
             }
         }
+
         .totw-name {
             margin-left: 9px;
             -webkit-box-flex: 1;
@@ -251,8 +259,8 @@
             left: 0%;
             top: auto;
             right: 0%;
-            bottom: 30%;
-            z-index: 2;
+            bottom: 23%;
+            z-index: 4;
             width: 160px;
             margin-left: 15px;
             font-size: 35px;
@@ -267,13 +275,81 @@
             bottom: 0%;
             background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(79, 79, 79, 0)), to(rgba(0, 0, 0, .3)));
             background-image: linear-gradient(180deg, rgba(79, 79, 79, 0), rgba(0, 0, 0, .3));
+            z-index: 2;
         }
 
         .text-block {
             font-weight: 500;
         }
+
+        .card-elements {
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            right: 0%;
+            bottom: 0%;
+            padding: 15px;
+            z-index: 2;
+        }
+
+        .card-title-dark {
+            width: 290px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            color: #000;
+            font-size: 27px;
+            line-height: 33px;
+            font-weight: 600;
+        }
+
+        .card-subtitle-dark {
+            color: rgba(0, 0, 0, .4);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .block-bottom2 {
+            position: absolute;
+            left: 0%;
+            top: auto;
+            right: 0%;
+            bottom: 0%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            height: 85px;
+            padding-right: 15px;
+            padding-left: 15px;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .card-tweak-name {
+            color: #000;
+            font-size: 15px;
+            line-height: 21px;
+            font-weight: 400;
+        }
+
+        .tweak-description {
+            width: 200px;
+            color: rgba(0, 0, 0, .4);
+            font-size: 13px;
+            line-height: 19px;
+        }
+        @media (max-width: 321px) {
+            .tweak-description {
+                width: 170px;
+            }
+        }
     </style>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cydia</title>
 </head>
 
@@ -289,22 +365,22 @@
     </table>
 
     <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
-            <div class="block-img-bg">
-                <div class="cover" style="background: url(https://pbs.twimg.com/media/DyrS8CZX0AEf7h5.jpg); background-size: cover;"></div>
-                <div class="block-bottm">
-                    <div class="icon">
-                            <picture class="ios-app-icon">
-                                <source class="we-artwork__source" srcset="https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/95/b3/4c/95b34c22-2759-0227-c293-031b71d09e52/ProductionAppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/738x0w.jpg 3x" crossorigin="anonymous">
-                                <img class="app__img we-artwork__image" src="https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/95/b3/4c/95b34c22-2759-0227-c293-031b71d09e52/ProductionAppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/246x0w.jpg" alt="" height="50" width="50" crossorigin="anonymous">
-                            </picture>
-                    </div>
-                    <div class="totw-name">Felicity</div>
-                    <a href="#"><button class="itembtn" style="float: right">GET</button></a>
+        <div class="block-img-bg">
+            <div class="cover"style="background: url(https://pbs.twimg.com/media/DyrS8CZX0AEf7h5.jpg); background-position: center; background-size: cover;"></div>
+            <div class="block-bottm">
+                <div class="icon">
+                    <picture class="ios-app-icon">
+                        <source class="we-artwork__source" srcset="https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/95/b3/4c/95b34c22-2759-0227-c293-031b71d09e52/ProductionAppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/738x0w.jpg 3x" crossorigin="anonymous">
+                        <img class="app__img we-artwork__image" src="https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/95/b3/4c/95b34c22-2759-0227-c293-031b71d09e52/ProductionAppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/246x0w.jpg" alt="" height="50" width="50" crossorigin="anonymous">
+                    </picture>
                 </div>
-                <h1 class="card-title-1">THEME OF THE WEEK</h1>
-                <div class="dark-gradient-overlay"></div>
+                <div class="totw-name">Felicity</div>
+                <a href="#"><button class="itembtn" style="float: right">GET</button></a>
             </div>
+            <h1 class="card-title-1">THEME OF THE WEEK</h1>
+            <div class="dark-gradient-overlay"></div>
         </div>
+    </div>
 
     <div class="card" ontouchstart="shrink(event)" ontouchend="extend(event)">
         <h5 class="desc">REPOS TO GET YOUR PACKAGES</h5>
@@ -374,6 +450,23 @@
                     </tr>
                 </a></table>
         </a>
+    </div>
+
+    <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
+        <div class="block-img-bg">
+            <div class="cover" style="background: url(HTML/snowboard-card-bg.png); background-position: center; background-size: cover;"></div>
+            <div class="card-elements">
+                <div class="card-subtitle-dark">Theme your device</div>
+                <h2 class="card-title-dark">The perfect tweak to get a new look</h2>
+                <div class="block-bottom2">
+                    <div class="left-info">
+                        <div class="card-tweak-name">Snowboard</div>
+                        <div class="tweak-description">The popular lightweight theme engine for iOS 12</div>
+                    </div>
+                    <a href="#"><button class="itembtn" style="float: right">GET</button></a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <center>
