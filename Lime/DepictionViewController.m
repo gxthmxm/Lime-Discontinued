@@ -16,8 +16,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _scrollView.contentSize = [UIScreen mainScreen].bounds.size;
+    _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
     NSLog(@"%@", self.navigationController.navigationBar.barTintColor);
+    
+    NSURL *nsurl=[NSURL URLWithString:@"https://repo.evendev.org/depictions/dne.html"];
+    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
+    [_depictionView loadRequest:nsrequest];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

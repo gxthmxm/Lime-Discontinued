@@ -276,6 +276,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGb-LD-QkZ">
+                                        <rect key="frame" x="0.0" y="288" width="375" height="625"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -284,6 +293,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="cyM-Uy-fqy"/>
                     <connections>
+                        <outlet property="depictionView" destination="GGb-LD-QkZ" id="mae-vY-MUb"/>
                         <outlet property="scrollView" destination="FHA-Oi-6Yu" id="bMc-VV-R9y"/>
                     </connections>
                 </viewController>
