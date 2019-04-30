@@ -88,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="-110" y="57"/>
         </scene>
-        <!--Item-->
+        <!--Changes-->
         <scene sceneID="snB-3c-yr4">
             <objects>
                 <viewController id="6Fe-a6-I02" customClass="SecondViewController" sceneMemberID="viewController">
@@ -98,7 +98,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8Vf-CR-X3c"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="S7S-6J-afs"/>
+                    <tabBarItem key="tabBarItem" title="Changes" image="Changes.png" landscapeImage="Changes.png" largeContentSizeImage="Changes.png" selectedImage="Changes.png" id="S7S-6J-afs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUQ-dS-LeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,4 +124,7 @@
             <point key="canvasLocation" x="750" y="998"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Changes.png" width="32" height="32"/>
+    </resources>
 </document>
