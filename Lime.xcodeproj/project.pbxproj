@@ -17,6 +17,9 @@
 		4D33AB542278742A00CDFC49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D33AB532278742A00CDFC49 /* LaunchScreen.storyboard */; };
 		4D33AB57227877EA00CDFC49 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D33AB56227877EA00CDFC49 /* WebKit.framework */; };
 		4D33AB5922787A7700CDFC49 /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5822787A7700CDFC49 /* SourcesViewController.m */; };
+		4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5C2278890600CDFC49 /* DepictionViewController.m */; };
+		4D33AB602278903900CDFC49 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5F2278903900CDFC49 /* HeaderView.m */; };
+		4D33AB622278986500CDFC49 /* DepictionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB612278986500CDFC49 /* DepictionScrollView.m */; };
 		666DC9112278690100B6E03C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC9102278690100B6E03C /* HomeViewController.m */; };
 		666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91322786B4600B6E03C /* ChangesViewController.m */; };
 		666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91622786B4E00B6E03C /* SearchViewController.m */; };
@@ -59,6 +62,12 @@
 		4D33AB56227877EA00CDFC49 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4D33AB5822787A7700CDFC49 /* SourcesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourcesViewController.m; sourceTree = "<group>"; };
 		4D33AB5A22787A8700CDFC49 /* SourcesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourcesViewController.h; sourceTree = "<group>"; };
+		4D33AB5B227888F800CDFC49 /* DepictionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepictionViewController.h; sourceTree = "<group>"; };
+		4D33AB5C2278890600CDFC49 /* DepictionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionViewController.m; sourceTree = "<group>"; };
+		4D33AB5E2278902900CDFC49 /* HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		4D33AB5F2278903900CDFC49 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		4D33AB612278986500CDFC49 /* DepictionScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionScrollView.m; sourceTree = "<group>"; };
+		4D33AB632278986D00CDFC49 /* DepictionScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepictionScrollView.h; sourceTree = "<group>"; };
 		666DC90F2278690100B6E03C /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		666DC9102278690100B6E03C /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		666DC91222786B4600B6E03C /* ChangesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangesViewController.h; sourceTree = "<group>"; };
@@ -126,6 +135,12 @@
 				37D0FC74227753EC0039BE3C /* AppDelegate.m */,
 				666DC90F2278690100B6E03C /* HomeViewController.h */,
 				666DC9102278690100B6E03C /* HomeViewController.m */,
+				4D33AB5E2278902900CDFC49 /* HeaderView.h */,
+				4D33AB5F2278903900CDFC49 /* HeaderView.m */,
+				4D33AB612278986500CDFC49 /* DepictionScrollView.m */,
+				4D33AB632278986D00CDFC49 /* DepictionScrollView.h */,
+				4D33AB5B227888F800CDFC49 /* DepictionViewController.h */,
+				4D33AB5C2278890600CDFC49 /* DepictionViewController.m */,
 				666DC91222786B4600B6E03C /* ChangesViewController.h */,
 				666DC91322786B4600B6E03C /* ChangesViewController.m */,
 				666DC91522786B4E00B6E03C /* SearchViewController.h */,
@@ -299,10 +314,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */,
+				4D33AB602278903900CDFC49 /* HeaderView.m in Sources */,
 				666DC91A2278702100B6E03C /* InstalledViewController.m in Sources */,
+				4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */,
 				4D33AB5922787A7700CDFC49 /* SourcesViewController.m in Sources */,
 				37D0FC86227753EF0039BE3C /* main.m in Sources */,
 				666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */,
+				4D33AB622278986500CDFC49 /* DepictionScrollView.m in Sources */,
 				666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */,
 				666DC9112278690100B6E03C /* HomeViewController.m in Sources */,
 			);

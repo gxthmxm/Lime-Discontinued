@@ -172,7 +172,7 @@
             <objects>
                 <navigationController id="RaX-qx-RYk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Installed" image="Installed" id="Aa0-xo-Et8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="Empty" largeTitles="YES" id="Ups-Ia-52e">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Ups-Ia-52e">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -189,7 +189,7 @@
             <objects>
                 <navigationController id="jzK-dT-v18" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sources" image="Sources" id="GxK-5Q-bpL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="Empty" largeTitles="YES" id="wYf-mA-a7H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="wYf-mA-a7H">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -200,6 +200,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oiq-4f-pCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="414" y="991"/>
+        </scene>
+        <!--Depiction View Controller-->
+        <scene sceneID="AlY-yf-XP1">
+            <objects>
+                <viewController id="Xxj-q3-ulK" customClass="DepictionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eTk-db-Y3W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHA-Oi-6Yu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sld-fv-k3b">
+                                        <rect key="frame" x="0.0" y="-64" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.26341973590000001" green="0.25507364919999997" blue="0.32870032939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="krA-PL-m2Y">
+                                        <rect key="frame" x="0.0" y="136" width="375" height="152"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tweak" translatesAutoresizingMaskIntoConstraints="NO" id="93e-bo-WIs">
+                                                <rect key="frame" x="20" y="17" width="118" height="118"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dark'n'Epic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5J-2L-6ou">
+                                                <rect key="frame" x="154" y="17" width="100" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EvenDev" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp6-Cj-R8h">
+                                                <rect key="frame" x="154" y="42" width="50" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIv-A2-AGa">
+                                                <rect key="frame" x="154" y="105" width="74" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                <state key="normal" title="GET">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5x-YY-YY9">
+                                                <rect key="frame" x="327" y="107" width="28" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <state key="normal" title="•••">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="14"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4Mo-EY-taH"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="cyM-Uy-fqy"/>
+                    <connections>
+                        <outlet property="scrollView" destination="FHA-Oi-6Yu" id="bMc-VV-R9y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jxK-ka-DTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1780" y="-362.06896551724139"/>
         </scene>
         <!--Updates-->
         <scene sceneID="cmp-Mf-npq">
@@ -249,7 +339,13 @@
                             <outlet property="delegate" destination="2ky-au-Onb" id="afu-eW-wb8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Updates" id="TR0-pY-VYT"/>
+                    <navigationItem key="navigationItem" title="Updates" id="TR0-pY-VYT">
+                        <barButtonItem key="rightBarButtonItem" title="Depiction" id="buY-Tz-6WI">
+                            <connections>
+                                <segue destination="Xxj-q3-ulK" kind="show" id="g6L-tO-QOB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbc-PW-r19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -260,12 +356,12 @@
             <objects>
                 <navigationController id="Yg5-cN-7k1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Updates" image="Changes" id="Rmo-pj-Uz5"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="Empty" largeTitles="YES" id="Iv9-1S-pTx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Iv9-1S-pTx">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2ky-au-Onb" kind="relationship" relationship="rootViewController" id="952-xY-kXS"/>
+                        <segue destination="2ky-au-Onb" kind="relationship" relationship="rootViewController" id="afw-R0-XOJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0OV-tC-M2Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,5 +397,6 @@
         <image name="Installed" width="28" height="25"/>
         <image name="Search" width="28" height="24"/>
         <image name="Sources" width="28" height="24"/>
+        <image name="Tweak" width="210" height="210"/>
     </resources>
 </document>

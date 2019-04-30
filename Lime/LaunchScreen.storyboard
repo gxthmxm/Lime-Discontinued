@@ -20,7 +20,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lime" translatesAutoresizingMaskIntoConstraints="NO" id="D4z-xt-l83">
                                 <rect key="frame" x="109" y="255" width="156" height="156"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.26341973587812401" green="0.25507364918514924" blue="0.32870032944655059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
