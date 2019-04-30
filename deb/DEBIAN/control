@@ -1,0 +1,8 @@
+Package: com.notdan.lime
+Name: Lime
+Section: Packaging
+Version: 1.0
+Author: LimeTeam
+Maintainer: LimeTeam
+Description: How to stay away from all the drama regarding package managers? Build you own!
+Architecture: all

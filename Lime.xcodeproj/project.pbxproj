@@ -24,6 +24,7 @@
 		666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91322786B4600B6E03C /* ChangesViewController.m */; };
 		666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91622786B4E00B6E03C /* SearchViewController.m */; };
 		666DC91A2278702100B6E03C /* InstalledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC9192278702100B6E03C /* InstalledViewController.m */; };
+		66B9FCA222788D7400F1FB08 /* LMDPKGParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B9FCA122788D7400F1FB08 /* LMDPKGParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		666DC91622786B4E00B6E03C /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		666DC9182278702100B6E03C /* InstalledViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstalledViewController.h; sourceTree = "<group>"; };
 		666DC9192278702100B6E03C /* InstalledViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstalledViewController.m; sourceTree = "<group>"; };
+		66B9FCA022788D7400F1FB08 /* LMDPKGParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDPKGParser.h; sourceTree = "<group>"; };
+		66B9FCA122788D7400F1FB08 /* LMDPKGParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDPKGParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 				4D33AB5822787A7700CDFC49 /* SourcesViewController.m */,
 				666DC9182278702100B6E03C /* InstalledViewController.h */,
 				666DC9192278702100B6E03C /* InstalledViewController.m */,
+				66B9FCA022788D7400F1FB08 /* LMDPKGParser.h */,
+				66B9FCA122788D7400F1FB08 /* LMDPKGParser.m */,
 				37D0FC7F227753EF0039BE3C /* Assets.xcassets */,
 				37D0FC84227753EF0039BE3C /* Info.plist */,
 				37D0FC85227753EF0039BE3C /* main.m */,
@@ -321,6 +326,7 @@
 				37D0FC86227753EF0039BE3C /* main.m in Sources */,
 				666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */,
 				4D33AB622278986500CDFC49 /* DepictionScrollView.m in Sources */,
+				66B9FCA222788D7400F1FB08 /* LMDPKGParser.m in Sources */,
 				666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */,
 				666DC9112278690100B6E03C /* HomeViewController.m in Sources */,
 			);
@@ -390,7 +396,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -449,7 +455,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -475,7 +481,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9859KQSN8L;
+				DEVELOPMENT_TEAM = 33GU98BCDS;
 				INFOPLIST_FILE = Lime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,7 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9859KQSN8L;
+				DEVELOPMENT_TEAM = 33GU98BCDS;
 				INFOPLIST_FILE = Lime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -508,8 +514,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 33GU98BCDS;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -518,6 +525,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.notdan.LimeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lime.app/Lime";
 			};
@@ -527,8 +535,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 33GU98BCDS;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -537,6 +546,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.notdan.LimeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lime.app/Lime";
 			};
