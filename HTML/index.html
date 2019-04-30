@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <style>
-        *,
-        html {
+        ::-webkit-scrollbar-track
+        {
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb
+        {
+            background-color: transparent;
+        }
+        *,html {
             box-sizing: border-box;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+            margin: 0;
+            padding: 0;
         }
 
         h1,
@@ -20,7 +30,9 @@
         a,
         p {
             margin: 0;
-            text-decoration: none -webkit-touch-callout: none;
+            padding: 0;
+            text-decoration: none; 
+            -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: none;
@@ -31,11 +43,21 @@
 
         body {
             font-family: -apple-system, serif;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             margin-top: 40px;
             margin-left: 20px;
             margin-right: 20px;
             margin-bottom: 40px;
             background-color: #fff;
+        }
+        a {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
         }
 
         h5.date {
@@ -108,7 +130,7 @@
         }
 
         button.itembtn {
-            width: 74px;
+            min-width: 74px;
             background-color: #F1F0F6;
             height: 30px;
             border: none;
@@ -134,15 +156,18 @@
             position: relative;
             overflow: hidden !important;
             width: 100%;
-            height: 400px;
+            max-width: 100%;
+            min-height: 400px;
             max-width: 100%;
             border-radius: 15px;
             margin-bottom: 30px;
             box-shadow: 0 13px 60px -10px #aaa;
+            transition: transform .2s ease-in-out;
+            -webkit-transition: transform .2s ease-in-out;
         }
 
         .card-wrapper .block-img-bg {
-            height: 100%;
+            height: 400px;
             width: 100%;
             position: relative;
             background: rgb(219, 219, 219);
@@ -295,7 +320,7 @@
         .card-title-dark {
             width: 290px;
             margin-top: 0px;
-            margin-bottom: 0px;
+            margin-bottom: 10px;
             color: #000;
             font-size: 27px;
             line-height: 33px;
@@ -304,8 +329,9 @@
 
         .card-subtitle-dark {
             color: rgba(0, 0, 0, .4);
-            font-weight: 500;
             text-transform: uppercase;
+            font-weight: 700;
+            font-size: 10pt;
         }
 
         .block-bottom2 {
@@ -359,7 +385,17 @@
             -ms-flex-align: center;
             align-items: center;
         }
-
+        .cell a {
+            width:100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
         .cell .cell-group {
             display: -webkit-box;
             display: -webkit-flex;
@@ -381,7 +417,9 @@
             align-self: center;
             border-bottom: 1px solid #d1d1d1;
         }
-
+        .cell-group.small-cell {
+            height: 60px;
+        }
         .cell-icon {
             width: 70px;
             height: 70px;
@@ -396,6 +434,9 @@
         }
 
         .cell-tweak-subtitle {
+            overflow: hidden;
+            height: 20px;
+            margin-right: 10px;
             color: rgba(0, 0, 0, .6);
         }
 
@@ -406,17 +447,68 @@
             font-weight: 600;
             letter-spacing: 0.49px;
         }
+        .cell-icon-small {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+        }
+        @media (max-width: 479px) {
+            h4 {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                color: #000;
+                font-size: 19px;
+                font-weight: 500;
+            }
+            .card-wrapper {
+                width: 100%;
+            }
+            .cell-icon {
+                min-width: 70px;
+            }
+            .cell-info {
+                width: 100%;
+            }
+            .cell-tweak-subtitle {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 430px) { 
+            .cell-tweak-subtitle {
+                max-width: 200px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
 
-        @media (max-width: 321px) {
+        @media (max-width: 374px) {
+            .cell-tweak-subtitle {
+                max-width: 135px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
             .tweak-description {
                 width: 170px;
+            }
+        }
+        @media (max-width: 320px) { 
+            .cell-tweak-subtitle {
+                max-width: 81px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
         }
     </style>
     <title>Cydia</title>
 </head>
 
-<body>
+<body ontouchstart="">
 
     <table style="width: 100%;">
         <tr>
@@ -445,75 +537,96 @@
         </div>
     </div>
 
-    <div class="card" ontouchstart="shrink(event)" ontouchend="extend(event)">
-        <h5 class="desc">REPOS TO GET YOUR PACKAGES</h5>
-        <h1 class="title" style="margin-bottom: 17px;">Essential Repos</h1>
-        <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.packix.com" target="_blank">
-            <table style="width: 100%;"><a href="#">
-                    <td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="HTML/packix.jpg"></td>
-                    <td style="text-align: left;">
-                        <h5 class="iname">Packix</h5>
-                        <h5 class="idesc">repo.packix.com</h5>
-                    </td>
-                    <td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5>
-                    </td>
-                    </tr>
-                </a></table>
-        </a>
-        <hr><a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.dynastic.co"
-            target="_blank">
-            <table style="width: 100%;"><a href="#">
-                    <td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="HTML/dynastic.jpg"></td>
-                    <td style="text-align: left;">
-                        <h5 class="iname">Dynastic</h5>
-                        <h5 class="idesc">repo.dynastic.co</h5>
-                    </td>
-                    <td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5>
-                    </td>
-                    </tr>
-                </a></table>
-        </a>
-        <hr><a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.chariz.io"
-            target="_blank">
-            <table style="width: 100%;"><a href="#">
-                    <td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="HTML/chariz.jpg"></td>
-                    <td style="text-align: left;">
-                        <h5 class="iname">Chariz</h5>
-                        <h5 class="idesc">repo.chariz.io</h5>
-                    </td>
-                    <td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5>
-                    </td>
-                    </tr>
-                </a></table>
-        </a>
-        <hr><a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.modmyi.com"
-            target="_blank">
-            <table style="width: 100%;"><a href="#">
-                    <td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="HTML/modmy.jpg"></td>
-                    <td style="text-align: left;">
-                        <h5 class="iname">ModMyi</h5>
-                        <h5 class="idesc">apt.modmyi.com</h5>
-                    </td>
-                    <td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5>
-                    </td>
-                    </tr>
-                </a></table>
-        </a>
-        <hr><a
-            href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.thebigboss.org/repofiles/cydia"
-            target="_blank">
-            <table style="width: 100%;"><a href="#">
-                    <td style="width: 52px;"><img class="icon" style="margin-right: 15px;" src="HTML/bigboss.jpg"></td>
-                    <td style="text-align: left;">
-                        <h5 class="iname">BigBoss</h5>
-                        <h5 class="idesc">apt.thebigboss.org/r...<h5>
-                    </td>
-                    <td style="width: 80px;"><button class="itembtn" style="float: right">ADD</h5>
-                    </td>
-                    </tr>
-                </a></table>
-        </a>
+    <div class="card-wrapper" style="padding:20px;" ontouchstart="shrink(event)" ontouchend="extend(event)">
+        <div class="card-subtitle-dark">REPOS TO GET YOUR PACKAGES</div>
+        <h2 class="card-title-dark">Essential Repos</h2>
+        <div class="cell">
+            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.packix.com">
+                <div class="cell-icon-small">
+                    <picture class="ios-app-icon">
+                        <source class="we-artwork__source" srcset="HTML/packix.jpg 3x" crossorigin="anonymous">
+                        <img class="app__img we-artwork__image" src="HTML/packix.jpg" alt="" height="50" width="50" crossorigin="anonymous">
+                    </picture>
+                </div>
+                <div class="cell-group small-cell">
+                    <div class="cell-info">
+                        <div class="cell-tweak-title">Packix</div>
+                        <div class="cell-tweak-subtitle">repo.packix.com</div>
+                    </div>
+                    <button class="itembtn" style="float: right">ADD</button>
+                </div>
+            </a>
+        </div>
+        <div class="cell">
+            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.dynastic.co">
+                <div class="cell-icon-small">
+                    <picture class="ios-app-icon">
+                        <source class="we-artwork__source" srcset="HTML/dynastic.jpg 3x" crossorigin="anonymous">
+                        <img class="app__img we-artwork__image" src="HTML/dynastic.jpg" alt="" height="50" width="50" crossorigin="anonymous">
+                    </picture>
+                </div>
+                <div class="cell-group small-cell">
+                    <div class="cell-info">
+                        <div class="cell-tweak-title">Dynastic</div>
+                        <div class="cell-tweak-subtitle">repo.dynastic.co</div>
+                    </div>
+                    <button class="itembtn" style="float: right">ADD</button>
+                </div>
+            </a>
+        </div>
+        <div class="cell">
+            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.chariz.io">
+                <div class="cell-icon-small">
+                    <picture class="ios-app-icon">
+                        <source class="we-artwork__source" srcset="HTML/chariz.jpg 3x" crossorigin="anonymous">
+                        <img class="app__img we-artwork__image" src="HTML/chariz.jpg" alt="" height="50" width="50" crossorigin="anonymous">
+                    </picture>
+                </div>
+                <div class="cell-group small-cell">
+                    <div class="cell-info">
+                        <div class="cell-tweak-title">Chariz</div>
+                        <div class="cell-tweak-subtitle">repo.chariz.io</div>
+                    </div>
+                    <button class="itembtn" style="float: right">ADD</button>
+                </div>
+            </a>
+        </div>
+        <div class="cell">
+            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.modmyi.com">
+                <div class="cell-icon-small">
+                    <picture class="ios-app-icon">
+                        <source class="we-artwork__source" srcset="HTML/modmy.jpg 3x" crossorigin="anonymous">
+                        <img class="app__img we-artwork__image" src="HTML/modmy.jpg" alt="" height="50" width="50" crossorigin="anonymous">
+                    </picture>
+                </div>
+                <div class="cell-group small-cell">
+                    <div class="cell-info">
+                        <div class="cell-tweak-title">ModMyi</div>
+                        <div class="cell-tweak-subtitle">apt.modmyi.com</div>
+                    </div>
+                    <button class="itembtn" style="float: right">ADD</button>
+                </div>
+            </a>
+        </div>
+        <div class="cell">
+            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.thebigboss.org/repofiles/cydia">
+                <div class="cell-icon-small">
+                    <picture class="ios-app-icon">
+                        <source class="we-artwork__source" srcset="HTML/bigboss.jpg 3x" crossorigin="anonymous">
+                        <img class="app__img we-artwork__image" src="HTML/bigboss.jpg" alt="" height="50" width="50" crossorigin="anonymous">
+                    </picture>
+                </div>
+                <div class="cell-group small-cell">
+                    <div class="cell-info">
+                        <div class="cell-tweak-title">BigBoss</div>
+                        <div class="cell-tweak-subtitle">apt.thebigboss.org/repofiles/cydia</div>
+                    </div>
+                    <button class="itembtn" style="float: right">ADD</button>
+                </div>
+            </a>
+        </div>
     </div>
+
 
     <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
         <div class="block-img-bg">
