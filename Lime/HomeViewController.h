@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeViewController : UIViewController
-@property (weak, nonatomic) IBOutlet WKWebView *webView;
+@property (strong, nonatomic) IBOutlet WKWebView *webView;
 @end
 
 NS_ASSUME_NONNULL_END
