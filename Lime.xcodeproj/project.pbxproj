@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		376E2B5122782E350045D8DB /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E2B5022782E350045D8DB /* ThirdViewController.m */; };
 		37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC74227753EC0039BE3C /* AppDelegate.m */; };
 		37D0FC78227753EC0039BE3C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC77227753EC0039BE3C /* FirstViewController.m */; };
 		37D0FC7B227753EC0039BE3C /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC7A227753EC0039BE3C /* SecondViewController.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		376E2B4F22782E350045D8DB /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		376E2B5022782E350045D8DB /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		37D0FC70227753EC0039BE3C /* Lime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D0FC73227753EC0039BE3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		37D0FC74227753EC0039BE3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				37D0FC81227753EF0039BE3C /* LaunchScreen.storyboard */,
 				37D0FC84227753EF0039BE3C /* Info.plist */,
 				37D0FC85227753EF0039BE3C /* main.m */,
+				376E2B4F22782E350045D8DB /* ThirdViewController.h */,
+				376E2B5022782E350045D8DB /* ThirdViewController.m */,
 			);
 			path = Lime;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37D0FC7B227753EC0039BE3C /* SecondViewController.m in Sources */,
+				376E2B5122782E350045D8DB /* ThirdViewController.m in Sources */,
 				37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */,
 				37D0FC86227753EF0039BE3C /* main.m in Sources */,
 				37D0FC78227753EC0039BE3C /* FirstViewController.m in Sources */,
