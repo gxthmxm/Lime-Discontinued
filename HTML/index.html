@@ -139,8 +139,6 @@
             border-radius: 15px;
             margin-bottom: 30px;
             box-shadow: 0 13px 60px -10px #aaa;
-            transition: transform .2s ease-in-out;
-            -webkit-transition: transform .2s ease-in-out;
         }
 
         .card-wrapper .block-img-bg {
@@ -204,12 +202,12 @@
             background-color: hsla(0, 0%, 100%, .68);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             backdrop-filter: saturate(180%) blur(20px);
-            -webkit-border-bottom-right-radius: 13px;
-            -webkit-border-bottom-left-radius: 13px;
-            -moz-border-radius-bottomright: 13px;
-            -moz-border-radius-bottomleft: 13px;
-            border-bottom-right-radius: 13px;
-            border-bottom-left-radius: 13px;
+            -webkit-border-bottom-right-radius: 15px;
+            -webkit-border-bottom-left-radius: 15px;
+            -moz-border-radius-bottomright: 15px;
+            -moz-border-radius-bottomleft: 15px;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
         }
 
         .icon {
@@ -346,6 +344,69 @@
             font-size: 13px;
             line-height: 19px;
         }
+
+        .cell {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .cell .cell-group {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            height: 78px;
+            margin-left: 10px;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-align-self: center;
+            -ms-flex-item-align: center;
+            align-self: center;
+            border-bottom: 1px solid #d1d1d1;
+        }
+
+        .cell-icon {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            border-radius: 15px;
+        }
+
+        .cell-tweak-title {
+            color: #000;
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        .cell-tweak-subtitle {
+            color: rgba(0, 0, 0, .6);
+        }
+
+        .section-heading {
+            color: #000;
+            font-size: 19px;
+            line-height: 24px;
+            font-weight: 600;
+            letter-spacing: 0.49px;
+        }
+
         @media (max-width: 321px) {
             .tweak-description {
                 width: 170px;
@@ -469,6 +530,70 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="cells-section">
+        <h4 class="section-heading">Recently added</h4>
+        <div class="cell">
+            <div class="cell-icon">
+                <picture class="ios-app-icon">
+                    <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="70" width="70" crossorigin="anonymous">
+                </picture>
+            </div>
+            <div class="cell-group">
+                <div class="cell-info">
+                    <div class="cell-tweak-title">Tweak name</div>
+                    <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                </div>
+                <a href="#"><button class="itembtn" style="float: right">GET</button></a>
+            </div>
+        </div>
+        <div class="cell">
+            <div class="cell-icon">
+                <picture class="ios-app-icon">
+                    <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="70" width="70" crossorigin="anonymous">
+                </picture>
+            </div>
+            <div class="cell-group">
+                <div class="cell-info">
+                    <div class="cell-tweak-title">Tweak name</div>
+                    <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                </div>
+                <a href="#"><button class="itembtn" style="float: right">GET</button></a>
+            </div>
+        </div>
+        <div class="cell">
+            <div class="cell-icon">
+                <picture class="ios-app-icon">
+                    <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="70" width="70" crossorigin="anonymous">
+                </picture>
+            </div>
+            <div class="cell-group">
+                <div class="cell-info">
+                    <div class="cell-tweak-title">Tweak name</div>
+                    <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                </div>
+                <a href="#"><button class="itembtn" style="float: right">GET</button></a>
+            </div>
+        </div>
+        <div class="cell">
+            <div class="cell-icon">
+                <picture class="ios-app-icon">
+                    <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="70" width="70" crossorigin="anonymous">
+                </picture>
+            </div>
+            <div class="cell-group" style="border-bottom:0;">
+                <div class="cell-info">
+                    <div class="cell-tweak-title">Tweak name</div>
+                    <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                </div>
+                <a href="#"><button class="itembtn" style="float: right">GET</button></a>
+            </div>
+        </div>
+    </div>
     </div>
 
     <center>
