@@ -1,8 +1,8 @@
 //
-//  ThirdViewController.h
+//  ChangesViewController.h
 //  Lime
 //
-//  Created by Daniel on 30/04/2019.
+//  Created by ArtikusHG on 4/30/19.
 //  Copyright © 2019 Daniel. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ThirdViewController : UITableViewController
+@interface ChangesViewController : UIViewController
 
 @end
 

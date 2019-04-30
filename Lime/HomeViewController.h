@@ -1,15 +1,17 @@
 //
-//  FirstViewController.h
+//  HomeViewController.h
 //  Lime
 //
-//  Created by Daniel on 29/04/2019.
+//  Created by ArtikusHG on 4/30/19.
 //  Copyright © 2019 Daniel. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
-@interface FirstViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
+
+@interface HomeViewController : UIViewController
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
 @end
 
+NS_ASSUME_NONNULL_END
