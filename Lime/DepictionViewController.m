@@ -24,11 +24,6 @@
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
     _scrollView.scrollsToTop = NO;
     
-    //
-    // TO BE ASSIGNED BY INFO
-    // USING PLACEHOLDERS
-    //
-    
     self.icon = [UIImage imageNamed:@"Tweaks"];
     self.name = @"Dark'n'Epic";
     self.author = @"EvenDev";
@@ -100,16 +95,16 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    [[UIView appearance] setTintColor:[UIColor whiteColor]];
-    
+    [[[[UIApplication sharedApplication] delegate] window] setTintColor:[UIColor whiteColor]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
-
+    [[[[UIApplication sharedApplication] delegate] window] setTintColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
 }
+
 /*
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
