@@ -95,14 +95,13 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    [[[[UIApplication sharedApplication] delegate] window] setTintColor:[UIColor whiteColor]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
-    [[[[UIApplication sharedApplication] delegate] window] setTintColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
+
 }
 
 /*
