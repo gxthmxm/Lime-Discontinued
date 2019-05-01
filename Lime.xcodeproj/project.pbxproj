@@ -10,8 +10,6 @@
 		37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC74227753EC0039BE3C /* AppDelegate.m */; };
 		37D0FC80227753EF0039BE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D0FC7F227753EF0039BE3C /* Assets.xcassets */; };
 		37D0FC86227753EF0039BE3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC85227753EF0039BE3C /* main.m */; };
-		37D0FC90227753EF0039BE3C /* LimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC8F227753EF0039BE3C /* LimeTests.m */; };
-		37D0FC9B227753EF0039BE3C /* LimeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC9A227753EF0039BE3C /* LimeUITests.m */; };
 		37D0FCA922776ACF0039BE3C /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = 37D0FCA822776ACF0039BE3C /* HTML */; };
 		4D33AB52227873E500CDFC49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D33AB51227873E500CDFC49 /* Main.storyboard */; };
 		4D33AB542278742A00CDFC49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D33AB532278742A00CDFC49 /* LaunchScreen.storyboard */; };
@@ -52,11 +50,7 @@
 		37D0FC84227753EF0039BE3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37D0FC85227753EF0039BE3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		37D0FC8B227753EF0039BE3C /* LimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		37D0FC8F227753EF0039BE3C /* LimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LimeTests.m; sourceTree = "<group>"; };
-		37D0FC91227753EF0039BE3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37D0FC96227753EF0039BE3C /* LimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		37D0FC9A227753EF0039BE3C /* LimeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LimeUITests.m; sourceTree = "<group>"; };
-		37D0FC9C227753EF0039BE3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37D0FCA822776ACF0039BE3C /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML; sourceTree = "<group>"; };
 		4D33AB51227873E500CDFC49 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4D33AB532278742A00CDFC49 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,8 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				37D0FC72227753EC0039BE3C /* Lime */,
-				37D0FC8E227753EF0039BE3C /* LimeTests */,
-				37D0FC99227753EF0039BE3C /* LimeUITests */,
 				37D0FC71227753EC0039BE3C /* Products */,
 				37D0FCA822776ACF0039BE3C /* HTML */,
 				4D33AB55227877EA00CDFC49 /* Frameworks */,
@@ -159,24 +151,6 @@
 				37D0FC85227753EF0039BE3C /* main.m */,
 			);
 			path = Lime;
-			sourceTree = "<group>";
-		};
-		37D0FC8E227753EF0039BE3C /* LimeTests */ = {
-			isa = PBXGroup;
-			children = (
-				37D0FC8F227753EF0039BE3C /* LimeTests.m */,
-				37D0FC91227753EF0039BE3C /* Info.plist */,
-			);
-			path = LimeTests;
-			sourceTree = "<group>";
-		};
-		37D0FC99227753EF0039BE3C /* LimeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				37D0FC9A227753EF0039BE3C /* LimeUITests.m */,
-				37D0FC9C227753EF0039BE3C /* Info.plist */,
-			);
-			path = LimeUITests;
 			sourceTree = "<group>";
 		};
 		4D33AB55227877EA00CDFC49 /* Frameworks */ = {
@@ -336,7 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37D0FC90227753EF0039BE3C /* LimeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +317,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37D0FC9B227753EF0039BE3C /* LimeUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9859KQSN8L;
+				DEVELOPMENT_TEAM = 33GU98BCDS;
 				INFOPLIST_FILE = Lime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -501,7 +473,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9859KQSN8L;
+				DEVELOPMENT_TEAM = 33GU98BCDS;
 				INFOPLIST_FILE = Lime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
