@@ -18,6 +18,7 @@
 		4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5C2278890600CDFC49 /* DepictionViewController.m */; };
 		4D33AB602278903900CDFC49 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5F2278903900CDFC49 /* HeaderView.m */; };
 		4D33AB622278986500CDFC49 /* DepictionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB612278986500CDFC49 /* DepictionScrollView.m */; };
+		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
 		666DC9112278690100B6E03C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC9102278690100B6E03C /* HomeViewController.m */; };
 		666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91322786B4600B6E03C /* ChangesViewController.m */; };
 		666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91622786B4E00B6E03C /* SearchViewController.m */; };
@@ -63,6 +64,7 @@
 		4D33AB5F2278903900CDFC49 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		4D33AB612278986500CDFC49 /* DepictionScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionScrollView.m; sourceTree = "<group>"; };
 		4D33AB632278986D00CDFC49 /* DepictionScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepictionScrollView.h; sourceTree = "<group>"; };
+		66381721227A078000E92BE7 /* sections */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sections; sourceTree = "<group>"; };
 		666DC90F2278690100B6E03C /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		666DC9102278690100B6E03C /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		666DC91222786B4600B6E03C /* ChangesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangesViewController.h; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		37D0FC72227753EC0039BE3C /* Lime */ = {
 			isa = PBXGroup;
 			children = (
+				66381721227A078000E92BE7 /* sections */,
 				4D33AB51227873E500CDFC49 /* Main.storyboard */,
 				4D33AB532278742A00CDFC49 /* LaunchScreen.storyboard */,
 				37D0FC73227753EC0039BE3C /* AppDelegate.h */,
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37D0FCA922776ACF0039BE3C /* HTML in Resources */,
+				66381722227A078100E92BE7 /* sections in Resources */,
 				37D0FC80227753EF0039BE3C /* Assets.xcassets in Resources */,
 				4D33AB542278742A00CDFC49 /* LaunchScreen.storyboard in Resources */,
 				4D33AB52227873E500CDFC49 /* Main.storyboard in Resources */,
