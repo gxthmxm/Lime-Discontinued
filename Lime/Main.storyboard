@@ -63,7 +63,10 @@
                             <outlet property="delegate" destination="3i0-lW-DYa" id="taM-3v-kDg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sources" id="q2O-Nh-nqX"/>
+                    <navigationItem key="navigationItem" title="Sources" id="q2O-Nh-nqX">
+                        <barButtonItem key="leftBarButtonItem" title="Refresh" id="WWg-Hj-sph"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="NK5-E1-vJm"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvf-nD-QAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -417,9 +420,9 @@
         <image name="Changes" width="28" height="24"/>
         <image name="Empty" width="29" height="29"/>
         <image name="Home" width="28" height="24"/>
-        <image name="Installed" width="28" height="25"/>
+        <image name="Installed" width="28" height="25.5"/>
         <image name="Search" width="28" height="24"/>
         <image name="Sources" width="28" height="24"/>
-        <image name="Tweak" width="210" height="210"/>
+        <image name="Tweak" width="70" height="70"/>
     </resources>
 </document>
