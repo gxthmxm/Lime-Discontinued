@@ -20,6 +20,7 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     [[UIView appearance] setTintColor:[UIColor whiteColor]];
+    
 
     // Do any additional setup after loading the view.
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
