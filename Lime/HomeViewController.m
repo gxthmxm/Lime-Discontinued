@@ -41,19 +41,11 @@
     [queueButton setTitle:@"Queue" forState:UIControlStateNormal];
     [queueButton setTitleColor:self.tabBarController.view.tintColor forState:UIControlStateNormal];
     queueButton.frame = CGRectMake(0, 0, 140, 44);
-    [queueButton addTarget:self
-               action:@selector(newInstallationController)
-     forControlEvents:UIControlEventTouchUpInside];
     
     [queueView addSubview:queueSView];
     [queueView addSubview:queueButton];
     [shadowView addSubview:queueView];
     [self.tabBarController.view addSubview:shadowView];
 }
-
--(void)newInstallationController {
-    [[InstallationController alloc] init];
-}
-
 
 @end
