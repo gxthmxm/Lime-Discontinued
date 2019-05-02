@@ -27,8 +27,12 @@
     pid_t pid;
     int status;
     
-    const char *argv[] = {"killall", "SpringBoard", NULL};
-    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)argv, NULL);
+    const char *uicache[] = {"uicache", NULL};
+    posix_spawn(&pid, "/usr/bin/uicache", NULL, NULL, (char* const*)uicache, NULL);
+    waitpid(pid, &status, WEXITED);
+    
+    const char *respring[] = {"killall", "SpringBoard", NULL};
+    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)respring, NULL);
     waitpid(pid, &status, WEXITED);
     
 }
