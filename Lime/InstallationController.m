@@ -8,7 +8,6 @@
 
 #import "InstallationController.h"
 #include <spawn.h>
-extern char **environ;
 
 @interface InstallationController ()
 
@@ -25,13 +24,10 @@ extern char **environ;
 }
 - (IBAction)respring:(id)sender {
     pid_t pid;
-    char *argv[] = {
-        "uicache && killall -9 SpringBoard",
-        NULL
-    };
-    
-    posix_spawn(&pid, argv[0], NULL, NULL, argv, environ);
-    waitpid(pid, NULL, 0);
+    int status;
+    const char* args[] = {"killall", "SpringBoard", NULL};
+    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
+    waitpid(pid, &status, WEXITED);
 }
 - (IBAction)dragging:(id)sender {
     
