@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LMDPKGParser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface InstalledViewController : UITableViewController
+
+@property (nonatomic,retain) LMDPKGParser *parser;
 
 @end
 

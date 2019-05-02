@@ -7,35 +7,48 @@
 //
 
 #import "LMDPKGParser.h"
+@import UIKit;
 
 @implementation LMDPKGParser
 
 - (instancetype)init {
-    // Initialize the class
+    // Icy's parser, but a bit Limier
     self = [super init];
-    // Array of parameters to store (e.g. Package:, Name: etc. will get stored)
-    NSArray *parameters = @[@"Package", @"Name", @"Description", @"Section", @"Icon"];
-    int maxlen = 4096;
+    self.packageIDs = [[NSMutableArray alloc] init];
+    self.packageIcons = [[NSMutableArray alloc] init];
+    self.packageNames = [[NSMutableArray alloc] init];
+    self.packageDescs = [[NSMutableArray alloc] init];
+    // This array is created on this class and than assigned to self.packageNames
+    // You'll ask why?
+    // The shit is, I simply can NOT addObject on packageNames after removing a package. This bug occurs ONLY in self.packageNames and not any other arrays.
+    // I, however, can assign the value of self.packageNames to names. That's what I'm doing, and that's what surprisingly works :P
+    NSMutableArray *names = [[NSMutableArray alloc] init];
     FILE *file = fopen("/var/lib/dpkg/status", "r");
-    char str[maxlen];
-    while(fgets(str, maxlen, file) != NULL) {
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-        for (NSString *parameter in parameters) if(strstr(str, [parameter UTF8String])) {
-            NSString *fullLine = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
-            NSRange pos = [fullLine rangeOfString:@" "];
-            if (pos.location != NSNotFound) {
-                NSString *value = [fullLine substringFromIndex:pos.location + 1];
-                [dict setValue:value forKey:parameter];
+    char str[999];
+    NSString *icon = nil;
+    NSString *lastID = nil;
+    NSString *lastDesc = nil;
+    while(fgets(str, 999, file) != NULL) {
+        if(strstr(str, "Package:")) lastID = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Package: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        if(strstr(str, "Name:")) [names addObject:[[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Name: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
+        if(strstr(str, "Description:")) lastDesc = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Description: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        if(strstr(str, "Section:")) {
+            icon = [NSString stringWithFormat:@"/Applications/Lime.app/sections/%@.png",[[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
+            if([icon rangeOfString:@" "].location != NSNotFound) icon = [NSString stringWithFormat:@"%@.png",[icon substringToIndex:[icon rangeOfString:@" "].location]];
+        }
+        if(strstr(str, "Icon:")) icon = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Icon: file://" withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        if(![[NSFileManager defaultManager] fileExistsAtPath:icon]) icon = @"/Applications/Lime.app/sections/Unknown.png";
+        if(strlen(str) < 2 && names.count > 0) {
+            NSString *lastObject = [names lastObject];
+            [names sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            if(self.packageIDs.count < names.count) {
+                [self.packageIDs insertObject:lastID atIndex:[names indexOfObject:lastObject]];
+                [self.packageIcons insertObject:icon atIndex:[names indexOfObject:lastObject]];
+                [self.packageDescs insertObject:lastDesc atIndex:[names indexOfObject:lastObject]];
             }
         }
-        NSLog(@"%@",dict);
-        if(strstr(str, "Section:")) {
-            //icon = [NSString stringWithFormat:@"/Applications/IcyInstaller3.app/icons/%@.png",[[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
-            //if([icon rangeOfString:@" "].location != NSNotFound) icon = [NSString stringWithFormat:@"%@.png",[icon substringToIndex:[icon rangeOfString:@" "].location]];
-        }
-        //if(strstr(str, "Icon:")) icon = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Icon: file://" withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        //if(![[NSFileManager defaultManager] fileExistsAtPath:icon]) icon = @"/Applications/IcyInstaller3.app/icons/Unknown.png";
     }
+    self.packageNames = names;
     fclose(file);
     return self;
 }

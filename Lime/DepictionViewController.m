@@ -15,14 +15,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+  
     // Do any additional setup after loading the view.
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
     _scrollView.scrollsToTop = NO;
-    
-    //
-    // TO BE ASSIGNED BY INFO
-    // USING PLACEHOLDERS
-    //
     
     self.icon = [UIImage imageNamed:@"Tweaks"];
     self.name = @"Dark'n'Epic";
@@ -91,22 +91,19 @@
     }
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    
-    /*[self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];*/
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:YES];
-    
-    /*self.navigationController.navigationBar.shadowImage = nil;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault]; 
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0 green:0.48 blue:1 alpha:1];*/
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+
 }
+
 /*
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
