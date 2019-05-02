@@ -21,5 +21,11 @@
 - (IBAction)buttonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)arrowPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)dragging:(id)sender {
+    
+}
 
 @end

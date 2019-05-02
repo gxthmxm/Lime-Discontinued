@@ -19,7 +19,7 @@
 		4D33AB602278903900CDFC49 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5F2278903900CDFC49 /* HeaderView.m */; };
 		4D33AB622278986500CDFC49 /* DepictionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB612278986500CDFC49 /* DepictionScrollView.m */; };
 		4D715A12227AD26C00896934 /* InstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D715A11227AD26C00896934 /* InstallationController.m */; };
-				66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
+		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
 		666DC9112278690100B6E03C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC9102278690100B6E03C /* HomeViewController.m */; };
 		666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91322786B4600B6E03C /* ChangesViewController.m */; };
 		666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91622786B4E00B6E03C /* SearchViewController.m */; };
@@ -464,7 +464,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 33GU98BCDS;
+				DEVELOPMENT_TEAM = 9859KQSN8L;
 				INFOPLIST_FILE = Lime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -483,7 +483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 33GU98BCDS;
+				DEVELOPMENT_TEAM = 9859KQSN8L;
 				INFOPLIST_FILE = Lime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

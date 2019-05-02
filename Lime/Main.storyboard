@@ -331,14 +331,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tj0-Hc-d2X">
-                                <rect key="frame" x="0.0" y="160" width="375" height="557"/>
+                                <rect key="frame" x="0.0" y="154" width="375" height="563"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="EtH-aC-pSh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-7g-mVb">
-                                            <rect key="frame" x="28" y="422" width="318" height="58"/>
+                                            <rect key="frame" x="28" y="428" width="318" height="58"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDN-jF-Izs">
@@ -346,7 +346,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" red="0.83529411760000005" green="0.82745098039999998" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <state key="normal" title="Close">
+                                                    <state key="normal" title="Respring">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
@@ -369,9 +369,15 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npg-be-jBJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.83529411760000005" green="0.82745098039999998" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="arrowPressed:" destination="SdS-52-Qz0" eventType="touchUpInside" id="zpo-3r-itM"/>
+                                                <action selector="dragging:" destination="SdS-52-Qz0" eventType="touchDragInside" id="ScE-ak-vfJ"/>
+                                            </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="yGQ-zI-UDo">
+                                            <rect key="frame" x="167" y="22" width="40" height="13"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </view>
                                 <blurEffect style="extraLight"/>
@@ -499,9 +505,10 @@
         <image name="Changes" width="28" height="24"/>
         <image name="Empty" width="29" height="29"/>
         <image name="Home" width="28" height="24"/>
-        <image name="Installed" width="28" height="25.5"/>
+        <image name="Installed" width="28" height="25"/>
         <image name="Search" width="28" height="24"/>
         <image name="Sources" width="28" height="24"/>
-        <image name="Tweak" width="70" height="70"/>
+        <image name="Tweak" width="210" height="210"/>
+        <image name="arrow" width="40" height="13"/>
     </resources>
 </document>
