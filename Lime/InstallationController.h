@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface InstallationController : UIViewController
 @property (strong, nonatomic) IBOutlet UIButton *actionButton;
+@property (strong, nonatomic) IBOutlet UIImageView *checkmark;
 
 @end
 

@@ -397,6 +397,7 @@
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="EDN-jF-Izs" id="g8M-Nx-tro"/>
+                        <outlet property="checkmark" destination="rYG-57-xWR" id="Mmy-dc-yx9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIY-5H-lFb" userLabel="First Responder" sceneMemberID="firstResponder"/>

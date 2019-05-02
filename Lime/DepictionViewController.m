@@ -111,7 +111,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewWillDisappear:YES];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
     self.navigationController.navigationBar.tintColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
 
