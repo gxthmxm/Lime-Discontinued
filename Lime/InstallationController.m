@@ -8,6 +8,7 @@
 
 #import "InstallationController.h"
 #include <spawn.h>
+#include <signal.h>
 
 @interface InstallationController ()
 
@@ -25,9 +26,11 @@
 - (IBAction)respring:(id)sender {
     pid_t pid;
     int status;
-    const char* args[] = {"uicache && killall -9 SpringBoard", NULL};
-    posix_spawn(&pid, "/usr/bin/uicache", NULL, NULL, (char* const*)args, NULL);
+    
+    const char *argv[] = {"killall", "SpringBoard", NULL};
+    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)argv, NULL);
     waitpid(pid, &status, WEXITED);
+    
 }
 - (IBAction)dragging:(id)sender {
     
