@@ -17,7 +17,6 @@
 		4D33AB5922787A7700CDFC49 /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5822787A7700CDFC49 /* SourcesViewController.m */; };
 		4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5C2278890600CDFC49 /* DepictionViewController.m */; };
 		4D33AB602278903900CDFC49 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5F2278903900CDFC49 /* HeaderView.m */; };
-		4D33AB622278986500CDFC49 /* DepictionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB612278986500CDFC49 /* DepictionScrollView.m */; };
 		4D715A12227AD26C00896934 /* InstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D715A11227AD26C00896934 /* InstallationController.m */; };
 		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
 		666DC9112278690100B6E03C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC9102278690100B6E03C /* HomeViewController.m */; };
@@ -63,10 +62,9 @@
 		4D33AB5C2278890600CDFC49 /* DepictionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionViewController.m; sourceTree = "<group>"; };
 		4D33AB5E2278902900CDFC49 /* HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		4D33AB5F2278903900CDFC49 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
-		4D33AB612278986500CDFC49 /* DepictionScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionScrollView.m; sourceTree = "<group>"; };
-		4D33AB632278986D00CDFC49 /* DepictionScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepictionScrollView.h; sourceTree = "<group>"; };
 		4D715A11227AD26C00896934 /* InstallationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstallationController.m; sourceTree = "<group>"; };
 		4D715A13227AD27800896934 /* InstallationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstallationController.h; sourceTree = "<group>"; };
+		4DE098D5227B53E800A00A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		66381721227A078000E92BE7 /* sections */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sections; sourceTree = "<group>"; };
 		666DC90F2278690100B6E03C /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		666DC9102278690100B6E03C /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -140,8 +138,6 @@
 				666DC9102278690100B6E03C /* HomeViewController.m */,
 				4D33AB5E2278902900CDFC49 /* HeaderView.h */,
 				4D33AB5F2278903900CDFC49 /* HeaderView.m */,
-				4D33AB632278986D00CDFC49 /* DepictionScrollView.h */,
-				4D33AB612278986500CDFC49 /* DepictionScrollView.m */,
 				4D33AB5B227888F800CDFC49 /* DepictionViewController.h */,
 				4D33AB5C2278890600CDFC49 /* DepictionViewController.m */,
 				666DC91222786B4600B6E03C /* ChangesViewController.h */,
@@ -164,6 +160,7 @@
 		4D33AB55227877EA00CDFC49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4DE098D5227B53E800A00A43 /* CoreGraphics.framework */,
 				4D33AB56227877EA00CDFC49 /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -309,7 +306,6 @@
 				4D33AB5922787A7700CDFC49 /* SourcesViewController.m in Sources */,
 				37D0FC86227753EF0039BE3C /* main.m in Sources */,
 				666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */,
-				4D33AB622278986500CDFC49 /* DepictionScrollView.m in Sources */,
 				66B9FCA222788D7400F1FB08 /* LMDPKGParser.m in Sources */,
 				666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */,
 				666DC9112278690100B6E03C /* HomeViewController.m in Sources */,

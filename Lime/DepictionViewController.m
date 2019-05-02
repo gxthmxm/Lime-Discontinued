@@ -7,6 +7,7 @@
 //
 
 #import "DepictionViewController.h"
+#import "InstallationController.h"
 
 @interface DepictionViewController ()
 @end
@@ -24,6 +25,7 @@
     // Do any additional setup after loading the view.
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
     _scrollView.scrollsToTop = NO;
+    _scrollView.delegate = self;
     
     self.icon = [UIImage imageNamed:@"Tweaks"];
     self.name = @"Dark'n'Epic";
@@ -51,7 +53,16 @@
     [_authorLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_authorLabel sizeToFit];
     
+    UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,28,28)];
+    iv.image = self.iconView.image;
+    iv.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIView* ivContainer = [[UIView alloc] initWithFrame:CGRectMake(0,0,28,28)];
+    [ivContainer addSubview:iv];
+    
+    self.navigationItem.titleView = ivContainer;
 }
+
 - (IBAction)shareStart:(id)sender {
     UIAlertController* shareAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -106,20 +117,31 @@
 
 }
 
-/*
-
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint scrollOffset = scrollView.contentOffset;
-    if (scrollOffset.y >= 40) {
-        if (![self.navigationController isNavigationBarHidden]) {
-            [self.navigationController setNavigationBarHidden:YES animated:YES];
-        }
+    
+    if (scrollOffset.y >= 30) {
+        [UIView animateWithDuration:0.2f animations:^{
+            [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+            self.navigationController.navigationBar.tintColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
+            self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+        }];
     } else {
-        if ([self.navigationController isNavigationBarHidden]) {
-            [self.navigationController setNavigationBarHidden:NO animated:YES];
-        }
+        [UIView animateWithDuration:0.2f animations:^{
+            [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+            self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+            self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+        }];
+    }
+    if (scrollOffset.y >= 200) {
+        [UIView animateWithDuration:0.2f animations:^{
+            self.navigationItem.titleView.alpha = 1;
+        }];
+    } else {
+        [UIView animateWithDuration:0.2f animations:^{
+            self.navigationItem.titleView.alpha = 0;
+        }];
     }
 }
- */
 
 @end
