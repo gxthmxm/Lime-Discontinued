@@ -25,8 +25,8 @@
 - (IBAction)respring:(id)sender {
     pid_t pid;
     int status;
-    const char* args[] = {"killall", "SpringBoard", NULL};
-    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
+    const char* args[] = {"uicache && killall -9 SpringBoard", NULL};
+    posix_spawn(&pid, "/usr/bin/uicache", NULL, NULL, (char* const*)args, NULL);
     waitpid(pid, &status, WEXITED);
 }
 - (IBAction)dragging:(id)sender {
