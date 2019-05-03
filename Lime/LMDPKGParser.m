@@ -34,10 +34,14 @@
         if(strstr(str, "Description:")) lastDesc = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Description: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         if(strstr(str, "Section:")) {
             icon = [NSString stringWithFormat:@"/Applications/Lime.app/sections/%@.png",[[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
-            if([icon rangeOfString:@" "].location != NSNotFound) icon = [NSString stringWithFormat:@"%@.png",[icon substringToIndex:[icon rangeOfString:@" "].location]];
+            if([icon rangeOfString:@"Themes"].location != NSNotFound) icon = @"/Applications/Lime.app/sections/Themes.png";
+            else icon = [icon stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            if(![[NSFileManager defaultManager] fileExistsAtPath:icon]) icon = @"/Applications/Lime.app/sections/Unknown.png";;
         }
-        if(strstr(str, "Icon:")) icon = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Icon: file://" withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        if(![[NSFileManager defaultManager] fileExistsAtPath:icon]) icon = @"/Applications/Lime.app/sections/Unknown.png";
+        if(strstr(str, "Icon:")) {
+            NSString *customIcon = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Icon: file://" withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+            if([[NSFileManager defaultManager] fileExistsAtPath:customIcon]) icon = customIcon;
+        }
         if(strlen(str) < 2 && names.count > 0) {
             NSString *lastObject = [names lastObject];
             [names sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
