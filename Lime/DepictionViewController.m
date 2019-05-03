@@ -27,12 +27,6 @@
     _scrollView.scrollsToTop = NO;
     _scrollView.delegate = self;
     
-    self.icon = [UIImage imageNamed:@"Tweaks"];
-    self.name = @"Dark'n'Epic";
-    self.author = @"EvenDev";
-    self.depictionURL = @"https://repo.evendev.org/depictions/dne.html";
-    self.package = @"org.evendev.dne";
-    
     NSURL *nsurl=[NSURL URLWithString:self.depictionURL];
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
     [_depictionView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
