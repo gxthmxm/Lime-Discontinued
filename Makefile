@@ -14,4 +14,4 @@ install:
 clean:
 	xcodebuild clean
 	rm deb.deb
-	rm -rf deb/Applications/Lime.app
+	rm -rf deb/Applications/*
