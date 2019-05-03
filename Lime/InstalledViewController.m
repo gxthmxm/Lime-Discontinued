@@ -45,6 +45,7 @@
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Info goes here
+    [self performSegueWithIdentifier:@"packageInfo" sender:self];
 }
 
 @end
