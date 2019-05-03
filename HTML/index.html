@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="HTML/flexboxgrid.min.css">
+    <link rel="stylesheet" href="HTMLflexboxgrid.min.css">
     <link rel="stylesheet" href="HTML/styles.css">
     <title>Lime</title>
 </head>
@@ -122,11 +122,11 @@
                     <a class="cell-link" href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.thebigboss.org/repofiles/cydia">
                         <div class="cell-icon-small">
                             <picture class="ios-app-icon">
-                                <source class="we-artwork__source" srcset="/HTML/bigboss.png 3x" crossorigin="anonymous">
-                                <img class="app__img we-artwork__image" src="/HTML/bigboss.png" alt="" height="50" width="50" crossorigin="anonymous">
+                                <source class="we-artwork__source" srcset="HTML/bigboss.png 3x" crossorigin="anonymous">
+                                <img class="app__img we-artwork__image" src="HTML/bigboss.png" alt="" height="50" width="50" crossorigin="anonymous">
                             </picture>
                         </div>
-                        <div class="cell-group small-cell">
+                        <div class="cell-group small-cell" style="border-bottom:0;">
                             <div class="cell-info">
                                 <div class="cell-tweak-title">BigBoss</div>
                                 <div class="cell-tweak-subtitle">apt.thebigboss.org/repofiles/cydia</div>
@@ -160,75 +160,97 @@
         </div>
 
 
-
-       
-
-         <div class="col-xs-12 col-sm-6 col-md-7 col-lg-5">
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-5">
             <div class="card-wrapper" style="padding:20px;" ontouchstart="shrink(event)" ontouchend="extend(event)">
-                <div class="card-subtitle-dark">REPOS TO GET YOUR PACKAGES</div>
-                <h2 class="card-title-dark">Essential Repos</h2>
+                <h2 class="card-title-dark">Recently added</h2>
                 <div class="cell">
-                    <div class="cell-icon">
-                        <picture class="ios-app-icon">
-                            <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
-                            <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="70" width="70" crossorigin="anonymous">
-                        </picture>
-                    </div>
-                    <div class="cell-group">
-                        <div class="cell-info">
-                            <div class="cell-tweak-title">Tweak name</div>
-                            <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50" crossorigin="anonymous">
+                            </picture>
                         </div>
-                        <a href="#"><button class="itembtn" style="float: right">GET</button></a>
-                    </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
                 </div>
                 <div class="cell">
-                    <div class="cell-icon">
-                        <picture class="ios-app-icon">
-                            <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
-                            <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="70" width="70" crossorigin="anonymous">
-                        </picture>
-                    </div>
-                    <div class="cell-group">
-                        <div class="cell-info">
-                            <div class="cell-tweak-title">Tweak name</div>
-                            <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50" crossorigin="anonymous">
+                            </picture>
                         </div>
-                        <a href="#"><button class="itembtn" style="float: right">GET</button></a>
-                    </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
                 </div>
                 <div class="cell">
-                    <div class="cell-icon">
-                        <picture class="ios-app-icon">
-                            <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
-                            <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="70" width="70" crossorigin="anonymous">
-                        </picture>
-                    </div>
-                    <div class="cell-group">
-                        <div class="cell-info">
-                            <div class="cell-tweak-title">Tweak name</div>
-                            <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50" crossorigin="anonymous">
+                            </picture>
                         </div>
-                        <a href="#"><button class="itembtn" style="float: right">GET</button></a>
-                    </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
                 </div>
                 <div class="cell">
-                    <div class="cell-icon">
-                        <picture class="ios-app-icon">
-                            <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
-                            <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="70" width="70" crossorigin="anonymous">
-                        </picture>
-                    </div>
-                    <div class="cell-group" style="border-bottom:0;">
-                        <div class="cell-info">
-                            <div class="cell-tweak-title">Tweak name</div>
-                            <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50" crossorigin="anonymous">
+                            </picture>
                         </div>
-                        <a href="#"><button class="itembtn" style="float: right">GET</button></a>
-                    </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x" crossorigin="anonymous">
+                                <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50" crossorigin="anonymous">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell"  style="border-bottom:0;">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
+       
     </div>
     
 </div>
