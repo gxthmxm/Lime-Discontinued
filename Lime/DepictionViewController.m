@@ -43,9 +43,16 @@
     self.titleLabel.text = self.name;
     [_titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_titleLabel sizeToFit];
-    self.authorLabel.text = self.author;
+    if (self.author != nil) {
+        self.authorLabel.text = self.author;
+    } else {
+        self.authorLabel.text = @"Unknown";
+    }
     [_authorLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    [_authorLabel sizeToFit];
+    [_authorLabel sizeToFit];/*
+    self.descriptionLabel.text = self.description;
+    [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [self.descriptionLabel sizeToFit];*/
     
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,28,28)];
     iv.image = self.iconView.image;

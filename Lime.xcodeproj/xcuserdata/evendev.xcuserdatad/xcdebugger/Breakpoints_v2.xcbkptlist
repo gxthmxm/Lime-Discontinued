@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lime/DepictionViewController.h"
-            timestampString = "578581907.213129"
+            timestampString = "578586364.4911439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lime/DepictionViewController.m"
-            timestampString = "578583794.107057"
+            timestampString = "578586364.491213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "DepictionViewController"
-            landmarkType = "3">
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-scrollViewDidScroll:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lime/DepictionViewController.m"
-            timestampString = "578583794.10751"
+            timestampString = "578586364.4916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"

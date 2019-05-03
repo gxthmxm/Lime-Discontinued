@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *authorLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;
 @property (strong, nonatomic) IBOutlet UIImageView *bannerView;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) UIImage *banner;
@@ -28,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *author;
 @property (strong, nonatomic) NSString *package;
 @property (strong, nonatomic) NSString *depictionURL;
+@property (strong, nonatomic) NSString *description;
 
 @end
 
