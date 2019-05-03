@@ -45,7 +45,9 @@
     [queueView addSubview:queueSView];
     [queueView addSubview:queueButton];
     [shadowView addSubview:queueView];
-    [self.tabBarController.view addSubview:shadowView];
+    if (self.queueArray != nil) {
+        [self.tabBarController.view addSubview:shadowView];
+    }
 }
 
 @end

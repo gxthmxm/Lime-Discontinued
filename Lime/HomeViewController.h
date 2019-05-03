@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet WKWebView *webView;
+
+@property (strong, nonatomic) NSArray *queueArray;
 @end
 
 NS_ASSUME_NONNULL_END

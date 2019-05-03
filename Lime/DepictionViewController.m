@@ -114,6 +114,7 @@
     [super viewWillDisappear:YES];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
     self.navigationController.navigationBar.tintColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 
 }
 
