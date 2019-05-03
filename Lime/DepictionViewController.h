@@ -22,12 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;
 @property (strong, nonatomic) IBOutlet UIImageView *bannerView;
 
-@property (strong, nonatomic) UIImage* icon;
-@property (strong, nonatomic) UIImage* banner;
-@property (strong, nonatomic) NSString* name;
-@property (strong, nonatomic) NSString* author;
-@property (strong, nonatomic) NSString* package;
-@property (strong, nonatomic) NSString* depictionURL;
+@property (strong, nonatomic) UIImage *icon;
+@property (strong, nonatomic) UIImage *banner;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *author;
+@property (strong, nonatomic) NSString *package;
+@property (strong, nonatomic) NSString *depictionURL;
 
 @end
 
