@@ -7,6 +7,7 @@
 //
 
 #import "InstalledViewController.h"
+#import "DepictionViewController.h"
 
 @interface InstalledViewController ()
 
@@ -44,8 +45,17 @@
 }
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Info goes here
     [self performSegueWithIdentifier:@"packageInfo" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    DepictionViewController *depictionViewController = segue.destinationViewController;
+    NSInteger index = [(UITableView *)self.view indexPathForSelectedRow].row;
+    depictionViewController.package = [self.parser.packageIDs objectAtIndex:index];
+    depictionViewController.name = [self.parser.packageNames objectAtIndex:index];
+    depictionViewController.author = [self.parser.packageAuthors objectAtIndex:index];
+    depictionViewController.depictionURL = [self.parser.packageDepictions objectAtIndex:index];
+    depictionViewController.icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:index]];
 }
 
 @end

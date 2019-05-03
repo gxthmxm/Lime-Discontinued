@@ -18,19 +18,23 @@
     self.packageIcons = [[NSMutableArray alloc] init];
     self.packageNames = [[NSMutableArray alloc] init];
     self.packageDescs = [[NSMutableArray alloc] init];
-    // This array is created on this class and than assigned to self.packageNames
-    // You'll ask why?
-    // The shit is, I simply can NOT addObject on packageNames after removing a package. This bug occurs ONLY in self.packageNames and not any other arrays.
-    // I, however, can assign the value of self.packageNames to names. That's what I'm doing, and that's what surprisingly works :P
+    self.packageDepictions = [[NSMutableArray alloc] init];
+    self.packageAuthors = [[NSMutableArray alloc] init];
+    
     NSMutableArray *names = [[NSMutableArray alloc] init];
     FILE *file = fopen("/var/lib/dpkg/status", "r");
     char str[999];
-    NSString *icon = nil;
-    NSString *lastID = nil;
-    NSString *lastDesc = nil;
+    NSString *icon = @"";
+    NSString *lastID = @"";
+    NSString *lastDesc = @"";
+    NSString *lastAuthor = @"";
+    NSString *lastDepiction = @"";
     while(fgets(str, 999, file) != NULL) {
         if(strstr(str, "Package:")) lastID = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Package: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         if(strstr(str, "Name:")) [names addObject:[[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Name: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
+        if(strstr(str, "Description:")) lastDesc = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Description: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        if(strstr(str, "Author:")) lastAuthor = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Author: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        if(strstr(str, "Depiction:")) lastDepiction = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Depiction: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         if(strstr(str, "Description:")) lastDesc = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Description: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         if(strstr(str, "Section:")) {
             icon = [NSString stringWithFormat:@"/Applications/Lime.app/sections/%@.png",[[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
@@ -46,9 +50,17 @@
             NSString *lastObject = [names lastObject];
             [names sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             if(self.packageIDs.count < names.count) {
-                [self.packageIDs insertObject:lastID atIndex:[names indexOfObject:lastObject]];
-                [self.packageIcons insertObject:icon atIndex:[names indexOfObject:lastObject]];
-                [self.packageDescs insertObject:lastDesc atIndex:[names indexOfObject:lastObject]];
+                NSInteger index = [names indexOfObject:lastObject];
+                [self.packageIDs insertObject:lastID atIndex:index];
+                [self.packageIcons insertObject:icon atIndex:index];
+                [self.packageDescs insertObject:lastDesc atIndex:index];
+                [self.packageAuthors insertObject:lastAuthor atIndex:index];
+                [self.packageDepictions insertObject:lastDepiction atIndex:index];
+                icon = @"";
+                lastID = @"";
+                lastDesc = @"";
+                lastAuthor = @"";
+                lastDepiction = @"";
             }
         }
     }
