@@ -94,11 +94,9 @@
                             <outlet property="delegate" destination="oJb-Vf-qch" id="bTS-ZG-hFz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Installed" id="GPe-oC-Xn8">
-                        <barButtonItem key="rightBarButtonItem" title="Queue" id="mso-XN-47f"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Installed" id="GPe-oC-Xn8"/>
                     <connections>
-                        <segue destination="Xxj-q3-ulK" kind="show" identifier="packageInfo" id="K8P-vf-xdS"/>
+                        <segue destination="Xxj-q3-ulK" kind="show" identifier="packageInfo" id="rn6-ve-2O6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exu-3a-DQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -522,6 +520,6 @@
         <image name="arrow" width="40" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K8P-vf-xdS"/>
+        <segue reference="rn6-ve-2O6"/>
     </inferredMetricsTieBreakers>
 </document>
