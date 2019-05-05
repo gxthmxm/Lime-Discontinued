@@ -65,7 +65,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Sources" id="q2O-Nh-nqX">
                         <barButtonItem key="leftBarButtonItem" title="Refresh" id="WWg-Hj-sph"/>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="NK5-E1-vJm"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="NK5-E1-vJm">
+                            <connections>
+                                <segue destination="KAU-yf-a8n" kind="presentation" modalPresentationStyle="overFullScreen" id="u1O-MQ-ehO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvf-nD-QAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,8 +391,27 @@
                                                 <action selector="respring:" destination="SdS-52-Qz0" eventType="touchUpInside" id="SkF-8I-vVD"/>
                                             </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vs1-Y6-57w">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npg-be-jBJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="arrowPressed:" destination="SdS-52-Qz0" eventType="touchUpInside" id="zpo-3r-itM"/>
+                                                        <action selector="dragging:" destination="SdS-52-Qz0" eventType="touchDragInside" id="ScE-ak-vfJ"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="yGQ-zI-UDo">
+                                                    <rect key="frame" x="166" y="23" width="40" height="13"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DBo-5w-IQg">
-                                            <rect key="frame" x="67" y="56" width="240" height="407"/>
+                                            <rect key="frame" x="67" y="72" width="240" height="407"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Check" translatesAutoresizingMaskIntoConstraints="NO" id="rYG-57-xWR">
@@ -410,25 +433,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vs1-Y6-57w">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npg-be-jBJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <action selector="arrowPressed:" destination="SdS-52-Qz0" eventType="touchUpInside" id="zpo-3r-itM"/>
-                                                        <action selector="dragging:" destination="SdS-52-Qz0" eventType="touchDragInside" id="ScE-ak-vfJ"/>
-                                                    </connections>
-                                                </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="yGQ-zI-UDo">
-                                                    <rect key="frame" x="166" y="23" width="40" height="13"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
                                     </subviews>
                                 </view>
                                 <blurEffect style="extraLight"/>
@@ -445,6 +449,7 @@
                     <connections>
                         <outlet property="actionButton" destination="EDN-jF-Izs" id="g8M-Nx-tro"/>
                         <outlet property="checkmark" destination="rYG-57-xWR" id="Mmy-dc-yx9"/>
+                        <outlet property="greatLabel" destination="7AA-x9-TH7" id="jZA-Cz-U2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIY-5H-lFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -499,13 +504,7 @@
                             <outlet property="delegate" destination="2ky-au-Onb" id="afu-eW-wb8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Updates" id="TR0-pY-VYT">
-                        <barButtonItem key="rightBarButtonItem" title="Depiction" id="buY-Tz-6WI">
-                            <connections>
-                                <segue destination="Xxj-q3-ulK" kind="show" id="g6L-tO-QOB"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Updates" id="TR0-pY-VYT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbc-PW-r19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -552,6 +551,109 @@
             </objects>
             <point key="canvasLocation" x="-319" y="991"/>
         </scene>
+        <!--Installation Controller-->
+        <scene sceneID="sXV-l1-l8e">
+            <objects>
+                <viewController id="KAU-yf-a8n" customClass="InstallationController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yv8-6I-7zg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ZC-td-dqX">
+                                <rect key="frame" x="0.0" y="376" width="375" height="341"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="5O6-nR-5vv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="341"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAa-xv-giU">
+                                            <rect key="frame" x="28" y="205" width="318" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <color key="backgroundColor" red="0.58431372550000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                            <state key="normal" title="Add">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="respring:" destination="KAU-yf-a8n" eventType="touchUpInside" id="p1M-g5-X9t"/>
+                                            </connections>
+                                        </button>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DQs-K2-mdx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-ln-8Rp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="arrowPressed:" destination="KAU-yf-a8n" eventType="touchUpInside" id="y3K-ua-DWk"/>
+                                                        <action selector="dragging:" destination="KAU-yf-a8n" eventType="touchDragInside" id="PQh-hV-BPZ"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Xfh-ex-YGt">
+                                                    <rect key="frame" x="166" y="23" width="40" height="13"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Repo URL" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4rZ-bI-NhR">
+                                            <rect key="frame" x="28" y="139" width="318" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <color key="backgroundColor" red="0.58431372550000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="https://evendev.org">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" metaFont="system" size="18"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="17" maximumLineHeight="23" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Repo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi6-mp-fIX">
+                                            <rect key="frame" x="28" y="72" width="318" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U66-fT-PNI">
+                                            <rect key="frame" x="28" y="112" width="318" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wwM-f3-TPC"/>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="GAa-xv-giU" id="cUs-Mt-fjz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E3u-cP-6fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768.8" y="936.88155922038993"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Changes" width="28" height="24"/>
@@ -564,7 +666,4 @@
         <image name="Tweak" width="210" height="210"/>
         <image name="arrow" width="40" height="13"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="K8P-vf-xdS"/>
-    </inferredMetricsTieBreakers>
 </document>

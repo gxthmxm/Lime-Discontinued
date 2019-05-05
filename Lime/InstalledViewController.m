@@ -41,7 +41,22 @@
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 10;
     cell.imageView.image = icon;
+    
+    UIButton *getButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 90, 20, 74, 30)];
+    getButton.backgroundColor = [UIColor colorWithRed:0.95 green:0.94 blue:0.96 alpha:1.0];
+    getButton.layer.cornerRadius = 15;
+    [getButton setTitle:@"GET" forState:UIControlStateNormal];
+    [getButton setTitleColor:[[[UIApplication sharedApplication] delegate] window].tintColor forState:UIControlStateNormal];
+    [getButton setFont:[UIFont boldSystemFontOfSize:13]];
+    
+    [cell addSubview:getButton];
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70;
 }
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

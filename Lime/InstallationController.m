@@ -9,6 +9,7 @@
 #import "InstallationController.h"
 #include <spawn.h>
 #include <signal.h>
+#import "NSArray+Random.h"
 
 @interface InstallationController ()
 
@@ -19,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSArray *excellent = [NSArray arrayWithObjects:@"Excellent!", @"Great!", @"Fantastic!", @"Awesome!", @"Epic!", @"Nice!", nil];
+    
+    self.greatLabel.text = [excellent randomObject];
 }
 - (IBAction)arrowPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
