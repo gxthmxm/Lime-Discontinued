@@ -26,7 +26,9 @@
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
     _scrollView.scrollsToTop = NO;
     _scrollView.delegate = self;
-    
+    // Remove author email
+    NSRange range = [self.author rangeOfString:@"<"];
+    if(range.location != NSNotFound) self.author = [self.author substringToIndex:range.location - 1];
     NSURL *nsurl=[NSURL URLWithString:self.depictionURL];
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
     [_depictionView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
@@ -49,10 +51,10 @@
         self.authorLabel.text = @"Unknown";
     }
     [_authorLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    [_authorLabel sizeToFit];/*
-    self.descriptionLabel.text = self.description;
+    [_authorLabel sizeToFit];
+    self.descriptionLabel.text = self.packageDesc;
     [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    [self.descriptionLabel sizeToFit];*/
+    [self.descriptionLabel sizeToFit];
     
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,28,28)];
     iv.image = self.iconView.image;
@@ -62,6 +64,8 @@
     [ivContainer addSubview:iv];
     
     self.navigationItem.titleView = ivContainer;
+    
+    //[self.getButton setTitle:@"Remove" forState:UIControlStateNormal];
 }
 
 - (IBAction)shareStart:(id)sender {

@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *author;
 @property (strong, nonatomic) NSString *package;
 @property (strong, nonatomic) NSString *depictionURL;
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *packageDesc;
 
 @end
 
