@@ -8,6 +8,7 @@
 
 #import "DepictionViewController.h"
 #import "InstallationController.h"
+#import "NSTask.h"
 #import "HomeViewController.h"
 
 @interface DepictionViewController () {
@@ -24,12 +25,14 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-  
+
     // Do any additional setup after loading the view.
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
     _scrollView.scrollsToTop = NO;
     _scrollView.delegate = self;
-    
+    // Remove author email
+    NSRange range = [self.author rangeOfString:@"<"];
+    if(range.location != NSNotFound) self.author = [self.author substringToIndex:range.location - 1];
     NSURL *nsurl=[NSURL URLWithString:self.depictionURL];
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
     [_depictionView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
@@ -52,24 +55,26 @@
         self.authorLabel.text = @"Unknown";
     }
     [_authorLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    [_authorLabel sizeToFit];/*
-    self.descriptionLabel.text = self.description;
+    [_authorLabel sizeToFit];
+    self.descriptionLabel.text = self.packageDesc;
     [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    [self.descriptionLabel sizeToFit];*/
-    
+    [self.descriptionLabel sizeToFit];
+
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,28,28)];
     iv.image = self.iconView.image;
     iv.contentMode = UIViewContentModeScaleAspectFit;
-    
+
     UIView* ivContainer = [[UIView alloc] initWithFrame:CGRectMake(0,0,28,28)];
     [ivContainer addSubview:iv];
-    
+
     self.navigationItem.titleView = ivContainer;
+
+    //[self.getButton setTitle:@"Remove" forState:UIControlStateNormal];
 }
 
 - (IBAction)shareStart:(id)sender {
     UIAlertController* shareAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
+
     UIAlertAction* shareAction = [UIAlertAction actionWithTitle:@"Share Package..." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             NSString* urlScheme = @"lime://package/";
             NSString* url = [urlScheme stringByAppendingString:self.package];
@@ -83,9 +88,9 @@
     ];
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction * action) {
-                                                             
+
                                                          }];
-    
+
     [shareAlert addAction:shareAction];
     [shareAlert addAction:cancelAction];
     [self presentViewController:shareAlert animated:YES completion:nil];
@@ -125,7 +130,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint scrollOffset = scrollView.contentOffset;
-    
+
     if (scrollOffset.y >= 30) {
         [UIView animateWithDuration:0.2f animations:^{
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
@@ -152,6 +157,59 @@
 - (IBAction)addToQueue:(id)sender {
     [homeController.queueArray addObject:self.package];
     [homeController updateQueue];
+}
+
+// Keep out, the backend starts
+// Staccoverflow
+
+//UITextView *a;
+BOOL terminated;
+- (void)runCommand:(NSString *)command withArgs:(NSArray *)args {
+    //a = [[UITextView alloc] initWithFrame:self.view.bounds];
+    //[self.view addSubview:a];
+
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:command];
+    [task setArguments:args];
+    NSPipe *pipe = [NSPipe pipe];
+    NSPipe *errorPipe = [NSPipe pipe];
+    [task setStandardOutput:pipe];
+    [task setStandardError:errorPipe];
+
+    //[task setStandardInput:[NSPipe pipe]];
+
+    NSFileHandle *outFile = [pipe fileHandleForReading];
+    NSFileHandle *errFile = [errorPipe fileHandleForReading];
+
+    [task launch];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(terminated:) name:NSTaskDidTerminateNotification object:task];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(outData:) name:NSFileHandleDataAvailableNotification object:outFile];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errData:) name:NSFileHandleDataAvailableNotification object:errFile];
+    [outFile waitForDataInBackgroundAndNotify];
+    [errFile waitForDataInBackgroundAndNotify];
+    while(!terminated) if (![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]) break;
+    //[task waitUntilExit];
+}
+
+
+- (void)outData:(NSNotification *)notification {
+    NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
+    [fileHandle waitForDataInBackgroundAndNotify];
+    // Append data to textview here
+    //a.text = [a.text stringByAppendingString:[[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding]];
+}
+
+
+- (void)errData:(NSNotification *)notification {
+    NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
+    [fileHandle waitForDataInBackgroundAndNotify];
+    // Append data to textview here
+}
+
+- (void)terminated:(NSNotification *)notification {
+    // Go to finished view here
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    terminated = YES;
 }
 
 @end

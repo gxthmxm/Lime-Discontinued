@@ -47,8 +47,7 @@
     getButton.layer.cornerRadius = 15;
     [getButton setTitle:@"GET" forState:UIControlStateNormal];
     [getButton setTitleColor:[[[UIApplication sharedApplication] delegate] window].tintColor forState:UIControlStateNormal];
-    [getButton setFont:[UIFont boldSystemFontOfSize:13]];
-    
+    [getButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13]];
     [cell addSubview:getButton];
     
     return cell;
@@ -68,6 +67,7 @@
     NSInteger index = [(UITableView *)self.view indexPathForSelectedRow].row;
     depictionViewController.package = [self.parser.packageIDs objectAtIndex:index];
     depictionViewController.name = [self.parser.packageNames objectAtIndex:index];
+    depictionViewController.packageDesc = [self.parser.packageDescs objectAtIndex:index];
     depictionViewController.author = [self.parser.packageAuthors objectAtIndex:index];
     depictionViewController.depictionURL = [self.parser.packageDepictions objectAtIndex:index];
     depictionViewController.icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:index]];
