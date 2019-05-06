@@ -61,12 +61,12 @@
         self.actionButton.alpha = 0;
         self.actionButton.enabled = NO;
         
-        _tempNext.hidden = NO;
+        self.tempNext.hidden = NO;
         
         self.logView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - self.logView.frame.size.width / 2, self.logView.frame.origin.y, self.logView.frame.size.width, self.logView.frame.size.height);
         
         self.queueTable.frame = CGRectMake(0 - [UIScreen mainScreen].bounds.size.width, self.queueTable.frame.origin.y, self.queueTable.frame.size.width, self.queueTable.frame.size.height);
-        [_actionButton setTitle:@"Next" forState:UIControlStateNormal];
+        [self.actionButton setTitle:@"Next" forState:UIControlStateNormal];
     }];
     
     //
@@ -85,13 +85,13 @@
         self.actionButton.alpha = 1;
         self.actionButton.enabled = YES;
         
-        _tempNext.hidden = YES;
+        self.tempNext.hidden = YES;
         
         self.completeView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - self.completeView.frame.size.width / 2, self.completeView.frame.origin.y, self.completeView.frame.size.width, self.completeView.frame.size.height);
         
         self.logView.frame = CGRectMake(0 - [UIScreen mainScreen].bounds.size.width, self.logView.frame.origin.y, self.logView.frame.size.width, self.logView.frame.size.height);
         
-        [_actionButton setTitle:@"Respring" forState:UIControlStateNormal];
+        [self.actionButton setTitle:@"Respring" forState:UIControlStateNormal];
     }];
     
 }
