@@ -18,6 +18,7 @@
 		4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5C2278890600CDFC49 /* DepictionViewController.m */; };
 		4D33AB602278903900CDFC49 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5F2278903900CDFC49 /* HeaderView.m */; };
 		4D715A12227AD26C00896934 /* InstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D715A11227AD26C00896934 /* InstallationController.m */; };
+		4D7F12092280754300576DEF /* AddRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F12082280754300576DEF /* AddRepoController.m */; };
 		4DACF2BC227CB08A003F527C /* NSArray+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DACF2BB227CB08A003F527C /* NSArray+Random.m */; };
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
 		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
@@ -66,6 +67,8 @@
 		4D33AB5F2278903900CDFC49 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		4D715A11227AD26C00896934 /* InstallationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstallationController.m; sourceTree = "<group>"; };
 		4D715A13227AD27800896934 /* InstallationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstallationController.h; sourceTree = "<group>"; };
+		4D7F12082280754300576DEF /* AddRepoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddRepoController.m; sourceTree = "<group>"; };
+		4D7F120A2280754D00576DEF /* AddRepoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddRepoController.h; sourceTree = "<group>"; };
 		4DACF2BA227CB07B003F527C /* NSArray+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Random.h"; sourceTree = "<group>"; };
 		4DACF2BB227CB08A003F527C /* NSArray+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Random.m"; sourceTree = "<group>"; };
 		4DE098D5227B53E800A00A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -137,6 +140,8 @@
 				4D33AB532278742A00CDFC49 /* LaunchScreen.storyboard */,
 				37D0FC73227753EC0039BE3C /* AppDelegate.h */,
 				37D0FC74227753EC0039BE3C /* AppDelegate.m */,
+				4D7F120A2280754D00576DEF /* AddRepoController.h */,
+				4D7F12082280754300576DEF /* AddRepoController.m */,
 				4D715A13227AD27800896934 /* InstallationController.h */,
 				4D715A11227AD26C00896934 /* InstallationController.m */,
 				666DC90F2278690100B6E03C /* HomeViewController.h */,
@@ -317,6 +322,7 @@
 			files = (
 				37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */,
 				4D715A12227AD26C00896934 /* InstallationController.m in Sources */,
+				4D7F12092280754300576DEF /* AddRepoController.m in Sources */,
 				4D33AB602278903900CDFC49 /* HeaderView.m in Sources */,
 				4DACF2BC227CB08A003F527C /* NSArray+Random.m in Sources */,
 				666DC91A2278702100B6E03C /* InstalledViewController.m in Sources */,

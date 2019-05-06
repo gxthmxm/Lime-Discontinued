@@ -21,7 +21,9 @@
     NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"HTML/index" ofType:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     [_webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
-    
+}
+
+-(void)updateQueue {
     UIView* queueView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 140, 44)];
     [queueView.layer setCornerRadius:10];
     queueView.layer.masksToBounds = YES;
@@ -45,9 +47,9 @@
     [queueView addSubview:queueSView];
     [queueView addSubview:queueButton];
     [shadowView addSubview:queueView];
-    if (self.queueArray != nil) {
+    //if (self.queueArray != nil) {
         [self.tabBarController.view addSubview:shadowView];
-    }
+    //}
 }
 
 @end

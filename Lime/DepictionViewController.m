@@ -8,8 +8,11 @@
 
 #import "DepictionViewController.h"
 #import "InstallationController.h"
+#import "HomeViewController.h"
 
-@interface DepictionViewController ()
+@interface DepictionViewController () {
+    HomeViewController *homeController;
+}
 @end
 
 @implementation DepictionViewController
@@ -145,6 +148,10 @@
             self.navigationItem.titleView.alpha = 0;
         }];
     }
+}
+- (IBAction)addToQueue:(id)sender {
+    [homeController.queueArray addObject:self.package];
+    [homeController updateQueue];
 }
 
 @end
