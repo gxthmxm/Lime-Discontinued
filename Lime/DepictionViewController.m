@@ -8,6 +8,7 @@
 
 #import "DepictionViewController.h"
 #import "InstallationController.h"
+#import "NSTask.h"
 
 @interface DepictionViewController ()
 @end
@@ -149,6 +150,59 @@
             self.navigationItem.titleView.alpha = 0;
         }];
     }
+}
+
+// Keep out, the backend starts
+// Staccoverflow
+
+//UITextView *a;
+BOOL terminated;
+- (void)runCommand:(NSString *)command withArgs:(NSArray *)args {
+    //a = [[UITextView alloc] initWithFrame:self.view.bounds];
+    //[self.view addSubview:a];
+
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:command];
+    [task setArguments:args];
+    NSPipe *pipe = [NSPipe pipe];
+    NSPipe *errorPipe = [NSPipe pipe];
+    [task setStandardOutput:pipe];
+    [task setStandardError:errorPipe];
+
+    //[task setStandardInput:[NSPipe pipe]];
+    
+    NSFileHandle *outFile = [pipe fileHandleForReading];
+    NSFileHandle *errFile = [errorPipe fileHandleForReading];
+    
+    [task launch];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(terminated:) name:NSTaskDidTerminateNotification object:task];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(outData:) name:NSFileHandleDataAvailableNotification object:outFile];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errData:) name:NSFileHandleDataAvailableNotification object:errFile];
+    [outFile waitForDataInBackgroundAndNotify];
+    [errFile waitForDataInBackgroundAndNotify];
+    while(!terminated) if (![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]) break;
+    //[task waitUntilExit];
+}
+
+
+- (void)outData:(NSNotification *)notification {
+    NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
+    [fileHandle waitForDataInBackgroundAndNotify];
+    // Append data to textview here
+    //a.text = [a.text stringByAppendingString:[[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding]];
+}
+
+
+- (void)errData:(NSNotification *)notification {
+    NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
+    [fileHandle waitForDataInBackgroundAndNotify];
+    // Append data to textview here
+}
+
+- (void)terminated:(NSNotification *)notification {
+    // Go to finished view here
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    terminated = YES;
 }
 
 @end

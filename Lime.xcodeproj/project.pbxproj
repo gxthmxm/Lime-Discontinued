@@ -70,6 +70,8 @@
 		4DACF2BB227CB08A003F527C /* NSArray+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Random.m"; sourceTree = "<group>"; };
 		4DE098D5227B53E800A00A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4DE09915227B5A2300A00A43 /* output */ = {isa = PBXFileReference; lastKnownFileType = folder; path = output; sourceTree = "<group>"; };
+		6626F4C5228059A100F94ED3 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
+		6626F4C6228059A100F94ED3 /* NSTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTask.h; sourceTree = "<group>"; };
 		66381721227A078000E92BE7 /* sections */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sections; sourceTree = "<group>"; };
 		666DC90F2278690100B6E03C /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		666DC9102278690100B6E03C /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -155,6 +157,8 @@
 				666DC9192278702100B6E03C /* InstalledViewController.m */,
 				66B9FCA022788D7400F1FB08 /* LMDPKGParser.h */,
 				66B9FCA122788D7400F1FB08 /* LMDPKGParser.m */,
+				6626F4C5228059A100F94ED3 /* MobileGestalt.h */,
+				6626F4C6228059A100F94ED3 /* NSTask.h */,
 				37D0FC7F227753EF0039BE3C /* Assets.xcassets */,
 				37D0FC84227753EF0039BE3C /* Info.plist */,
 				4DACF2B9227CB06B003F527C /* Random Object */,
