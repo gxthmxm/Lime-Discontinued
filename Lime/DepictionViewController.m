@@ -10,6 +10,7 @@
 #import "InstallationController.h"
 #import "NSTask.h"
 #import "HomeViewController.h"
+#import "UIImageAverageColorAddition.h"
 
 @interface DepictionViewController () {
     HomeViewController *homeController;
@@ -46,6 +47,7 @@
     if (self.banner != nil) {
         self.bannerView.image = self.banner;
     }
+    self.bannerView.backgroundColor = [self.icon averageColor];
     self.titleLabel.text = self.name;
     [_titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_titleLabel sizeToFit];
@@ -59,7 +61,13 @@
     self.descriptionLabel.text = self.packageDesc;
     [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self.descriptionLabel sizeToFit];
+    self.getButton.backgroundColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
+    self.moreButton.backgroundColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
 
+    if (self.installed) {
+        [_getButton setTitle:@"MORE" forState:UIControlStateNormal];
+    }
+    
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,28,28)];
     iv.image = self.iconView.image;
     iv.contentMode = UIViewContentModeScaleAspectFit;
@@ -68,9 +76,15 @@
     [ivContainer addSubview:iv];
 
     self.navigationItem.titleView = ivContainer;
+    
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     //[self.getButton setTitle:@"Remove" forState:UIControlStateNormal];
 }
+
+struct pixel {
+    unsigned char r, g, b, a;
+};
 
 - (IBAction)shareStart:(id)sender {
     UIAlertController* shareAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -115,7 +129,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -134,7 +147,7 @@
     if (scrollOffset.y >= 30) {
         [UIView animateWithDuration:0.2f animations:^{
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-            self.navigationController.navigationBar.tintColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
+            self.navigationController.navigationBar.tintColor = [self.icon averageColor];
             self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
         }];
     } else {

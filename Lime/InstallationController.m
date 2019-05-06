@@ -96,8 +96,9 @@
     
 }
 
-- (IBAction)dragging:(id)sender {
-    
+- (IBAction)close:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    _state = 0;
 }
 
 @end

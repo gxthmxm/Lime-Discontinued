@@ -33,6 +33,7 @@
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
     cell.textLabel.text = [self.parser.packageNames objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [self.parser.packageDescs objectAtIndex:indexPath.row];
+    cell.detailTextLabel.alpha = 0.5;
     UIImage *icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:indexPath.row]];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,40), NO, [UIScreen mainScreen].scale);
     [icon drawInRect:CGRectMake(0,0,40,40)];
@@ -42,6 +43,7 @@
     cell.imageView.layer.cornerRadius = 10;
     cell.imageView.image = icon;
     
+    /*
     UIButton *getButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 90, 20, 74, 30)];
     getButton.backgroundColor = [UIColor colorWithRed:0.95 green:0.94 blue:0.96 alpha:1.0];
     getButton.layer.cornerRadius = 15;
@@ -49,13 +51,14 @@
     [getButton setTitleColor:[[[UIApplication sharedApplication] delegate] window].tintColor forState:UIControlStateNormal];
     [getButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13]];
     [cell addSubview:getButton];
+     */
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    return 60;
 }
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,6 +74,7 @@
     depictionViewController.author = [self.parser.packageAuthors objectAtIndex:index];
     depictionViewController.depictionURL = [self.parser.packageDepictions objectAtIndex:index];
     depictionViewController.icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:index]];
+    depictionViewController.installed = YES;
 }
 
 @end

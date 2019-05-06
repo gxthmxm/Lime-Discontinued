@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *package;
 @property (strong, nonatomic) NSString *depictionURL;
 @property (strong, nonatomic) NSString *packageDesc;
+@property (nonatomic) bool installed;
 
 @end
 

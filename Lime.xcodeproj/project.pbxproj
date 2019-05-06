@@ -19,6 +19,7 @@
 		4D33AB602278903900CDFC49 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5F2278903900CDFC49 /* HeaderView.m */; };
 		4D715A12227AD26C00896934 /* InstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D715A11227AD26C00896934 /* InstallationController.m */; };
 		4D7F12092280754300576DEF /* AddRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F12082280754300576DEF /* AddRepoController.m */; };
+		4D7F12112280951300576DEF /* UIImageAverageColorAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F12102280951300576DEF /* UIImageAverageColorAddition.m */; };
 		4DACF2BC227CB08A003F527C /* NSArray+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DACF2BB227CB08A003F527C /* NSArray+Random.m */; };
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
 		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
@@ -69,6 +70,8 @@
 		4D715A13227AD27800896934 /* InstallationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstallationController.h; sourceTree = "<group>"; };
 		4D7F12082280754300576DEF /* AddRepoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddRepoController.m; sourceTree = "<group>"; };
 		4D7F120A2280754D00576DEF /* AddRepoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddRepoController.h; sourceTree = "<group>"; };
+		4D7F120F2280950E00576DEF /* UIImageAverageColorAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageAverageColorAddition.h; sourceTree = "<group>"; };
+		4D7F12102280951300576DEF /* UIImageAverageColorAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAverageColorAddition.m; sourceTree = "<group>"; };
 		4DACF2BA227CB07B003F527C /* NSArray+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Random.h"; sourceTree = "<group>"; };
 		4DACF2BB227CB08A003F527C /* NSArray+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Random.m"; sourceTree = "<group>"; };
 		4DE098D5227B53E800A00A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -166,6 +169,7 @@
 				6626F4C6228059A100F94ED3 /* NSTask.h */,
 				37D0FC7F227753EF0039BE3C /* Assets.xcassets */,
 				37D0FC84227753EF0039BE3C /* Info.plist */,
+				4D7F120E2280950200576DEF /* UIColor */,
 				4DACF2B9227CB06B003F527C /* Random Object */,
 				37D0FC85227753EF0039BE3C /* main.m */,
 				37D0FCA822776ACF0039BE3C /* HTML */,
@@ -180,6 +184,15 @@
 				4D33AB56227877EA00CDFC49 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D7F120E2280950200576DEF /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				4D7F120F2280950E00576DEF /* UIImageAverageColorAddition.h */,
+				4D7F12102280951300576DEF /* UIImageAverageColorAddition.m */,
+			);
+			path = UIColor;
 			sourceTree = "<group>";
 		};
 		4DACF2B9227CB06B003F527C /* Random Object */ = {
@@ -333,6 +346,7 @@
 				4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */,
 				4D33AB5922787A7700CDFC49 /* SourcesViewController.m in Sources */,
 				37D0FC86227753EF0039BE3C /* main.m in Sources */,
+				4D7F12112280951300576DEF /* UIImageAverageColorAddition.m in Sources */,
 				666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */,
 				66B9FCA222788D7400F1FB08 /* LMDPKGParser.m in Sources */,
 				666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */,

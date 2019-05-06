@@ -318,7 +318,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDK-gs-naR">
-                                                <rect key="frame" x="20" y="171" width="335" height="22"/>
+                                                <rect key="frame" x="20" y="172" width="335" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <string key="text">Lime has the epic lime has the epic Lime has the epic lime has the epic Lime has the epic lime has the epic Lime has the epic lime has the epic</string>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
@@ -474,7 +474,7 @@
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JOI-RG-Hot">
                                             <rect key="frame" x="300" y="64" width="318" height="355"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <mutableString key="text">Downloading Lime Done: Lime Running Debian Packager Selecting previously deselected package com.notdan.lime. (Reading database ... 3032 files and directories currently installed.) Unpacking com.notdan.lime (from ../com.notdan.lime_0.0.1_iphoneos-arm.deb) ... Installing Lime Preparing Lime Unpacking Lime Preparing to configure Lime Running Debian Packager Setting up com.notdan.lime (0.0.1) ... Configuring Lime Configuring Lime Installed Lime</mutableString>
+                                            <string key="text">Downloading Lime Done: Lime Running Debian Packager Selecting previously deselected package com.notdan.lime. (Reading database ... 3032 files and directories currently installed.) Unpacking com.notdan.lime (from ../com.notdan.lime_0.0.1_iphoneos-arm.deb) ... Installing Lime Preparing Lime Unpacking Lime Preparing to configure Lime Running Debian Packager Setting up com.notdan.lime (0.0.1) ... Configuring Lime Configuring Lime Installed Lime</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -487,6 +487,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwy-7l-Uxo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <action selector="close:" destination="SdS-52-Qz0" eventType="touchUpInside" id="FLa-Yh-INn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yAu-7y-NYR"/>
@@ -710,6 +717,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="x7M-Xj-ZMs"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLl-i4-ENp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -723,6 +731,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OqE-Ov-nJC"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDl-81-Wf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -736,6 +745,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1SE-rX-5Ql"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GjV-04-adm" userLabel="First Responder" sceneMemberID="firstResponder"/>
