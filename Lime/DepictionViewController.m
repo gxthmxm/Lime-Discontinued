@@ -51,13 +51,14 @@
     self.titleLabel.text = self.name;
     [_titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_titleLabel sizeToFit];
-    if (self.author != @"") {
+    if (![self.author  isEqual:@""]) {
         self.authorLabel.text = self.author;
     } else {
         self.authorLabel.text = @"Unknown";
     }
     [_authorLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_authorLabel sizeToFit];
+    _authorLabel.frame = CGRectMake(_authorLabel.frame.origin.x, _titleLabel.frame.origin.y + _titleLabel.frame.size.height + 3, _authorLabel.frame.size.width, _authorLabel.frame.size.height);
     self.descriptionLabel.text = self.packageDesc;
     [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self.descriptionLabel sizeToFit];
