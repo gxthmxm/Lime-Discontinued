@@ -28,7 +28,6 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 
     // Do any additional setup after loading the view.
-    _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
     _scrollView.scrollsToTop = NO;
     _scrollView.delegate = self;
     // Remove author email
@@ -62,6 +61,9 @@
     self.descriptionLabel.text = self.packageDesc;
     [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self.descriptionLabel sizeToFit];
+    _bigView.frame = CGRectMake(_bigView.frame.origin.x, _bigView.frame.origin.y, _bigView.frame.size.width, self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 17);
+    _depictionView.frame = CGRectMake(0, self.bigView.frame.origin.y + self.bigView.frame.size.height, _depictionView.frame.size.width, _depictionView.frame.size.height);
+    
     self.getButton.backgroundColor = self.tabBarController.tabBar.tintColor; //[[[UIApplication sharedApplication] delegate] window].tintColor;
     self.moreButton.backgroundColor = self.tabBarController.tabBar.tintColor;
 
@@ -81,6 +83,8 @@
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     //[self.getButton setTitle:@"Remove" forState:UIControlStateNormal];
+    
+    _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
 }
 
 struct pixel {
