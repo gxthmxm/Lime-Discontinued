@@ -51,7 +51,7 @@
     self.titleLabel.text = self.name;
     [_titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_titleLabel sizeToFit];
-    if (self.author != nil) {
+    if (self.author != @"") {
         self.authorLabel.text = self.author;
     } else {
         self.authorLabel.text = @"Unknown";
@@ -61,8 +61,8 @@
     self.descriptionLabel.text = self.packageDesc;
     [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self.descriptionLabel sizeToFit];
-    self.getButton.backgroundColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
-    self.moreButton.backgroundColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
+    self.getButton.backgroundColor = self.tabBarController.tabBar.tintColor; //[[[UIApplication sharedApplication] delegate] window].tintColor;
+    self.moreButton.backgroundColor = self.tabBarController.tabBar.tintColor;
 
     if (self.installed) {
         [_getButton setTitle:@"MORE" forState:UIControlStateNormal];
