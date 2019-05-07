@@ -10,7 +10,7 @@
 #import "InstallationController.h"
 #import "NSTask.h"
 #import "HomeViewController.h"
-#import "UIImageAverageColorAddition.h"
+#import "UIColor/UIImageAverageColorAddition.h"
 
 @interface DepictionViewController () {
     HomeViewController *homeController;
