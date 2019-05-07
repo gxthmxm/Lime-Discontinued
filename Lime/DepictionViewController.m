@@ -87,9 +87,10 @@
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
 }
 
-struct pixel {
-    unsigned char r, g, b, a;
-};
+-(void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    self.navigationItem.titleView.hidden = YES;
+}
 
 - (IBAction)shareStart:(id)sender {
     UIAlertController* shareAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -131,11 +132,6 @@ struct pixel {
     }
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
@@ -150,19 +146,22 @@ struct pixel {
     CGPoint scrollOffset = scrollView.contentOffset;
 
     if (scrollOffset.y >= 30) {
+        self.navigationItem.titleView.hidden = NO;
         [UIView animateWithDuration:0.2f animations:^{
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
             self.navigationController.navigationBar.tintColor = [self.icon averageColor];
             self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+            self.navigationController.navigationBar.shadowImage = nil;
         }];
     } else {
         [UIView animateWithDuration:0.2f animations:^{
             [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
             self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
             self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+            self.navigationController.navigationBar.shadowImage = [UIImage new];
         }];
     }
-    if (scrollOffset.y >= 200) {
+    if (scrollOffset.y >= 185) {
         [UIView animateWithDuration:0.2f animations:^{
             self.navigationItem.titleView.alpha = 1;
         }];
