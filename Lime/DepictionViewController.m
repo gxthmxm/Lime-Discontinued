@@ -181,12 +181,13 @@
 
 //UITextView *a;
 BOOL terminated;
-- (void)runCommand:(NSString *)command withArgs:(NSArray *)args {
+- (void)runAptWithArgs:(NSArray *)args {
     //a = [[UITextView alloc] initWithFrame:self.view.bounds];
     //[self.view addSubview:a];
 
+    terminated = NO;
     NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:command];
+    [task setLaunchPath:@"/usr/bin/LimeHelper"];
     [task setArguments:args];
     NSPipe *pipe = [NSPipe pipe];
     NSPipe *errorPipe = [NSPipe pipe];

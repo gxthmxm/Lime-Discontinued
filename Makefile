@@ -8,10 +8,10 @@ package:
 	dpkg -b deb
 
 install:
-	scp deb.deb root@172.20.8.33:/var/mobile
-	ssh root@172.20.8.33 "dpkg -i /var/mobile/deb.deb && rm /var/mobile/deb.deb && uicache"
+	scp deb.deb root@192.168.0.87:/var/mobile
+	ssh root@192.168.0.87 "dpkg -i /var/mobile/deb.deb && rm /var/mobile/deb.deb && uicache"
 
 clean:
 	xcodebuild clean
 	rm deb.deb
-	rm -rf deb/Applications/Lime.app
+	rm -rf deb/Applications/*

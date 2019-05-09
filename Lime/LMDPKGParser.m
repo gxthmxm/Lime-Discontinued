@@ -37,10 +37,10 @@
         if(strstr(str, "Depiction:")) lastDepiction = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Depiction: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         if(strstr(str, "Description:")) lastDesc = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Description: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         if(strstr(str, "Section:")) {
-            icon = [NSString stringWithFormat:@"/Applications/Lime.app/sections/%@.png",[[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
-            if([icon rangeOfString:@"Themes"].location != NSNotFound) icon = @"/Applications/Lime.app/sections/Themes.png";
+            icon = [NSString stringWithFormat:@"%@/sections/%@.png",[[NSBundle mainBundle] resourcePath], [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
+            if([icon rangeOfString:@"Themes"].location != NSNotFound) icon = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/sections/Themes.png"];
             else icon = [icon stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-            if(![[NSFileManager defaultManager] fileExistsAtPath:icon]) icon = @"/Applications/Lime.app/sections/Unknown.png";;
+            if(![[NSFileManager defaultManager] fileExistsAtPath:icon]) icon = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/sections/Unknown.png"];
         }
         if(strstr(str, "Icon:")) {
             NSString *customIcon = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Icon: file://" withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
