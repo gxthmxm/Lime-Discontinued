@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <WKScriptMessageHandler>
 @property (strong, nonatomic) IBOutlet WKWebView *webView;
 
 @property (strong, nonatomic) NSMutableArray *queueArray;

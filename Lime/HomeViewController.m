@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "InstallationController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <WebKit/WebKit.h>
 
 @interface HomeViewController ()
 
@@ -21,6 +22,27 @@
     NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"HTML/index" ofType:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     [_webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    
+    WKWebViewConfiguration *theConfiguration =
+    [[WKWebViewConfiguration alloc] init];
+    [theConfiguration.userContentController
+     addScriptMessageHandler:self name:@"myApp"];
+    [_webView.configuration.userContentController addScriptMessageHandler:self name:@"lime"];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController
+      didReceiveScriptMessage:(WKScriptMessage *)message {
+    [self performSegueWithIdentifier:@"openSettings" sender:self];
 }
 
 -(void)updateQueue {

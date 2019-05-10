@@ -21,7 +21,7 @@
                         <h1 class="cydia">Lime</h1>
                     </td>
                     <td>
-                        <a href="" target="_blank"><img style="height: 30px; float: right; margin-top: -15px" src="HTML/settings_icon@3x.png"/></a>
+                        <a href="" target="_blank" onclick="openSettings()"><img style="height: 30px; float: right; margin-top: -15px" src="HTML/settings_icon@3x.png"/></a>
                     </td>
                 </tr>
             </table>
@@ -320,6 +320,9 @@
         }
         function extend(evt) {
             evt.currentTarget.style.transform = "scale(1.0)";
+        }
+        function openSettings() {
+            window.webkit.messageHandlers.lime.postMessage({"message":"idk"});
         }
         window.addEventListener("load", getToday, true);
     </script>
