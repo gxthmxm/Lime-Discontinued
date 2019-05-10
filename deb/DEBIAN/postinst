@@ -1,2 +1,2 @@
 chmod 6777 /usr/bin/LimeHelper
-chwon root:wheel /usr/bin/LimeHelper
+chown root:wheel /usr/bin/LimeHelper
