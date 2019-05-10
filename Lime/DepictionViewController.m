@@ -179,12 +179,12 @@
 // Keep out, the backend starts
 // Staccoverflow
 
-//UITextView *a;
+UITextView *a;
 BOOL terminated;
 - (void)runAptWithArgs:(NSArray *)args {
-    //a = [[UITextView alloc] initWithFrame:self.view.bounds];
-    //[self.view addSubview:a];
-
+    a = [[UITextView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:a];
+    args = @[];
     terminated = NO;
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:@"/usr/bin/LimeHelper"];
@@ -214,7 +214,7 @@ BOOL terminated;
     NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
     [fileHandle waitForDataInBackgroundAndNotify];
     // Append data to textview here
-    //a.text = [a.text stringByAppendingString:[[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding]];
+    a.text = [a.text stringByAppendingString:[[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding]];
 }
 
 

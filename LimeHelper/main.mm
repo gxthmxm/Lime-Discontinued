@@ -28,9 +28,7 @@ int main(int argc, char **argv, char **envp) {
 	char *buffer = (char *)malloc(length);
 	if (sysctl((int[]){ CTL_KERN, KERN_PROCARGS2, pid }, 3, buffer, &size, NULL, 0) == 0) {
 		NSString *executable = @(buffer + sizeof(int));
-		NSRange range = [executable rangeOfString:@"/" options:NSBackwardsSearch];
-		if(range.location != NSNotFound) executable = [executable substringFromIndex:range.location + 1];
-		if(![executable isEqualToString:@"Lime"]) {
+		if(![executable isEqualToString:@"/Applications/Lime.app/Lime"]) {
 			printf("as Jay already said, YOU SHALL NOT PASS\n");
 			return -1;
 		}
