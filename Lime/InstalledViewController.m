@@ -8,6 +8,7 @@
 
 #import "InstalledViewController.h"
 #import "DepictionViewController.h"
+#import "UIColor/UIImageAverageColorAddition.h"
 
 @interface InstalledViewController ()
 
@@ -42,6 +43,7 @@
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 10;
     cell.imageView.image = icon;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     /*
     UIButton *getButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 90, 20, 74, 30)];
@@ -59,6 +61,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"delete" message:@"should delete" delegate:self cancelButtonTitle:@"Kk" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
 }
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

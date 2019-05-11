@@ -394,6 +394,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="Xxj-q3-ulK" kind="show" identifier="packageInfo" id="K8P-vf-xdS"/>
+                        <segue destination="SdS-52-Qz0" kind="presentation" identifier="deletePackage" modalPresentationStyle="overFullScreen" id="uxK-1E-kY7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exu-3a-DQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -995,33 +996,6 @@
             </objects>
             <point key="canvasLocation" x="1768.8" y="936.88155922038993"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Xtu-b4-iFd">
-            <objects>
-                <viewController id="euL-Tj-691" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="p1d-g5-BF7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="1p7-nX-uzy"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lqF-5U-ao5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="k2E-Mr-HoH">
-            <objects>
-                <viewController id="AYa-1F-XoQ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YQz-I1-FtM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Gx-5f-3dR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
         <!--Credits Table-->
         <scene sceneID="nbn-al-r8S">
             <objects>
@@ -1076,4 +1050,7 @@
         <image name="arrow" width="40" height="13"/>
         <image name="iPhoneX" width="460" height="500"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="uxK-1E-kY7"/>
+    </inferredMetricsTieBreakers>
 </document>
