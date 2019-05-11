@@ -30,10 +30,33 @@ NSString* deviceName()
     
     _nameLabel.text = [[UIDevice currentDevice] name];
     _iOSLabel.text = [NSString stringWithFormat:@"iOS %@", [[UIDevice currentDevice] systemVersion]];
-    [_iPhoneView setImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingString:[NSString stringWithFormat:@"/iPhone/%@.png", deviceName()]]]];
+    [_iPhoneView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", deviceName()]]];
     
-    _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _infoTable.frame.origin.y + _infoTable.frame.size.height);
+    _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _creditsTable.frame.origin.y + _creditsTable.frame.size.height);
 }
+
+@end
+
+@implementation darkTable
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    [_darkToggle setSelected:[[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]];
+}
+
+-(void)setDefaultUserPreferences {
+    bool darkMode = _darkToggle.isSelected;
+    [[NSUserDefaults standardUserDefaults] setBool:darkMode forKey:@"darkMode"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)darkModeChanged:(id)sender {
+    [self setDefaultUserPreferences];
+}
+
+@end
+
+@implementation creditsTable
 
 @end
 

@@ -16,6 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *iOSLabel;
 @property (strong, nonatomic) IBOutlet UIView *infoTable;
+@property (strong, nonatomic) IBOutlet UIView *creditsTable;
+
+@end
+
+@interface darkTable : UITableViewController
+@property (strong, nonatomic) IBOutlet UISwitch *darkToggle;
+
+@end
+
+@interface creditsTable : UITableViewController
 
 @end
 
