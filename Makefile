@@ -8,8 +8,10 @@ package:
 	dpkg -b deb
 
 install:
-	scp deb.deb root@192.168.1.103:/var/mobile
-	ssh root@192.168.1.103 "dpkg -i /var/mobile/deb.deb && rm /var/mobile/deb.deb && uicache"
+	scp deb.deb root@192.168.1.214:/var/mobile
+	scp deb.deb root@192.168.1.215:/var/mobile
+	ssh root@192.168.1.214 "dpkg -i /var/mobile/deb.deb && rm /var/mobile/deb.deb && uicache"
+	ssh root@192.168.1.215 "dpkg -i /var/mobile/deb.deb && rm /var/mobile/deb.deb && uicache"
 
 clean:
 	xcodebuild clean
