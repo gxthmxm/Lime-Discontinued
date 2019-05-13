@@ -32,31 +32,8 @@ NSString* deviceName()
     _iOSLabel.text = [NSString stringWithFormat:@"iOS %@", [[UIDevice currentDevice] systemVersion]];
     [_iPhoneView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", deviceName()]]];
     
-    _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _creditsTable.frame.origin.y + _creditsTable.frame.size.height);
+    _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _infoTable.frame.origin.y + _infoTable.frame.size.height);
 }
-
-@end
-
-@implementation darkTable
-
--(void)viewDidLoad {
-    [super viewDidLoad];
-    [_darkToggle setSelected:[[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]];
-}
-
--(void)setDefaultUserPreferences {
-    bool darkMode = _darkToggle.isSelected;
-    [[NSUserDefaults standardUserDefaults] setBool:darkMode forKey:@"darkMode"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (IBAction)darkModeChanged:(id)sender {
-    [self setDefaultUserPreferences];
-}
-
-@end
-
-@implementation creditsTable
 
 @end
 
@@ -95,6 +72,16 @@ NSString *getUDID() {
     _modelCell.detailTextLabel.text = getDeviceName();
     _ecidCell.detailTextLabel.text = getECID();
     _udidCell.detailTextLabel.text = getUDID();
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([[tableView cellForRowAtIndexPath:indexPath].textLabel.text  isEqual: @"Credits"]) {
+        [self.parentViewController performSegueWithIdentifier:@"credits" sender:self.parentViewController];
+    } else {
+        sleep(0.1);
+        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
+    }
 }
 
 @end
