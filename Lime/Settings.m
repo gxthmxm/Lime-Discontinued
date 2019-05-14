@@ -79,9 +79,49 @@ NSString *getUDID() {
     if ([[tableView cellForRowAtIndexPath:indexPath].textLabel.text  isEqual: @"Credits"]) {
         [self.parentViewController performSegueWithIdentifier:@"credits" sender:self.parentViewController];
     } else {
-        sleep(0.1);
         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
     }
+}
+
+@end
+
+@implementation Credits
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, _creditsTable.frame.origin.y + _creditsTable.frame.size.height);
+}
+
+- (IBAction)limeTwitter:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=LimeAPT"] options:@{} completionHandler:nil];
+}
+
+@end
+
+@implementation CreditsTable
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    _evenCell.detailTextLabel.text = @"even_dev";
+    _coronuxCell.detailTextLabel.text = @"Coronux";
+    _artikusCell.detailTextLabel.text = @"artikus_hg";
+    _luisCell.detailTextLabel.text = @"LuMartti";
+    _midnightCell.detailTextLabel.text = @"MidnightChip";
+    _supportCell.detailTextLabel.text = @"SupportLime";
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *username = [tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text;
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"twitter://user?screen_name=%@", username]] options:@{} completionHandler:nil];
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.detailTextLabel.alpha = 0;
 }
 
 @end

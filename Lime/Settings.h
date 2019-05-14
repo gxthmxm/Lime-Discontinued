@@ -28,4 +28,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface Credits : UIViewController
+
+@property (strong, nonatomic) IBOutlet UIView *limeTwitter;
+@property (strong, nonatomic) IBOutlet UIView *creditsTable;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@end
+
+@interface CreditsTable : UITableViewController
+
+@property (strong, nonatomic) IBOutlet UITableViewCell *evenCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *coronuxCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *artikusCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *luisCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *midnightCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *supportCell;
+
+@end
+
 NS_ASSUME_NONNULL_END
