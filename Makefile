@@ -1,5 +1,5 @@
 build:
-	xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -project Lime.xcodeproj
+	xcodebuild clean build CODE_SIGNING_REQUIRED=NO  -project Lime.xcodeproj
 	ldid -S ./build/Release-iphoneos/Lime.app/Lime
 
 package:
