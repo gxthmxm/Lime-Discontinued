@@ -47,4 +47,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface DeviceInfo : NSObject
+
++ (NSString *)deviceName;
++ (NSString *)getECID;
++ (NSString *)getUDID;
+
+@end
+
 NS_ASSUME_NONNULL_END
