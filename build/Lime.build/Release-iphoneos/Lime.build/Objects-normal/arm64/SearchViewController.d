@@ -1,2 +1,3 @@
-dependencies: /Users/artikus/Desktop/Lime/Lime/SearchViewController.m \
-  /Users/artikus/Desktop/Lime/Lime/SearchViewController.h
+dependencies: \
+  /Users/dan/Documents/GitHub/Lime/Lime/SearchViewController.m \
+  /Users/dan/Documents/GitHub/Lime/Lime/SearchViewController.h

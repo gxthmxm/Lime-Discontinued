@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/artikus/Desktop/Lime/Lime/Random\ Object/NSArray+Random.m \
-  /Users/artikus/Desktop/Lime/Lime/Random\ Object/NSArray+Random.h
+  /Users/dan/Documents/GitHub/Lime/Lime/Random\ Object/NSArray+Random.m \
+  /Users/dan/Documents/GitHub/Lime/Lime/Random\ Object/NSArray+Random.h

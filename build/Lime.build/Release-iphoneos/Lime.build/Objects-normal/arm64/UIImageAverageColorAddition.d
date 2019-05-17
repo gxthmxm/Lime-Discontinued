@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/artikus/Desktop/Lime/Lime/UIColor/UIImageAverageColorAddition.m \
-  /Users/artikus/Desktop/Lime/Lime/UIColor/UIImageAverageColorAddition.h
+  /Users/dan/Documents/GitHub/Lime/Lime/UIColor/UIImageAverageColorAddition.m \
+  /Users/dan/Documents/GitHub/Lime/Lime/UIColor/UIImageAverageColorAddition.h

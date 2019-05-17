@@ -1,2 +1,2 @@
-dependencies: /Users/artikus/Desktop/Lime/Lime/HeaderView.m \
-  /Users/artikus/Desktop/Lime/Lime/HeaderView.h
+dependencies: /Users/dan/Documents/GitHub/Lime/Lime/HeaderView.m \
+  /Users/dan/Documents/GitHub/Lime/Lime/HeaderView.h

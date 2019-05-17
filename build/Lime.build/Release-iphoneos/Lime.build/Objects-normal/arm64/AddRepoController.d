@@ -1,2 +1,2 @@
-dependencies: /Users/artikus/Desktop/Lime/Lime/AddRepoController.m \
-  /Users/artikus/Desktop/Lime/Lime/AddRepoController.h
+dependencies: /Users/dan/Documents/GitHub/Lime/Lime/AddRepoController.m \
+  /Users/dan/Documents/GitHub/Lime/Lime/AddRepoController.h

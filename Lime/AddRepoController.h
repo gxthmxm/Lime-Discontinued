@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AddRepoController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *repoURL;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *effectView;
 
 @end
 

@@ -1,2 +1,2 @@
-dependencies: /Users/artikus/Desktop/Lime/Lime/LMDPKGParser.m \
-  /Users/artikus/Desktop/Lime/Lime/LMDPKGParser.h
+dependencies: /Users/dan/Documents/GitHub/Lime/Lime/LMDPKGParser.m \
+  /Users/dan/Documents/GitHub/Lime/Lime/LMDPKGParser.h
