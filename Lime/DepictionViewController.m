@@ -161,13 +161,23 @@
             self.navigationController.navigationBar.shadowImage = [UIImage new];
         }];
     }
-    if (scrollOffset.y >= 185) {
+    if (scrollOffset.y >= 165) {
         [UIView animateWithDuration:0.2f animations:^{
             self.navigationItem.titleView.alpha = 1;
+            self.iconView.alpha = 0;
+            self.titleLabel.alpha = 0;
+            self.authorLabel.alpha = 0;
+            self.getButton.alpha = 0;
+            self.moreButton.alpha = 0;
         }];
     } else {
         [UIView animateWithDuration:0.2f animations:^{
             self.navigationItem.titleView.alpha = 0;
+            self.iconView.alpha = 1;
+            self.titleLabel.alpha = 1;
+            self.authorLabel.alpha = 1;
+            self.getButton.alpha = 1;
+            self.moreButton.alpha = 1;
         }];
     }
 }
