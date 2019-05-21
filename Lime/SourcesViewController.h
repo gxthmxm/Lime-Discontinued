@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SourcesViewController : UITableViewController
 
+@property (nonatomic,retain) NSMutableArray *repoNames;
+
 @end
 
 NS_ASSUME_NONNULL_END
