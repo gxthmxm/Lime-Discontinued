@@ -13,17 +13,65 @@
 
 @end
 
-NSString *sourcesPath = @"/var/mobile/Documents/Lime/sources.list";
 NSString *limePath = @"/var/mobile/Documents/Lime";
+NSString *sourcesPath = nil;
+NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
 
 @implementation SourcesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    sourcesPath = [limePath stringByAppendingString:@"sources.list"];
     if(![[NSFileManager defaultManager] fileExistsAtPath:limePath isDirectory:nil]) [[NSFileManager defaultManager] createDirectoryAtPath:limePath withIntermediateDirectories:YES attributes:nil error:nil];
     if(![[NSFileManager defaultManager] fileExistsAtPath:sourcesPath isDirectory:nil]) [[NSFileManager defaultManager] createFileAtPath:sourcesPath contents:nil attributes:nil];
     // [self addRepoToListWithURLString:@"https://artikushg.github.io"] will add the repo to the list if it's valid; so even, when you have the UI fixed just do this with the textfield text
+    self.repoNames = [[NSMutableArray alloc] init];
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:listsPath error:nil];
+    for (NSString *filename in files) {
+        NSRange range = [filename rangeOfString:@"_" options:NSBackwardsSearch];
+        if(range.location != NSNotFound && [[filename substringFromIndex:range.location + 1] isEqualToString:@"Release"]) {
+            NSString *fullFilename = [listsPath stringByAppendingString:filename];
+            FILE *f = fopen([fullFilename UTF8String], "r");
+            char str[1024];
+            NSString *line = nil;
+            while(fgets(str, 1024, f) != NULL) {
+                if(strstr(str, "Label:")) {
+                    line = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
+                }
+            }
+            fclose(f);
+            line = [[line substringFromIndex:7] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+            [self.repoNames addObject:line];
+        } else continue;
+    }
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.repoNames.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"cell";
+    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
+    cell.textLabel.text = [self.repoNames objectAtIndex:indexPath.row];
+    /*UIImage *icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:indexPath.row]];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,40), NO, [UIScreen mainScreen].scale);
+    [icon drawInRect:CGRectMake(0,0,40,40)];
+    icon = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.cornerRadius = 10;
+    cell.imageView.image = icon;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;*/
+    return cell;
+}
+
+/*- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"packageInfo" sender:self];
+}*/
 
 - (BOOL)repoIsValid:(NSString *)repoURL {
     if(![[repoURL substringFromIndex:repoURL.length - 1] isEqualToString:@"/"]) repoURL = [repoURL stringByAppendingString:@"/"];
