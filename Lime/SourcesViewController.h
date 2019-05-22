@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SourcesViewController : UITableViewController
 
-@property (nonatomic,retain) NSMutableArray *repoNames;
+@property (nonatomic,retain) NSMutableDictionary *repoNames;
+@property (nonatomic,retain) NSMutableArray *sortedRepoNames;
 
 @end
 

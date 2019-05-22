@@ -25,25 +25,24 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     if(![[NSFileManager defaultManager] fileExistsAtPath:limePath isDirectory:nil]) [[NSFileManager defaultManager] createDirectoryAtPath:limePath withIntermediateDirectories:YES attributes:nil error:nil];
     if(![[NSFileManager defaultManager] fileExistsAtPath:sourcesPath isDirectory:nil]) [[NSFileManager defaultManager] createFileAtPath:sourcesPath contents:nil attributes:nil];
     // [self addRepoToListWithURLString:@"https://artikushg.github.io"] will add the repo to the list if it's valid; so even, when you have the UI fixed just do this with the textfield text
-    self.repoNames = [[NSMutableArray alloc] init];
+    self.repoNames = [[NSMutableDictionary alloc] init];
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:listsPath error:nil];
     for (NSString *filename in files) {
         NSRange range = [filename rangeOfString:@"_" options:NSBackwardsSearch];
         if(range.location != NSNotFound && [[filename substringFromIndex:range.location + 1] isEqualToString:@"Release"]) {
             NSString *fullFilename = [listsPath stringByAppendingString:filename];
-            FILE *f = fopen([fullFilename UTF8String], "r");
-            char str[1024];
-            NSString *line = nil;
-            while(fgets(str, 1024, f) != NULL) {
-                if(strstr(str, "Label:")) {
-                    line = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
+            NSArray *lines = [[NSString stringWithContentsOfFile:fullFilename encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"];
+            for (NSString *line in lines) {
+                if(line.length > 7 && [[line substringToIndex:7] isEqualToString:@"Label: "]) {
+                    NSString *link = [filename substringToIndex:[filename rangeOfString:@"_"].location];
+                    [self.repoNames setObject:link forKey:[line substringFromIndex:7]];
+                    break;
                 }
             }
-            fclose(f);
-            line = [[line substringFromIndex:7] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            [self.repoNames addObject:line];
         } else continue;
     }
+    self.sortedRepoNames = [[NSMutableArray alloc] initWithArray:self.repoNames.allKeys];
+    [self.sortedRepoNames sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -56,7 +55,8 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
-    cell.textLabel.text = [self.repoNames objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.sortedRepoNames objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [self.repoNames objectForKey:cell.textLabel.text];
     /*UIImage *icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:indexPath.row]];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,40), NO, [UIScreen mainScreen].scale);
     [icon drawInRect:CGRectMake(0,0,40,40)];
