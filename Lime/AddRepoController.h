@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITextField *repoURL;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *effectView;
+@property (strong, nonatomic) IBOutlet UITextView *logView;
+@property (strong, nonatomic) IBOutlet UIView *addRepoContainerView;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
