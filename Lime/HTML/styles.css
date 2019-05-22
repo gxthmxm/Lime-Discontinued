@@ -1,11 +1,34 @@
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track
+{
     background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb
+{
     background-color: transparent;
 }
-
+::placeholder {
+	color: #999999;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background-color: transparent;
+    overflow: hidden;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    overflow-y: hidden;
+    display: none;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover,
+  ::-webkit-scrollbar-thumb:active,
+  ::-webkit-scrollbar-thumb:focus {
+    background-color: transparent;
+    overflow-y: hidden;
+    display: none;
+  }
 *,
 html {
     box-sizing: border-box;
@@ -40,9 +63,10 @@ body {
     -webkit-user-select: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 40px;
     background-color: #fff;
+    margin-top: max(70px, env(safe-area-inset-top));
 }
 
 a {
@@ -52,16 +76,20 @@ a {
 }
 
 h5.date {
-    color: #96969B;
     font-weight: 600;
-    font-size: 9pt;
+    font-size: 13px;
+    color: rgba(0,0,0,0.39);
+    letter-spacing: -0.08px;
+    line-height: 18px;
 }
 
 h1.cydia {
-    font-size: 24pt;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #000;
+    font-size: 34px;
+    color: #000000;
+    letter-spacing: 0.41px;
+    line-height: 41px;
 }
 
 h5.desc {
@@ -137,7 +165,48 @@ hr {
     margin-top: 2px;
     margin-left: 70px;
 }
+.nav-show-hide {
+    position:fixed;
+	top:0px;
+    display: none;
+    width: 100%;
+    z-index: 99999;
+}
+nav.scroll-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(248,248,248,0.82);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.30);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-left);
+    padding-bottom: 16px;
+    width: 100%;
+    min-height: 64px;
+    max-height: 123px;
+    border-bottom: 1px solid rgba(214, 214, 214, 0.5);
+}
 
+h1.nav-title {
+    font-family: SF Text;
+    font-weight: 600;
+    font-size: 17px;
+    color: #000000;
+    letter-spacing: -0.41px;
+    text-align: center;
+    line-height: 22px;
+}
+nav.scroll-nav.is-hidden {
+    opacity: 0;
+    -webkit-transform: translate(0, -60px);
+    transition: 0.5s ease;
+}
+nav.scroll-nav.is-visible {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+    transition: 0.5s ease;
+}
 #community {
     background: linear-gradient(to bottom right, #ff375d, #b91635)
 }

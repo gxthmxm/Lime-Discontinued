@@ -2,14 +2,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="HTML/flexboxgrid.min.css">
     <link rel="stylesheet" href="HTML/styles.css">
+    <link rel="stylesheet" href="HTML/sanfrancisco-font.css">
+    <link rel="manifest" href="HTML/manifest.json">
     <title>Lime</title>
 </head>
 <body ontouchstart="">
+   <div class="nav-show-hide">
+        <nav class="scroll-nav">
+            <h1 class="nav-title">Lime</h1>
+        </nav>
+   </div>
+
 
 <div class="container-fluid">
     <div class="row">
@@ -32,10 +41,10 @@
                     <a href="#" class="featured-block-link">
                         <div class="featured-container">
                             <div class="feat-overlay">
-                                <h3 class="featured-title">Tweak name</h3>
-                                <div class="features-author">Tim Cook</div>
+                                <h3 class="featured-title">HomeGesture</h3>
+                                <div class="features-author">MidnightChimp</div>
                             </div>
-                            <div class="cover" style="background: url(http://images2.fanpop.com/images/photos/7800000/Nature-Full-HD-Wallpaper-national-geographic-7822331-1920-1080.jpg); background-size: cover;"></div>
+                            <div class="cover" style="background: url(https://i.imgur.com/471KgjU.png); background-size: cover;"></div>
                         </div>
                     </a>
                 </div>
@@ -43,10 +52,10 @@
                     <a href="#" class="featured-block-link">
                         <div class="featured-container">
                             <div class="feat-overlay">
-                                <h3 class="featured-title">Tweak name</h3>
-                                <div class="features-author">Tim Cook</div>
+                                <h3 class="featured-title">Notifica</h3>
+                                <div class="features-author">Nepeta</div>
                             </div>
-                            <div class="cover" style="background: url(http://images2.fanpop.com/images/photos/7800000/Nature-Full-HD-Wallpaper-national-geographic-7822331-1920-1080.jpg); background-size: cover;"></div>
+                            <div class="cover" style="background: url(https://i.imgur.com/m8xCqyy.png); background-size: cover;"></div>
                         </div>
                     </a>
                 </div>
@@ -60,8 +69,8 @@
                     <div class="block-bottm">
                         <div class="icon">
                             <picture class="ios-app-icon">
-                                <source class="we-artwork__source" srcset="https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/95/b3/4c/95b34c22-2759-0227-c293-031b71d09e52/ProductionAppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/738x0w.jpg 3x" crossorigin="anonymous">
-                                <img class="app__img we-artwork__image" src="https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/95/b3/4c/95b34c22-2759-0227-c293-031b71d09e52/ProductionAppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/246x0w.jpg" alt="" height="50" width="50" crossorigin="anonymous">
+                                <source class="we-artwork__source" srcset="https://i.imgur.com/vrzHBVF.png 3x" crossorigin="anonymous">
+                                <img class="app__img we-artwork__image" src="https://i.imgur.com/vrzHBVF.png" alt="" height="50" width="50" crossorigin="anonymous">
                             </picture>
                         </div>
                         <div class="totw-name">Felicity</div>
@@ -285,7 +294,7 @@
     <center>
         <h5 style="font-weight: 400; color: #aaa;">Made by Lime Team &bull; Lime 1.0</h5>
     </center>
-
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
         function getToday() {
             var d = new Date();
@@ -325,6 +334,19 @@
             window.webkit.messageHandlers.lime.postMessage({"message":"idk"});
         }
         window.addEventListener("load", getToday, true);
+    </script>
+    <script type="text/javascript">
+        (function($) {          
+            $(document).ready(function(){                    
+                $(window).scroll(function(){                          
+                    if ($(this).scrollTop() > 70) {
+                        $('.nav-show-hide').fadeIn(200);
+                    } else {
+                        $('.nav-show-hide').fadeOut(200);
+                    }
+                });
+            });
+        })(jQuery);
     </script>
 </body>
 
