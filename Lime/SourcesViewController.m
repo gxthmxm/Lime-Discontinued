@@ -13,7 +13,7 @@
 
 @end
 
-NSString *limePath = @"/var/mobile/Documents/Lime";
+NSString *limePath = @"/var/mobile/Documents/Lime/";
 NSString *sourcesPath = nil;
 NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
 
@@ -34,7 +34,8 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
             NSArray *lines = [[NSString stringWithContentsOfFile:fullFilename encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"];
             for (NSString *line in lines) {
                 if(line.length > 7 && [[line substringToIndex:7] isEqualToString:@"Label: "]) {
-                    NSString *link = [filename substringToIndex:[filename rangeOfString:@"_"].location];
+                    NSString *link = [[filename substringToIndex:[filename rangeOfString:@"_" options:NSBackwardsSearch].location] stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
+                    if([[link substringFromIndex:link.length - 2] isEqualToString:@"/."]) link = [link substringToIndex:link.length - 2];
                     [self.repoNames setObject:link forKey:[line substringFromIndex:7]];
                     break;
                 }
@@ -43,6 +44,25 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     }
     self.sortedRepoNames = [[NSMutableArray alloc] initWithArray:self.repoNames.allKeys];
     [self.sortedRepoNames sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    /*UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:filename delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
+    [a show];*/
+    [self downloadRepoIcons];
+}
+
+- (NSString *)iconFilenameForName:(NSString *)name {
+    NSString *fixedName = [name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    fixedName = [fixedName stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    NSString *filename = [[limePath stringByAppendingString:fixedName] stringByAppendingString:@".png"];
+    return filename;
+}
+
+- (void)downloadRepoIcons {
+    for (NSString *name in self.sortedRepoNames) {
+        NSString *filename = [self iconFilenameForName:name];
+        NSString *urlString = [@"http://" stringByAppendingString:[self.repoNames objectForKey:name]];
+        NSData *iconData = [self repoIconForURLString:urlString];
+        if(iconData) [iconData writeToFile:filename atomically:YES];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -57,16 +77,37 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
     cell.textLabel.text = [self.sortedRepoNames objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [self.repoNames objectForKey:cell.textLabel.text];
-    /*UIImage *icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:indexPath.row]];
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,40), NO, [UIScreen mainScreen].scale);
-    [icon drawInRect:CGRectMake(0,0,40,40)];
+    NSString *filename = [self iconFilenameForName:cell.textLabel.text];
+    UIImage *icon;
+    if([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:nil]) icon = [UIImage imageWithContentsOfFile:filename];
+    else icon = [UIImage imageNamed:@"sections/Unknown.png"];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(35,35), NO, [UIScreen mainScreen].scale);
+    [icon drawInRect:CGRectMake(0,0,35,35)];
     icon = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 10;
     cell.imageView.image = icon;
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;*/
     return cell;
+}
+
+- (NSData *)repoIconForURLString:(NSString *)urlString {
+    if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
+    urlString = [urlString stringByAppendingString:@"CydiaIcon.png"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+    [request setValue:@"Telesphoreo APT-HTTP/1.0.592" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
+    [request setValue:[DeviceInfo deviceName] forHTTPHeaderField:@"X-Machine"];
+    [request setValue:[DeviceInfo getUDID] forHTTPHeaderField:@"X-Unique-ID"];
+    __block BOOL completed = NO;
+    __block NSData *blockData = nil;
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        completed = YES;
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if(httpResponse.statusCode == 200) blockData = data;
+    }] resume];
+    while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !completed){};
+    return blockData;
 }
 
 /*- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,7 +116,6 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
 
 - (BOOL)repoIsValid:(NSString *)repoURL {
     if(![[repoURL substringFromIndex:repoURL.length - 1] isEqualToString:@"/"]) repoURL = [repoURL stringByAppendingString:@"/"];
-    NSLog(@"%@",repoURL);
     NSString *packages = [repoURL stringByAppendingString:@"Packages.bz2"];
     NSString *release = [repoURL stringByAppendingString:@"Release"];
     if([self statusCodeOfFileAtURL:packages] == 200 && [self statusCodeOfFileAtURL:release] == 200) return YES;
@@ -110,9 +150,9 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     [mutableRequest setValue:@"Telesphoreo APT-HTTP/1.0.592" forHTTPHeaderField:@"User-Agent"];
-     [mutableRequest setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
-     [mutableRequest setValue:[DeviceInfo deviceName] forHTTPHeaderField:@"X-Machine"];
-     [mutableRequest setValue:[DeviceInfo getUDID] forHTTPHeaderField:@"X-Unique-ID"];
+    [mutableRequest setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
+    [mutableRequest setValue:[DeviceInfo deviceName] forHTTPHeaderField:@"X-Machine"];
+    [mutableRequest setValue:[DeviceInfo getUDID] forHTTPHeaderField:@"X-Unique-ID"];
     __block BOOL completed = NO;
     [[[NSURLSession sharedSession] dataTaskWithRequest:mutableRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
