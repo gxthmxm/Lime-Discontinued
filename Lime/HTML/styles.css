@@ -1,11 +1,15 @@
 ::-webkit-scrollbar-track
 {
     background-color: transparent;
+    overflow-y: hidden;
+    display: none;
 }
 
 ::-webkit-scrollbar-thumb
 {
+    width: 0px;
     background-color: transparent;
+    overflow: hidden;
 }
 ::placeholder {
 	color: #999999;
@@ -16,19 +20,19 @@
     overflow: hidden;
   }
   
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background-color: transparent;
     overflow-y: hidden;
     display: none;
-  }
+}
   
-  ::-webkit-scrollbar-thumb:hover,
-  ::-webkit-scrollbar-thumb:active,
-  ::-webkit-scrollbar-thumb:focus {
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active,
+::-webkit-scrollbar-thumb:focus {
     background-color: transparent;
     overflow-y: hidden;
     display: none;
-  }
+}
 *,
 html {
     box-sizing: border-box;
@@ -68,7 +72,25 @@ body {
     background-color: #fff;
     margin-top: max(70px, env(safe-area-inset-top));
 }
-
+@media (max-width: 413pt) {
+    body {
+        margin-top: max(70px, env(safe-area-inset-top));
+    }
+    nav.scroll-nav {
+        width: 100%;
+        min-height: 44px;
+    }
+}
+@media (max-width: 374px) {
+    body {
+        margin-top: max(25px, env(safe-area-inset-top));
+    }
+    nav.scroll-nav {
+        background-color: #000;
+        width: 100%;
+        min-height: 20px;
+    }
+}
 a {
     padding: 0;
     margin: 0;
@@ -167,7 +189,7 @@ hr {
 }
 .nav-show-hide {
     position:fixed;
-	top:0px;
+	top: 0px;
     display: none;
     width: 100%;
     z-index: 99999;
@@ -183,8 +205,7 @@ nav.scroll-nav {
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-left);
     padding-bottom: 16px;
     width: 100%;
-    min-height: 64px;
-    max-height: 123px;
+    min-height: 20px;
     border-bottom: 1px solid rgba(214, 214, 214, 0.5);
 }
 
@@ -196,16 +217,6 @@ h1.nav-title {
     letter-spacing: -0.41px;
     text-align: center;
     line-height: 22px;
-}
-nav.scroll-nav.is-hidden {
-    opacity: 0;
-    -webkit-transform: translate(0, -60px);
-    transition: 0.5s ease;
-}
-nav.scroll-nav.is-visible {
-    opacity: 1;
-    -webkit-transform: translate(0, 0);
-    transition: 0.5s ease;
 }
 #community {
     background: linear-gradient(to bottom right, #ff375d, #b91635)
@@ -385,6 +396,15 @@ nav.scroll-nav.is-visible {
     font-size: 27px;
     line-height: 33px;
     font-weight: 600;
+}
+@media (max-width: 320px) {
+    .card-title-dark {
+        width: 210px;
+        margin-bottom: 10px;
+        font-size: 27px;
+        line-height: 32px;
+        font-weight: 600;
+    }
 }
 
 .card-subtitle-dark {
