@@ -1,0 +1,353 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="HTML/flexboxgrid.min.css">
+    <link rel="stylesheet" href="HTML/styles.css">
+    <link rel="stylesheet" href="HTML/sanfrancisco-font.css">
+    <link rel="manifest" href="HTML/manifest.json">
+    <title>Lime</title>
+</head>
+<body ontouchstart="">
+   <div class="nav-show-hide">
+        <nav class="scroll-nav">
+            <h1 class="nav-title">Lime</h1>
+        </nav>
+   </div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <h5 class="date" id="demo"></h5>
+                        <h1 class="cydia">Lime</h1>
+                    </td>
+                    <td>
+                        <a href="" target="_blank" onclick="openSettings()"><img style="height: 30px; float: right; margin-top: -15px" src="HTML/settings_icon@3x.png"/></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-xs-12">
+            <div class="featured-section">
+                <div class="feat-block">
+                    <a href="#" class="featured-block-link">
+                        <div class="featured-container">
+                            <div class="feat-overlay">
+                                <h3 class="featured-title">HomeGesture</h3>
+                                <div class="features-author">MidnightChimp</div>
+                            </div>
+                            <div class="cover" style="background: url(https://i.imgur.com/471KgjU.png); background-size: cover;"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="feat-block">
+                    <a href="#" class="featured-block-link">
+                        <div class="featured-container">
+                            <div class="feat-overlay">
+                                <h3 class="featured-title">Notifica</h3>
+                                <div class="features-author">Nepeta</div>
+                            </div>
+                            <div class="cover" style="background: url(https://i.imgur.com/m8xCqyy.png); background-size: cover;"></div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
+                <div class="block-img-bg">
+                    <div class="cover"style="background: url(https://pbs.twimg.com/media/DyrS8CZX0AEf7h5.jpg); background-position: center; background-size: cover;"></div>
+                    <div class="block-bottm">
+                        <div class="icon">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="https://i.imgur.com/vrzHBVF.png 3x" crossorigin="anonymous">
+                                <img class="app__img we-artwork__image" src="https://i.imgur.com/vrzHBVF.png" alt="" height="50" width="50" crossorigin="anonymous">
+                            </picture>
+                        </div>
+                        <div class="totw-name">Felicity</div>
+                        <a href="#"><button class="itembtn" style="float: right">GET</button></a>
+                    </div>
+                    <h1 class="card-title-1">THEME OF THE WEEK</h1>
+                    <div class="dark-gradient-overlay"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+            <div class="card-wrapper" style="padding:20px;" ontouchstart="shrink(event)" ontouchend="extend(event)">
+                <div class="card-subtitle-dark">REPOS TO GET YOUR PACKAGES</div>
+                <h2 class="card-title-dark">Essential Repos</h2>
+                <div class="cell">
+                    <a class="cell-link" href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.packix.com">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/packix.png 3x">
+                                <img class="app__img we-artwork__image" src="HTML/packix.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Packix</div>
+                                <div class="cell-tweak-subtitle">repo.packix.com</div>
+                            </div>
+                            <button class="itembtn" style="float: right">ADD</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.dynastic.co">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/dynastic.png 3x">
+                                <img class="app__img we-artwork__image" src="HTML/dynastic.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Dynastic</div>
+                                <div class="cell-tweak-subtitle">repo.dynastic.co</div>
+                            </div>
+                            <button class="itembtn" style="float: right">ADD</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Frepo.chariz.io">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/chariz.png 3x">
+                                <img class="app__img we-artwork__image" src="HTML/chariz.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Chariz</div>
+                                <div class="cell-tweak-subtitle">repo.chariz.io</div>
+                            </div>
+                            <button class="itembtn" style="float: right">ADD</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.modmyi.com">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/modmy.png">
+                                <img class="app__img we-artwork__image" src="HTML/modmy.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">ModMyi</div>
+                                <div class="cell-tweak-subtitle">apt.modmyi.com</div>
+                            </div>
+                            <button class="itembtn" style="float: right">ADD</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="cydia://url/https://cydia.saurik.com/api/share#?source=https%3A%2F%2Fapt.thebigboss.org/repofiles/cydia">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/bigboss.png 3x">
+                                <img class="app__img we-artwork__image" src="HTML/bigboss.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell" style="border-bottom:0;">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">BigBoss</div>
+                                <div class="cell-tweak-subtitle">apt.thebigboss.org/repofiles/cydia</div>
+                            </div>
+                            <button class="itembtn" style="float: right">ADD</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+            <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
+                <div class="block-img-bg">
+                    <div class="cover" style="background: url(HTML/snowboard-card-bg.png); background-position: center; background-size: cover;"></div>
+                    <div class="card-elements">
+                        <div class="card-subtitle-dark">Theme your device</div>
+                        <h2 class="card-title-dark">Customize your device</h2>
+                        <div class="block-bottom2">
+                            <div class="left-info">
+                                <div class="card-tweak-name">Snowboard</div>
+                                <div class="tweak-description">The popular lightweight theme engine for iOS 12</div>
+                            </div>
+                            <a href="#"><button class="itembtn" style="float: right">GET</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-5">
+            <div class="card-wrapper" style="padding:20px;" ontouchstart="shrink(event)" ontouchend="extend(event)">
+                <h2 class="card-title-dark">Recently added</h2>
+                <div class="cell">
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x">
+                                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x">
+                                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x">
+                                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x">
+                                    <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a class="cell-link" href="#">
+                        <div class="cell-icon-small">
+                            <picture class="ios-app-icon">
+                                <source class="we-artwork__source" srcset="HTML/icons/tweak-icon@3x.png 3x">
+                                <img class="app__img we-artwork__image" src="HTML/icons/tweak-icon.png" alt="" height="50" width="50">
+                            </picture>
+                        </div>
+                        <div class="cell-group small-cell"  style="border-bottom:0;">
+                            <div class="cell-info">
+                                <div class="cell-tweak-title">Tweak name</div>
+                                <div class="cell-tweak-subtitle">Author • 1.0.0</div>
+                            </div>
+                            <button class="itembtn" style="float: right">GET</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    
+</div>
+
+    <center>
+        <h5 style="font-weight: 400; color: #aaa;">Made by Lime Team &bull; Lime 1.0</h5>
+    </center>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        function getToday() {
+            var d = new Date();
+            var weekday = new Array(7);
+            weekday[0] = "SUNDAY";
+            weekday[1] = "MONDAY";
+            weekday[2] = "TUESDAY";
+            weekday[3] = "WEDNESDAY";
+            weekday[4] = "THURSDAY";
+            weekday[5] = "FRIDAY";
+            weekday[6] = "SATURDAY";
+            var month = new Array();
+            month[0] = "JANUARY";
+            month[1] = "FEBRUARY";
+            month[2] = "MARCH";
+            month[3] = "APRIL";
+            month[4] = "MAY";
+            month[5] = "JUNE";
+            month[6] = "JULY";
+            month[7] = "AUGUST";
+            month[8] = "SEPTEMBER";
+            month[9] = "OCTOBER";
+            month[10] = "NOVEMBER";
+            month[11] = "DECEMBER";
+            var n1 = weekday[d.getDay()];
+            var n2 = d.getDate();
+            var n3 = month[d.getMonth()];
+            document.getElementById("demo").innerHTML = n1 + " " + n2 + " " + n3;
+        }
+        function shrink(evt) {
+            evt.currentTarget.style.transform = "scale(0.95)";
+        }
+        function extend(evt) {
+            evt.currentTarget.style.transform = "scale(1.0)";
+        }
+        function openSettings() {
+            window.webkit.messageHandlers.lime.postMessage({"message":"idk"});
+        }
+        window.addEventListener("load", getToday, true);
+    </script>
+    <script type="text/javascript">
+        (function($) {          
+            $(document).ready(function(){                    
+                $(window).scroll(function(){                          
+                    if ($(this).scrollTop() > 70) {
+                        $('.nav-show-hide').fadeIn(200);
+                    } else {
+                        $('.nav-show-hide').fadeOut(200);
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
+</body>
+
+</html>
