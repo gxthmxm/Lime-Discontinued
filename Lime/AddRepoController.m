@@ -28,6 +28,17 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     self.effectView.translatesAutoresizingMaskIntoConstraints = YES;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.effectView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.line.backgroundColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        self.repoURL.textColor = [UIColor whiteColor];
+        [self.addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _arrowImg.image = [UIImage imageNamed:@"arrowdark"];
+        self.logView.textColor = [UIColor whiteColor];
+        self.repoURL.keyboardAppearance = UIKeyboardAppearanceDark;
+    }
 }
 
 -(void)dealloc {

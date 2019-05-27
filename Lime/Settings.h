@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITableViewCell *udidCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *serialCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *bootCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *darkCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *creditsCell;
+@property (strong, nonatomic) IBOutlet UISwitch *darkToggle;
+@property (strong, nonatomic) IBOutlet UILabel *darkTitle;
 
 @end
 
@@ -33,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIView *limeTwitter;
 @property (strong, nonatomic) IBOutlet UIView *creditsTable;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UILabel *limeUser;
+@property (strong, nonatomic) IBOutlet UILabel *limeName;
 
 @end
 

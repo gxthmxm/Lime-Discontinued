@@ -155,6 +155,15 @@
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _infoTable.frame.origin.y + _infoTable.frame.size.height);
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.scrollView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.nameLabel.textColor = [UIColor whiteColor];
+        self.iOSLabel.textColor = [UIColor whiteColor];
+    }
+}
+
 @end
 
 @implementation InfoTable
@@ -163,7 +172,45 @@
     _modelCell.detailTextLabel.text = [DeviceInfo deviceName];
     _ecidCell.detailTextLabel.text = [DeviceInfo getECID];
     _udidCell.detailTextLabel.text = [DeviceInfo getUDID];
-    self.view.backgroundColor = [UIColor whiteColor];
+     [_darkToggle setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"] animated:NO];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+    } else {
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.tableView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.tableView.separatorColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        _modelCell.textLabel.textColor = [UIColor whiteColor];
+        _modelCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        _modelCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _ecidCell.textLabel.textColor = [UIColor whiteColor];
+        _ecidCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        _ecidCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _udidCell.textLabel.textColor = [UIColor whiteColor];
+        _udidCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        _udidCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _serialCell.textLabel.textColor = [UIColor whiteColor];
+        _serialCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        _serialCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _bootCell.textLabel.textColor = [UIColor whiteColor];
+        _bootCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        _bootCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _creditsCell.textLabel.textColor = [UIColor whiteColor];
+        _creditsCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        _darkTitle.textColor = [UIColor whiteColor];
+        _darkCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        
+        
+    }
+}
+- (IBAction)darkChanged:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:_darkToggle.isOn forKey:@"darkMode"];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -188,6 +235,15 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=LimeAPT"] options:@{} completionHandler:nil];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.scrollView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.limeName.textColor = [UIColor whiteColor];
+        self.limeUser.textColor = [UIColor whiteColor];
+    }
+}
+
 @end
 
 @implementation CreditsTable
@@ -195,14 +251,19 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    _evenCell.detailTextLabel.text = @"even_dev";
-    _coronuxCell.detailTextLabel.text = @"Coronux";
-    _artikusCell.detailTextLabel.text = @"artikus_hg";
-    _luisCell.detailTextLabel.text = @"LuMartti";
-    _midnightCell.detailTextLabel.text = @"MidnightChip";
-    _supportCell.detailTextLabel.text = @"SupportLime";
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+    } else {
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.tableView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.tableView.separatorColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

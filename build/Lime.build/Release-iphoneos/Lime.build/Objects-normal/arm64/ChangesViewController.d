@@ -1,2 +1,3 @@
-dependencies: /Users/artikus/Desktop/Lime/Lime/ChangesViewController.m \
-  /Users/artikus/Desktop/Lime/Lime/ChangesViewController.h
+dependencies: \
+  /Users/evendev/Documents/GitHub/Lime/Lime/ChangesViewController.m \
+  /Users/evendev/Documents/GitHub/Lime/Lime/ChangesViewController.h

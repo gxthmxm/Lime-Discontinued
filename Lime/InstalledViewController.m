@@ -22,6 +22,15 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.tableView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
+        self.tableView.separatorColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        self.navigationController.navigationBar.barStyle = 1;
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.parser.packageNames.count;
 }
@@ -54,6 +63,11 @@
     [getButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13]];
     [cell addSubview:getButton];
      */
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+    }
     
     return cell;
 }

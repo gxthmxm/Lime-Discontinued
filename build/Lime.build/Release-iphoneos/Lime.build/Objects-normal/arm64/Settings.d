@@ -1,3 +1,3 @@
-dependencies: /Users/artikus/Desktop/Lime/Lime/Settings.m \
-  /Users/artikus/Desktop/Lime/Lime/Settings.h \
-  /Users/artikus/Desktop/Lime/Lime/MobileGestalt.h
+dependencies: /Users/evendev/Documents/GitHub/Lime/Lime/Settings.m \
+  /Users/evendev/Documents/GitHub/Lime/Lime/Settings.h \
+  /Users/evendev/Documents/GitHub/Lime/Lime/MobileGestalt.h

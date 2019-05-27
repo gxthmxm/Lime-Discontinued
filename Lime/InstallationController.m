@@ -34,6 +34,19 @@
     
     _tempNext.hidden = YES;
 }
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.effectView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        self.arrowIMG.image = [UIImage imageNamed:@"arrowdark"];
+        [_actionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.queueTable.separatorColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        self.logView.textColor = [UIColor whiteColor];
+        self.greatLabel.textColor = [UIColor whiteColor];
+        self.finishedLabel.textColor = [UIColor whiteColor];
+    }
+}
 - (IBAction)arrowPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     _state = 0;

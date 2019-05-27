@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITextView *logView;
 @property (strong, nonatomic) IBOutlet UIView *addRepoContainerView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIView *line;
+@property (strong, nonatomic) IBOutlet UIImageView *arrowImg;
 
 @end
 

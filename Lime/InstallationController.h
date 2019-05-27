@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITableView *queueTable;
 @property (strong, nonatomic) IBOutlet UITextView *logView;
 @property (strong, nonatomic) IBOutlet UIButton *tempNext;
+@property (strong, nonatomic) IBOutlet UIVisualEffectView *effectView;
+@property (strong, nonatomic) IBOutlet UIImageView *arrowIMG;
+@property (strong, nonatomic) IBOutlet UILabel *finishedLabel;
 
 @property int *state;
 

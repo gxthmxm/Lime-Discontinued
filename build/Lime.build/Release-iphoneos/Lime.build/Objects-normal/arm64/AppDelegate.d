@@ -1,2 +1,2 @@
-dependencies: /Users/artikus/Desktop/Lime/Lime/AppDelegate.m \
-  /Users/artikus/Desktop/Lime/Lime/AppDelegate.h
+dependencies: /Users/evendev/Documents/GitHub/Lime/Lime/AppDelegate.m \
+  /Users/evendev/Documents/GitHub/Lime/Lime/AppDelegate.h

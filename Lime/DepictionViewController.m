@@ -87,6 +87,20 @@
     _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.bigView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.authorLabel.textColor = [UIColor whiteColor];
+        self.descriptionLabel.textColor = [UIColor whiteColor];
+        self.separator.backgroundColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        self.descriptionTitleLabel.textColor = [UIColor whiteColor];
+        self.depictionView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.scrollView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+    }
+}
+
 -(void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     self.navigationItem.titleView.hidden = YES;
@@ -149,16 +163,17 @@
         self.navigationItem.titleView.hidden = NO;
         [UIView animateWithDuration:0.2f animations:^{
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+            if([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+                self.navigationController.navigationBar.barStyle = 1;
+            }
             self.navigationController.navigationBar.tintColor = [self.icon averageColor];
             self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
-            self.navigationController.navigationBar.shadowImage = nil;
         }];
     } else {
         [UIView animateWithDuration:0.2f animations:^{
             [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
             self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
             self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-            self.navigationController.navigationBar.shadowImage = [UIImage new];
         }];
     }
     if (scrollOffset.y >= 165) {

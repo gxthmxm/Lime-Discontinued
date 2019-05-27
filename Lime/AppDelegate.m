@@ -14,12 +14,109 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"darkMode"] == nil) {
+        NSDictionary *appDefaults  = [NSDictionary dictionary];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"darkMode"];
+        
+        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     return YES;
 }
 
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    if ([[url host]  isEqual: @"home"]) {
+        [self URLHome];
+    }
+    if ([[url host]  isEqual: @"settings"]) {
+        [self URLSettings];
+    }
+    if ([[url host]  isEqual: @"sources"]) {
+        [self URLSources];
+    }
+    if ([[url host]  isEqual: @"updates"]) {
+        [self URLUpdates];
+    }
+    if ([[url host]  isEqual: @"installed"]) {
+        [self URLSearch];
+    }
+    if ([[url host]  isEqual: @"search"]) {
+        [self URLInstalled];
+    }
+    if ([[url host]  isEqual: @"queue"]) {
+        [self URLQueue];
+    }
+    if ([[url host]  isEqual: @"url"]) {
+        //[self URLLink:url];
+    }
+    if ([[url host]  isEqual: @"repo"]) {
+        //[self URLRepo:url];
+    }
+    if ([[url host]  isEqual: @"package"]) {
+        //[self URLPackage:url];
+    }
+    if ([[url host]  isEqual: @"refresh"]) {
+        [self URLRefresh];
+    }
+    
+    return YES;
+}
+
+-(void)URLHome {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Home" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)URLSettings {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Settings" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)URLSources {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Sources" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)URLUpdates {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Updates" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)URLInstalled {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Installed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)URLSearch {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Search" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)URLQueue {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Queue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)URLLink:(NSString*)url {
+    
+}
+
+-(void)URLRepo:(NSString*)repo {
+    
+}
+
+-(void)URLPackage:(NSString*)package {
+    
+}
+
+-(void)URLRefresh {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Refresh" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

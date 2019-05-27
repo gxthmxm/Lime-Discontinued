@@ -49,6 +49,15 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     [self downloadRepoIcons];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.tableView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
+        self.tableView.separatorColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        self.navigationController.navigationBar.barStyle = 1;
+    }
+}
+
 - (NSString *)iconFilenameForName:(NSString *)name {
     NSString *fixedName = [name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     fixedName = [fixedName stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
@@ -77,6 +86,7 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
     cell.textLabel.text = [self.sortedRepoNames objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [self.repoNames objectForKey:cell.textLabel.text];
+    cell.detailTextLabel.alpha = 0.5;
     NSString *filename = [self iconFilenameForName:cell.textLabel.text];
     UIImage *icon;
     if([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:nil]) icon = [UIImage imageWithContentsOfFile:filename];
@@ -88,6 +98,12 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 10;
     cell.imageView.image = icon;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+    }
+    
     return cell;
 }
 
