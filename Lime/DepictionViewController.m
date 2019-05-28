@@ -21,8 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -55,6 +54,7 @@
     } else {
         self.authorLabel.text = @"Unknown";
     }
+    self.authorLabel.alpha = 0.5;
     [_authorLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_authorLabel sizeToFit];
     _authorLabel.frame = CGRectMake(_authorLabel.frame.origin.x, _titleLabel.frame.origin.y + _titleLabel.frame.size.height + 3, _authorLabel.frame.size.width, _authorLabel.frame.size.height);
@@ -84,7 +84,13 @@
 
     //[self.getButton setTitle:@"Remove" forState:UIControlStateNormal];
     
-    _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _depictionView.frame.origin.y + _depictionView.frame.size.height);
+    float bottom = _depictionView.frame.origin.y + _depictionView.frame.size.height;
+    
+    if(bottom > [UIScreen mainScreen].bounds.size.height) {
+        _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom);
+    } else {
+        _scrollView.contentSize = [UIScreen mainScreen].bounds.size;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -141,8 +147,10 @@
 {
     if (object == _depictionView.scrollView && [keyPath isEqual:@"contentSize"]) {
         // we are here because the contentSize of the WebView's scrollview changed.
-        _depictionView.frame = CGRectMake(_depictionView.frame.origin.x, _depictionView.frame.origin.y, _scrollView.frame.size.width, _depictionView.scrollView.contentSize.height);
-        _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, _depictionView.scrollView.contentSize.height + _depictionView.frame.origin.y);
+        if (self.depictionURL && self.depictionURL.length > 0) {
+            _depictionView.frame = CGRectMake(_depictionView.frame.origin.x, _depictionView.frame.origin.y, _scrollView.frame.size.width, _depictionView.scrollView.contentSize.height);
+            _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, _depictionView.scrollView.contentSize.height + _depictionView.frame.origin.y);
+        }
     }
 }
 

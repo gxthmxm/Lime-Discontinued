@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES];
     NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"HTML/index" ofType:@"html"];
     NSString *htmlFileDark = [[NSBundle mainBundle] pathForResource:@"HTML/indexdark" ofType:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
@@ -29,12 +28,17 @@
     } else {
         [_webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
     }
+    _webView.navigationDelegate = self;
     
     WKWebViewConfiguration *theConfiguration =
     [[WKWebViewConfiguration alloc] init];
     [theConfiguration.userContentController
      addScriptMessageHandler:self name:@"myApp"];
     [_webView.configuration.userContentController addScriptMessageHandler:self name:@"lime"];
+}
+
+-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    webView.frame = [UIScreen mainScreen].bounds;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -44,11 +48,13 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tabBarController.tabBar.barStyle = 1;
         self.navigationController.navigationBar.barStyle = 1;
         self.webView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        self.view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
     }
 }
 
