@@ -22,6 +22,13 @@
     self.logView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, self.logView.frame.origin.y, self.logView.frame.size.width, self.logView.frame.size.height);
     self.logView.translatesAutoresizingMaskIntoConstraints = YES;
     
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    _repoURL.leftView = paddingView;
+    _repoURL.leftViewMode = UITextFieldViewModeAlways;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        _repoURL.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_repoURL.placeholder attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5]}];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
