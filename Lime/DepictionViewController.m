@@ -79,8 +79,6 @@
     [ivContainer addSubview:iv];
 
     self.navigationItem.titleView = ivContainer;
-    
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     //[self.getButton setTitle:@"Remove" forState:UIControlStateNormal];
     
@@ -91,6 +89,23 @@
     } else {
         _scrollView.contentSize = [UIScreen mainScreen].bounds.size;
     }
+    
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(addToQueue) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(0, 0, 74, 30);
+    [button setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.2] forState:UIControlStateHighlighted];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitle:@"GET" forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:@".SFUIText-Bold" size:13];
+    button.backgroundColor = [self.icon averageColor];
+    button.layer.cornerRadius = 15.0;
+    
+    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = buttonItem;
+}
+
+-(void)addToQueue {
+    [self performSegueWithIdentifier:@"openQueue" sender:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -98,7 +113,7 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.bigView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
         self.titleLabel.textColor = [UIColor whiteColor];
-        self.authorLabel.textColor = [UIColor whiteColor];
+        self.authorLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
         self.descriptionLabel.textColor = [UIColor whiteColor];
         self.separator.backgroundColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
         self.descriptionTitleLabel.textColor = [UIColor whiteColor];
@@ -110,6 +125,8 @@
 -(void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     self.navigationItem.titleView.hidden = YES;
+    self.navigationItem.rightBarButtonItem.customView.hidden = YES;
+    self.navigationItem.rightBarButtonItem.customView.alpha = 1;
 }
 
 - (IBAction)shareStart:(id)sender {
@@ -175,16 +192,16 @@
                 self.navigationController.navigationBar.barStyle = 1;
             }
             self.navigationController.navigationBar.tintColor = [self.icon averageColor];
-            self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
         }];
     } else {
         [UIView animateWithDuration:0.2f animations:^{
             [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+            [self.navigationController.navigationBar setShadowImage:[UIImage new]];
             self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-            self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+            self.navigationItem.rightBarButtonItem.customView.hidden = YES;
         }];
     }
-    if (scrollOffset.y >= 165) {
+    if (scrollOffset.y >= 157) {
         [UIView animateWithDuration:0.2f animations:^{
             self.navigationItem.titleView.alpha = 1;
             self.iconView.alpha = 0;
@@ -192,6 +209,8 @@
             self.authorLabel.alpha = 0;
             self.getButton.alpha = 0;
             self.moreButton.alpha = 0;
+            self.navigationItem.rightBarButtonItem.customView.hidden = NO;
+            self.navigationItem.rightBarButtonItem.customView.alpha = 1;
         }];
     } else {
         [UIView animateWithDuration:0.2f animations:^{
@@ -201,6 +220,7 @@
             self.authorLabel.alpha = 1;
             self.getButton.alpha = 1;
             self.moreButton.alpha = 1;
+            self.navigationItem.rightBarButtonItem.customView.alpha = 0;
         }];
     }
 }

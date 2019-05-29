@@ -883,10 +883,11 @@
                                                 <nil key="highlightedColor"/>
                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp6-Cj-R8h">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp6-Cj-R8h">
                                                 <rect key="frame" x="136" y="43" width="146" height="15"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIv-A2-AGa">
@@ -904,7 +905,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="addToQueue:" destination="Xxj-q3-ulK" eventType="touchUpInside" id="Ahb-V0-Epw"/>
-                                                    <segue destination="SdS-52-Qz0" kind="presentation" modalPresentationStyle="overFullScreen" id="01q-le-oAG"/>
+                                                    <segue destination="SdS-52-Qz0" kind="presentation" identifier="openQueue" modalPresentationStyle="overFullScreen" id="01q-le-oAG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5x-YY-YY9">
@@ -976,7 +977,7 @@
                         <outlet property="depictionView" destination="GGb-LD-QkZ" id="mae-vY-MUb"/>
                         <outlet property="descriptionLabel" destination="sDK-gs-naR" id="VB8-Wb-7PW"/>
                         <outlet property="descriptionTitleLabel" destination="mYc-03-9qC" id="Zqa-vj-xwT"/>
-                        <outlet property="getButton" destination="xIv-A2-AGa" id="u8P-lY-A3R"/>
+                        <outlet property="getButton" destination="xIv-A2-AGa" id="Tm0-Ku-5Tm"/>
                         <outlet property="iconView" destination="93e-bo-WIs" id="8UF-di-2zF"/>
                         <outlet property="moreButton" destination="d5x-YY-YY9" id="wst-BR-J7t"/>
                         <outlet property="scrollView" destination="FHA-Oi-6Yu" id="bMc-VV-R9y"/>
