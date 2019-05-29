@@ -74,6 +74,8 @@
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,28,28)];
     iv.image = self.iconView.image;
     iv.contentMode = UIViewContentModeScaleAspectFit;
+    iv.clipsToBounds = YES;
+    iv.layer.cornerRadius = 8;
 
     UIView* ivContainer = [[UIView alloc] initWithFrame:CGRectMake(0,0,28,28)];
     [ivContainer addSubview:iv];
