@@ -1,8 +1,0 @@
-{
-  "short_name": "Lime",
-  "name": "Lime",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "display": "standalone",
-  "orientation": "portrait"
-}

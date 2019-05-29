@@ -69,8 +69,7 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     for (NSString *name in self.sortedRepoNames) {
         NSString *filename = [self iconFilenameForName:name];
         NSString *urlString = [@"http://" stringByAppendingString:[self.repoNames objectForKey:name]];
-        NSData *iconData = [self repoIconForURLString:urlString];
-        if(iconData) [iconData writeToFile:filename atomically:YES];
+        [self downloadRepoIconForURLString:urlString name:filename];
     }
 }
 
@@ -107,7 +106,7 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     return cell;
 }
 
-- (NSData *)repoIconForURLString:(NSString *)urlString {
+- (void)downloadRepoIconForURLString:(NSString *)urlString name:(NSString *)name {
     if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
     urlString = [urlString stringByAppendingString:@"CydiaIcon.png"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
@@ -115,15 +114,11 @@ NSString *listsPath = @"/var/mobile/Library/Caches/com.saurik.Cydia/lists/";
     [request setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
     [request setValue:[DeviceInfo deviceName] forHTTPHeaderField:@"X-Machine"];
     [request setValue:[DeviceInfo getUDID] forHTTPHeaderField:@"X-Unique-ID"];
-    __block BOOL completed = NO;
-    __block NSData *blockData = nil;
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        completed = YES;
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        if(httpResponse.statusCode == 200) blockData = data;
+        if(httpResponse.statusCode == 200) [data writeToFile:name atomically:YES];
+        [self.tableView reloadData];
     }] resume];
-    while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !completed){};
-    return blockData;
 }
 
 /*- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
