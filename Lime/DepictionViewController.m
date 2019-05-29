@@ -95,7 +95,11 @@
     button.frame = CGRectMake(0, 0, 74, 30);
     [button setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.2] forState:UIControlStateHighlighted];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setTitle:@"GET" forState:UIControlStateNormal];
+    if (self.installed) {
+        [button setTitle:@"MORE" forState:UIControlStateNormal];
+    } else {
+        [button setTitle:@"GET" forState:UIControlStateNormal];
+    }
     button.titleLabel.font = [UIFont fontWithName:@".SFUIText-Bold" size:13];
     button.backgroundColor = [self.icon averageColor];
     button.layer.cornerRadius = 15.0;

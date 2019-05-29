@@ -49,7 +49,6 @@
 }
 - (IBAction)arrowPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-    _state = 0;
 }
 - (IBAction)respring:(id)sender {
     if (self.state == 2) {
