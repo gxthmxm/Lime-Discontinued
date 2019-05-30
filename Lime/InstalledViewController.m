@@ -100,6 +100,7 @@
     depictionViewController.packageDesc = [self.parser.packageDescs objectAtIndex:index];
     depictionViewController.author = [self.parser.packageAuthors objectAtIndex:index];
     depictionViewController.depictionURL = [self.parser.packageDepictions objectAtIndex:index];
+    depictionViewController.version = [self.parser.packageVersions objectAtIndex:index];
     depictionViewController.icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:index]];
     depictionViewController.installed = YES;
 }
