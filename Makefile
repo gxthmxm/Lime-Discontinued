@@ -1,4 +1,4 @@
-IDEVICE_IP ?= 0
+IDEVICE_IP ?= 192.168.0.103
 IDEVICE_PORT ?= 2222
 
 build:
@@ -11,7 +11,7 @@ package:
 	dpkg -b deb
 
 install:
-	cat deb.deb | ssh -p$(IDEVICE_PORT) root@$(IDEVICE_IP) "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c uicache"
+	cat deb.deb | ssh -p22 root@$(IDEVICE_IP) "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c uicache"
 
 clean:
 	xcodebuild -UseModernBuildSystem=NO clean
