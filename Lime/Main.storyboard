@@ -1500,6 +1500,9 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="fdB-IH-TRu" kind="show" id="p80-vi-1kx"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q3h-je-Egb">
                                 <rect key="frame" x="20" y="164" width="335" height="109"/>
@@ -1550,6 +1553,24 @@
             </objects>
             <point key="canvasLocation" x="3901.5999999999999" y="330.58470764617692"/>
         </scene>
+        <!--Dark Mode-->
+        <scene sceneID="KeP-2U-gku">
+            <objects>
+                <viewController title="Dark Mode" id="fdB-IH-TRu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="roc-QN-g0A"/>
+                        <viewControllerLayoutGuide type="bottom" id="qrP-25-c3g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eHw-UN-cbS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tfv-7Y-GOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4562" y="331"/>
+        </scene>
         <!--Config Select Repo Controller-->
         <scene sceneID="TZU-uS-EN0">
             <objects>
@@ -1578,6 +1599,7 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Cydia" id="igV-pQ-bnj">
                                                     <rect key="frame" x="16" y="0.0" width="59" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="10"/>
@@ -1650,7 +1672,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXW-j9-SDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4564" y="350"/>
+            <point key="canvasLocation" x="3855" y="772"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yes-E9-s4e">
