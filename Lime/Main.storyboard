@@ -1553,10 +1553,10 @@
             </objects>
             <point key="canvasLocation" x="3901.5999999999999" y="330.58470764617692"/>
         </scene>
-        <!--Dark Mode-->
+        <!--Customization-->
         <scene sceneID="KeP-2U-gku">
             <objects>
-                <viewController title="Dark Mode" id="fdB-IH-TRu" sceneMemberID="viewController">
+                <viewController title="Customization" id="fdB-IH-TRu" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="roc-QN-g0A"/>
                         <viewControllerLayoutGuide type="bottom" id="qrP-25-c3g"/>
@@ -1564,12 +1564,50 @@
                     <view key="view" contentMode="scaleToFill" id="eHw-UN-cbS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="light" translatesAutoresizingMaskIntoConstraints="NO" id="FuG-Tx-YVs">
+                                <rect key="frame" x="16" y="199" width="149" height="239"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dark" translatesAutoresizingMaskIntoConstraints="NO" id="OKT-UG-UGt">
+                                <rect key="frame" x="210" y="199" width="149" height="239"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Light Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWq-gs-h4Z">
+                                <rect key="frame" x="44" y="446" width="92" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="191-tR-P5S">
+                                <rect key="frame" x="240" y="445" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRC-EK-xSG">
+                                <rect key="frame" x="24" y="573" width="327" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfv-7Y-GOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4562" y="331"/>
+            <point key="canvasLocation" x="4560.8000000000002" y="330.58470764617692"/>
         </scene>
         <!--Config Select Repo Controller-->
         <scene sceneID="TZU-uS-EN0">
@@ -1672,7 +1710,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXW-j9-SDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3855" y="772"/>
+            <point key="canvasLocation" x="3902" y="811"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yes-E9-s4e">
@@ -1714,7 +1752,9 @@
         <image name="Zebra" width="400" height="400"/>
         <image name="arrow" width="40" height="13"/>
         <image name="arrowright" width="700" height="700"/>
+        <image name="dark" width="886" height="1732"/>
         <image name="iPhoneX" width="460" height="500"/>
+        <image name="light" width="886" height="1732"/>
         <image name="pixelomer" width="349" height="349"/>
     </resources>
     <inferredMetricsTieBreakers>
