@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ofe-eB-Og1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ofe-eB-Og1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1475,7 +1475,7 @@
             </objects>
             <point key="canvasLocation" x="1841.25" y="990.84507042253517"/>
         </scene>
-        <!--Import Repos-->
+        <!--Transfer Repos-->
         <scene sceneID="dPP-es-k6n">
             <objects>
                 <viewController id="HPs-cX-Th9" customClass="ConfigRepoController" sceneMemberID="viewController">
@@ -1544,7 +1544,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Import Repos" id="UyP-qk-iy7"/>
+                    <navigationItem key="navigationItem" title="Transfer Repos" id="UyP-qk-iy7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pan-Gp-hBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1613,20 +1613,29 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="grH-ch-tAg" rowHeight="60" style="IBUITableViewCellStyleDefault" id="RUw-hj-E9N">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="a36-wn-RYO" imageView="fQ4-cj-H6T" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Rhf-RA-gho">
                                         <rect key="frame" x="0.0" y="120" width="317" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RUw-hj-E9N" id="W36-q5-bbP">
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rhf-RA-gho" id="vm0-vQ-HMh">
                                             <rect key="frame" x="0.0" y="0.0" width="317" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Zebra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="grH-ch-tAg">
-                                                    <rect key="frame" x="16" y="0.0" width="285" height="59.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Zebra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a36-wn-RYO">
+                                                    <rect key="frame" x="91" y="0.0" width="210" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Zebra" id="fQ4-cj-H6T">
+                                                    <rect key="frame" x="16" y="0.0" width="60" height="59.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1647,6 +1656,10 @@
         <scene sceneID="Yes-E9-s4e">
             <objects>
                 <viewController id="Z96-FG-DP7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MQm-5h-yO7"/>
+                        <viewControllerLayoutGuide type="bottom" id="dbA-sd-2zg"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D73-Dl-eob">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1666,7 +1679,7 @@
         <image name="Empty" width="29" height="29"/>
         <image name="EvenDev" width="1024" height="1024"/>
         <image name="Home" width="28" height="24"/>
-        <image name="Installed" width="28" height="25"/>
+        <image name="Installed" width="28" height="25.5"/>
         <image name="Lime" width="1024" height="1024"/>
         <image name="Luis" width="400" height="400"/>
         <image name="Midnight" width="244" height="244"/>
@@ -1676,6 +1689,7 @@
         <image name="TransLime" width="317" height="317"/>
         <image name="Tweak" width="210" height="210"/>
         <image name="Twitter" width="32" height="26"/>
+        <image name="Zebra" width="400" height="400"/>
         <image name="arrow" width="40" height="13"/>
         <image name="arrowright" width="700" height="700"/>
         <image name="iPhoneX" width="460" height="500"/>
