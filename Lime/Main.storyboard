@@ -1561,7 +1561,7 @@
                         <sections>
                             <tableViewSection id="MiO-a0-LFy">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="vFg-NG-bBV" imageView="igV-pQ-bnj" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Ixy-rJ-LUA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="vFg-NG-bBV" imageView="igV-pQ-bnj" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Ixy-rJ-LUA" userLabel="Cydia Cell">
                                         <rect key="frame" x="0.0" y="0.0" width="317" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ixy-rJ-LUA" id="vy8-3U-6fY">
@@ -1587,7 +1587,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="w8u-JQ-p7G" imageView="1s2-bv-wJR" rowHeight="60" style="IBUITableViewCellStyleDefault" id="XGc-2q-6Er">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="w8u-JQ-p7G" imageView="1s2-bv-wJR" rowHeight="60" style="IBUITableViewCellStyleDefault" id="XGc-2q-6Er" userLabel="Sileo Cell">
                                         <rect key="frame" x="0.0" y="60" width="317" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XGc-2q-6Er" id="JjA-Js-Gzx">
@@ -1613,7 +1613,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="a36-wn-RYO" imageView="fQ4-cj-H6T" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Rhf-RA-gho">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="a36-wn-RYO" imageView="fQ4-cj-H6T" rowHeight="60" style="IBUITableViewCellStyleDefault" id="Rhf-RA-gho" userLabel="Zebra Cell">
                                         <rect key="frame" x="0.0" y="120" width="317" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rhf-RA-gho" id="vm0-vQ-HMh">
