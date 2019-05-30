@@ -49,6 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITableViewCell *artikusCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *luisCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *midnightCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *pixelomerCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *supportCell;
 
 @end

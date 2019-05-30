@@ -20,6 +20,7 @@
     self.packageDescs = [[NSMutableArray alloc] init];
     self.packageDepictions = [[NSMutableArray alloc] init];
     self.packageAuthors = [[NSMutableArray alloc] init];
+	self.packageVersions = [[NSMutableArray alloc] init];
     
     NSMutableArray *names = [[NSMutableArray alloc] init];
     FILE *file = fopen("/var/lib/dpkg/status", "r");
@@ -29,13 +30,17 @@
     NSString *lastDesc = @"";
     NSString *lastAuthor = @"";
     NSString *lastDepiction = @"";
+	NSString *lastVersion = @"";
     while(fgets(str, 999, file) != NULL) {
-        if(strstr(str, "Package:")) lastID = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Package: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        if(strstr(str, "Name:")) [names addObject:[[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Name: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
-        if(strstr(str, "Description:")) lastDesc = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Description: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        if(strstr(str, "Author:")) lastAuthor = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Author: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        if(strstr(str, "Depiction:")) lastDepiction = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Depiction: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        if(strstr(str, "Description:")) lastDesc = [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Description: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+#define ProcessEntry(val, str) ([[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@val": " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""])
+#define TestEntrySet(val, var) if (strstr(str, val":")) var = ProcessEntry(val, str)
+#define TestEntryAdd(val, var) if (strstr(str, val":")) [var addObject:ProcessEntry(val, str)]
+		TestEntrySet("Package", lastID);
+		TestEntryAdd("Name", names);
+		TestEntrySet("Description", lastDesc);
+		TestEntrySet("Author", lastAuthor);
+		TestEntrySet("Depiction", lastDepiction);
+		TestEntrySet("Version", lastVersion);
         if(strstr(str, "Section:")) {
             icon = [NSString stringWithFormat:@"%@/sections/%@.png",[[NSBundle mainBundle] resourcePath], [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
             if([icon rangeOfString:@"Themes"].location != NSNotFound) icon = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/sections/Themes.png"];
@@ -51,6 +56,7 @@
             [names sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             if(self.packageIDs.count < names.count) {
                 NSInteger index = [names indexOfObject:lastObject];
+				[self.packageVersions insertObject:lastVersion atIndex:index];
                 [self.packageIDs insertObject:lastID atIndex:index];
                 [self.packageIcons insertObject:icon atIndex:index];
                 [self.packageDescs insertObject:lastDesc atIndex:index];

@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UIImage *banner;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *author;
+@property (strong, nonatomic) NSString *version;
 @property (strong, nonatomic) NSString *package;
 @property (strong, nonatomic) NSString *depictionURL;
 @property (strong, nonatomic) NSString *packageDesc;

@@ -44,6 +44,7 @@
 		4DBA572F228710C800F41FF4 /* iPhone7,1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA571B228710C700F41FF4 /* iPhone7,1.png */; };
 		4DBA5730228710C800F41FF4 /* iPhone10,6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA571C228710C700F41FF4 /* iPhone10,6.png */; };
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
+		662F620E22A00E6D00931533 /* SourcesBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F620D22A00E6D00931533 /* SourcesBackend.m */; };
 		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
 		666DC9112278690100B6E03C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC9102278690100B6E03C /* HomeViewController.m */; };
 		666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91322786B4600B6E03C /* ChangesViewController.m */; };
@@ -124,6 +125,8 @@
 		4DE09915227B5A2300A00A43 /* output */ = {isa = PBXFileReference; lastKnownFileType = folder; path = output; sourceTree = "<group>"; };
 		6626F4C5228059A100F94ED3 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
 		6626F4C6228059A100F94ED3 /* NSTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTask.h; sourceTree = "<group>"; };
+		662F620C22A00E6D00931533 /* SourcesBackend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourcesBackend.h; sourceTree = "<group>"; };
+		662F620D22A00E6D00931533 /* SourcesBackend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourcesBackend.m; sourceTree = "<group>"; };
 		66381721227A078000E92BE7 /* sections */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sections; sourceTree = "<group>"; };
 		666DC90F2278690100B6E03C /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		666DC9102278690100B6E03C /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -211,6 +214,8 @@
 				666DC91622786B4E00B6E03C /* SearchViewController.m */,
 				4D33AB5A22787A8700CDFC49 /* SourcesViewController.h */,
 				4D33AB5822787A7700CDFC49 /* SourcesViewController.m */,
+				662F620C22A00E6D00931533 /* SourcesBackend.h */,
+				662F620D22A00E6D00931533 /* SourcesBackend.m */,
 				666DC9182278702100B6E03C /* InstalledViewController.h */,
 				666DC9192278702100B6E03C /* InstalledViewController.m */,
 				66B9FCA022788D7400F1FB08 /* LMDPKGParser.h */,
@@ -443,6 +448,7 @@
 				4D33AB602278903900CDFC49 /* HeaderView.m in Sources */,
 				4DACF2BC227CB08A003F527C /* NSArray+Random.m in Sources */,
 				666DC91A2278702100B6E03C /* InstalledViewController.m in Sources */,
+				662F620E22A00E6D00931533 /* SourcesBackend.m in Sources */,
 				4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */,
 				4D33AB5922787A7700CDFC49 /* SourcesViewController.m in Sources */,
 				37D0FC86227753EF0039BE3C /* main.m in Sources */,
@@ -604,10 +610,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 33GU98BCDS;
 				INFOPLIST_FILE = Lime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -625,10 +631,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 33GU98BCDS;
 				INFOPLIST_FILE = Lime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

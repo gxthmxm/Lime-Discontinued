@@ -1,5 +1,8 @@
+IDEVICE_IP ?= 192.168.0.103
+IDEVICE_PORT ?= 2222
+
 build:
-	xcodebuild clean build CODE_SIGNING_REQUIRED=NO  -project Lime.xcodeproj
+	xcodebuild clean build CODE_SIGNING_REQUIRED=NO -UseModernBuildSystem=NO -project Lime.xcodeproj
 	ldid -S ./build/Release-iphoneos/Lime.app/Lime
 
 package:
@@ -8,10 +11,10 @@ package:
 	dpkg -b deb
 
 install:
-	scp deb.deb root@192.168.1.100:/var/mobile
-	ssh root@192.168.1.100 "dpkg -i /var/mobile/deb.deb && rm /var/mobile/deb.deb && uicache"
+	cat deb.deb | ssh -p22 root@$(IDEVICE_IP) "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c uicache"
 
 clean:
-	xcodebuild clean
-	rm deb.deb
+	xcodebuild -UseModernBuildSystem=NO clean
+	rm -rf build
+	rm -f deb.deb
 	rm -rf deb/Applications/*
