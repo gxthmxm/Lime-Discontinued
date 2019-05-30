@@ -11,10 +11,10 @@ package:
 	dpkg -b deb
 
 install:
-	scp -P $(IDEVICE_PORT) deb.deb root@$(IDEVICE_IP):/var/mobile
-	ssh -p$(IDEVICE_PORT) root@$(IDEVICE_IP) "dpkg -i /var/mobile/deb.deb && rm /var/mobile/deb.deb && uicache"
+	cat deb.deb | ssh -p$(IDEVICE_PORT) root@$(IDEVICE_IP) "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c uicache"
 
 clean:
-	xcodebuild clean
+	xcodebuild -UseModernBuildSystem=NO clean
+	rm -rf build
 	rm -f deb.deb
 	rm -rf deb/Applications/*
