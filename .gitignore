@@ -1,6 +1,5 @@
-
-Lime/.DS_Store
-Lime/.DS_Store
-Makefile
+deb/
+deb*.deb
+.DS_Store
 Makefile
 build
