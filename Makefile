@@ -1,5 +1,5 @@
-IDEVICE_IP ?= 192.168.0.103
-IDEVICE_PORT ?= 2222
+IDEVICE_IP ?= 192.168.1.100
+IDEVICE_PORT ?= 22
 
 build:
 	xcodebuild clean build CODE_SIGNING_REQUIRED=NO -UseModernBuildSystem=NO -project Lime.xcodeproj

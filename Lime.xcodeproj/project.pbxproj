@@ -43,6 +43,7 @@
 		4DBA572E228710C800F41FF4 /* iPhone8,1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA571A228710C700F41FF4 /* iPhone8,1.png */; };
 		4DBA572F228710C800F41FF4 /* iPhone7,1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA571B228710C700F41FF4 /* iPhone7,1.png */; };
 		4DBA5730228710C800F41FF4 /* iPhone10,6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA571C228710C700F41FF4 /* iPhone10,6.png */; };
+		4DD1D57F22A0669D00CC9824 /* ConfigControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1D57E22A0669D00CC9824 /* ConfigControllers.m */; };
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
 		662F620E22A00E6D00931533 /* SourcesBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F620D22A00E6D00931533 /* SourcesBackend.m */; };
 		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
@@ -121,6 +122,8 @@
 		4DBA571A228710C700F41FF4 /* iPhone8,1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone8,1.png"; sourceTree = "<group>"; };
 		4DBA571B228710C700F41FF4 /* iPhone7,1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone7,1.png"; sourceTree = "<group>"; };
 		4DBA571C228710C700F41FF4 /* iPhone10,6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone10,6.png"; sourceTree = "<group>"; };
+		4DD1D57E22A0669D00CC9824 /* ConfigControllers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigControllers.m; sourceTree = "<group>"; };
+		4DD1D58022A066A800CC9824 /* ConfigControllers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigControllers.h; sourceTree = "<group>"; };
 		4DE098D5227B53E800A00A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4DE09915227B5A2300A00A43 /* output */ = {isa = PBXFileReference; lastKnownFileType = folder; path = output; sourceTree = "<group>"; };
 		6626F4C5228059A100F94ED3 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				66381721227A078000E92BE7 /* sections */,
 				4D33AB51227873E500CDFC49 /* Main.storyboard */,
 				4D33AB532278742A00CDFC49 /* LaunchScreen.storyboard */,
+				4DD1D58022A066A800CC9824 /* ConfigControllers.h */,
+				4DD1D57E22A0669D00CC9824 /* ConfigControllers.m */,
 				37D0FC73227753EC0039BE3C /* AppDelegate.h */,
 				37D0FC74227753EC0039BE3C /* AppDelegate.m */,
 				4D7F120A2280754D00576DEF /* AddRepoController.h */,
@@ -447,6 +452,7 @@
 				4D7F12092280754300576DEF /* AddRepoController.m in Sources */,
 				4D33AB602278903900CDFC49 /* HeaderView.m in Sources */,
 				4DACF2BC227CB08A003F527C /* NSArray+Random.m in Sources */,
+				4DD1D57F22A0669D00CC9824 /* ConfigControllers.m in Sources */,
 				666DC91A2278702100B6E03C /* InstalledViewController.m in Sources */,
 				662F620E22A00E6D00931533 /* SourcesBackend.m in Sources */,
 				4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */,
@@ -613,7 +619,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 33GU98BCDS;
+				DEVELOPMENT_TEAM = 9859KQSN8L;
 				INFOPLIST_FILE = Lime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -634,7 +640,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 33GU98BCDS;
+				DEVELOPMENT_TEAM = 9859KQSN8L;
 				INFOPLIST_FILE = Lime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
