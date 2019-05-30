@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *packageDescs;
 @property (strong, nonatomic) NSMutableArray *packageDepictions;
 @property (strong, nonatomic) NSMutableArray *packageAuthors;
+@property (strong, nonatomic) NSMutableArray *packageVersions;
 
 @end
 
