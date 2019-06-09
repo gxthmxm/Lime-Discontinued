@@ -29,7 +29,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-xs-12">
+        <!-- <div class="col-xs-12">
             <div class="featured-section">
                 <div class="feat-block">
                     <a href="#" class="featured-block-link">
@@ -55,7 +55,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->  
         <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
             <a href="https://t.co/9RN8VRKKPi">
                 <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
@@ -64,6 +64,19 @@
                         <div class="card-elements">
                             <div class="card-subtitle-dark">Connect</div>
                             <h2 class="card-title-dark">Join us at our Discord server!</h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            <a href="https://www.reddit.com/r/jailbreak/">
+                <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
+                    <div class="block-img-bg">
+                        <div class="cover" style="background: url(HTML/rjailbreak-card-bg@2x.png); background-position: center; background-size: cover;"></div>
+                        <div class="card-elements">
+                            <div class="card-subtitle-light">Connect</div>
+                            <h2 class="card-title-light">Join r/Jailbreak</h2>
                         </div>
                     </div>
                 </div>
@@ -186,14 +199,28 @@
         <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
             <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
                 <div class="block-img-bg">
-                    <div class="cover" style="background: url(HTML/snowboard-card-bg.png); background-position: center; background-size: cover;"></div>
+                    <div class="icon-card-center">
+                        <picture id="ember1" class="we-artwork ios-app-icon">
+                            <source srcset="HTML/snowboard-icon.png 3x">
+                            <img class="we-artwork__image ember1" src="HTML/snowboard-icon.png" style="background-color: #ffffff;" alt="" height="150" width="150">
+                        </picture>
+                    </div>
+                    <style>
+                        .ember1, #ember1::before {
+                            width: 150px;
+                            height: 150px;
+                        }
+                        .ember1::before {
+                            padding-top: 100%;
+                        }
+                    </style>
                     <div class="card-elements">
                         <div class="card-subtitle-dark">Theme your device</div>
                         <h2 class="card-title-dark">Customize your device</h2>
                         <div class="block-bottom2">
                             <div class="left-info">
                                 <div class="card-tweak-name">Snowboard</div>
-                                <div class="tweak-description">The popular lightweight theme engine for iOS 12</div>
+                                <div class="tweak-description-light">The popular lightweight theme engine for iOS 12</div>
                             </div>
                             <a href="#"><button class="itembtn" style="float: right">GET</button></a>
                         </div>
