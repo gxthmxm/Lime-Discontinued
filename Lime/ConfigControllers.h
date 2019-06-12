@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface ConfigSelectRepoController : UITableViewController
+
+@end
+
+@interface ConfigCustomizationController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *lightToggle;
+@property (strong, nonatomic) IBOutlet UIImageView *darkToggle;
+@property (strong, nonatomic) IBOutlet UILabel *lightText;
+@property (strong, nonatomic) IBOutlet UILabel *darkText;
 
 @end
 

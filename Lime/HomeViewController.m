@@ -49,6 +49,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    [self performSegueWithIdentifier:@"firstLaunch" sender:self];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tabBarController.tabBar.barStyle = 1;
         self.navigationController.navigationBar.barStyle = 1;
@@ -56,6 +57,15 @@
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         self.view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
     }
+}
+
+-(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    [super dismissViewControllerAnimated:flag completion:completion];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Gay" message:@"Hmm now to refresh" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {}];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController
