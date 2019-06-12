@@ -13,10 +13,6 @@
     <title>Lime</title>
 </head>
 <body ontouchstart="">
-    <div class="nav-show-hide">
-        <nav class="scroll-nav">
-        </nav>
-   </div>
 
 <div class="container-fluid">
     <div class="row">
@@ -33,7 +29,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-xs-12">
+        <!-- <div class="col-xs-12">
             <div class="featured-section">
                 <div class="feat-block">
                     <a href="#" class="featured-block-link">
@@ -59,7 +55,8 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->  
+
         <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
             <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
                 <div class="block-img-bg">
@@ -177,7 +174,21 @@
         <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
             <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
                 <div class="block-img-bg">
-                    <div class="cover" style="background: url(HTML/snowboard-card-bg.png); background-position: center; background-size: cover;"></div>
+                    <div class="icon-card-center">
+                        <picture id="ember1" class="we-artwork ios-app-icon">
+                            <source srcset="HTML/snowboard-icon.png 3x">
+                            <img class="we-artwork__image ember1" src="HTML/snowboard-icon.png" style="background-color: #ffffff;" alt="" height="150" width="150">
+                        </picture>
+                    </div>
+                    <style>
+                        .ember1, #ember1::before {
+                            width: 150px;
+                            height: 150px;
+                        }
+                        .ember1::before {
+                            padding-top: 100%;
+                        }
+                    </style>
                     <div class="card-elements">
                         <div class="card-subtitle-dark">Theme your device</div>
                         <h2 class="card-title-dark">Customize your device</h2>
@@ -284,9 +295,34 @@
                 </div>
             </div>
         </div>
-       
+
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+            <a href="https://t.co/9RN8VRKKPi">
+                <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
+                    <div class="block-img-bg">
+                        <div class="cover" style="background: url(HTML/discord-card-bg@2x.png); background-position: center; background-size: cover;"></div>
+                        <div class="card-elements">
+                            <div class="card-subtitle-light">Connect</div>
+                            <h2 class="card-title-light">Join us at our Discord server!</h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            <a href="https://www.reddit.com/r/jailbreak/">
+                <div class="card-wrapper" ontouchstart="shrink(event)" ontouchend="extend(event)">
+                    <div class="block-img-bg">
+                        <div class="cover" style="background: url(HTML/rjailbreak-card-bg@2x.png); background-position: center; background-size: cover;"></div>
+                        <div class="card-elements">
+                            <div class="card-subtitle-light">Connect</div>
+                            <h2 class="card-title-light">Join r/Jailbreak</h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
-    
 </div>
 
     <center>
@@ -332,19 +368,6 @@
             window.webkit.messageHandlers.lime.postMessage({"message":"idk"});
         }
         window.addEventListener("load", getToday, true);
-    </script>
-    <script type="text/javascript">
-        (function($) {          
-            $(document).ready(function(){                    
-                $(window).scroll(function(){                          
-                    if ($(this).scrollTop() > 65) {
-                        $('.nav-show-hide').fadeIn(200);
-                    } else {
-                        $('.nav-show-hide').fadeOut(200);
-                    }
-                });
-            });
-        })(jQuery);
     </script>
 </body>
 
