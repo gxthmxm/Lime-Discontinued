@@ -54,6 +54,10 @@
     cell.imageView.image = icon;
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
+    [cell setSelectedBackgroundView:bgColorView];
+    
     /*
     UIButton *getButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 90, 20, 74, 30)];
     getButton.backgroundColor = [UIColor colorWithRed:0.95 green:0.94 blue:0.96 alpha:1.0];

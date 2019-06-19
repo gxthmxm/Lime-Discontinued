@@ -2018,7 +2018,7 @@
                         <color key="backgroundColor" red="0.26272955539999998" green="0.24911245700000001" blue="0.33607593180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <segue destination="Ofe-eB-Og1" kind="show" identifier="normalLaunch" id="EdO-LT-SHf"/>
+                        <segue destination="Ofe-eB-Og1" kind="show" identifier="normalLaunch" animates="NO" id="EdO-LT-SHf"/>
                         <segue destination="hZr-UT-S54" kind="show" identifier="firstLaunch" id="5fA-wt-SFl"/>
                     </connections>
                 </viewController>
