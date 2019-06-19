@@ -3,3 +3,4 @@ deb*.deb
 .DS_Store
 Makefile
 build
+.DS_Store
