@@ -31,19 +31,22 @@
     self.versionCell.detailTextLabel.text = depictionViewController.version;
     self.identifierCell.detailTextLabel.text = depictionViewController.package;
     
-    int sizeInt = [depictionViewController.finalSize intValue];
-    NSString *byteFormat = @" KB";
-    
-    if (sizeInt > 1023) {
-        byteFormat = @" MB";
-        sizeInt = sizeInt / 1024;
+    if (!([depictionViewController.finalSize isEqualToString:@""] || depictionViewController.finalSize == nil || depictionViewController.finalSize.length < 1)) {
+        
+        int sizeInt = [depictionViewController.finalSize intValue];
+        NSString *byteFormat = @" KB";
+        
+        if (sizeInt > 1023) {
+            byteFormat = @" MB";
+            sizeInt = sizeInt / 1024;
+        }
+        if (sizeInt > 1048575) {
+            byteFormat = @" GB";
+            sizeInt = sizeInt / 1048576;
+        }
+        
+        self.sizeCell.detailTextLabel.text = [NSString stringWithFormat:@"%d%@", sizeInt, byteFormat];
     }
-    if (sizeInt > 1048575) {
-        byteFormat = @" GB";
-        sizeInt = sizeInt / 1048576;
-    }
-    
-    self.sizeCell.detailTextLabel.text = [NSString stringWithFormat:@"%d%@", sizeInt, byteFormat];
     
     self.sectionCell.detailTextLabel.text = depictionViewController.section;
     

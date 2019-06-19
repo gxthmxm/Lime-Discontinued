@@ -107,11 +107,7 @@
     depictionViewController.author = [self.parser.packageAuthors objectAtIndex:index];
     depictionViewController.depictionURL = [self.parser.packageDepictions objectAtIndex:index];
     depictionViewController.version = [self.parser.packageVersions objectAtIndex:index];
-    if (![[self.parser.packageSizes objectAtIndex:index] isEqualToString:@""] || !([self.parser.packageSizes objectAtIndex:index] == nil)) {
-        depictionViewController.size = [self.parser.packageSizes objectAtIndex:index];
-    } else {
-        depictionViewController.size = @"Unkown";
-    }
+    depictionViewController.size = [self.parser.packageSizes objectAtIndex:index];
     depictionViewController.section = [self.parser.packageSections objectAtIndex:index];
     depictionViewController.icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:index]];
     depictionViewController.installed = YES;
