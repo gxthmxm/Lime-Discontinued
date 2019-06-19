@@ -207,7 +207,9 @@
         _darkTitle.textColor = [UIColor whiteColor];
         _darkCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
         
-        
+        UIView *bgColorView = [[UIView alloc] init];
+        bgColorView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
+        [_creditsCell setSelectedBackgroundView:bgColorView];
     }
 }
 - (IBAction)darkChanged:(id)sender {
