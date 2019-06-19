@@ -49,7 +49,6 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-    [self performSegueWithIdentifier:@"firstLaunch" sender:self];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tabBarController.tabBar.barStyle = 1;
         self.navigationController.navigationBar.barStyle = 1;

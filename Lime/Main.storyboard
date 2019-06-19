@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ofe-eB-Og1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jsW-9y-ZXB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -698,7 +698,6 @@
                     <connections>
                         <outlet property="webView" destination="jOe-ed-9nZ" id="ACg-IF-qW9"/>
                         <segue destination="0fU-SR-3Bm" kind="show" identifier="openSettings" id="wdf-f3-VMM"/>
-                        <segue destination="hZr-UT-S54" kind="presentation" identifier="firstLaunch" modalPresentationStyle="overFullScreen" id="cEO-s4-YWv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nF-Kx-SVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1364,7 +1363,13 @@
                             <outlet property="delegate" destination="2ky-au-Onb" id="afu-eW-wb8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Updates" id="TR0-pY-VYT"/>
+                    <navigationItem key="navigationItem" title="Updates" id="TR0-pY-VYT">
+                        <barButtonItem key="rightBarButtonItem" title="Clear First Launch" id="4S5-ly-zFa">
+                            <connections>
+                                <action selector="clearFirstLaunch:" destination="2ky-au-Onb" id="nde-xL-aRQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbc-PW-r19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1631,7 +1636,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="dismissController:" destination="fdB-IH-TRu" eventType="touchUpInside" id="gWh-po-qvB"/>
+                                    <segue destination="Ofe-eB-Og1" kind="presentation" identifier="continueNormal" id="8iQ-xE-2eE"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="10r-hy-cBE">
@@ -1668,7 +1673,7 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J7o-E8-bR6">
                                 <rect key="frame" x="254" y="437" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.14000000000000001" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1807,6 +1812,34 @@
             </objects>
             <point key="canvasLocation" x="3902" y="811"/>
         </scene>
+        <!--First Launch Decider Controller-->
+        <scene sceneID="WUT-aE-GhX">
+            <objects>
+                <viewController id="jsW-9y-ZXB" customClass="FirstLaunchDeciderController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mKw-du-TQJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wj6-ib-OOb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Eca-Nh-e3n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lime" translatesAutoresizingMaskIntoConstraints="NO" id="sks-d3-K4V">
+                                <rect key="frame" x="109" y="255" width="156" height="156"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.26272955539999998" green="0.24911245700000001" blue="0.33607593180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="Ofe-eB-Og1" kind="show" identifier="normalLaunch" id="EdO-LT-SHf"/>
+                        <segue destination="hZr-UT-S54" kind="show" identifier="firstLaunch" id="5fA-wt-SFl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U1v-5e-dFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1081" y="991"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Artikus" width="400" height="400"/>
@@ -1840,6 +1873,7 @@
         <image name="pixelomer" width="349" height="349"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="EdO-LT-SHf"/>
         <segue reference="01q-le-oAG"/>
     </inferredMetricsTieBreakers>
 </document>

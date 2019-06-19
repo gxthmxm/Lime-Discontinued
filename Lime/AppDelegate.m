@@ -24,6 +24,13 @@
         [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"firstLaunch"] == nil) {
+        NSDictionary *launchDefaults  = [NSDictionary dictionary];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstlaunch"];
+        
+        [[NSUserDefaults standardUserDefaults] registerDefaults:launchDefaults];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
     return YES;
 }

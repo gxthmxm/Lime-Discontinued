@@ -27,5 +27,9 @@
         self.navigationController.navigationBar.barStyle = 1;
     }
 }
+- (IBAction)clearFirstLaunch:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+    kill(0, 0);
+}
 
 @end
