@@ -63,7 +63,11 @@
             if(self.packageIDs.count < names.count) {
                 NSInteger index = [names indexOfObject:lastObject];
 				[self.packageVersions insertObject:lastVersion atIndex:index];
-                [self.packageSizes insertObject:lastSize atIndex:index];
+                if (!(lastSize == nil || lastSize.length < 1 || [lastSize isEqualToString:@""])) {
+                    [self.packageSizes insertObject:lastSize atIndex:index];
+                } else {
+                    [self.packageSizes insertObject:[NSString stringWithFormat:@"Unknown"] atIndex:index];
+                }
                 [self.packageIDs insertObject:lastID atIndex:index];
                 [self.packageIcons insertObject:icon atIndex:index];
                 [self.packageDescs insertObject:lastDesc atIndex:index];
