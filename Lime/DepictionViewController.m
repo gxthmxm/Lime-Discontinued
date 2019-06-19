@@ -17,6 +17,52 @@
 }
 @end
 
+@implementation InformationTableView
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    DepictionViewController *depictionViewController = (DepictionViewController*)self.parentViewController;
+    if (![depictionViewController.author  isEqual:@""]) {
+        self.developerCell.detailTextLabel.text = depictionViewController.author;
+    } else {
+        self.developerCell.detailTextLabel.text = @"Unknown";
+    }
+    self.versionCell.detailTextLabel.text = depictionViewController.version;
+    self.identifierCell.detailTextLabel.text = depictionViewController.package;
+    
+    int sizeInt = [depictionViewController.finalSize intValue];
+    NSString *byteFormat = @" KB";
+    
+    if (sizeInt > 1023) {
+        byteFormat = @" MB";
+        sizeInt = sizeInt / 1024;
+    }
+    if (sizeInt > 1048575) {
+        byteFormat = @" GB";
+        sizeInt = sizeInt / 1048576;
+    }
+    
+    self.sizeCell.detailTextLabel.text = [NSString stringWithFormat:@"%d%@", sizeInt, byteFormat];
+    
+    self.sectionCell.detailTextLabel.text = depictionViewController.section;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
+        self.tableView.backgroundColor = [UIColor blackColor];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.backgroundColor = [UIColor clearColor];
+    }
+}
+
+@end
+
 @implementation DepictionViewController
 
 - (void)viewDidLoad {
@@ -37,6 +83,11 @@
     [_depictionView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     NSString* scaleMeta = @"var meta = document.createElement('meta'); meta.name = 'viewport'; meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; var head = document.getElementsByTagName('head')[0]; head.appendChild(meta);";
     [_depictionView evaluateJavaScript:scaleMeta completionHandler:nil];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        _depictionView.configuration.applicationNameForUserAgent = @"Zebra (Cydia) Dark";
+    } else {
+        _depictionView.configuration.applicationNameForUserAgent = @"Zebra (Cydia) Light";
+    }
     [_depictionView loadRequest:nsrequest];
     //_depictionView.scrollView.userInteractionEnabled = NO;
     if (self.icon != nil) {
@@ -71,6 +122,11 @@
         [_getButton setTitle:@"MORE" forState:UIControlStateNormal];
     }
     
+    NSMutableArray *sizeArray = [self.size componentsSeparatedByString:@"-"];
+    self.finalSize = (NSString*)[sizeArray objectAtIndex:1];
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height - 60);
+    
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,28,28)];
     iv.image = self.iconView.image;
     iv.contentMode = UIViewContentModeScaleAspectFit;
@@ -83,14 +139,6 @@
     self.navigationItem.titleView = ivContainer;
 
     //[self.getButton setTitle:@"Remove" forState:UIControlStateNormal];
-    
-    float bottom = _depictionView.frame.origin.y + _depictionView.frame.size.height;
-    
-    if(bottom > [UIScreen mainScreen].bounds.size.height) {
-        _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom);
-    } else {
-        _scrollView.contentSize = [UIScreen mainScreen].bounds.size;
-    }
     
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(addToQueue) forControlEvents:UIControlEventTouchUpInside];
@@ -117,14 +165,18 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.bigView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.bigView.backgroundColor = [UIColor blackColor];
         self.titleLabel.textColor = [UIColor whiteColor];
         self.authorLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
         self.descriptionLabel.textColor = [UIColor whiteColor];
-        self.separator.backgroundColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        self.separator.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
         self.descriptionTitleLabel.textColor = [UIColor whiteColor];
-        self.depictionView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
-        self.scrollView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.depictionView.backgroundColor = [UIColor blackColor];
+        self.scrollView.backgroundColor = [UIColor blackColor];
+        self.infoView.backgroundColor = [UIColor blackColor];
+        self.separator2.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
+        self.informationTitle.textColor = [UIColor whiteColor];
+        [self.moreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
 }
 
@@ -172,7 +224,10 @@
         // we are here because the contentSize of the WebView's scrollview changed.
         if (self.depictionURL && self.depictionURL.length > 0) {
             _depictionView.frame = CGRectMake(_depictionView.frame.origin.x, _depictionView.frame.origin.y, _scrollView.frame.size.width, _depictionView.scrollView.contentSize.height);
-            _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, _depictionView.scrollView.contentSize.height + _depictionView.frame.origin.y);
+            _infoView.frame = CGRectMake(0, _depictionView.frame.origin.y + _depictionView.frame.size.height, _infoView.frame.size.width, _infoView.frame.size.height);
+            
+            float bottom = _infoView.frame.origin.y + _infoView.frame.size.height + 25;
+            _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom);
         }
     }
 }

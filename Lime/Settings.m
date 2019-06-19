@@ -158,7 +158,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.scrollView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.scrollView.backgroundColor = [UIColor blackColor];
         self.nameLabel.textColor = [UIColor whiteColor];
         self.iOSLabel.textColor = [UIColor whiteColor];
     }
@@ -174,7 +174,7 @@
     _udidCell.detailTextLabel.text = [DeviceInfo getUDID];
      [_darkToggle setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"] animated:NO];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.view.backgroundColor = [UIColor blackColor];
     } else {
         self.view.backgroundColor = [UIColor whiteColor];
     }
@@ -184,27 +184,28 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.tableView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
-        self.tableView.separatorColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        self.tableView.backgroundColor = [UIColor blackColor];
+        self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
+        
         _modelCell.textLabel.textColor = [UIColor whiteColor];
-        _modelCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
-        _modelCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _modelCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
+        _modelCell.detailTextLabel.textColor = [UIColor whiteColor];
         _ecidCell.textLabel.textColor = [UIColor whiteColor];
-        _ecidCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
-        _ecidCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _ecidCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
+        _ecidCell.detailTextLabel.textColor = [UIColor whiteColor];
         _udidCell.textLabel.textColor = [UIColor whiteColor];
-        _udidCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
-        _udidCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _udidCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
+        _udidCell.detailTextLabel.textColor = [UIColor whiteColor];
         _serialCell.textLabel.textColor = [UIColor whiteColor];
-        _serialCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
-        _serialCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _serialCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
+        _serialCell.detailTextLabel.textColor = [UIColor whiteColor];
         _bootCell.textLabel.textColor = [UIColor whiteColor];
-        _bootCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
-        _bootCell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        _bootCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
+        _bootCell.detailTextLabel.textColor = [UIColor whiteColor];
         _creditsCell.textLabel.textColor = [UIColor whiteColor];
-        _creditsCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        _creditsCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
         _darkTitle.textColor = [UIColor whiteColor];
-        _darkCell.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        _darkCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
         
         
     }
@@ -238,7 +239,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.scrollView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.scrollView.backgroundColor = [UIColor blackColor];
         self.limeName.textColor = [UIColor whiteColor];
         self.limeUser.textColor = [UIColor whiteColor];
     }

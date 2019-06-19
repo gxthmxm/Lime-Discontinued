@@ -25,8 +25,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.tableView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
-        self.tableView.separatorColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
+        self.tableView.backgroundColor = [UIColor blackColor];
+        self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
         self.navigationController.navigationBar.barStyle = 1;
     }
 }
@@ -101,6 +101,8 @@
     depictionViewController.author = [self.parser.packageAuthors objectAtIndex:index];
     depictionViewController.depictionURL = [self.parser.packageDepictions objectAtIndex:index];
     depictionViewController.version = [self.parser.packageVersions objectAtIndex:index];
+    depictionViewController.size = [self.parser.packageSizes objectAtIndex:index];
+    depictionViewController.section = [self.parser.packageSections objectAtIndex:index];
     depictionViewController.icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:index]];
     depictionViewController.installed = YES;
 }

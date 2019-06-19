@@ -52,9 +52,9 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tabBarController.tabBar.barStyle = 1;
         self.navigationController.navigationBar.barStyle = 1;
-        self.webView.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.webView.backgroundColor = [UIColor blackColor];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        self.view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+        self.view.backgroundColor = [UIColor blackColor];
     }
 }
 

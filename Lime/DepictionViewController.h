@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIView *bigView;
 @property (strong, nonatomic) IBOutlet UIView *separator;
 
+@property (strong, nonatomic) IBOutlet UIView *infoView;
+@property (strong, nonatomic) IBOutlet UIView *separator2;
+@property (strong, nonatomic) IBOutlet UILabel *informationTitle;
+
 @property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) UIImage *banner;
 @property (strong, nonatomic) NSString *name;
@@ -34,7 +38,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *package;
 @property (strong, nonatomic) NSString *depictionURL;
 @property (strong, nonatomic) NSString *packageDesc;
+@property (strong, nonatomic) NSString *size;
+@property (strong, nonatomic) NSString *finalSize;
+@property (strong, nonatomic) NSString *section;
 @property (nonatomic) bool installed;
+
+@end
+
+@interface InformationTableView : UITableViewController
+
+@property (strong, nonatomic) IBOutlet UITableViewCell *developerCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *sizeCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *sectionCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *versionCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *identifierCell;
 
 @end
 

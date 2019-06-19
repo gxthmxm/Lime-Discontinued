@@ -21,6 +21,8 @@
     self.packageDepictions = [[NSMutableArray alloc] init];
     self.packageAuthors = [[NSMutableArray alloc] init];
 	self.packageVersions = [[NSMutableArray alloc] init];
+    self.packageSizes = [[NSMutableArray alloc] init];
+    self.packageSections = [[NSMutableArray alloc] init];
     
     NSMutableArray *names = [[NSMutableArray alloc] init];
     FILE *file = fopen("/var/lib/dpkg/status", "r");
@@ -31,6 +33,8 @@
     NSString *lastAuthor = @"";
     NSString *lastDepiction = @"";
 	NSString *lastVersion = @"";
+    NSString *lastSize = @"";
+    NSString *lastSection = @"";
     while(fgets(str, 999, file) != NULL) {
 #define ProcessEntry(val, str) ([[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@val": " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""])
 #define TestEntrySet(val, var) if (strstr(str, val":")) var = ProcessEntry(val, str)
@@ -41,6 +45,8 @@
 		TestEntrySet("Author", lastAuthor);
 		TestEntrySet("Depiction", lastDepiction);
 		TestEntrySet("Version", lastVersion);
+        TestEntrySet("Size", lastSize);
+        TestEntrySet("Section", lastSection);
         if(strstr(str, "Section:")) {
             icon = [NSString stringWithFormat:@"%@/sections/%@.png",[[NSBundle mainBundle] resourcePath], [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
             if([icon rangeOfString:@"Themes"].location != NSNotFound) icon = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/sections/Themes.png"];
@@ -57,16 +63,21 @@
             if(self.packageIDs.count < names.count) {
                 NSInteger index = [names indexOfObject:lastObject];
 				[self.packageVersions insertObject:lastVersion atIndex:index];
+                [self.packageSizes insertObject:lastSize atIndex:index];
                 [self.packageIDs insertObject:lastID atIndex:index];
                 [self.packageIcons insertObject:icon atIndex:index];
                 [self.packageDescs insertObject:lastDesc atIndex:index];
                 [self.packageAuthors insertObject:lastAuthor atIndex:index];
                 [self.packageDepictions insertObject:lastDepiction atIndex:index];
+                [self.packageSections insertObject:lastSection atIndex:index];
                 icon = @"";
                 lastID = @"";
                 lastDesc = @"";
                 lastAuthor = @"";
                 lastDepiction = @"";
+                lastVersion = @"";
+                lastSize = @"";
+                lastSection = @"";
             }
         }
     }
