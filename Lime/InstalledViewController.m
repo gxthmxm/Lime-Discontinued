@@ -54,9 +54,11 @@
     cell.imageView.image = icon;
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
-    [cell setSelectedBackgroundView:bgColorView];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        UIView *bgColorView = [[UIView alloc] init];
+        bgColorView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
+        [cell setSelectedBackgroundView:bgColorView];
+    }
     
     /*
     UIButton *getButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 90, 20, 74, 30)];
@@ -105,7 +107,11 @@
     depictionViewController.author = [self.parser.packageAuthors objectAtIndex:index];
     depictionViewController.depictionURL = [self.parser.packageDepictions objectAtIndex:index];
     depictionViewController.version = [self.parser.packageVersions objectAtIndex:index];
-    depictionViewController.size = [self.parser.packageSizes objectAtIndex:index];
+    if (![[self.parser.packageSizes objectAtIndex:index] isEqualToString:@""] || !([self.parser.packageSizes objectAtIndex:index] == nil)) {
+        depictionViewController.size = [self.parser.packageSizes objectAtIndex:index];
+    } else {
+        depictionViewController.size = @"Unkown";
+    }
     depictionViewController.section = [self.parser.packageSections objectAtIndex:index];
     depictionViewController.icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:index]];
     depictionViewController.installed = YES;
