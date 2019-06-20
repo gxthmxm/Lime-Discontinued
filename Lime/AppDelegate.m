@@ -58,13 +58,13 @@
         [self URLQueue];
     }
     if ([[url host]  isEqual: @"url"]) {
-        //[self URLLink:url];
+        [self URLLink:url];
     }
     if ([[url host]  isEqual: @"repo"]) {
-        //[self URLRepo:url];
+        [self URLRepo:url];
     }
     if ([[url host]  isEqual: @"package"]) {
-        //[self URLPackage:url];
+        [self URLPackage:url];
     }
     if ([[url host]  isEqual: @"refresh"]) {
         [self URLRefresh];
@@ -108,16 +108,40 @@
     [alert show];
 }
 
--(void)URLLink:(NSString*)url {
+-(void)URLLink:(NSURL*)url {
+    NSString *finishedURL = @"please enter an url";
+    NSString *path = [url path];
     
+    if(path.length > 1) {
+        finishedURL = [NSString stringWithFormat:@"Open URL: %@", [path substringFromIndex:1]];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:finishedURL delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
--(void)URLRepo:(NSString*)repo {
+-(void)URLRepo:(NSURL*)repo {
+    NSString *repoURL = @"please enter a repo";
+    NSString *path = [repo path];
     
+    if(path.length > 1) {
+        repoURL = [NSString stringWithFormat:@"Open Add Repo Prompt with following URL: %@", [path substringFromIndex:1]];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:repoURL delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
--(void)URLPackage:(NSString*)package {
+-(void)URLPackage:(NSURL*)package {
+    NSString *packageID = @"please enter a package";
+    NSMutableArray *paths = [package pathComponents];
     
+    if(paths.count > 1) {
+        packageID = [NSString stringWithFormat:@"Open package with ID: %@", (NSString*)[paths objectAtIndex:1]];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:packageID delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 -(void)URLRefresh {
