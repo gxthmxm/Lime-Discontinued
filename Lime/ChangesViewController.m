@@ -29,8 +29,6 @@
 }
 - (IBAction)clearFirstLaunch:(id)sender {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-    wait(1);
-    exit(0);
 }
 
 @end

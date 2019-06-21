@@ -23,6 +23,7 @@
     NSString *htmlFileDark = [[NSBundle mainBundle] pathForResource:@"HTML/indexdark" ofType:@"html"];
     NSString *htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     NSString *htmlStringDark = [NSString stringWithContentsOfFile:htmlFileDark encoding:NSUTF8StringEncoding error:nil];
+    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         [_webView loadHTMLString:htmlStringDark baseURL:[[NSBundle mainBundle] bundleURL]];
     } else {

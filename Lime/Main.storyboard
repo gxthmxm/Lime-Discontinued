@@ -682,7 +682,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOe-ed-9nZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
@@ -992,15 +992,6 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <wkWebView contentMode="scaleToFill" fixedFrame="YES" customUserAgent="" translatesAutoresizingMaskIntoConstraints="NO" id="GGb-LD-QkZ">
-                                        <rect key="frame" x="0.0" y="338" width="375" height="0.0"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <wkWebViewConfiguration key="configuration">
-                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                            <wkPreferences key="preferences"/>
-                                        </wkWebViewConfiguration>
-                                    </wkWebView>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-ht-yal">
                                         <rect key="frame" x="0.0" y="346" width="375" height="235"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1037,7 +1028,6 @@
                         <outlet property="authorLabel" destination="Jp6-Cj-R8h" id="atR-UC-b4X"/>
                         <outlet property="bannerView" destination="Sld-fv-k3b" id="y12-lz-sC3"/>
                         <outlet property="bigView" destination="krA-PL-m2Y" id="TlS-xL-Fly"/>
-                        <outlet property="depictionView" destination="GGb-LD-QkZ" id="mae-vY-MUb"/>
                         <outlet property="descriptionLabel" destination="sDK-gs-naR" id="VB8-Wb-7PW"/>
                         <outlet property="descriptionTitleLabel" destination="mYc-03-9qC" id="Zqa-vj-xwT"/>
                         <outlet property="getButton" destination="xIv-A2-AGa" id="Tm0-Ku-5Tm"/>

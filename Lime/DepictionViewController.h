@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DepictionViewController : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet WKWebView *depictionView;
+@property (retain, nonatomic) WKWebView *depictionView;
 @property (strong, nonatomic) IBOutlet UIButton *getButton;
 @property (strong, nonatomic) IBOutlet UIButton *moreButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;

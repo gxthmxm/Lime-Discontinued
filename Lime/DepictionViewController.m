@@ -11,6 +11,7 @@
 #import "NSTask.h"
 #import "HomeViewController.h"
 #import "UIColor/UIImageAverageColorAddition.h"
+#import "Settings.h"
 
 @interface DepictionViewController () {
     HomeViewController *homeController;
@@ -78,16 +79,33 @@
     // Remove author email
     NSRange range = [self.author rangeOfString:@"<"];
     if(range.location != NSNotFound) self.author = [self.author substringToIndex:range.location - 1];
+    
     NSURL *nsurl=[NSURL URLWithString:self.depictionURL];
-    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
+    NSMutableURLRequest *nsrequest=[NSMutableURLRequest requestWithURL:nsurl];
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        configuration.applicationNameForUserAgent = @"Lime (Cydia) Dark";
+        [nsrequest setValue:@"Telesphoreo APT-HTTP/1.0.592 LimeDark" forHTTPHeaderField:@"User-Agent"];
+        [nsrequest setValue:@"TRUE" forHTTPHeaderField:@"LimeDark"];
+    } else {
+        configuration.applicationNameForUserAgent = @"Lime (Cydia) Light";
+        [nsrequest setValue:@"Telesphoreo APT-HTTP/1.0.592 LimeLight" forHTTPHeaderField:@"User-Agent"];
+    }
+    
+    self.depictionView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
+    
     [_depictionView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     NSString* scaleMeta = @"var meta = document.createElement('meta'); meta.name = 'viewport'; meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; var head = document.getElementsByTagName('head')[0]; head.appendChild(meta);";
     [_depictionView evaluateJavaScript:scaleMeta completionHandler:nil];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        _depictionView.configuration.applicationNameForUserAgent = @"Zebra (Cydia) Dark";
-    } else {
-        _depictionView.configuration.applicationNameForUserAgent = @"Zebra (Cydia) Light";
-    }
+    
+    [nsrequest setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
+    [nsrequest setValue:[DeviceInfo getUDID] forHTTPHeaderField:@"X-Unique-ID"];
+    [nsrequest setValue:[DeviceInfo machineID] forHTTPHeaderField:@"X-Machine"];
+    [nsrequest setValue:@"API" forHTTPHeaderField:@"Payment-Provider"];
+    
+    [nsrequest setValue:[[NSLocale preferredLanguages] firstObject] forHTTPHeaderField:@"Accept-Language"];
+    [self.scrollView addSubview:_depictionView];
     [_depictionView loadRequest:nsrequest];
     //_depictionView.scrollView.userInteractionEnabled = NO;
     if (self.icon != nil) {

@@ -106,6 +106,7 @@
 #import "Settings.h"
 #import <sys/utsname.h>
 #import "MobileGestalt.h"
+#import <sys/sysctl.h>
 
 @interface Settings ()
 
@@ -119,6 +120,16 @@
     
     return [NSString stringWithCString:systemInfo.machine
                               encoding:NSUTF8StringEncoding];
+}
+
++ (NSString *)machineID {
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *answer = malloc(size);
+    sysctlbyname("hw.machine", answer, &size, NULL, 0);
+    NSString *machineIdentifier = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
+    free(answer);
+    return machineIdentifier;
 }
 
 + (NSString *)getECID {

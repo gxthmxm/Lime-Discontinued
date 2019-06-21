@@ -59,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)deviceName;
 + (NSString *)getECID;
 + (NSString *)getUDID;
++ (NSString *)machineID;
 
 @end
 
