@@ -23,26 +23,6 @@
 		4D841BD8228615C200234599 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D841BD7228615C200234599 /* Settings.m */; };
 		4D841BF0228620D000234599 /* libMobileGestalt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D841BEF228620D000234599 /* libMobileGestalt.tbd */; };
 		4DACF2BC227CB08A003F527C /* NSArray+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DACF2BB227CB08A003F527C /* NSArray+Random.m */; };
-		4DBA571D228710C800F41FF4 /* iPhone10,2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5709228710C300F41FF4 /* iPhone10,2.png */; };
-		4DBA571E228710C800F41FF4 /* iPhone8,4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA570A228710C400F41FF4 /* iPhone8,4.png */; };
-		4DBA571F228710C800F41FF4 /* iPhone11,6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA570B228710C400F41FF4 /* iPhone11,6.png */; };
-		4DBA5720228710C800F41FF4 /* iPhone11,8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA570C228710C400F41FF4 /* iPhone11,8.png */; };
-		4DBA5721228710C800F41FF4 /* iPhone9,2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA570D228710C400F41FF4 /* iPhone9,2.png */; };
-		4DBA5722228710C800F41FF4 /* iPhone8,2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA570E228710C500F41FF4 /* iPhone8,2.png */; };
-		4DBA5723228710C800F41FF4 /* iPhone9,3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA570F228710C500F41FF4 /* iPhone9,3.png */; };
-		4DBA5724228710C800F41FF4 /* iPhone9,1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5710228710C500F41FF4 /* iPhone9,1.png */; };
-		4DBA5725228710C800F41FF4 /* iPhone9,4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5711228710C500F41FF4 /* iPhone9,4.png */; };
-		4DBA5726228710C800F41FF4 /* iPhone7,2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5712228710C500F41FF4 /* iPhone7,2.png */; };
-		4DBA5727228710C800F41FF4 /* iPhone11,2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5713228710C500F41FF4 /* iPhone11,2.png */; };
-		4DBA5728228710C800F41FF4 /* iPhone10,3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5714228710C600F41FF4 /* iPhone10,3.png */; };
-		4DBA5729228710C800F41FF4 /* iPhone10,4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5715228710C600F41FF4 /* iPhone10,4.png */; };
-		4DBA572A228710C800F41FF4 /* iPhone6,2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5716228710C600F41FF4 /* iPhone6,2.png */; };
-		4DBA572B228710C800F41FF4 /* iPhone11,4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5717228710C700F41FF4 /* iPhone11,4.png */; };
-		4DBA572C228710C800F41FF4 /* iPhone10,5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5718228710C700F41FF4 /* iPhone10,5.png */; };
-		4DBA572D228710C800F41FF4 /* iPhone10,1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA5719228710C700F41FF4 /* iPhone10,1.png */; };
-		4DBA572E228710C800F41FF4 /* iPhone8,1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA571A228710C700F41FF4 /* iPhone8,1.png */; };
-		4DBA572F228710C800F41FF4 /* iPhone7,1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA571B228710C700F41FF4 /* iPhone7,1.png */; };
-		4DBA5730228710C800F41FF4 /* iPhone10,6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA571C228710C700F41FF4 /* iPhone10,6.png */; };
 		4DD1D57F22A0669D00CC9824 /* ConfigControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1D57E22A0669D00CC9824 /* ConfigControllers.m */; };
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
 		662F620E22A00E6D00931533 /* SourcesBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F620D22A00E6D00931533 /* SourcesBackend.m */; };
@@ -102,26 +82,6 @@
 		4D841BEF228620D000234599 /* libMobileGestalt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libMobileGestalt.tbd; path = usr/lib/libMobileGestalt.tbd; sourceTree = SDKROOT; };
 		4DACF2BA227CB07B003F527C /* NSArray+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Random.h"; sourceTree = "<group>"; };
 		4DACF2BB227CB08A003F527C /* NSArray+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Random.m"; sourceTree = "<group>"; };
-		4DBA5709228710C300F41FF4 /* iPhone10,2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone10,2.png"; sourceTree = "<group>"; };
-		4DBA570A228710C400F41FF4 /* iPhone8,4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone8,4.png"; sourceTree = "<group>"; };
-		4DBA570B228710C400F41FF4 /* iPhone11,6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone11,6.png"; sourceTree = "<group>"; };
-		4DBA570C228710C400F41FF4 /* iPhone11,8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone11,8.png"; sourceTree = "<group>"; };
-		4DBA570D228710C400F41FF4 /* iPhone9,2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone9,2.png"; sourceTree = "<group>"; };
-		4DBA570E228710C500F41FF4 /* iPhone8,2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone8,2.png"; sourceTree = "<group>"; };
-		4DBA570F228710C500F41FF4 /* iPhone9,3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone9,3.png"; sourceTree = "<group>"; };
-		4DBA5710228710C500F41FF4 /* iPhone9,1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone9,1.png"; sourceTree = "<group>"; };
-		4DBA5711228710C500F41FF4 /* iPhone9,4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone9,4.png"; sourceTree = "<group>"; };
-		4DBA5712228710C500F41FF4 /* iPhone7,2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone7,2.png"; sourceTree = "<group>"; };
-		4DBA5713228710C500F41FF4 /* iPhone11,2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone11,2.png"; sourceTree = "<group>"; };
-		4DBA5714228710C600F41FF4 /* iPhone10,3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone10,3.png"; sourceTree = "<group>"; };
-		4DBA5715228710C600F41FF4 /* iPhone10,4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone10,4.png"; sourceTree = "<group>"; };
-		4DBA5716228710C600F41FF4 /* iPhone6,2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone6,2.png"; sourceTree = "<group>"; };
-		4DBA5717228710C700F41FF4 /* iPhone11,4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone11,4.png"; sourceTree = "<group>"; };
-		4DBA5718228710C700F41FF4 /* iPhone10,5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone10,5.png"; sourceTree = "<group>"; };
-		4DBA5719228710C700F41FF4 /* iPhone10,1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone10,1.png"; sourceTree = "<group>"; };
-		4DBA571A228710C700F41FF4 /* iPhone8,1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone8,1.png"; sourceTree = "<group>"; };
-		4DBA571B228710C700F41FF4 /* iPhone7,1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone7,1.png"; sourceTree = "<group>"; };
-		4DBA571C228710C700F41FF4 /* iPhone10,6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone10,6.png"; sourceTree = "<group>"; };
 		4DD1D57E22A0669D00CC9824 /* ConfigControllers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigControllers.m; sourceTree = "<group>"; };
 		4DD1D58022A066A800CC9824 /* ConfigControllers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigControllers.h; sourceTree = "<group>"; };
 		4DE098D5227B53E800A00A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -192,7 +152,6 @@
 		37D0FC72227753EC0039BE3C /* Lime */ = {
 			isa = PBXGroup;
 			children = (
-				4DBA5708228710BA00F41FF4 /* iphone */,
 				4DE09915227B5A2300A00A43 /* output */,
 				66381721227A078000E92BE7 /* sections */,
 				4D33AB51227873E500CDFC49 /* Main.storyboard */,
@@ -264,33 +223,6 @@
 				4DACF2BB227CB08A003F527C /* NSArray+Random.m */,
 			);
 			path = "Random Object";
-			sourceTree = "<group>";
-		};
-		4DBA5708228710BA00F41FF4 /* iphone */ = {
-			isa = PBXGroup;
-			children = (
-				4DBA5716228710C600F41FF4 /* iPhone6,2.png */,
-				4DBA571B228710C700F41FF4 /* iPhone7,1.png */,
-				4DBA5712228710C500F41FF4 /* iPhone7,2.png */,
-				4DBA571A228710C700F41FF4 /* iPhone8,1.png */,
-				4DBA570E228710C500F41FF4 /* iPhone8,2.png */,
-				4DBA570A228710C400F41FF4 /* iPhone8,4.png */,
-				4DBA5710228710C500F41FF4 /* iPhone9,1.png */,
-				4DBA570D228710C400F41FF4 /* iPhone9,2.png */,
-				4DBA570F228710C500F41FF4 /* iPhone9,3.png */,
-				4DBA5711228710C500F41FF4 /* iPhone9,4.png */,
-				4DBA5719228710C700F41FF4 /* iPhone10,1.png */,
-				4DBA5709228710C300F41FF4 /* iPhone10,2.png */,
-				4DBA5714228710C600F41FF4 /* iPhone10,3.png */,
-				4DBA5715228710C600F41FF4 /* iPhone10,4.png */,
-				4DBA5718228710C700F41FF4 /* iPhone10,5.png */,
-				4DBA571C228710C700F41FF4 /* iPhone10,6.png */,
-				4DBA5713228710C500F41FF4 /* iPhone11,2.png */,
-				4DBA5717228710C700F41FF4 /* iPhone11,4.png */,
-				4DBA570B228710C400F41FF4 /* iPhone11,6.png */,
-				4DBA570C228710C400F41FF4 /* iPhone11,8.png */,
-			);
-			path = iphone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,31 +328,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DBA5721228710C800F41FF4 /* iPhone9,2.png in Resources */,
 				37D0FCA922776ACF0039BE3C /* HTML in Resources */,
 				66381722227A078100E92BE7 /* sections in Resources */,
-				4DBA5720228710C800F41FF4 /* iPhone11,8.png in Resources */,
-				4DBA5723228710C800F41FF4 /* iPhone9,3.png in Resources */,
 				37D0FC80227753EF0039BE3C /* Assets.xcassets in Resources */,
-				4DBA5729228710C800F41FF4 /* iPhone10,4.png in Resources */,
-				4DBA5730228710C800F41FF4 /* iPhone10,6.png in Resources */,
-				4DBA572D228710C800F41FF4 /* iPhone10,1.png in Resources */,
-				4DBA572E228710C800F41FF4 /* iPhone8,1.png in Resources */,
-				4DBA5722228710C800F41FF4 /* iPhone8,2.png in Resources */,
-				4DBA572C228710C800F41FF4 /* iPhone10,5.png in Resources */,
-				4DBA571E228710C800F41FF4 /* iPhone8,4.png in Resources */,
-				4DBA5726228710C800F41FF4 /* iPhone7,2.png in Resources */,
-				4DBA571D228710C800F41FF4 /* iPhone10,2.png in Resources */,
-				4DBA5728228710C800F41FF4 /* iPhone10,3.png in Resources */,
 				4D33AB542278742A00CDFC49 /* LaunchScreen.storyboard in Resources */,
-				4DBA5727228710C800F41FF4 /* iPhone11,2.png in Resources */,
 				4D33AB52227873E500CDFC49 /* Main.storyboard in Resources */,
-				4DBA572A228710C800F41FF4 /* iPhone6,2.png in Resources */,
-				4DBA5725228710C800F41FF4 /* iPhone9,4.png in Resources */,
-				4DBA5724228710C800F41FF4 /* iPhone9,1.png in Resources */,
-				4DBA572B228710C800F41FF4 /* iPhone11,4.png in Resources */,
-				4DBA572F228710C800F41FF4 /* iPhone7,1.png in Resources */,
-				4DBA571F228710C800F41FF4 /* iPhone11,6.png in Resources */,
 				4DE09916227B5A2300A00A43 /* output in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

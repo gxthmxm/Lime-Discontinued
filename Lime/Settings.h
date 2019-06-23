@@ -10,9 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Settings : UIViewController
+@interface Settings : UIViewController <UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIImageView *iPhoneView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *iOSLabel;
 @property (strong, nonatomic) IBOutlet UIView *infoTable;
@@ -27,12 +26,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITableViewCell *bootCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *darkCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *creditsCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *respringCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *uicacheCell;
 @property (strong, nonatomic) IBOutlet UISwitch *darkToggle;
 @property (strong, nonatomic) IBOutlet UILabel *darkTitle;
 
 @end
 
-@interface Credits : UIViewController
+@interface InfoCells : UITableViewCell
+@end
+
+@interface Credits : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *limeTwitter;
 @property (strong, nonatomic) IBOutlet UIView *creditsTable;
@@ -48,9 +52,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITableViewCell *coronuxCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *artikusCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *luisCell;
-@property (strong, nonatomic) IBOutlet UITableViewCell *midnightCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *pixelomerCell;
-@property (strong, nonatomic) IBOutlet UITableViewCell *supportCell;
+
+@property (strong, nonatomic) IBOutlet UILabel *evenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *coroLabel;
+@property (strong, nonatomic) IBOutlet UILabel *artiLabel;
+@property (strong, nonatomic) IBOutlet UILabel *luisLabel;
+@property (strong, nonatomic) IBOutlet UILabel *pixelLabel;
+
+-(void)openTwitterAccountWithName:(NSString*)user;
 
 @end
 
@@ -60,6 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getECID;
 + (NSString *)getUDID;
 + (NSString *)machineID;
++ (NSString *)localIP;
 
 @end
 
