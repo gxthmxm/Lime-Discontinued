@@ -9,6 +9,7 @@
 #import "InstalledViewController.h"
 #import "DepictionViewController.h"
 #import "UIColor/UIImageAverageColorAddition.h"
+#import "LimeHelper.h"
 
 @interface InstalledViewController ()
 
@@ -32,19 +33,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.parser.packageNames.count;
+    return self.parser.installedPackages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LMPackage *package = (LMPackage*)[self.parser.installedPackages objectAtIndex:indexPath.row];
+    
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
-    cell.textLabel.text = [self.parser.packageNames objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.parser.packageDescs objectAtIndex:indexPath.row];
+    cell.textLabel.text = package.name;
+    cell.detailTextLabel.text = package.desc;
     cell.detailTextLabel.alpha = 0.5;
-    UIImage *icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:indexPath.row]];
+    UIImage *icon = [LimeHelper iconFromPackage:package];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,40), NO, [UIScreen mainScreen].scale);
     [icon drawInRect:CGRectMake(0,0,40,40)];
     icon = UIGraphicsGetImageFromCurrentImageContext();
@@ -101,16 +104,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     DepictionViewController *depictionViewController = segue.destinationViewController;
     NSInteger index = [(UITableView *)self.view indexPathForSelectedRow].row;
-    depictionViewController.package = [self.parser.packageIDs objectAtIndex:index];
-    depictionViewController.name = [self.parser.packageNames objectAtIndex:index];
-    depictionViewController.packageDesc = [self.parser.packageDescs objectAtIndex:index];
-    depictionViewController.author = [self.parser.packageAuthors objectAtIndex:index];
-    depictionViewController.depictionURL = [self.parser.packageDepictions objectAtIndex:index];
-    depictionViewController.version = [self.parser.packageVersions objectAtIndex:index];
-    depictionViewController.size = [self.parser.packageSizes objectAtIndex:index];
-    depictionViewController.section = [self.parser.packageSections objectAtIndex:index];
-    depictionViewController.icon = [UIImage imageWithContentsOfFile:[self.parser.packageIcons objectAtIndex:index]];
-    depictionViewController.installed = YES;
+    
+    depictionViewController.package = (LMPackage*)[self.parser.installedPackages objectAtIndex:index];
 }
 
 @end

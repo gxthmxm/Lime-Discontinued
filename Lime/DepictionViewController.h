@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import "LimeHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIView *separator2;
 @property (strong, nonatomic) IBOutlet UILabel *informationTitle;
 
-@property (strong, nonatomic) UIImage *icon;
+/*@property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) UIImage *banner;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *author;
@@ -38,10 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *package;
 @property (strong, nonatomic) NSString *depictionURL;
 @property (strong, nonatomic) NSString *packageDesc;
-@property (strong, nonatomic) NSString *size;
-@property (strong, nonatomic) NSString *finalSize;
+@property (strong, nonatomic) NSString *size;*/
+@property (strong, nonatomic) NSString *finalSize;/*
 @property (strong, nonatomic) NSString *section;
-@property (nonatomic) bool installed;
+@property (nonatomic) bool installed;*/
+@property (strong, nonatomic) LMPackage* package;
 
 @end
 

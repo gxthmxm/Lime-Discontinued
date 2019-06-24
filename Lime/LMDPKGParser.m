@@ -7,6 +7,7 @@
 //
 
 #import "LMDPKGParser.h"
+#import "LimeHelper.h"
 @import UIKit;
 
 @implementation LMDPKGParser
@@ -14,15 +15,7 @@
 - (instancetype)init {
     // Icy's parser, but a bit Limier
     self = [super init];
-    self.packageIDs = [[NSMutableArray alloc] init];
-    self.packageIcons = [[NSMutableArray alloc] init];
-    self.packageNames = [[NSMutableArray alloc] init];
-    self.packageDescs = [[NSMutableArray alloc] init];
-    self.packageDepictions = [[NSMutableArray alloc] init];
-    self.packageAuthors = [[NSMutableArray alloc] init];
-	self.packageVersions = [[NSMutableArray alloc] init];
-    self.packageSizes = [[NSMutableArray alloc] init];
-    self.packageSections = [[NSMutableArray alloc] init];
+    self.installedPackages = [[NSMutableArray alloc] init];
     
     NSMutableArray *names = [[NSMutableArray alloc] init];
     FILE *file = fopen("/var/lib/dpkg/status", "r");
@@ -60,20 +53,23 @@
         if(strlen(str) < 2 && names.count > 0) {
             NSString *lastObject = [names lastObject];
             [names sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-            if(self.packageIDs.count < names.count) {
+            if(self.installedPackages.count < names.count) {
                 NSInteger index = [names indexOfObject:lastObject];
-				[self.packageVersions insertObject:lastVersion atIndex:index];
-                if (!(lastSize == nil || lastSize.length < 1 || [lastSize isEqualToString:@""])) {
-                    [self.packageSizes insertObject:lastSize atIndex:index];
-                } else {
-                    [self.packageSizes insertObject:[NSString stringWithFormat:@"Unknown"] atIndex:index];
-                }
-                [self.packageIDs insertObject:lastID atIndex:index];
-                [self.packageIcons insertObject:icon atIndex:index];
-                [self.packageDescs insertObject:lastDesc atIndex:index];
-                [self.packageAuthors insertObject:lastAuthor atIndex:index];
-                [self.packageDepictions insertObject:lastDepiction atIndex:index];
-                [self.packageSections insertObject:lastSection atIndex:index];
+            
+                LMPackage *package = [LMPackage new];
+                package.identifier = lastID;
+                package.iconPath = icon;
+                package.desc = lastDesc;
+                package.author = lastAuthor;
+                package.depictionURL = [NSURL URLWithString:lastDepiction];
+                package.section = lastSection;
+                package.installedSize = lastSize;
+                package.size = lastSize;
+                package.name = (NSString*)[names objectAtIndex:index];
+                package.version = lastVersion;
+                
+                [self.installedPackages insertObject:package atIndex:index];
+                
                 icon = @"";
                 lastID = @"";
                 lastDesc = @"";
@@ -85,7 +81,6 @@
             }
         }
     }
-    self.packageNames = names;
     fclose(file);
     return self;
 }

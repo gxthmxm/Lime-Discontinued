@@ -12,6 +12,7 @@
 #import "HomeViewController.h"
 #import "UIColor/UIImageAverageColorAddition.h"
 #import "Settings.h"
+#import "LimeHelper.h"
 
 @interface DepictionViewController () {
     HomeViewController *homeController;
@@ -24,13 +25,13 @@
     [super viewWillAppear:animated];
     
     DepictionViewController *depictionViewController = (DepictionViewController*)self.parentViewController;
-    if (![depictionViewController.author  isEqual:@""]) {
-        self.developerCell.detailTextLabel.text = depictionViewController.author;
+    if (![depictionViewController.package.author  isEqual:@""]) {
+        self.developerCell.detailTextLabel.text = depictionViewController.package.author;
     } else {
         self.developerCell.detailTextLabel.text = @"Unknown";
     }
-    self.versionCell.detailTextLabel.text = depictionViewController.version;
-    self.identifierCell.detailTextLabel.text = depictionViewController.package;
+    self.versionCell.detailTextLabel.text = depictionViewController.package.version;
+    self.identifierCell.detailTextLabel.text = depictionViewController.package.identifier;
     
     int sizeInt = [depictionViewController.finalSize intValue];
     NSString *byteFormat = @" KB";
@@ -46,7 +47,7 @@
         
     self.sizeCell.detailTextLabel.text = [NSString stringWithFormat:@"%d%@", sizeInt, byteFormat];
     
-    self.sectionCell.detailTextLabel.text = depictionViewController.section;
+    self.sectionCell.detailTextLabel.text = depictionViewController.package.section;
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
@@ -77,10 +78,10 @@
     _scrollView.scrollsToTop = NO;
     _scrollView.delegate = self;
     // Remove author email
-    NSRange range = [self.author rangeOfString:@"<"];
-    if(range.location != NSNotFound) self.author = [self.author substringToIndex:range.location - 1];
+    NSRange range = [self.package.author rangeOfString:@"<"];
+    if(range.location != NSNotFound) self.package.author = [self.package.author substringToIndex:range.location - 1];
     
-    NSURL *nsurl=[NSURL URLWithString:self.depictionURL];
+    NSURL *nsurl = self.package.depictionURL;
     NSMutableURLRequest *nsrequest=[NSMutableURLRequest requestWithURL:nsurl];
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     
@@ -108,18 +109,15 @@
     [self.scrollView addSubview:_depictionView];
     [_depictionView loadRequest:nsrequest];
     //_depictionView.scrollView.userInteractionEnabled = NO;
-    if (self.icon != nil) {
-        self.iconView.image = self.icon;
+    if (![self.package.iconPath isEqual:@""]) {
+        self.iconView.image = [LimeHelper iconFromPackage:self.package];
     }
-    if (self.banner != nil) {
-        self.bannerView.image = self.banner;
-    }
-    self.bannerView.backgroundColor = [self.icon averageColor];
-    self.titleLabel.text = self.name;
+    self.bannerView.backgroundColor = [[LimeHelper iconFromPackage:self.package] averageColor];
+    self.titleLabel.text = self.package.name;
     [_titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_titleLabel sizeToFit];
-    if (![self.author  isEqual:@""]) {
-        self.authorLabel.text = self.author;
+    if (![self.package.author  isEqual:@""]) {
+        self.authorLabel.text = self.package.author;
     } else {
         self.authorLabel.text = @"Unknown";
     }
@@ -127,7 +125,7 @@
     [_authorLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_authorLabel sizeToFit];
     _authorLabel.frame = CGRectMake(_authorLabel.frame.origin.x, _titleLabel.frame.origin.y + _titleLabel.frame.size.height + 3, _authorLabel.frame.size.width, _authorLabel.frame.size.height);
-    self.descriptionLabel.text = self.packageDesc;
+    self.descriptionLabel.text = self.package.desc;
     [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self.descriptionLabel sizeToFit];
     _bigView.frame = CGRectMake(_bigView.frame.origin.x, _bigView.frame.origin.y, _bigView.frame.size.width, self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 17);
@@ -136,12 +134,12 @@
     self.getButton.backgroundColor = self.tabBarController.tabBar.tintColor; //[[[UIApplication sharedApplication] delegate] window].tintColor;
     self.moreButton.backgroundColor = self.tabBarController.tabBar.tintColor;
 
-    if (self.installed) {
+    if (self.package.installed) {
         [_getButton setTitle:@"MORE" forState:UIControlStateNormal];
     }
     
-    NSMutableArray *sizeArray = [self.size componentsSeparatedByString:@"-"];
-    self.finalSize = (NSString*)[sizeArray objectAtIndex:1];
+    NSMutableArray *sizeArray = [self.package.installedSize componentsSeparatedByString:@"-"];
+    self.finalSize = [sizeArray objectAtIndex:1];
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height - 60);
     
@@ -163,13 +161,13 @@
     button.frame = CGRectMake(0, 0, 74, 30);
     [button setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.2] forState:UIControlStateHighlighted];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    if (self.installed) {
+    if (self.package.installed) {
         [button setTitle:@"MORE" forState:UIControlStateNormal];
     } else {
         [button setTitle:@"GET" forState:UIControlStateNormal];
     }
     button.titleLabel.font = [UIFont fontWithName:@".SFUIText-Bold" size:13];
-    button.backgroundColor = [self.icon averageColor];
+    button.backgroundColor = [[LimeHelper iconFromPackage:self.package] averageColor];
     button.layer.cornerRadius = 15.0;
     
     UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
@@ -210,7 +208,7 @@
 
     UIAlertAction* shareAction = [UIAlertAction actionWithTitle:@"Share Package..." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             NSString* urlScheme = @"lime://package/";
-            NSString* url = [urlScheme stringByAppendingString:self.package];
+            NSString* url = [urlScheme stringByAppendingString:self.package.identifier];
             NSArray* activityItems = @[@"",[NSURL URLWithString:url]];
             NSArray* applicationActivities = nil;
             NSArray* excludeActivities = @[UIActivityTypePostToFacebook];
@@ -240,7 +238,7 @@
 {
     if (object == _depictionView.scrollView && [keyPath isEqual:@"contentSize"]) {
         // we are here because the contentSize of the WebView's scrollview changed.
-        if (self.depictionURL && self.depictionURL.length > 0) {
+        if (self.package.depictionURL && [NSString stringWithFormat:@"%@", self.package.depictionURL].length > 0) {
             _depictionView.frame = CGRectMake(_depictionView.frame.origin.x, _depictionView.frame.origin.y, _scrollView.frame.size.width, _depictionView.scrollView.contentSize.height);
             _infoView.frame = CGRectMake(0, _depictionView.frame.origin.y + _depictionView.frame.size.height, _infoView.frame.size.width, _infoView.frame.size.height);
             
@@ -270,7 +268,7 @@
             if([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
                 self.navigationController.navigationBar.barStyle = 1;
             }
-            self.navigationController.navigationBar.tintColor = [self.icon averageColor];
+            self.navigationController.navigationBar.tintColor = [[LimeHelper iconFromPackage:self.package] averageColor];
         }];
     } else {
         [UIView animateWithDuration:0.2f animations:^{

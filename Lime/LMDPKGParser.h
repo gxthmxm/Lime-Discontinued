@@ -12,15 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LMDPKGParser : NSObject
 
-@property (strong, nonatomic) NSMutableArray *packageIDs;
-@property (strong, nonatomic) NSMutableArray *packageNames;
-@property (strong, nonatomic) NSMutableArray *packageIcons;
-@property (strong, nonatomic) NSMutableArray *packageDescs;
-@property (strong, nonatomic) NSMutableArray *packageDepictions;
-@property (strong, nonatomic) NSMutableArray *packageAuthors;
-@property (strong, nonatomic) NSMutableArray *packageVersions;
-@property (strong, nonatomic) NSMutableArray *packageSizes;
-@property (strong, nonatomic) NSMutableArray *packageSections;
+@property (strong, nonatomic) NSMutableArray *installedPackages;
 
 @end
 

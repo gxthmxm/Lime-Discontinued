@@ -16,10 +16,6 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"] == YES) {
         NSLog(@" first");
         [self performSegueWithIdentifier:@"firstLaunch" sender:self];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"gay" message:@"gay" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action){}];
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
     } else {
         [self performSegueWithIdentifier:@"normalLaunch" sender:self];

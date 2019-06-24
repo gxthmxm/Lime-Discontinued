@@ -9,11 +9,15 @@
 #import "SourcesViewController.h"
 #import "Settings.h"
 #import "SourcesBackend.h"
+#import <Foundation/Foundation.h>
 
 @implementation SourcesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"load" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    
     NSString *limePath = @"/var/mobile/Documents/Lime/";
     NSString *sourcesPath = @"/var/mobile/Documents/Lime/sources.list";
     NSString *listsPath = @"/var/mobile/Documents/Lime/lists/";
