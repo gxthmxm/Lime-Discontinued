@@ -51,9 +51,9 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController setNavigationBarHidden:YES];
+    self.navigationController.navigationBar.barStyle = 1;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tabBarController.tabBar.barStyle = 1;
-        self.navigationController.navigationBar.barStyle = 1;
         self.webView.backgroundColor = [UIColor blackColor];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         self.view.backgroundColor = [UIColor blackColor];
