@@ -39,7 +39,11 @@
 }
 
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    webView.frame = [UIScreen mainScreen].bounds;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        webView.frame = CGRectMake(0, self.view.frame.size.height - self.view.safeAreaLayoutGuide.layoutFrame.size.height - self.tabBarController.tabBar.frame.size.height, self.view.frame.size.width, self.view.safeAreaLayoutGuide.layoutFrame.size.height + self.tabBarController.tabBar.frame.size.height);
+    } else {
+        webView.frame = self.view.frame;
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

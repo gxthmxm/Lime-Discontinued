@@ -63,7 +63,11 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    [self makeLightMode];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        [self makeDarkMode];
+    } else {
+        [self makeLightMode];
+    }
 }
 
 - (IBAction)turnLight:(id)sender {[self makeLightMode];}
@@ -71,7 +75,7 @@
 
 -(void)makeDarkMode {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"darkMode"];
-    [self.darkToggle setImage:[LimeHelper imageWithName:@"Checkmark"]];
+    [self.darkToggle setImage:[LimeHelper imageWithName:@"check"]];
     [self.lightToggle setImage:[UIImage new]];
     
     [UIView animateWithDuration:0.2 animations:^{
@@ -85,7 +89,7 @@
 
 -(void)makeLightMode {
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"darkMode"];
-    [self.lightToggle setImage:[LimeHelper imageWithName:@"Checkmark"]];
+    [self.lightToggle setImage:[LimeHelper imageWithName:@"check"]];
     [self.darkToggle setImage:[UIImage new]];
     
     [UIView animateWithDuration:0.2 animations:^{

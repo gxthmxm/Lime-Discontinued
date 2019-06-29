@@ -173,7 +173,8 @@
         _darkCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
         _respringCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
         _respringCell.textLabel.textColor = [UIColor whiteColor];
-        UIActivityIndicatorView *respringIcon = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        UIImageView *respringIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        respringIcon.image = [LimeHelper imageWithName:@"respringdark"];
         [_respringCell setAccessoryView:respringIcon];
         _uicacheCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
         UIImageView *uicacheIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
@@ -187,8 +188,12 @@
         [_respringCell setSelectedBackgroundView:bgColorView];
         [_uicacheCell setSelectedBackgroundView:bgColorView];
     } else {
-        UIActivityIndicatorView *respringIcon = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        UIImageView *respringIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        respringIcon.image = [LimeHelper imageWithName:@"respringlight"];
         [_respringCell setAccessoryView:respringIcon];
+        UIImageView *uicacheIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        uicacheIcon.image = [LimeHelper imageWithName:@"UICache"];
+        _uicacheCell.accessoryView = uicacheIcon;
     }
 }
 - (IBAction)darkChanged:(id)sender {

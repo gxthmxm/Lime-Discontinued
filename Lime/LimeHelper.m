@@ -29,7 +29,7 @@
 }
 
 +(UIImage*)imageWithName:(NSString*)name {
-    UIImage *image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/PNG/%@.png", [[NSBundle mainBundle] bundlePath], name]];
+    UIImage *image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"/Applications/Lime.app/%@.png", name]];
     return image;
 }
 
