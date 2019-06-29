@@ -356,25 +356,25 @@
                                                                     <action selector="limeTwitter:" destination="000-bq-PVd" eventType="touchUpInside" id="PvV-ze-AXm"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lime" translatesAutoresizingMaskIntoConstraints="NO" id="m3R-e6-8Al">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lime.png" translatesAutoresizingMaskIntoConstraints="NO" id="m3R-e6-8Al">
                                                                 <rect key="frame" x="14" y="27" width="62" height="62"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="50"/>
+                                                                        <integer key="value" value="31"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@LimeInstaller" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aaj-cj-Gvb">
                                                                 <rect key="frame" x="94" y="32" width="121" height="20"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lime Team" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvQ-Zb-4si">
                                                                 <rect key="frame" x="94" y="45" width="159" height="44"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -430,7 +430,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EvenDev" translatesAutoresizingMaskIntoConstraints="NO" id="US4-gE-MML">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="melogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="US4-gE-MML">
                                                     <rect key="frame" x="15" y="10" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <userDefinedRuntimeAttributes>
@@ -1350,7 +1350,7 @@
         <scene sceneID="l5S-ei-foT">
             <objects>
                 <navigationController id="hZr-UT-S54" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="Empty" largeTitles="YES" id="GI4-Dw-ub8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GI4-Dw-ub8">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1443,15 +1443,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="VoB-cu-Rpz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="VoB-cu-Rpz">
                                 <rect key="frame" x="36" y="238" width="72" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pencil" translatesAutoresizingMaskIntoConstraints="NO" id="nDO-bh-rtS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pencil.png" translatesAutoresizingMaskIntoConstraints="NO" id="nDO-bh-rtS">
                                 <rect key="frame" x="36" y="319" width="72" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Speed" translatesAutoresizingMaskIntoConstraints="NO" id="NEC-r2-CPl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Speed.png" translatesAutoresizingMaskIntoConstraints="NO" id="NEC-r2-CPl">
                                 <rect key="frame" x="38" y="396" width="72" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1711,7 +1711,7 @@
                                 <rect key="frame" x="20" y="164" width="335" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrowright" translatesAutoresizingMaskIntoConstraints="NO" id="hBN-6w-QAN">
+                                    <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrowright.png" translatesAutoresizingMaskIntoConstraints="NO" id="hBN-6w-QAN">
                                         <rect key="frame" x="139" y="25" width="56" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -1724,7 +1724,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Cydia" translatesAutoresizingMaskIntoConstraints="NO" id="34c-6x-RFI">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cydia.png" translatesAutoresizingMaskIntoConstraints="NO" id="34c-6x-RFI">
                                         <rect key="frame" x="24" y="8" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -1733,7 +1733,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TransLime" translatesAutoresizingMaskIntoConstraints="NO" id="hIL-jh-I2b">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Trans.png" translatesAutoresizingMaskIntoConstraints="NO" id="hIL-jh-I2b">
                                         <rect key="frame" x="220" y="8" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -1802,11 +1802,11 @@
                                     <segue destination="Ofe-eB-Og1" kind="presentation" identifier="continueNormal" id="8iQ-xE-2eE"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="10r-hy-cBE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dark.png" translatesAutoresizingMaskIntoConstraints="NO" id="10r-hy-cBE">
                                 <rect key="frame" x="207" y="164" width="124" height="228"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LightMode" translatesAutoresizingMaskIntoConstraints="NO" id="xzo-Vh-xKR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="light.png" translatesAutoresizingMaskIntoConstraints="NO" id="xzo-Vh-xKR">
                                 <rect key="frame" x="43" y="164" width="124" height="228"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1824,7 +1824,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="pd7-d3-2Qh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pd7-d3-2Qh">
                                 <rect key="frame" x="90" y="437" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.14000000000000001" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1897,10 +1897,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Cydia" id="igV-pQ-bnj">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="cydia.png" id="igV-pQ-bnj">
                                                     <rect key="frame" x="16" y="0.0" width="59" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="10"/>
@@ -1950,7 +1949,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Zebra" id="fQ4-cj-H6T">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Zebra.png" id="fQ4-cj-H6T">
                                                     <rect key="frame" x="16" y="0.0" width="60" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <userDefinedRuntimeAttributes>
@@ -1987,7 +1986,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lime" translatesAutoresizingMaskIntoConstraints="NO" id="sks-d3-K4V">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lime.png" translatesAutoresizingMaskIntoConstraints="NO" id="sks-d3-K4V">
                                 <rect key="frame" x="109" y="255" width="156" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -2008,29 +2007,28 @@
         <image name="Artikus" width="400" height="400"/>
         <image name="Changes" width="28" height="24"/>
         <image name="Check" width="100" height="100"/>
-        <image name="Checkmark" width="60" height="60"/>
         <image name="Coronux" width="400" height="400"/>
-        <image name="Cydia" width="167" height="167"/>
-        <image name="DarkMode" width="886" height="1732"/>
         <image name="Empty" width="29" height="29"/>
-        <image name="EvenDev" width="1024" height="1024"/>
         <image name="Home" width="28" height="24"/>
         <image name="Installed" width="28" height="25"/>
-        <image name="LightMode" width="886" height="1732"/>
-        <image name="Lime" width="1024" height="1024"/>
-        <image name="Lock" width="104" height="104"/>
+        <image name="Lime.png" width="1024" height="1024"/>
+        <image name="Lock.png" width="104" height="104"/>
         <image name="Luis" width="400" height="400"/>
-        <image name="Pencil" width="104" height="104"/>
+        <image name="Pencil.png" width="104" height="104"/>
         <image name="Search" width="28" height="24"/>
         <image name="Silleo" width="399" height="399"/>
         <image name="Sources" width="28" height="24"/>
-        <image name="Speed" width="104" height="104"/>
-        <image name="TransLime" width="317" height="317"/>
+        <image name="Speed.png" width="104" height="104"/>
+        <image name="Trans.png" width="317" height="317"/>
         <image name="Tweak" width="210" height="210"/>
         <image name="Twitter" width="32" height="26"/>
-        <image name="Zebra" width="400" height="400"/>
+        <image name="Zebra.png" width="400" height="400"/>
         <image name="arrow" width="40" height="13"/>
-        <image name="arrowright" width="700" height="700"/>
+        <image name="arrowright.png" width="700" height="700"/>
+        <image name="cydia.png" width="167" height="167"/>
+        <image name="dark.png" width="886" height="1732"/>
+        <image name="light.png" width="886" height="1732"/>
+        <image name="melogo.png" width="256" height="256"/>
         <image name="pixelomer" width="349" height="349"/>
     </resources>
     <inferredMetricsTieBreakers>

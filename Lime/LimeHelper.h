@@ -62,5 +62,6 @@
 
 +(LMPackage*)packageWithIdentifier:(NSString*)identifier;
 +(UIImage*)iconFromPackage:(LMPackage*)package;
++(UIImage*)imageWithName:(NSString*)name;
 
 @end

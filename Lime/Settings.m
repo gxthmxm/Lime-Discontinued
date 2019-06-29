@@ -1,4 +1,5 @@
 #import "Settings.h"
+#import "LimeHelper.h"
 #import <sys/utsname.h>
 #import "MobileGestalt.h"
 #import <sys/sysctl.h>
@@ -176,7 +177,7 @@
         [_respringCell setAccessoryView:respringIcon];
         _uicacheCell.backgroundColor = [UIColor colorWithRed:0.109 green:0.109 blue:0.117 alpha:1];
         UIImageView *uicacheIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        uicacheIcon.image = [UIImage imageNamed:@"UICache"];
+        uicacheIcon.image = [LimeHelper imageWithName:@"UICache"];
         _uicacheCell.accessoryView = uicacheIcon;
         _uicacheCell.textLabel.textColor = [UIColor whiteColor];
         

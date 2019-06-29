@@ -7,6 +7,7 @@
 //
 
 #import "ConfigControllers.h"
+#import "LimeHelper.h"
 
 @implementation FirstLaunchDeciderController
 
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 @end
@@ -61,7 +63,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self makeLightMode];
 }
 
 - (IBAction)turnLight:(id)sender {[self makeLightMode];}
@@ -69,7 +71,7 @@
 
 -(void)makeDarkMode {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"darkMode"];
-    [self.darkToggle setImage:[UIImage imageNamed:@"Checkmark"]];
+    [self.darkToggle setImage:[LimeHelper imageWithName:@"Checkmark"]];
     [self.lightToggle setImage:[UIImage new]];
     
     [UIView animateWithDuration:0.2 animations:^{
@@ -83,7 +85,7 @@
 
 -(void)makeLightMode {
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"darkMode"];
-    [self.lightToggle setImage:[UIImage imageNamed:@"Checkmark"]];
+    [self.lightToggle setImage:[LimeHelper imageWithName:@"Checkmark"]];
     [self.darkToggle setImage:[UIImage new]];
     
     [UIView animateWithDuration:0.2 animations:^{
