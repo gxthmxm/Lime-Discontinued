@@ -935,7 +935,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="addToQueue:" destination="Xxj-q3-ulK" eventType="touchUpInside" id="Ahb-V0-Epw"/>
-                                                    <segue destination="SdS-52-Qz0" kind="presentation" identifier="openQueue" modalPresentationStyle="overFullScreen" id="01q-le-oAG"/>
+                                                    <segue destination="SdS-52-Qz0" kind="presentation" modalPresentationStyle="overFullScreen" id="1vz-AG-io2"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5x-YY-YY9">
@@ -2058,6 +2058,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8iQ-xE-2eE"/>
-        <segue reference="Fee-nl-7jG"/>
+        <segue reference="1vz-AG-io2"/>
     </inferredMetricsTieBreakers>
 </document>
