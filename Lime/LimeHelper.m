@@ -75,6 +75,7 @@
     for (NSData *dataObject in actions) {
         LMQueueAction *existingAction = [NSKeyedUnarchiver unarchiveObjectWithData:dataObject];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Action" message:[NSString stringWithFormat:@"Action: %@ \nExisting: %@", action.package.identifier, existingAction.package.identifier] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
         if (!(existingAction.package.identifier == action.package.identifier)) {
             [archiveArray addObject:dataObject];
         }
