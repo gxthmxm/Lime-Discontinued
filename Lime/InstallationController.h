@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LimeHelper.h"
+#import "NSTask.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -94,11 +94,13 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.package forKey:@"package"];
+    [aCoder encodeInteger:self.action forKey:@"action"];
 }
 - (id)initWithCoder:(NSCoder *)aCoder {
     self = [super init];
     if (self) {
         self.package = [aCoder decodeObjectForKey:@"package"];
+        self.action = [aCoder decodeIntegerForKey:@"action"];
     }
     return self;
 }

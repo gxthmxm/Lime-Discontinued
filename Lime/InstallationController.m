@@ -140,8 +140,39 @@
         
         self.queueTable.frame = CGRectMake(0 - [UIScreen mainScreen].bounds.size.width, self.queueTable.frame.origin.y, self.queueTable.frame.size.width, self.queueTable.frame.size.height);
         self.clearQueueButton.frame = CGRectMake(0 - [UIScreen mainScreen].bounds.size.width, self.clearQueueButton.frame.origin.y, self.queueTable.frame.size.width, self.queueTable.frame.size.height);
+        self.ecksView.alpha = 0;
         [self.actionButton setTitle:@"Next" forState:UIControlStateNormal];
     }];
+    
+    //
+    // INSTALLATION
+    //
+    
+    NSMutableArray *remove = [NSMutableArray new];
+    NSMutableArray *install = [NSMutableArray new];
+    NSMutableArray *reinstall = [NSMutableArray new];
+    for (NSData *encodedAction in [LMQueue queueActions]) {
+        LMQueueAction *decodedAction = [NSKeyedUnarchiver unarchiveObjectWithData:encodedAction];
+        
+        switch (decodedAction.action) {
+            case 0:
+                [install addObject:[NSString stringWithFormat:@"%@", decodedAction.package.identifier]];
+                break;
+                
+            case 1:
+                [remove addObject:[NSString stringWithFormat:@"%@", decodedAction.package.identifier]];
+                break;
+                
+            case 2:
+                [reinstall addObject:[NSString stringWithFormat:@"%@", decodedAction.package.identifier]];
+                break;
+                
+            default:
+                break;
+        }
+        
+        self.logView.text = [NSString stringWithFormat:@"Install:\n%@\n\nRemove:\n%@\n\nReinstall:\n%@", [install componentsJoinedByString:@"\n"], [remove componentsJoinedByString:@"\n"], [reinstall componentsJoinedByString:@"\n"]];
+    }
     
     //
     // WHEN DONE:
@@ -173,6 +204,62 @@
 - (IBAction)close:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     _state = 0;
+}
+
+// Keep out, the backend starts
+// Staccoverflow
+
+UITextView *a;
+BOOL terminated;
+- (void)runAptWithArgs:(NSArray *)args {
+    args = @[];
+    terminated = NO;
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:@"/usr/bin/LimeHelper"];
+    [task setArguments:args];
+    NSPipe *pipe = [NSPipe pipe];
+    NSPipe *errorPipe = [NSPipe pipe];
+    [task setStandardOutput:pipe];
+    [task setStandardError:errorPipe];
+    
+    
+    //[task setStandardInput:[NSPipe pipe]];
+    
+    NSFileHandle *outFile = [pipe fileHandleForReading];
+    NSFileHandle *errFile = [errorPipe fileHandleForReading];
+    
+    [task launch];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(terminated:) name:NSTaskDidTerminateNotification object:task];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(outData:) name:NSFileHandleDataAvailableNotification object:outFile];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errData:) name:NSFileHandleDataAvailableNotification object:errFile];
+    [outFile waitForDataInBackgroundAndNotify];
+    [errFile waitForDataInBackgroundAndNotify];
+    while(!terminated) if (![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]) break;
+    //[task waitUntilExit];
+}
+
+
+- (void)outData:(NSNotification *)notification {
+    NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
+    [fileHandle waitForDataInBackgroundAndNotify];
+    // Append data to textview here
+    
+    a.text = [a.text stringByAppendingString:[[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding]];
+}
+
+
+- (void)errData:(NSNotification *)notification {
+    NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
+    [fileHandle waitForDataInBackgroundAndNotify];
+    // Append data to textview here
+}
+
+- (void)terminated:(NSNotification *)notification {
+    // Go to finished view here
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    terminated = YES;
+    self.logView.text = a.text;
+    [self finished];
 }
 
 @end

@@ -8,7 +8,6 @@
 
 #import "DepictionViewController.h"
 #import "InstallationController.h"
-#import "NSTask.h"
 #import "HomeViewController.h"
 #import "UIColor/UIImageAverageColorAddition.h"
 #import "Settings.h"
@@ -307,62 +306,32 @@
     }
 }
 - (IBAction)addToQueue:(id)sender {
-    LMQueueAction *queueAction = [LMQueueAction newActionWithPackage:self.package action:1];
-    [LMQueue addQueueAction:queueAction];
-}
-
-// Keep out, the backend starts
-// Staccoverflow
-
-UITextView *a;
-BOOL terminated;
-- (void)runAptWithArgs:(NSArray *)args {
-    a = [[UITextView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:a];
-    args = @[];
-    terminated = NO;
-    NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:@"/usr/bin/LimeHelper"];
-    [task setArguments:args];
-    NSPipe *pipe = [NSPipe pipe];
-    NSPipe *errorPipe = [NSPipe pipe];
-    [task setStandardOutput:pipe];
-    [task setStandardError:errorPipe];
-
-    //[task setStandardInput:[NSPipe pipe]];
-
-    NSFileHandle *outFile = [pipe fileHandleForReading];
-    NSFileHandle *errFile = [errorPipe fileHandleForReading];
-
-    [task launch];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(terminated:) name:NSTaskDidTerminateNotification object:task];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(outData:) name:NSFileHandleDataAvailableNotification object:outFile];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errData:) name:NSFileHandleDataAvailableNotification object:errFile];
-    [outFile waitForDataInBackgroundAndNotify];
-    [errFile waitForDataInBackgroundAndNotify];
-    while(!terminated) if (![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]) break;
-    //[task waitUntilExit];
-}
-
-
-- (void)outData:(NSNotification *)notification {
-    NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
-    [fileHandle waitForDataInBackgroundAndNotify];
-    // Append data to textview here
-    a.text = [a.text stringByAppendingString:[[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding]];
-}
-
-
-- (void)errData:(NSNotification *)notification {
-    NSFileHandle *fileHandle = (NSFileHandle*)[notification object];
-    [fileHandle waitForDataInBackgroundAndNotify];
-    // Append data to textview here
-}
-
-- (void)terminated:(NSNotification *)notification {
-    // Go to finished view here
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    terminated = YES;
+    if(!self.package.installed) {
+        UIAlertController* actionAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction* removeAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            LMQueueAction *queueAction = [LMQueueAction newActionWithPackage:self.package action:1];
+            [LMQueue addQueueAction:queueAction];
+            [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
+        }];
+        UIAlertAction* reinstallAction = [UIAlertAction actionWithTitle:@"Reinstall" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            LMQueueAction *queueAction = [LMQueueAction newActionWithPackage:self.package action:2];
+            [LMQueue addQueueAction:queueAction];
+            [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
+        }];
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * action) {}];
+        
+        [actionAlert addAction:removeAction];
+        [actionAlert addAction:reinstallAction];
+        [actionAlert addAction:cancelAction];
+        [self presentViewController:actionAlert animated:YES completion:nil];
+    } else {
+        LMQueueAction *queueAction = [LMQueueAction newActionWithPackage:self.package action:0];
+        [LMQueue addQueueAction:queueAction];
+        [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
+    }
 }
 
 @end
