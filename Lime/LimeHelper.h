@@ -46,7 +46,6 @@
 @property (nonatomic, strong) NSArray *conflicts;
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSString *maintainer;
-@property (nonatomic, strong) LMRepository *repo;
 @property (nonatomic, strong) NSString *filename;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *installedSize;
@@ -55,6 +54,24 @@
 @property (nonatomic) BOOL installed;
 @property (nonatomic) NSUInteger* possibleActions;
 @property (nonatomic, strong) NSData* installedDate;
+
+@end
+
+@interface LMQueueAction : NSObject
+
+@property (nonatomic) NSInteger action;
+@property (nonatomic, strong) LMPackage *package;
+
++(LMQueueAction*)newActionWithPackage:(LMPackage*)package action:(NSInteger)action;
+
+@end
+
+@interface LMQueue : NSObject
+
+@property (nonatomic, strong) NSArray *actions;
+
++(void)addQueueAction:(LMQueueAction*)action;
++(NSArray*)queueActions;
 
 @end
 

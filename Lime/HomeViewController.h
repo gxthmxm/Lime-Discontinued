@@ -14,8 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet WKWebView *webView;
 
 @property (strong, nonatomic) NSMutableArray *queueArray;
-
--(void)updateQueue;
 @end
 
 NS_ASSUME_NONNULL_END

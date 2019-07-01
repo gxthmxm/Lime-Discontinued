@@ -307,8 +307,8 @@
     }
 }
 - (IBAction)addToQueue:(id)sender {
-    [homeController.queueArray addObject:self.package];
-    [homeController updateQueue];
+    LMQueueAction *queueAction = [LMQueueAction newActionWithPackage:self.package action:1];
+    [LMQueue addQueueAction:queueAction];
 }
 
 // Keep out, the backend starts

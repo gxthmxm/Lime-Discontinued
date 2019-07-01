@@ -33,7 +33,61 @@
     [_actionButton setTitle:@"Confirm" forState:UIControlStateNormal];
     
     _tempNext.hidden = YES;
+    
+    self.queue = [[LMQueue alloc] init];
+    
+    self.queueTable.delegate = self;
+    self.queueTable.dataSource = self;
 }
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [LMQueue queueActions].count;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *queue = [NSMutableArray arrayWithArray:[LMQueue queueActions]];
+    LMQueueAction *action = [NSKeyedUnarchiver unarchiveObjectWithData:[queue objectAtIndex:indexPath.row]];
+    LMPackage *package = action.package;
+    
+    static NSString *cellIdentifier = @"cell";
+    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
+    cell.textLabel.text = package.name;
+    switch (action.action) {
+        case 0:
+            cell.detailTextLabel.text = @"Install";
+            break;
+            
+        case 1:
+            cell.detailTextLabel.text = @"Remove";
+            break;
+            
+        case 2:
+            cell.detailTextLabel.text = @"Reinstall";
+            break;
+            
+        default:
+            break;
+    }
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.textColor = [UIColor whiteColor];
+    }
+    cell.detailTextLabel.alpha = 0.5;
+    UIImage *icon = [LimeHelper iconFromPackage:package];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(30,30), NO, [UIScreen mainScreen].scale);
+    [icon drawInRect:CGRectMake(0,0,30,30)];
+    icon = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.cornerRadius = 6;
+    cell.imageView.image = icon;
+    
+    return cell;
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -45,6 +99,8 @@
         self.logView.textColor = [UIColor whiteColor];
         self.greatLabel.textColor = [UIColor whiteColor];
         self.finishedLabel.textColor = [UIColor whiteColor];
+        [self.clearQueueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.ecksView.image = [LimeHelper imageWithName:@"darkx"];
     }
 }
 - (IBAction)arrowPressed:(id)sender {
@@ -66,6 +122,11 @@
         [self beginInstallation];
     }
 }
+- (IBAction)clearQueue:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSArray new] forKey:@"queue"];
+    [self.queueTable reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)beginInstallation {
     self.state = 1;
@@ -78,6 +139,7 @@
         self.logView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - self.logView.frame.size.width / 2, self.logView.frame.origin.y, self.logView.frame.size.width, self.logView.frame.size.height);
         
         self.queueTable.frame = CGRectMake(0 - [UIScreen mainScreen].bounds.size.width, self.queueTable.frame.origin.y, self.queueTable.frame.size.width, self.queueTable.frame.size.height);
+        self.clearQueueButton.frame = CGRectMake(0 - [UIScreen mainScreen].bounds.size.width, self.clearQueueButton.frame.origin.y, self.queueTable.frame.size.width, self.queueTable.frame.size.height);
         [self.actionButton setTitle:@"Next" forState:UIControlStateNormal];
     }];
     

@@ -31,6 +31,13 @@
         [[NSUserDefaults standardUserDefaults] registerDefaults:launchDefaults];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"queue"] == nil) {
+        NSDictionary *launchDefaults  = [NSDictionary dictionary];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSArray new] forKey:@"queue"];
+        
+        [[NSUserDefaults standardUserDefaults] registerDefaults:launchDefaults];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
     return YES;
 }
