@@ -12,6 +12,10 @@
 
 @implementation AddRepoController
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    segue.sourceViewController.view.maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

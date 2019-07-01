@@ -717,12 +717,16 @@
                         <barButtonItem key="leftBarButtonItem" title="Refresh" id="WWg-Hj-sph"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="NK5-E1-vJm">
                             <connections>
-                                <segue destination="KAU-yf-a8n" kind="presentation" modalPresentationStyle="overFullScreen" id="u1O-MQ-ehO"/>
+                                <action selector="addRepoController:" destination="CEa-EV-tYC" id="SUW-EQ-Psf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="KAU-yf-a8n" kind="presentation" identifier="addRepo" modalPresentationStyle="overFullScreen" id="4L2-3L-VUM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvf-nD-QAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="CEa-EV-tYC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1134" y="991"/>
         </scene>
