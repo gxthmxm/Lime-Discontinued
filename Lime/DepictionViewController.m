@@ -310,12 +310,12 @@
         UIAlertController* actionAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
         UIAlertAction* removeAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-            LMQueueAction *queueAction = [LMQueueAction newActionWithPackage:self.package action:1];
+            LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:1];
             [LMQueue addQueueAction:queueAction];
             [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
         }];
         UIAlertAction* reinstallAction = [UIAlertAction actionWithTitle:@"Reinstall" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            LMQueueAction *queueAction = [LMQueueAction newActionWithPackage:self.package action:2];
+            LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:2];
             [LMQueue addQueueAction:queueAction];
             [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
         }];
@@ -328,7 +328,7 @@
         [actionAlert addAction:cancelAction];
         [self presentViewController:actionAlert animated:YES completion:nil];
     } else {
-        LMQueueAction *queueAction = [LMQueueAction newActionWithPackage:self.package action:0];
+        LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:0];
         [LMQueue addQueueAction:queueAction];
         [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
     }

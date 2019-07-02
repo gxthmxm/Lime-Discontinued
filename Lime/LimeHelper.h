@@ -63,7 +63,7 @@
 @property (nonatomic) NSInteger action;
 @property (nonatomic, strong) LMPackage *package;
 
-+(LMQueueAction*)newActionWithPackage:(LMPackage*)package action:(NSInteger)action;
+-(instancetype)initWithPackage:(LMPackage*)package action:(NSInteger)action;
 
 @end
 
@@ -73,6 +73,8 @@
 
 +(void)addQueueAction:(LMQueueAction*)action;
 +(NSArray*)queueActions;
++(void)setQueueWithMutableArray:(NSMutableArray*)array;
++(void)removeObjectFromQueueWithIndex:(NSInteger)index;
 
 @end
 

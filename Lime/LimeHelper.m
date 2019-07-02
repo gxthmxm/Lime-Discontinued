@@ -88,6 +88,16 @@
     return queue;
 }
 
++(void)setQueueWithMutableArray:(NSMutableArray*)array {
+    [[NSUserDefaults standardUserDefaults] setObject:array forKey:@"queue"];
+}
+
++(void)removeObjectFromQueueWithIndex:(NSInteger)index {
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self queueActions]];
+    [array removeObjectAtIndex:index];
+    [self setQueueWithMutableArray:array];
+}
+
 @end
 
 @implementation LMQueueAction
@@ -105,12 +115,13 @@
     return self;
 }
 
-+(LMQueueAction*)newActionWithPackage:(LMPackage*)package action:(NSInteger)action {
-    LMQueueAction *queueAction = [[LMQueueAction alloc] init];
-    queueAction.action = action;
-    queueAction.package = package;
-    
-    return queueAction;
+-(instancetype)initWithPackage:(LMPackage*)package action:(NSInteger)action {
+    self = [super init];
+    if (self) {
+        self.package = package;
+        self.action = action;
+    }
+    return self;
 }
 
 @end

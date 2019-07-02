@@ -38,6 +38,31 @@
     
     self.queueTable.delegate = self;
     self.queueTable.dataSource = self;
+    
+    if ([LMQueue queueActions].count < 1) {
+        self.actionButton.enabled = NO;
+        self.actionButton.alpha = 0.4;
+    }
+    
+    self.queueTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 1)];
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [UIView animateWithDuration:0.2 animations:^{
+            [tableView cellForRowAtIndexPath:indexPath].alpha = 0;
+        } completion:^(BOOL finished) {
+            [LMQueue removeObjectFromQueueWithIndex:indexPath.row];
+            [self.queueTable reloadData];
+            if ([LMQueue queueActions].count < 1) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -84,6 +109,8 @@
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 6;
     cell.imageView.image = icon;
+    cell.separatorInset = UIEdgeInsetsMake(0, 73, 0, 28);
+    cell.layoutMargins = UIEdgeInsetsMake(cell.contentView.layoutMargins.top, 28, cell.contentView.layoutMargins.bottom, cell.contentView.layoutMargins.right);
     
     return cell;
 }
@@ -173,6 +200,7 @@
         
         self.logView.text = [NSString stringWithFormat:@"Install:\n%@\n\nRemove:\n%@\n\nReinstall:\n%@", [install componentsJoinedByString:@"\n"], [remove componentsJoinedByString:@"\n"], [reinstall componentsJoinedByString:@"\n"]];
     }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSArray new] forKey:@"queue"];
     
     //
     // WHEN DONE:

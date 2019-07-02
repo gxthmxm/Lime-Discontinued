@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.parser = [[LMDPKGParser alloc] init];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -90,10 +89,15 @@
     return YES;
 }
 
+- (IBAction)openQueue:(id)sender {
+    [self performSegueWithIdentifier:@"openQue" sender:self];
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"delete" message:@"should delete" delegate:self cancelButtonTitle:@"Kk" otherButtonTitles:nil, nil];
-        [alertView show];
+        LMPackage *package = (LMPackage*)[self.parser.installedPackages objectAtIndex:indexPath.row];
+        [LMQueue addQueueAction:[[LMQueueAction alloc] initWithPackage:package action:1]];
+        [self performSegueWithIdentifier:@"openQue" sender:self];
     }
 }
 
@@ -102,10 +106,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    DepictionViewController *depictionViewController = segue.destinationViewController;
-    NSInteger index = [(UITableView *)self.view indexPathForSelectedRow].row;
-    
-    depictionViewController.package = (LMPackage*)[self.parser.installedPackages objectAtIndex:index];
+    if ([segue.identifier isEqual:@"packageInfo"]) {
+        DepictionViewController *depictionViewController = segue.destinationViewController;
+        NSInteger index = [(UITableView *)self.view indexPathForSelectedRow].row;
+        
+        depictionViewController.package = (LMPackage*)[self.parser.installedPackages objectAtIndex:index];
+    }
 }
 
 @end
