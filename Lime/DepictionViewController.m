@@ -80,17 +80,18 @@
     NSRange range = [self.package.author rangeOfString:@"<"];
     if(range.location != NSNotFound) self.package.author = [self.package.author substringToIndex:range.location - 1];
     
+    //NSURL *nsurl = self.package.depictionURL;
     NSURL *nsurl = self.package.depictionURL;
     NSMutableURLRequest *nsrequest=[NSMutableURLRequest requestWithURL:nsurl];
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         configuration.applicationNameForUserAgent = @"Lime (Cydia) Dark";
-        [nsrequest setValue:@"Telesphoreo APT-HTTP/1.0.592 LimeDark" forHTTPHeaderField:@"User-Agent"];
-        [nsrequest setValue:@"TRUE" forHTTPHeaderField:@"LimeDark"];
+        [nsrequest setValue:@"Telesphoreo APT-HTTP/1.0.592 Dark" forHTTPHeaderField:@"User-Agent"];
+        [nsrequest setValue:@"true" forHTTPHeaderField:@"dark"];
     } else {
         configuration.applicationNameForUserAgent = @"Lime (Cydia) Light";
-        [nsrequest setValue:@"Telesphoreo APT-HTTP/1.0.592 LimeLight" forHTTPHeaderField:@"User-Agent"];
+        [nsrequest setValue:@"Telesphoreo APT-HTTP/1.0.592 Light" forHTTPHeaderField:@"User-Agent"];
     }
     
     self.depictionView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
@@ -99,14 +100,17 @@
     NSString* scaleMeta = @"var meta = document.createElement('meta'); meta.name = 'viewport'; meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; var head = document.getElementsByTagName('head')[0]; head.appendChild(meta);";
     [_depictionView evaluateJavaScript:scaleMeta completionHandler:nil];
     
+    [nsrequest setValue:[DeviceInfo getUDID] forHTTPHeaderField:@"X-Cydia-ID"];
     [nsrequest setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
     [nsrequest setValue:[DeviceInfo getUDID] forHTTPHeaderField:@"X-Unique-ID"];
     [nsrequest setValue:[DeviceInfo machineID] forHTTPHeaderField:@"X-Machine"];
     [nsrequest setValue:@"API" forHTTPHeaderField:@"Payment-Provider"];
-    
     [nsrequest setValue:[[NSLocale preferredLanguages] firstObject] forHTTPHeaderField:@"Accept-Language"];
+    
+    self.depictionView.multipleTouchEnabled = NO;
     [self.scrollView addSubview:_depictionView];
     [_depictionView loadRequest:nsrequest];
+    self.depictionView.scrollView.delegate = self;
     //_depictionView.scrollView.userInteractionEnabled = NO;
     if (![self.package.iconPath isEqual:@""]) {
         self.iconView.image = [LimeHelper iconFromPackage:self.package];
@@ -192,10 +196,12 @@
         self.separator.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
         self.descriptionTitleLabel.textColor = [UIColor whiteColor];
         self.depictionView.backgroundColor = [UIColor blackColor];
+        self.depictionView.scrollView.backgroundColor = [UIColor blackColor];
         self.scrollView.backgroundColor = [UIColor blackColor];
         self.infoView.backgroundColor = [UIColor blackColor];
         self.separator2.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
         self.informationTitle.textColor = [UIColor whiteColor];
+        self.view.backgroundColor = [UIColor blackColor];
         [self.moreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
 }
@@ -205,6 +211,10 @@
     self.navigationItem.titleView.hidden = YES;
     self.navigationItem.rightBarButtonItem.customView.hidden = YES;
     self.navigationItem.rightBarButtonItem.customView.alpha = 1;
+}
+
+-(UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return nil;
 }
 
 - (IBAction)shareStart:(id)sender {
@@ -242,6 +252,15 @@
 {
     if (object == _depictionView.scrollView && [keyPath isEqual:@"contentSize"]) {
         // we are here because the contentSize of the WebView's scrollview changed.
+        self.depictionView.scrollView.backgroundColor = [UIColor blackColor];
+        self.depictionView.backgroundColor = [UIColor blackColor];
+        NSString *css = @"body { background-color: #000 !important }";
+        NSString *javascript = @"var style = document.createElement('style'); style.innerHTML = '%@'; document.head.appendChild(style)";
+        NSString *javascriptWithCSSString = [NSString stringWithFormat:javascript, css];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"] || [[self.depictionView.URL host]  isEqual: @"moreinfo.bigboss.org"]) {
+            [self.depictionView evaluateJavaScript:javascriptWithCSSString completionHandler:nil];
+        }
+        
         if (self.package.depictionURL && [NSString stringWithFormat:@"%@", self.package.depictionURL].length > 0) {
             _depictionView.frame = CGRectMake(_depictionView.frame.origin.x, _depictionView.frame.origin.y, _scrollView.frame.size.width, _depictionView.scrollView.contentSize.height);
             _infoView.frame = CGRectMake(0, _depictionView.frame.origin.y + _depictionView.frame.size.height, _infoView.frame.size.width, _infoView.frame.size.height);
