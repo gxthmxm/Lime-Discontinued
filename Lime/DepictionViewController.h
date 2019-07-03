@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import "LimeHelper.h"
+#import "DepictionWebController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DepictionViewController : UIViewController <UIScrollViewDelegate>
+@interface DepictionViewController : UIViewController <UIScrollViewDelegate, WKNavigationDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) WKWebView *depictionView;
@@ -26,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *descriptionTitleLabel;
 @property (strong, nonatomic) IBOutlet UIView *bigView;
 @property (strong, nonatomic) IBOutlet UIView *separator;
+@property (strong, nonatomic) NSURL *redirectURL;
 
 @property (strong, nonatomic) IBOutlet UIView *infoView;
 @property (strong, nonatomic) IBOutlet UIView *separator2;

@@ -80,7 +80,6 @@
     NSRange range = [self.package.author rangeOfString:@"<"];
     if(range.location != NSNotFound) self.package.author = [self.package.author substringToIndex:range.location - 1];
     
-    //NSURL *nsurl = self.package.depictionURL;
     NSURL *nsurl = self.package.depictionURL;
     NSMutableURLRequest *nsrequest=[NSMutableURLRequest requestWithURL:nsurl];
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
@@ -109,6 +108,7 @@
     
     self.depictionView.multipleTouchEnabled = NO;
     [self.scrollView addSubview:_depictionView];
+    self.depictionView.navigationDelegate = self;
     [_depictionView loadRequest:nsrequest];
     self.depictionView.scrollView.delegate = self;
     //_depictionView.scrollView.userInteractionEnabled = NO;
@@ -257,7 +257,7 @@
         NSString *css = @"body { background-color: #000 !important }";
         NSString *javascript = @"var style = document.createElement('style'); style.innerHTML = '%@'; document.head.appendChild(style)";
         NSString *javascriptWithCSSString = [NSString stringWithFormat:javascript, css];
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"] || [[self.depictionView.URL host]  isEqual: @"moreinfo.bigboss.org"]) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
             [self.depictionView evaluateJavaScript:javascriptWithCSSString completionHandler:nil];
         }
         
@@ -352,5 +352,29 @@
         [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
     }
 }
+
+/*-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSURL *url = [[navigationAction request] URL];
+    NSString *urlScheme = [url scheme];
+    if ([urlScheme isEqualToString:@"https"] || [urlScheme isEqualToString:@"lime"] || [urlScheme isEqualToString:@"http"] || url == self.package.depictionURL) {
+        if (!(url == self.package.depictionURL)) {
+            [self performSegueWithIdentifier:@"depictionWeb" sender:self];
+            self.redirectURL = url;
+            decisionHandler(WKNavigationActionPolicyAllow);
+        } else {
+            decisionHandler(WKNavigationActionPolicyAllow);
+        }
+    } else {
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"depictionWeb"]) {
+        DepictionWebController *destController = segue.destinationViewController;
+        DepictionViewController *srcController = segue.sourceViewController;
+        destController.url = srcController.redirectURL;
+    }
+}*/
 
 @end

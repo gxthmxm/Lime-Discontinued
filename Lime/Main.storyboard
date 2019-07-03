@@ -1033,6 +1033,7 @@
                         <outlet property="separator" destination="dj1-hO-qWR" id="Z1r-aN-UAd"/>
                         <outlet property="separator2" destination="DcX-go-ipE" id="8jM-VU-6Hx"/>
                         <outlet property="titleLabel" destination="Z5J-2L-6ou" id="0iq-4Y-PGN"/>
+                        <segue destination="9Xg-NM-ST8" kind="show" identifier="depictionWeb" id="hLl-tf-Di9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxK-ka-DTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1369,7 +1370,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIY-5H-lFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2525.5999999999999" y="-362.06896551724139"/>
+            <point key="canvasLocation" x="2447" y="-362"/>
+        </scene>
+        <!--Depiction Web Controller-->
+        <scene sceneID="b1p-pb-nJr">
+            <objects>
+                <viewController id="9Xg-NM-ST8" customClass="DepictionWebController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sz2-bF-1gr"/>
+                        <viewControllerLayoutGuide type="bottom" id="yRU-k7-dMW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PMR-SR-Y1z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-Ys-xun">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="WfV-Ys-xun" id="vIF-fp-8eq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ht-BI-AFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3093.5999999999999" y="-362.06896551724139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l5S-ei-foT">
@@ -2059,6 +2092,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8iQ-xE-2eE"/>
-        <segue reference="REO-jp-PFU"/>
+        <segue reference="1vz-AG-io2"/>
     </inferredMetricsTieBreakers>
 </document>

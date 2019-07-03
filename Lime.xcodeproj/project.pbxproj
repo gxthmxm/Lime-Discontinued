@@ -10,6 +10,7 @@
 		37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC74227753EC0039BE3C /* AppDelegate.m */; };
 		37D0FC86227753EF0039BE3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC85227753EF0039BE3C /* main.m */; };
 		37D0FCA922776ACF0039BE3C /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = 37D0FCA822776ACF0039BE3C /* HTML */; };
+		4D0E5FEB22CCEB1C00308087 /* DepictionWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E5FEA22CCEB1C00308087 /* DepictionWebController.m */; };
 		4D1BFFC322C799DB00122AC2 /* melogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC222C799D900122AC2 /* melogo.png */; };
 		4D1BFFC722C79B9300122AC2 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC622C79B9200122AC2 /* check.png */; };
 		4D1BFFC922C79E0E00122AC2 /* cydia.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC822C79E0D00122AC2 /* cydia.png */; };
@@ -77,6 +78,8 @@
 		37D0FC8B227753EF0039BE3C /* LimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D0FC96227753EF0039BE3C /* LimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D0FCA822776ACF0039BE3C /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML; sourceTree = "<group>"; };
+		4D0E5FEA22CCEB1C00308087 /* DepictionWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionWebController.m; sourceTree = "<group>"; };
+		4D0E5FEC22CCEB2C00308087 /* DepictionWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepictionWebController.h; sourceTree = "<group>"; };
 		4D1BFFC222C799D900122AC2 /* melogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melogo.png; sourceTree = "<group>"; };
 		4D1BFFC622C79B9200122AC2 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		4D1BFFC822C79E0D00122AC2 /* cydia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cydia.png; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 				666DC9102278690100B6E03C /* HomeViewController.m */,
 				4D33AB5B227888F800CDFC49 /* DepictionViewController.h */,
 				4D33AB5C2278890600CDFC49 /* DepictionViewController.m */,
+				4D0E5FEC22CCEB2C00308087 /* DepictionWebController.h */,
+				4D0E5FEA22CCEB1C00308087 /* DepictionWebController.m */,
 				666DC91222786B4600B6E03C /* ChangesViewController.h */,
 				666DC91322786B4600B6E03C /* ChangesViewController.m */,
 				666DC91522786B4E00B6E03C /* SearchViewController.h */,
@@ -434,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D0E5FEB22CCEB1C00308087 /* DepictionWebController.m in Sources */,
 				37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */,
 				4D715A12227AD26C00896934 /* InstallationController.m in Sources */,
 				4D841BD8228615C200234599 /* Settings.m in Sources */,
