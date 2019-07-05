@@ -10,10 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : UIViewController <WKScriptMessageHandler, WKNavigationDelegate>
-@property (strong, nonatomic) IBOutlet WKWebView *webView;
+@interface HomeViewController : UIViewController
 
-@property (strong, nonatomic) NSMutableArray *queueArray;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *todayLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+// CARD 1
+@property (weak, nonatomic) IBOutlet UIView *cardOne;
+
 @end
 
 NS_ASSUME_NONNULL_END

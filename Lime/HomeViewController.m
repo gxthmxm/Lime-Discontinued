@@ -9,7 +9,6 @@
 #import "HomeViewController.h"
 #import "InstallationController.h"
 #import <QuartzCore/QuartzCore.h>
-#import <WebKit/WebKit.h>
 
 @interface HomeViewController ()
 
@@ -19,30 +18,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"HTML/index" ofType:@"html"];
-    NSString *htmlFileDark = [[NSBundle mainBundle] pathForResource:@"HTML/indexdark" ofType:@"html"];
-    NSString *htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-    NSString *htmlStringDark = [NSString stringWithContentsOfFile:htmlFileDark encoding:NSUTF8StringEncoding error:nil];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        [_webView loadHTMLString:htmlStringDark baseURL:[[NSBundle mainBundle] bundleURL]];
-    } else {
-        [_webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
-    }
-    _webView.navigationDelegate = self;
-    
-    WKWebViewConfiguration *theConfiguration =
-    [[WKWebViewConfiguration alloc] init];
-    [theConfiguration.userContentController
-     addScriptMessageHandler:self name:@"myApp"];
-    [_webView.configuration.userContentController addScriptMessageHandler:self name:@"lime"];
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPress.minimumPressDuration = 0;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCard:)];
+    [self.cardOne addGestureRecognizer:tap];
 }
 
--(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        webView.frame = CGRectMake(0, self.view.frame.size.height - self.view.safeAreaLayoutGuide.layoutFrame.size.height - self.tabBarController.tabBar.frame.size.height, self.view.frame.size.width, self.view.safeAreaLayoutGuide.layoutFrame.size.height + self.tabBarController.tabBar.frame.size.height);
-    } else {
-        webView.frame = self.view.frame;
+- (void)openCard:(UITapGestureRecognizer*)sender {
+    [sender.view removeFromSuperview];
+    [self.tabBarController.view addSubview:sender.view];
+    sender.view.frame = CGRectMake(sender.view.frame.origin.x, sender.view.frame.origin.y + 20, sender.view.frame.size.width, sender.view.frame.size.height);
+    [UIView animateWithDuration:0.1 animations:^{
+        sender.view.transform = CGAffineTransformScale(sender.view.transform, 0.96, 0.96);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3 animations:^{
+            sender.view.transform = CGAffineTransformScale(sender.view.transform, 1.04, 1.04);
+            sender.view.frame = CGRectMake(20, -20, sender.view.frame.size.width, sender.view.frame.size.height);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                sender.view.frame = CGRectMake(0, 0, sender.view.frame.size.width + 40, sender.view.frame.size.height + 40);
+            } completion:^(BOOL finished) {
+                [sender.view.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
+                    [sender.view removeGestureRecognizer:obj];
+                }];
+            }];
+        }];
+    }];
+    [UIView animateWithDuration:0.9 animations:^{
+        sender.view.layer.cornerRadius = 0;
+    }];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer*)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [UIView animateWithDuration:0.2 animations:^{
+            sender.view.transform = CGAffineTransformScale(sender.view.transform, 1.04, 1.04);
+        }];
+    }
+    else if (sender.state == UIGestureRecognizerStateBegan) {
+        [UIView animateWithDuration:0.2 animations:^{
+            sender.view.transform = CGAffineTransformScale(sender.view.transform, 0.96, 0.96);
+        }];
     }
 }
 
@@ -58,27 +75,12 @@
     self.navigationController.navigationBar.barStyle = 1;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tabBarController.tabBar.barStyle = 1;
-        self.webView.backgroundColor = [UIColor blackColor];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         self.view.backgroundColor = [UIColor blackColor];
     }
 }
 
--(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
-    [super dismissViewControllerAnimated:flag completion:completion];
-    
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Gay" message:@"Hmm now to refresh" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {}];
-    [alert addAction:action];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)userContentController:(WKUserContentController *)userContentController
-      didReceiveScriptMessage:(WKScriptMessage *)message {
-    [self performSegueWithIdentifier:@"openSettings" sender:self];
-}
-
--(void)drawQueueView {
+/*-(void)drawQueueView {
     UIView* queueView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 140, 44)];
     [queueView.layer setCornerRadius:10];
     queueView.layer.masksToBounds = YES;
@@ -105,6 +107,6 @@
     //if (self.queueArray != nil) {
     [self.tabBarController.view addSubview:shadowView];
     //}
-}
+}*/
 
 @end

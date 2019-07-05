@@ -33,7 +33,6 @@
 		4D33AB5922787A7700CDFC49 /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5822787A7700CDFC49 /* SourcesViewController.m */; };
 		4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5C2278890600CDFC49 /* DepictionViewController.m */; };
 		4D5F340D22CA5F8C003A3C61 /* darkx.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5F340C22CA5F8B003A3C61 /* darkx.png */; };
-		4D5F340F22CA5F96003A3C61 /* lightx.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5F340E22CA5F96003A3C61 /* lightx.png */; };
 		4D715A12227AD26C00896934 /* InstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D715A11227AD26C00896934 /* InstallationController.m */; };
 		4D7F12092280754300576DEF /* AddRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F12082280754300576DEF /* AddRepoController.m */; };
 		4D7F12112280951300576DEF /* UIImageAverageColorAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F12102280951300576DEF /* UIImageAverageColorAddition.m */; };
@@ -43,6 +42,7 @@
 		4DAD694122C0DD0500338FCA /* LimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD694022C0DD0500338FCA /* LimeHelper.m */; };
 		4DD1D57F22A0669D00CC9824 /* ConfigControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1D57E22A0669D00CC9824 /* ConfigControllers.m */; };
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
+		4DF84F5722CFF16A00E43E20 /* vrzHBVF.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF84F5622CFF16900E43E20 /* vrzHBVF.png */; };
 		662F620E22A00E6D00931533 /* SourcesBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F620D22A00E6D00931533 /* SourcesBackend.m */; };
 		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
 		666DC9112278690100B6E03C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC9102278690100B6E03C /* HomeViewController.m */; };
@@ -123,6 +123,7 @@
 		4DD1D58022A066A800CC9824 /* ConfigControllers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigControllers.h; sourceTree = "<group>"; };
 		4DE098D5227B53E800A00A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4DE09915227B5A2300A00A43 /* output */ = {isa = PBXFileReference; lastKnownFileType = folder; path = output; sourceTree = "<group>"; };
+		4DF84F5622CFF16900E43E20 /* vrzHBVF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vrzHBVF.png; sourceTree = "<group>"; };
 		6626F4C5228059A100F94ED3 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
 		6626F4C6228059A100F94ED3 /* NSTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTask.h; sourceTree = "<group>"; };
 		662F620C22A00E6D00931533 /* SourcesBackend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourcesBackend.h; sourceTree = "<group>"; };
@@ -257,6 +258,7 @@
 				4D1BFFE022C7A26000122AC2 /* respringdark.png */,
 				4D5F340C22CA5F8B003A3C61 /* darkx.png */,
 				4D5F340E22CA5F96003A3C61 /* lightx.png */,
+				4DF84F5622CFF16900E43E20 /* vrzHBVF.png */,
 			);
 			path = PNG;
 			sourceTree = "<group>";
@@ -412,9 +414,9 @@
 				4D33AB542278742A00CDFC49 /* LaunchScreen.storyboard in Resources */,
 				4D1BFFDF22C7A1D200122AC2 /* respringlight.png in Resources */,
 				4D1BFFD522C79E2E00122AC2 /* UICache.png in Resources */,
-				4D5F340F22CA5F96003A3C61 /* lightx.png in Resources */,
 				4D33AB52227873E500CDFC49 /* Main.storyboard in Resources */,
 				4DE09916227B5A2300A00A43 /* output in Resources */,
+				4DF84F5722CFF16A00E43E20 /* vrzHBVF.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
