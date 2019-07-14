@@ -142,7 +142,7 @@
     }
     
     if ([self.package.installedSize containsString:@"-"]) {
-        NSMutableArray *sizeArray = [self.package.installedSize componentsSeparatedByString:@"-"];
+        NSMutableArray *sizeArray = [NSMutableArray arrayWithArray:[self.package.installedSize componentsSeparatedByString:@"-"]];
         if ([sizeArray objectAtIndex:1]) {
             self.finalSize = [sizeArray objectAtIndex:1];
         }
