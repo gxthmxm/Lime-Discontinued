@@ -141,8 +141,16 @@
         [_getButton setTitle:@"MORE" forState:UIControlStateNormal];
     }
     
-    NSMutableArray *sizeArray = [self.package.installedSize componentsSeparatedByString:@"-"];
-    self.finalSize = [sizeArray objectAtIndex:1];
+    if ([self.package.installedSize containsString:@"-"]) {
+        NSMutableArray *sizeArray = [self.package.installedSize componentsSeparatedByString:@"-"];
+        if ([sizeArray objectAtIndex:1]) {
+            self.finalSize = [sizeArray objectAtIndex:1];
+        }
+    } else {
+        if (self.package.installedSize) {
+            self.finalSize = self.package.installedSize;
+        }
+    }
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height - 60);
     

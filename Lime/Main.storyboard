@@ -923,7 +923,7 @@
             <objects>
                 <navigationController id="RaX-qx-RYk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Installed" image="Installed" id="Aa0-xo-Et8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Ups-Ia-52e">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="Asa" largeTitles="YES" id="Ups-Ia-52e">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -940,7 +940,7 @@
             <objects>
                 <navigationController id="jzK-dT-v18" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sources" image="Sources" id="GxK-5Q-bpL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="wYf-mA-a7H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="Dfrty" largeTitles="YES" id="wYf-mA-a7H">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1681,7 +1681,7 @@
             <objects>
                 <navigationController id="Yg5-cN-7k1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Updates" image="Changes" id="Rmo-pj-Uz5"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Iv9-1S-pTx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="Gghjh" largeTitles="YES" id="Iv9-1S-pTx">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2132,7 +2132,7 @@
                         <color key="backgroundColor" red="0.26272955539999998" green="0.24911245700000001" blue="0.33607593180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <segue destination="Ofe-eB-Og1" kind="show" identifier="normalLaunch" animates="NO" id="EdO-LT-SHf"/>
+                        <segue destination="Ofe-eB-Og1" kind="show" identifier="normalLaunch" id="EdO-LT-SHf"/>
                         <segue destination="hZr-UT-S54" kind="show" identifier="firstLaunch" id="5fA-wt-SFl"/>
                     </connections>
                 </viewController>
@@ -2143,11 +2143,14 @@
     </scenes>
     <resources>
         <image name="Artikus" width="400" height="400"/>
+        <image name="Asa" width="16" height="16"/>
         <image name="Changes" width="28" height="24"/>
         <image name="Check" width="100" height="100"/>
         <image name="Coronux" width="400" height="400"/>
+        <image name="Dfrty" width="16" height="16"/>
         <image name="Empty" width="29" height="29"/>
         <image name="FelicityBG" width="1200" height="675"/>
+        <image name="Gghjh" width="16" height="16"/>
         <image name="Home" width="28" height="24"/>
         <image name="Installed" width="28" height="25"/>
         <image name="Lime.png" width="1024" height="1024"/>
@@ -2174,7 +2177,7 @@
         <image name="vrzHBVF.png" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8iQ-xE-2eE"/>
-        <segue reference="1vz-AG-io2"/>
+        <segue reference="EdO-LT-SHf"/>
+        <segue reference="REO-jp-PFU"/>
     </inferredMetricsTieBreakers>
 </document>
