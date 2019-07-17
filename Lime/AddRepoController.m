@@ -68,14 +68,15 @@
 }
 
 - (IBAction)addRepo:(id)sender {
-    NSString *sourcesPath = @"/var/mobile/Documents/Lime/sources.list";
+    // that shit not work
+    /*NSString *sourcesPath = @"/var/mobile/Documents/Lime/sources.list";
     NSString *urlString = self.repoURL.text;
     [_repoURL resignFirstResponder];
-    /*[UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         self.effectView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 515, self.effectView.frame.size.width, 535);
         self.addRepoContainerView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - [UIScreen mainScreen].bounds.size.width * 2, self.addRepoContainerView.frame.origin.y, self.addRepoContainerView.frame.size.width, self.addRepoContainerView.frame.size.height);
         self.logView.frame = CGRectMake(28, self.logView.frame.origin.y, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    }];*/
+    }];
     if(![SourcesBackend repoIsValid:urlString]) {
         if(@available(iOS 8.0, *)) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"The \"%@\" can not be added to your list because it does not appear to be a valid repo. This may be caused by your internet connection or by an issue on the repo owner's side. Please try again later.",urlString] preferredStyle:UIAlertControllerStyleAlert];
@@ -105,7 +106,7 @@
         }
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:sourcesPath];
         [fileHandle seekToEndOfFile];
-        [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];
+        [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];*/
 }
 
 @end

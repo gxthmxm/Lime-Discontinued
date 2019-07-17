@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SourcesViewController : UITableViewController
+@interface SourcesViewController : UITableViewController <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
 
 @property (nonatomic,retain) NSMutableDictionary *repoNames;
 @property (nonatomic,retain) NSMutableArray *sortedRepoNames;
