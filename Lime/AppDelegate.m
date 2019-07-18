@@ -14,8 +14,12 @@
 
 @implementation AppDelegate
 
+LMDPKGParser *parser;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    parser = [[LMDPKGParser alloc] init];
     
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"darkMode"] == nil) {
         NSDictionary *appDefaults  = [NSDictionary dictionary];
@@ -182,5 +186,8 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
++ (LMDPKGParser *)getParser {
+    return parser;
+}
 
 @end

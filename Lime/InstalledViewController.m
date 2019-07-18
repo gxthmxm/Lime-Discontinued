@@ -10,6 +10,7 @@
 #import "DepictionViewController.h"
 #import "UIColor/UIImageAverageColorAddition.h"
 #import "LimeHelper.h"
+#import "AppDelegate.h"
 
 @interface InstalledViewController ()
 
@@ -19,10 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.parser = [[LMDPKGParser alloc] init];
+    self.parser = [AppDelegate getParser];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tableView.backgroundColor = [UIColor blackColor];

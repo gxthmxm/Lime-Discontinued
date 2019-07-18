@@ -40,8 +40,7 @@ int downloadedFiles = 0;
     [self grabRepoNames];
     /*UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:filename delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
     [a show];*/
-    //[self downloadRepos];
-    [self downloadEverything];
+    //[self downloadEverything];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -143,16 +142,12 @@ int downloadedFiles = 0;
         NSInteger locationOfSpace = [strippedFileLine rangeOfString:@" "].location;
         // the actual url
         NSString *repoURL = [strippedFileLine substringToIndex:locationOfSpace];
-        NSString *originalRepoURL = [repoURL copy]; // we'll need that og one when downloading the icon
         // either the "./" or "stable main" etc at the end
         NSString *repoDirectory = [strippedFileLine substringFromIndex:locationOfSpace + 1];
         if(![repoDirectory isEqualToString:@"./"]) {
             NSArray *repoComponents = [repoDirectory componentsSeparatedByString:@" "];
             NSString *releaseURL = [NSString stringWithFormat:@"%@/dists/%@/Release",repoURL,[repoComponents objectAtIndex:0]];
             NSString *packagesURL = [NSString stringWithFormat:@"%@/dists/%@/%@/binary-iphoneos-arm/Packages.bz2",repoURL,[repoComponents objectAtIndex:0],[repoComponents objectAtIndex:1]];
-            NSString *iconURL = [NSString stringWithFormat:@"%@/dists/%@/",repoURL,[repoComponents objectAtIndex:0]];
-            //repoDirectory = [@"dists/" stringByAppendingString:repoDirectoryWithoutSpaces];
-            //if(![[repoURL substringFromIndex:repoURL.length - 1] isEqualToString:@"/"]) repoURL = [repoURL stringByAppendingString:@"/"];
             [self downloadRepoFileAtURL:releaseURL];
             [self downloadRepoFileAtURL:packagesURL];
         } else {
