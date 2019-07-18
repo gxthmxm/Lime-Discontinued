@@ -48,11 +48,11 @@
     }
 }
 
--(void)dealloc {
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)keyboardWillShow:(NSNotification*)notification {
+- (void)keyboardWillShow:(NSNotification*)notification {
     NSDictionary* keyboardInfo = [notification userInfo];
     NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
     CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
@@ -67,8 +67,7 @@
 }
 
 - (IBAction)addRepo:(id)sender {
-    // that shit not work
-    /*NSString *sourcesPath = @"/var/mobile/Documents/Lime/sources.list";
+    NSString *sourcesPath = @"/var/mobile/Documents/Lime/sources.list";
     NSString *urlString = self.repoURL.text;
     [_repoURL resignFirstResponder];
     [UIView animateWithDuration:0.2 animations:^{
@@ -76,36 +75,25 @@
         self.addRepoContainerView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - [UIScreen mainScreen].bounds.size.width * 2, self.addRepoContainerView.frame.origin.y, self.addRepoContainerView.frame.size.width, self.addRepoContainerView.frame.size.height);
         self.logView.frame = CGRectMake(28, self.logView.frame.origin.y, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     }];
-    if(![SourcesBackend repoIsValid:urlString]) {
-        if(@available(iOS 8.0, *)) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"The \"%@\" can not be added to your list because it does not appear to be a valid repo. This may be caused by your internet connection or by an issue on the repo owner's side. Please try again later.",urlString] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"The \"%@\" can not be added to your list because it does not appear to be a valid repo. This may be caused by your internet connection or by an issue on the repo owner's side. Please try again later.",urlString] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-            [alert show];
-        }
+    /*if(![SourcesBackend repoIsValid:urlString]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"The \"%@\" can not be added to your list because it does not appear to be a valid repo. This may be caused by your internet connection or by an issue on the repo owner's side. Please try again later.",urlString] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }*/
+    if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
+    NSString *formatted = [NSString stringWithFormat:@"deb %@ ./\n",urlString];
+    NSString *sourcesList = [NSString stringWithContentsOfFile:sourcesPath encoding:NSUTF8StringEncoding error:nil];
+    if([sourcesList rangeOfString:formatted].location != NSNotFound) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"This repo has already been added to your list." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-        if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
-        NSString *formatted = [NSString stringWithFormat:@"deb %@ ./\n",urlString];
-        NSString *sourcesList = [NSString stringWithContentsOfFile:sourcesPath encoding:NSUTF8StringEncoding error:nil];
-        if([sourcesList rangeOfString:formatted].location != NSNotFound) {
-            if(@available(iOS 8.0, *)) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"This repo has already been added to your list." preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
-            } else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This repo has already been added to your list." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-                [alert show];
-            }
-            return;
-        }
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:sourcesPath];
-        [fileHandle seekToEndOfFile];
-        [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];*/
+     NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:sourcesPath];
+    [fileHandle seekToEndOfFile];
+    [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 @end

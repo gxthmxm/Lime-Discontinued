@@ -41,6 +41,7 @@ int downloadedFiles = 0;
     /*UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:filename delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
     [a show];*/
     //[self downloadEverything];
+    [self addRepoWithURLString:@"http://artikushg.github.io"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -101,6 +102,7 @@ int downloadedFiles = 0;
     [self downloadRepos];
     while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && amountOfFilesToDownload != downloadedFiles) {};
     [self downloadRepoIcons];
+    amountOfFilesToDownload = 0;
     downloadedFiles = 0;
 }
 
@@ -246,6 +248,46 @@ int downloadedFiles = 0;
     fclose(f);
     [[NSFileManager defaultManager] removeItemAtPath:filepathString error:nil];
     return 0;
+}
+
+- (void)addRepoWithURLString:(NSString *)urlString {
+    NSString *sourcesPath = @"/var/mobile/Documents/Lime/sources.list";
+    if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
+    NSString *formatted = [NSString stringWithFormat:@"\ndeb %@ ./",urlString];
+    NSString *sourcesList = [NSString stringWithContentsOfFile:sourcesPath encoding:NSUTF8StringEncoding error:nil];
+    // if repo already on the list tell user
+    if([sourcesList rangeOfString:formatted].location != NSNotFound) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"This repo has already been added to your list." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    // download the files
+    if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
+    // urls
+    NSString *releaseURL = [urlString stringByAppendingString:@"./Release"];
+    NSString *packagesURL = [urlString stringByAppendingString:@"./Packages.bz2"];
+    NSString *packagesUnpackedURL = [urlString stringByAppendingString:@"./Packages"];
+    // filenames
+    NSString *releasePath = [self repoFilenameStringForURLString:releaseURL];
+    NSString *packagesPath = [self repoFilenameStringForURLString:packagesUnpackedURL];
+    // download 'em
+    amountOfFilesToDownload = 2;
+    downloadedFiles = 0;
+    [self downloadRepoFileAtURL:releaseURL];
+    [self downloadRepoFileAtURL:packagesURL];
+    while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && amountOfFilesToDownload != downloadedFiles) {};
+    // check if they there, if yes - write the repo to the list & get icon
+    if([[NSFileManager defaultManager] fileExistsAtPath:releasePath isDirectory:nil] && [[NSFileManager defaultManager] fileExistsAtPath:packagesPath isDirectory:nil]) {
+        [self downloadRepoIcons];
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:sourcesPath];
+        [fileHandle seekToEndOfFile];
+        [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];
+    } else {
+        // error message
+    }
 }
 
 @end
