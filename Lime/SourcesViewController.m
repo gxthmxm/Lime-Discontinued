@@ -13,9 +13,6 @@
 
 @implementation SourcesViewController
 
-int amountOfFilesToDownload = 0;
-int downloadedFiles = 0;
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
@@ -40,9 +37,11 @@ int downloadedFiles = 0;
     [self grabRepoNames];
     /*UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:filename delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
     [a show];*/
-    //[self downloadEverything];
+    //[self downloadRepos];
     [self addRepoWithURLString:@"http://artikushg.github.io"];
 }
+
+// TableView stuff
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.repoNames.count;
@@ -55,9 +54,10 @@ int downloadedFiles = 0;
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
     cell.textLabel.text = [self.sortedRepoNames objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.repoNames objectForKey:cell.textLabel.text];
+    NSString *urlString = [self.repoNames objectForKey:cell.textLabel.text];
+    cell.detailTextLabel.text = [urlString stringByReplacingOccurrencesOfString:@"/." withString:@""];
     cell.detailTextLabel.alpha = 0.5;
-    NSString *filename = [self iconFilenameForName:cell.textLabel.text];
+    NSString *filename = [self iconFilenameForURLString:[urlString stringByAppendingString:@"/CydiaIcon.png"]];
     UIImage *icon;
     if([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:nil]) icon = [UIImage imageWithContentsOfFile:filename];
     else icon = [UIImage imageNamed:@"sections/Unknown.png"];
@@ -77,6 +77,8 @@ int downloadedFiles = 0;
     return cell;
 }
 
+// TableViewn't stuff
+
 - (void)grabRepoNames {
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/mobile/Documents/Lime/lists/" error:nil];
     for (NSString *filename in files) {
@@ -87,7 +89,6 @@ int downloadedFiles = 0;
             for (NSString *line in lines) {
                 if(line.length > 6 && [[line substringToIndex:6] isEqualToString:@"Label:"]) {
                     NSString *link = [[filename substringToIndex:[filename rangeOfString:@"_" options:NSBackwardsSearch].location] stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
-                    if([[link substringFromIndex:link.length - 2] isEqualToString:@"/."]) link = [link substringToIndex:link.length - 2];
                     [self.repoNames setObject:link forKey:[line substringFromIndex:7]];
                     break;
                 }
@@ -98,35 +99,37 @@ int downloadedFiles = 0;
     [self.sortedRepoNames sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
-- (void)downloadEverything {
-    [self downloadRepos];
-    while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && amountOfFilesToDownload != downloadedFiles) {};
-    [self downloadRepoIcons];
-    amountOfFilesToDownload = 0;
-    downloadedFiles = 0;
+- (NSString *)baseRepoFilenameStringForURLString:(NSString *)url {
+    NSString *strippedURL = url;
+    NSUInteger location = [url rangeOfString:@"://"].location;
+    if(location != NSNotFound) strippedURL = [strippedURL substringFromIndex:location + 3];
+    strippedURL = [strippedURL stringByReplacingOccurrencesOfString:@"www." withString:@""];
+    NSString *baseFilename = [strippedURL stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    return baseFilename;
 }
 
-// Icons
-
-- (void)downloadRepoIcons {
-    for (NSString *name in self.sortedRepoNames) {
-        NSString *filename = [self iconFilenameForName:name];
-        NSString *urlString = [@"http://" stringByAppendingString:[self.repoNames objectForKey:name]];
-        [self downloadRepoIconForURLString:urlString filename:filename];
-    }
+- (NSString *)iconFilenameForURLString:(NSString *)url {
+    NSString *baseFilename = [self baseRepoFilenameStringForURLString:url];
+    NSString *fullPathFilename = [@"/var/mobile/Documents/Lime/icons/" stringByAppendingString:baseFilename];
+    return fullPathFilename;
 }
 
-- (NSString *)iconFilenameForName:(NSString *)name {
-    NSString *fixedName = [name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-    fixedName = [fixedName stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
-    NSString *filename = [NSString stringWithFormat:@"/var/mobile/Documents/Lime/icons/%@.png",fixedName];
-    return filename;
+- (NSString *)repoFilenameStringForURLString:(NSString *)url {
+    NSString *baseFilename = [self baseRepoFilenameStringForURLString:url];
+    NSString *fullPathFilename = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:baseFilename];
+    return fullPathFilename;
 }
 
-- (void)downloadRepoIconForURLString:(NSString *)urlString filename:(NSString *)filename {
+- (void)downloadRepoIconForURLString:(NSString *)urlString {
     if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
     urlString = [urlString stringByAppendingString:@"CydiaIcon.png"];
-    [self downloadFileAtURL:urlString writeToPath:filename];
+    NSString *filename = [self iconFilenameForURLString:urlString];
+    [self downloadFileAtURL:urlString writeToPath:filename completion:nil];
+}
+
+- (void)downloadRepoFileAtURL:(NSString *)url {
+    //if(![[url substringFromIndex:url.length - 1] isEqualToString:@"/"]) url = [url stringByAppendingString:@"/"];
+    [self downloadFileAtURL:url writeToPath:[self repoFilenameStringForURLString:url] completion:nil];
 }
 
 // Repos backend
@@ -137,7 +140,6 @@ int downloadedFiles = 0;
     for (NSString *filename in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/mobile/Documents/Lime/icons/" error:nil]) [[NSFileManager defaultManager] removeItemAtPath:[@"/var/mobile/Documents/Lime/icons/" stringByAppendingString:filename] error:nil];
     
     NSMutableArray *fileLines = [[[NSString stringWithContentsOfFile:@"/var/mobile/Documents/Lime/sources.list" encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"] mutableCopy];
-    amountOfFilesToDownload = (int)fileLines.count * 2;
     for (NSString *fileLine in fileLines) {
         NSString *strippedFileLine = [fileLine substringFromIndex:4]; // removes "deb "
         // i separate the string into two parts: "https://an.example.repourl/" and "./" (or some kinda "stable main" like bigboss and modmyi do)
@@ -148,35 +150,23 @@ int downloadedFiles = 0;
         NSString *repoDirectory = [strippedFileLine substringFromIndex:locationOfSpace + 1];
         if(![repoDirectory isEqualToString:@"./"]) {
             NSArray *repoComponents = [repoDirectory componentsSeparatedByString:@" "];
-            NSString *releaseURL = [NSString stringWithFormat:@"%@/dists/%@/Release",repoURL,[repoComponents objectAtIndex:0]];
-            NSString *packagesURL = [NSString stringWithFormat:@"%@/dists/%@/%@/binary-iphoneos-arm/Packages.bz2",repoURL,[repoComponents objectAtIndex:0],[repoComponents objectAtIndex:1]];
+            NSString *releaseURL = [NSString stringWithFormat:@"%@./dists/%@/Release",repoURL,[repoComponents objectAtIndex:0]];
+            NSString *iconURL = [NSString stringWithFormat:@"%@./dists/%@/",repoURL,[repoComponents objectAtIndex:0]];
+            NSString *packagesURL = [NSString stringWithFormat:@"%@./dists/%@/%@/binary-iphoneos-arm/Packages.bz2",repoURL,[repoComponents objectAtIndex:0],[repoComponents objectAtIndex:1]];
             [self downloadRepoFileAtURL:releaseURL];
             [self downloadRepoFileAtURL:packagesURL];
+            [self downloadRepoIconForURLString:iconURL];
         } else {
             repoURL = [repoURL stringByAppendingString:repoDirectory];
             [self downloadRepoFileAtURL:[repoURL stringByAppendingString:@"Release"]];
             [self downloadRepoFileAtURL:[repoURL stringByAppendingString:@"Packages.bz2"]];
+            [self downloadRepoIconForURLString:repoURL];
         }
     }
 }
 
-- (NSString *)repoFilenameStringForURLString:(NSString *)url {
-    NSString *strippedURL = url;
-    NSUInteger location = [url rangeOfString:@"://"].location;
-    if(location != NSNotFound) strippedURL = [strippedURL substringFromIndex:location + 3];
-    strippedURL = [strippedURL stringByReplacingOccurrencesOfString:@"www." withString:@""];
-    NSString *baseFilename = [strippedURL stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
-    NSString *fullPathFilename = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:baseFilename];
-    return fullPathFilename;
-}
-
-- (void)downloadRepoFileAtURL:(NSString *)url {
-    //if(![[url substringFromIndex:url.length - 1] isEqualToString:@"/"]) url = [url stringByAppendingString:@"/"];
-    [self downloadFileAtURL:url writeToPath:[self repoFilenameStringForURLString:url]];
-}
-
 // For downloading files;
-- (void)downloadFileAtURL:(NSString *)url writeToPath:(NSString *)path {
+- (void)downloadFileAtURL:(NSString *)url writeToPath:(NSString *)path completion:(downloadCompletion)completion {
     __block NSInteger responseCode;
     __block BOOL completed = NO;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
@@ -191,6 +181,7 @@ int downloadedFiles = 0;
             NSLog(@"Status code: %ld\nError: %@",responseCode,[error localizedDescription]);
             // VERY VERY GOOD ERROR MESSAGE FOR THE USER SAYING THE REPOS MESSED UP GOES HERE
             // HOPE I DONT FORGET TO IMPLEMENT IT YES
+            if(completion) completion(NO);
         } else {
             // download the source prolly
             [data writeToFile:path atomically:YES];
@@ -202,11 +193,11 @@ int downloadedFiles = 0;
                 // (when u a programmer but also a rapper lmao)
                 [self bunzip_one:path];
             }
+            if(completion) completion(YES);
             [self grabRepoNames];
             [self.tableView reloadData];
         }
         completed = YES;
-        downloadedFiles++;
     }] resume];
     //while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !completed) {};
 }
@@ -265,6 +256,29 @@ int downloadedFiles = 0;
     }
     
     // download the files
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //THIS
+    //
+    //
+    //DONT
+    //
+    //WORK!!!!!
+    //
+    //
+    //at least rn
+    //
+    //TODO FIXXXXX
+    //
     if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
     // urls
     NSString *releaseURL = [urlString stringByAppendingString:@"./Release"];
@@ -274,20 +288,18 @@ int downloadedFiles = 0;
     NSString *releasePath = [self repoFilenameStringForURLString:releaseURL];
     NSString *packagesPath = [self repoFilenameStringForURLString:packagesUnpackedURL];
     // download 'em
-    amountOfFilesToDownload = 2;
-    downloadedFiles = 0;
-    [self downloadRepoFileAtURL:releaseURL];
+    [self downloadFileAtURL:releaseURL writeToPath:releasePath completion:^(BOOL wroteFile) {
+        // check if they there, if yes - write the repo to the list & get icon
+        if(wroteFile) {
+            NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:sourcesPath];
+            [fileHandle seekToEndOfFile];
+            [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];
+        } else {
+            // error message
+        }
+    }];
     [self downloadRepoFileAtURL:packagesURL];
-    while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && amountOfFilesToDownload != downloadedFiles) {};
-    // check if they there, if yes - write the repo to the list & get icon
-    if([[NSFileManager defaultManager] fileExistsAtPath:releasePath isDirectory:nil] && [[NSFileManager defaultManager] fileExistsAtPath:packagesPath isDirectory:nil]) {
-        [self downloadRepoIcons];
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:sourcesPath];
-        [fileHandle seekToEndOfFile];
-        [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];
-    } else {
-        // error message
-    }
+    [self downloadRepoIconForURLString:urlString];
 }
 
 @end

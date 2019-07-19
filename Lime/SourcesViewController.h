@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,retain) NSMutableDictionary *repoNames;
 @property (nonatomic,retain) NSMutableArray *sortedRepoNames;
 
+typedef void(^downloadCompletion)(BOOL);
+
 @end
 
 NS_ASSUME_NONNULL_END
