@@ -48,6 +48,7 @@
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSString *maintainer;
 @property (nonatomic, strong) NSString *filename;
+@property (nonatomic, strong) NSString *sileoDepiction;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *installedSize;
 @property (nonatomic) BOOL commercial;

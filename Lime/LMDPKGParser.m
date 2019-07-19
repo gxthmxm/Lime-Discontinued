@@ -28,18 +28,23 @@
 	NSString *lastVersion = @"";
     NSString *lastSize = @"";
     NSString *lastSection = @"";
+	NSString *sileoDepiction = @"";
+	NSString *line;
     while(fgets(str, 999, file) != NULL) {
-#define ProcessEntry(val, str) ([[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@val": " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""])
-#define TestEntrySet(val, var) if (strstr(str, val":")) var = ProcessEntry(val, str)
-#define TestEntryAdd(val, var) if (strstr(str, val":")) [var addObject:ProcessEntry(val, str)]
-		TestEntrySet("Package", lastID);
-		TestEntryAdd("Name", names);
-		TestEntrySet("Description", lastDesc);
-		TestEntrySet("Author", lastAuthor);
-		TestEntrySet("Depiction", lastDepiction);
-		TestEntrySet("Version", lastVersion);
-        TestEntrySet("Size", lastSize);
-        TestEntrySet("Section", lastSection);
+		line = @(str);
+#define ProcessEntry(val, str) ([[str substringFromIndex:val.length+2] stringByReplacingOccurrencesOfString:@"\n" withString:@""])
+#define Compare(a, b) ([a.lowercaseString hasPrefix:[b.lowercaseString stringByAppendingString:@":"]])
+#define TestEntrySet(val, var) if (Compare(line, val)) var = ProcessEntry(val, line)
+#define TestEntryAdd(val, var) if (Compare(line, val)) [var addObject:ProcessEntry(val, line)]
+		TestEntrySet(@"Package", lastID);
+		TestEntryAdd(@"Name", names);
+		TestEntrySet(@"Description", lastDesc);
+		TestEntrySet(@"Author", lastAuthor);
+		TestEntrySet(@"Depiction", lastDepiction);
+		TestEntrySet(@"Version", lastVersion);
+        TestEntrySet(@"Size", lastSize);
+        TestEntrySet(@"Section", lastSection);
+		TestEntrySet(@"SileoDepiction", sileoDepiction);
         if(strstr(str, "Section:")) {
             icon = [NSString stringWithFormat:@"%@/sections/%@.png",[[NSBundle mainBundle] resourcePath], [[[NSString stringWithCString:str encoding:NSASCIIStringEncoding] stringByReplacingOccurrencesOfString:@"Section: " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
             if([icon rangeOfString:@"Themes"].location != NSNotFound) icon = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/sections/Themes.png"];
@@ -67,6 +72,7 @@
                 package.size = lastSize;
                 package.name = (NSString*)[names objectAtIndex:index];
                 package.version = lastVersion;
+				package.sileoDepiction = sileoDepiction;
                 
                 [self.installedPackages insertObject:package atIndex:index];
                 
@@ -78,6 +84,7 @@
                 lastVersion = @"";
                 lastSize = @"";
                 lastSection = @"";
+				sileoDepiction = @"";
             }
         }
     }

@@ -30,6 +30,7 @@
     [aCoder encodeObject:self.size forKey:@"size"];
     [aCoder encodeObject:self.installedSize forKey:@"installedSize"];
     [aCoder encodeObject:self.installedDate forKey:@"installedDate"];
+	[aCoder encodeObject:self.sileoDepiction forKey:@"sileoDepiction"];
 }
 
 - (id)initWithCoder:(NSCoder *)aCoder {
@@ -52,6 +53,7 @@
         self.size = [aCoder decodeObjectForKey:@"size"];
         self.installedSize = [aCoder decodeObjectForKey:@"installedSize"];
         self.installedDate = [aCoder decodeObjectForKey:@"installedDate"];
+		self.sileoDepiction = [aCoder decodeObjectForKey:@"sileoDepiction"];
     }
     return self;
 }
