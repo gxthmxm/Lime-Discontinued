@@ -383,7 +383,7 @@ static UIImage *shadowImage;
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
-    self.navigationController.navigationBar.barStyle = [[NSUserDefaults standardDefaults] boolForKey:@"darkMode"] ? 1 : 0;
+    //self.navigationController.navigationBar.barStyle = [[NSUserDefaults standardDefaults] boolForKey:@"darkMode"] ? 1 : 0;
     self.navigationController.navigationBar.tintColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = nil;

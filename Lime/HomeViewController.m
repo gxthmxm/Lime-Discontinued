@@ -15,6 +15,13 @@
 @end
 
 @implementation HomeViewController
+-(IBAction)closeCard:(id)sender {
+    [self.view removeFromSuperview];
+}
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,6 +56,7 @@
         sender.view.layer.cornerRadius = 0;
     }];
 }
+
 
 - (void)handleLongPress:(UILongPressGestureRecognizer*)sender {
     if (sender.state == UIGestureRecognizerStateEnded) {
