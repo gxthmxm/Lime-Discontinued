@@ -15,12 +15,10 @@
 @end
 
 @implementation HomeViewController
--(IBAction)closeCard:(id)sender {
-    [self.view removeFromSuperview];
+
+- (IBAction)closeCard:(UIButton *)sender {
+    //:)
 }
-
-
-
 
 
 - (void)viewDidLoad {
