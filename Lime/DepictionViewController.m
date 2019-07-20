@@ -295,6 +295,7 @@ static UIImage *shadowImage;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barStyle = 1;
     self.navigationItem.titleView.hidden = YES;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.bigView.backgroundColor = [UIColor blackColor];
@@ -382,7 +383,7 @@ static UIImage *shadowImage;
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+    self.navigationController.navigationBar.barStyle = [[NSUserDefaults standardDefaults] boolForKey:@"darkMode"] ? 1 : 0;
     self.navigationController.navigationBar.tintColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = nil;
@@ -398,6 +399,8 @@ static UIImage *shadowImage;
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
             if([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
                 self.navigationController.navigationBar.barStyle = 1;
+            } else {
+                self.navigationController.navigationBar.barStyle = 0;
             }
             self.navigationController.navigationBar.tintColor = [[LimeHelper iconFromPackage:self.package] averageColor];
         }];
@@ -407,6 +410,7 @@ static UIImage *shadowImage;
             [self.navigationController.navigationBar setShadowImage:[UIImage new]];
             self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
             self.navigationItem.rightBarButtonItem.customView.hidden = YES;
+            self.navigationController.navigationBar.barStyle = 1;
         }];
     }
     if (scrollOffset.y >= 157) {
