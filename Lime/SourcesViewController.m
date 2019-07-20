@@ -38,7 +38,8 @@
     /*UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:filename delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
     [a show];*/
     //[self downloadRepos];
-    [self addRepoWithURLString:@"http://artikushg.github.io"];
+    [self addRepoWithURLString:@"https://apt.limeinstaller.com"];
+    [self addRepoWithURLString:@"https://artikushg.github.io"];
 }
 
 // TableView stuff
