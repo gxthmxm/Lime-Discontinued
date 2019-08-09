@@ -33,8 +33,10 @@
         @"sileodepiction":@"sileoDepiction"
     };
     
+    NSString *previousKey; // for multiline
+    
     while(fgets(str, sizeof(str), f) != NULL) {
-        if(strlen(str) < 2 && ![package.identifier hasPrefix:@"cy+"] && ![package.identifier hasPrefix:@"gsc."]) { // a line THAT short is obviously a newline, and we wanna go to the next package and add the current one if so; also we don't add packages prefixed with gsc and cy+ 
+        if(strlen(str) < 2 && ![package.identifier hasPrefix:@"cy+"] && ![package.identifier hasPrefix:@"gsc."]) { // a line THAT short is obviously a newline, and we wanna go to the next package and add the current one if so; also we don't add packages prefixed with gsc and cy+
             if(package.name.length < 1) package.name = package.identifier;
             if(package.iconPath.length > 0) package.iconPath = [package.iconPath stringByReplacingOccurrencesOfString:@"file://" withString:@""];
             else {
@@ -51,22 +53,24 @@
             //break;
         } else {
             NSString *line = [[NSString stringWithCString:str encoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            if(strstr(str, ": ")) {
+            if(strstr(str, ": ") && ![line hasPrefix:@" "]) {
                 NSArray *lineArray = [line componentsSeparatedByString:@": "]; // Separate the line into the key and the value
                 // initialize the key as the lowercase dpkg key (lowercase because see next comment)
                 NSString *key = [[lineArray objectAtIndex:0] lowercaseString];
                 // LMPackage has custom property names (e.g. description would be desc, dependencies would be depends etc.) so if there is a custom property name set for the current key in our dictionary we change the key
                 if([customPropertiesDict objectForKey:key]) key = [customPropertiesDict objectForKey:key];
+                previousKey = key;
                 // the value (most useless comment in the world)
                 NSString *value = [lineArray objectAtIndex:1];
                 if(key && value && [package respondsToSelector:NSSelectorFromString(key)]) {
                     [package setValue:value forKey:key];
                 }
-            // multiline descriptions
-            } else if([line rangeOfString:@"    "].location != NSNotFound) {
-                NSString *descriptionLine = [line substringFromIndex:4]; // remove 4 spaces
-                descriptionLine = [@"\n" stringByAppendingString:descriptionLine];
-                package.desc = [package.desc stringByAppendingString:descriptionLine];
+            // multiline stuff
+            } else if([line hasPrefix:@" "]) {
+                NSString *appendLine = line; // HERE I STILL NEED TO REMOVE THE PREFIX
+                appendLine = [@"\n" stringByAppendingString:appendLine];
+                appendLine = [[package valueForKey:previousKey] stringByAppendingString:appendLine];
+                [package setValue:appendLine forKey:previousKey];
             }
         }
     }
