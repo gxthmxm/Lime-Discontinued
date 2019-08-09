@@ -8,7 +8,7 @@ package:
 	dpkg -b deb
 
 install:
-	cat deb.deb | ssh -p 22 root@192.168.0.101 "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c uicache"
+	cat deb.deb | ssh -p 22 root@192.168.0.87 "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c uicache"
 
 clean:
 	xcodebuild -UseModernBuildSystem=NO clean

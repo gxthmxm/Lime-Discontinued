@@ -44,6 +44,7 @@
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
 		4DF84F5722CFF16A00E43E20 /* vrzHBVF.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF84F5622CFF16900E43E20 /* vrzHBVF.png */; };
 		6622F62222DF56BC007C7B40 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6622F62122DF56BC007C7B40 /* libbz2.tbd */; };
+		662803B922E99CBC008BDBDE /* LMPackageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 662803B822E99CBC008BDBDE /* LMPackageParser.m */; };
 		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
 		666DC9112278690100B6E03C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC9102278690100B6E03C /* HomeViewController.m */; };
 		666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666DC91322786B4600B6E03C /* ChangesViewController.m */; };
@@ -127,6 +128,8 @@
 		6622F62122DF56BC007C7B40 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		6626F4C5228059A100F94ED3 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
 		6626F4C6228059A100F94ED3 /* NSTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTask.h; sourceTree = "<group>"; };
+		662803B722E99CBC008BDBDE /* LMPackageParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMPackageParser.h; sourceTree = "<group>"; };
+		662803B822E99CBC008BDBDE /* LMPackageParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMPackageParser.m; sourceTree = "<group>"; };
 		66381721227A078000E92BE7 /* sections */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sections; sourceTree = "<group>"; };
 		666DC90F2278690100B6E03C /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		666DC9102278690100B6E03C /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -223,6 +226,8 @@
 				666DC9192278702100B6E03C /* InstalledViewController.m */,
 				66B9FCA022788D7400F1FB08 /* LMDPKGParser.h */,
 				66B9FCA122788D7400F1FB08 /* LMDPKGParser.m */,
+				662803B722E99CBC008BDBDE /* LMPackageParser.h */,
+				662803B822E99CBC008BDBDE /* LMPackageParser.m */,
 				4D330CA322C789BE000A1C85 /* Images.xcassets */,
 				6626F4C5228059A100F94ED3 /* MobileGestalt.h */,
 				6626F4C6228059A100F94ED3 /* NSTask.h */,
@@ -456,6 +461,7 @@
 				666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */,
 				66B9FCA222788D7400F1FB08 /* LMDPKGParser.m in Sources */,
 				666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */,
+				662803B922E99CBC008BDBDE /* LMPackageParser.m in Sources */,
 				666DC9112278690100B6E03C /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

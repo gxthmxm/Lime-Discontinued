@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFilePath:(NSString *)filePath;
 @property (nonatomic,retain) NSDictionary *packages;
+@property (nonatomic,retain) NSDictionary *packageNames;
 
 @end
 

@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "LMDPKGParser.h"
+#import "LMPackageParser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface InstalledViewController : UITableViewController
 
-@property (nonatomic,retain) LMDPKGParser *parser;
+@property (nonatomic, retain) LMPackageParser *parser;
+@property (nonatomic, retain) NSArray *sortedPackages;
 
 @end
 

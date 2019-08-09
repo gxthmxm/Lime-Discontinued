@@ -20,7 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.parser = [AppDelegate getParser];
+    self.parser = [[LMPackageParser alloc] initWithFilePath:@"/var/lib/dpkg/status"];
+    self.sortedPackages = [self.parser.packageNames.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    /*NSArray *sortedPackages = [self.parser.packages allKeys];
+    sortedPackages = [sortedPackages sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];*/
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -33,11 +37,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.parser.installedPackages.count;
+    return self.sortedPackages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LMPackage *package = (LMPackage*)[self.parser.installedPackages objectAtIndex:indexPath.row];
+    LMPackage *package = (LMPackage*)[self.parser.packages objectForKey:[self.parser.packageNames objectForKey:[self.sortedPackages objectAtIndex:indexPath.row]]];
     
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -96,7 +100,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        LMPackage *package = (LMPackage*)[self.parser.installedPackages objectAtIndex:indexPath.row];
+        LMPackage *package = (LMPackage*)[self.parser.packages objectForKey:[self.parser.packageNames objectForKey:[self.sortedPackages objectAtIndex:indexPath.row]]];
         [LMQueue addQueueAction:[[LMQueueAction alloc] initWithPackage:package action:1]];
         [self performSegueWithIdentifier:@"openQue" sender:self];
     }
@@ -111,7 +115,7 @@
         DepictionViewController *depictionViewController = segue.destinationViewController;
         NSInteger index = [(UITableView *)self.view indexPathForSelectedRow].row;
         
-        depictionViewController.package = (LMPackage*)[self.parser.installedPackages objectAtIndex:index];
+        LMPackage *package = (LMPackage*)[self.parser.packages objectForKey:[self.parser.packageNames objectForKey:[self.sortedPackages objectAtIndex:index]]];
     }
 }
 

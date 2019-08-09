@@ -13,7 +13,5 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-+ (LMDPKGParser *)getParser;
-
 @end
 

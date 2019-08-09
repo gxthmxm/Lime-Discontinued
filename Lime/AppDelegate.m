@@ -14,12 +14,11 @@
 
 @implementation AppDelegate
 
-LMDPKGParser *parser;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    parser = [[LMDPKGParser alloc] init];
+    // log to a txt
+    freopen([@"/var/mobile/Documents/Lime/log.txt" cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
     
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"darkMode"] == nil) {
         NSDictionary *appDefaults  = [NSDictionary dictionary];
@@ -184,10 +183,6 @@ LMDPKGParser *parser;
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-+ (LMDPKGParser *)getParser {
-    return parser;
 }
 
 @end
