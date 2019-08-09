@@ -39,18 +39,24 @@
             package = nil;
             package = [[LMPackage alloc] init];
             //break;
-        } else if(strstr(str, ": ")) {
+        } else {
             NSString *line = [[NSString stringWithCString:str encoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            NSArray *lineArray = [line componentsSeparatedByString:@": "]; // Separate the line into the key and the value
-            // initialize the key as the lowercase dpkg key (lowercase because see next comment)
-            NSString *key = [[lineArray objectAtIndex:0] lowercaseString];
-            // LMPackage has custom property names (e.g. description would be desc, dependencies would be depends etc.) so if there is a custom property name set for the current key in our dictionary we change the key
-            if([customPropertiesDict objectForKey:key]) key = [customPropertiesDict objectForKey:key];
-            // the value (most useless comment in the world)
-            NSString *value = [lineArray objectAtIndex:1];
-            
-            if(key && value && [package respondsToSelector:NSSelectorFromString(key)]) {
-                [package setValue:value forKey:key];
+            if(strstr(str, ": ")) {
+                NSArray *lineArray = [line componentsSeparatedByString:@": "]; // Separate the line into the key and the value
+                // initialize the key as the lowercase dpkg key (lowercase because see next comment)
+                NSString *key = [[lineArray objectAtIndex:0] lowercaseString];
+                // LMPackage has custom property names (e.g. description would be desc, dependencies would be depends etc.) so if there is a custom property name set for the current key in our dictionary we change the key
+                if([customPropertiesDict objectForKey:key]) key = [customPropertiesDict objectForKey:key];
+                // the value (most useless comment in the world)
+                NSString *value = [lineArray objectAtIndex:1];
+                if(key && value && [package respondsToSelector:NSSelectorFromString(key)]) {
+                    [package setValue:value forKey:key];
+                }
+            // multiline descriptions
+            } else if([line rangeOfString:@"    "].location != NSNotFound) {
+                NSString *descriptionLine = [line substringFromIndex:4]; // remove 4 spaces
+                descriptionLine = [@"\n" stringByAppendingString:descriptionLine];
+                package.desc = [package.desc stringByAppendingString:descriptionLine];
             }
         }
     }
