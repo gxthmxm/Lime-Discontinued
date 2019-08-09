@@ -53,7 +53,7 @@
             //break;
         } else {
             NSString *line = [[NSString stringWithCString:str encoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            if([[NSCharacterSet whitespaceCharacterSet] characterIsMember:[line characterAtIndex:0]]) {
+            if(line.length && [[NSCharacterSet whitespaceCharacterSet] characterIsMember:[line characterAtIndex:0]]) {
             	// multiline descriptions
                 NSString *nextLine = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]; // remove 4 spaces
                 NSString *oldValue = [package valueForKey:lastKey];
