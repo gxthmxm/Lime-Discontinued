@@ -65,6 +65,7 @@
                 NSString *key = [[lineArray objectAtIndex:0] lowercaseString];
                 // LMPackage has custom property names (e.g. description would be desc, dependencies would be depends etc.) so if there is a custom property name set for the current key in our dictionary we change the key
                 if([customPropertiesDict objectForKey:key]) key = [customPropertiesDict objectForKey:key];
+                previousKey = key;
                 // the value (most useless comment in the world)
                 [lineArray removeObjectAtIndex:0];
                 NSString *value = [lineArray componentsJoinedByString:@": "];
