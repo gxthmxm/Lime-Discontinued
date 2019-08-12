@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jsW-9y-ZXB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jsW-9y-ZXB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -729,7 +729,7 @@
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                             <state key="normal" title="Close"/>
                                                             <connections>
-                                                                <action selector="closeCard:" destination="WLZ-MY-mBx" eventType="touchUpInside" id="DhW-Gj-ThN"/>
+                                                                <action selector="closeCard:" destination="WLZ-MY-mBx" eventType="touchUpInside" id="TBX-JX-ryt"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -2172,7 +2172,7 @@
         <image name="FelicityBG" width="1200" height="675"/>
         <image name="Gghjh" width="16" height="16"/>
         <image name="Home" width="28" height="24"/>
-        <image name="Installed" width="28" height="25.5"/>
+        <image name="Installed" width="28" height="25"/>
         <image name="Lime.png" width="1024" height="1024"/>
         <image name="Lock.png" width="104" height="104"/>
         <image name="Luis" width="400" height="400"/>
@@ -2186,7 +2186,7 @@
         <image name="Twitter" width="32" height="26"/>
         <image name="Zebra.png" width="400" height="400"/>
         <image name="arrow" width="40" height="13"/>
-        <image name="arrowright.png" width="525" height="525"/>
+        <image name="arrowright.png" width="700" height="700"/>
         <image name="cydia.png" width="167" height="167"/>
         <image name="dark.png" width="886" height="1732"/>
         <image name="light.png" width="886" height="1732"/>

@@ -17,9 +17,13 @@
 @implementation HomeViewController
 
 - (IBAction)closeCard:(UIButton *)sender {
-    //:)
+    UIView *card = sender.superview.superview.superview;
+    [sender.superview.superview.superview removeFromSuperview];
+    [self.scrollView addSubview:card];
+    [UIView animateWithDuration:0.2 animations:^{
+        card.frame = CGRectMake(20, 96, self.scrollView.frame.size.width - 40, 411);
+    }];
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
