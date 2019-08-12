@@ -116,6 +116,7 @@
         NSInteger index = [(UITableView *)self.view indexPathForSelectedRow].row;
         
         LMPackage *package = (LMPackage*)[self.parser.packages objectForKey:[self.parser.packageNames objectForKey:[self.sortedPackages objectAtIndex:index]]];
+        depictionViewController.package = package;
     }
 }
 
