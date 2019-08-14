@@ -11,10 +11,6 @@
 
 @implementation AddRepoController
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    segue.sourceViewController.view.maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -82,7 +78,12 @@
         [self presentViewController:alert animated:YES completion:nil];
     }*/
     if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
-    NSString *formatted = [NSString stringWithFormat:@"deb %@ ./\n",urlString];
+    NSString *formatted;
+    if ([urlString hasPrefix:@"https://"] || [urlString hasPrefix:@"http://"]) {
+        formatted = [NSString stringWithFormat:@"deb %@ ./\n",urlString];
+    } else {
+        formatted = [NSString stringWithFormat:@"deb https://%@ ./\n",urlString];
+    }
     NSString *sourcesList = [NSString stringWithContentsOfFile:sourcesPath encoding:NSUTF8StringEncoding error:nil];
     if([sourcesList rangeOfString:formatted].location != NSNotFound) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"This repo has already been added to your list." preferredStyle:UIAlertControllerStyleAlert];
@@ -94,6 +95,7 @@
      NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:sourcesPath];
     [fileHandle seekToEndOfFile];
     [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

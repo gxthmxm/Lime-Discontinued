@@ -813,6 +813,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Add" id="NK5-E1-vJm">
                             <connections>
                                 <action selector="addRepoController:" destination="CEa-EV-tYC" id="SUW-EQ-Psf"/>
+                                <segue destination="KAU-yf-a8n" kind="presentation" modalPresentationStyle="overFullScreen" id="Vo4-br-HTL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2196,6 +2197,7 @@
         <image name="vrzHBVF.png" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Vo4-br-HTL"/>
         <segue reference="EdO-LT-SHf"/>
         <segue reference="REO-jp-PFU"/>
     </inferredMetricsTieBreakers>
