@@ -10,8 +10,8 @@
 		37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC74227753EC0039BE3C /* AppDelegate.m */; };
 		37D0FC86227753EF0039BE3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC85227753EF0039BE3C /* main.m */; };
 		37D0FCA922776ACF0039BE3C /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = 37D0FCA822776ACF0039BE3C /* HTML */; };
-		4D0E5FEB22CCEB1C00308087 /* DepictionWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E5FEA22CCEB1C00308087 /* DepictionWebController.m */; };
 		4D131D6A233519F900B3F311 /* RepoPackagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D131D69233519F900B3F311 /* RepoPackagesViewController.m */; };
+		4D131D7023351E6C00B3F311 /* WebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D131D6F23351E6C00B3F311 /* WebController.m */; };
 		4D1BFFC322C799DB00122AC2 /* melogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC222C799D900122AC2 /* melogo.png */; };
 		4D1BFFC722C79B9300122AC2 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC622C79B9200122AC2 /* check.png */; };
 		4D1BFFC922C79E0E00122AC2 /* cydia.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC822C79E0D00122AC2 /* cydia.png */; };
@@ -81,10 +81,10 @@
 		37D0FC8B227753EF0039BE3C /* LimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D0FC96227753EF0039BE3C /* LimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D0FCA822776ACF0039BE3C /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML; sourceTree = "<group>"; };
-		4D0E5FEA22CCEB1C00308087 /* DepictionWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionWebController.m; sourceTree = "<group>"; };
-		4D0E5FEC22CCEB2C00308087 /* DepictionWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepictionWebController.h; sourceTree = "<group>"; };
 		4D131D68233519F900B3F311 /* RepoPackagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepoPackagesViewController.h; sourceTree = "<group>"; };
 		4D131D69233519F900B3F311 /* RepoPackagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepoPackagesViewController.m; sourceTree = "<group>"; };
+		4D131D6E23351E6C00B3F311 /* WebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebController.h; sourceTree = "<group>"; };
+		4D131D6F23351E6C00B3F311 /* WebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebController.m; sourceTree = "<group>"; };
 		4D1BFFC222C799D900122AC2 /* melogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melogo.png; sourceTree = "<group>"; };
 		4D1BFFC622C79B9200122AC2 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		4D1BFFC822C79E0D00122AC2 /* cydia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cydia.png; sourceTree = "<group>"; };
@@ -220,8 +220,6 @@
 				666DC9102278690100B6E03C /* HomeViewController.m */,
 				4D33AB5B227888F800CDFC49 /* DepictionViewController.h */,
 				4D33AB5C2278890600CDFC49 /* DepictionViewController.m */,
-				4D0E5FEC22CCEB2C00308087 /* DepictionWebController.h */,
-				4D0E5FEA22CCEB1C00308087 /* DepictionWebController.m */,
 				666DC91222786B4600B6E03C /* ChangesViewController.h */,
 				666DC91322786B4600B6E03C /* ChangesViewController.m */,
 				666DC91522786B4E00B6E03C /* SearchViewController.h */,
@@ -234,6 +232,8 @@
 				66D5B5472333ECB7006E4B0E /* LMRepo.m */,
 				666DC9182278702100B6E03C /* InstalledViewController.h */,
 				666DC9192278702100B6E03C /* InstalledViewController.m */,
+				4D131D6E23351E6C00B3F311 /* WebController.h */,
+				4D131D6F23351E6C00B3F311 /* WebController.m */,
 				66B9FCA022788D7400F1FB08 /* LMDPKGParser.h */,
 				66B9FCA122788D7400F1FB08 /* LMDPKGParser.m */,
 				662803B722E99CBC008BDBDE /* LMPackageParser.h */,
@@ -455,7 +455,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D0E5FEB22CCEB1C00308087 /* DepictionWebController.m in Sources */,
 				66D5B5482333ECB7006E4B0E /* LMRepo.m in Sources */,
 				37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */,
 				4D131D6A233519F900B3F311 /* RepoPackagesViewController.m in Sources */,
@@ -472,6 +471,7 @@
 				4D7F12112280951300576DEF /* UIImageAverageColorAddition.m in Sources */,
 				666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */,
 				66B9FCA222788D7400F1FB08 /* LMDPKGParser.m in Sources */,
+				4D131D7023351E6C00B3F311 /* WebController.m in Sources */,
 				666DC91422786B4600B6E03C /* ChangesViewController.m in Sources */,
 				662803B922E99CBC008BDBDE /* LMPackageParser.m in Sources */,
 				666DC9112278690100B6E03C /* HomeViewController.m in Sources */,

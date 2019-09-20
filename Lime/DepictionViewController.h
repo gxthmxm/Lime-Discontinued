@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import "LimeHelper.h"
-#import "DepictionWebController.h"
+#import <SafariServices/SafariServices.h>
+#import "WebController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIView *infoView;
 @property (strong, nonatomic) IBOutlet UIView *separator2;
 @property (strong, nonatomic) IBOutlet UILabel *informationTitle;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
 /*@property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) UIImage *banner;

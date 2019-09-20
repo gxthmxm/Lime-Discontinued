@@ -133,6 +133,7 @@ static UIImage *shadowImage;
 	_bannerView.clipsToBounds = YES;
 	_bannerView.frame = CGRectMake(0, _bannerView.frame.origin.y, UIScreen.mainScreen.bounds.size.width, 200);
 	UIImageView *shadowView = [[UIImageView alloc] initWithImage:self.class.headerShadowImage];
+    shadowView.frame = CGRectMake(self.bannerView.frame.origin.x, self.bannerView.frame.origin.y, self.bannerView.frame.size.width, self.bannerView.frame.size.height / 2);
 	shadowView.contentMode = UIViewContentModeScaleToFill;
 	shadowView.translatesAutoresizingMaskIntoConstraints = NO;
 	[_bannerView addSubview:shadowView];
@@ -196,6 +197,8 @@ static UIImage *shadowImage;
     self.depictionView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
     
     [_depictionView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+    [self.depictionView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+    self.progressView.progressTintColor = self.view.tintColor;
     NSString* scaleMeta = @"var meta = document.createElement('meta'); meta.name = 'viewport'; meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; var head = document.getElementsByTagName('head')[0]; head.appendChild(meta);";
     [_depictionView evaluateJavaScript:scaleMeta completionHandler:nil];
     
@@ -211,6 +214,9 @@ static UIImage *shadowImage;
     self.depictionView.navigationDelegate = self;
     [_depictionView loadRequest:nsrequest];
     self.depictionView.scrollView.delegate = self;
+    if (!(self.package.depictionURL) || !(self.package.depictionURL.length > 0) || [self.package.depictionURL isEqualToString:@""]) {
+        self.progressView.alpha = 0;
+    }
     //_depictionView.scrollView.userInteractionEnabled = NO;
     if (![self.package.iconPath isEqual:@""]) {
         self.iconView.image = [LimeHelper iconFromPackage:self.package];
@@ -352,6 +358,7 @@ static UIImage *shadowImage;
 
 -(void)dealloc {
     [_depictionView.scrollView removeObserver:self forKeyPath:@"contentSize" context:nil];
+    [self.depictionView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -378,6 +385,32 @@ static UIImage *shadowImage;
             _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom);
         }
     }
+    if ([keyPath isEqualToString:@"estimatedProgress"]) {
+        self.progressView.progress = self.depictionView.estimatedProgress;
+    }
+}
+
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        WebController *controller = [[WebController alloc] init];
+        controller.url = navigationAction.request.URL;
+        [self.navigationController pushViewController:controller animated:YES];
+        decisionHandler(NO);
+    } else {
+        decisionHandler(YES);
+    }
+}
+
+-(void)showProgressBar {
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.progressView.alpha = 1;
+    } completion:nil];
+}
+
+-(void)hideProgressBar {
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.progressView.alpha = 0;
+    } completion:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -469,6 +502,18 @@ static UIImage *shadowImage;
         [LMQueue addQueueAction:queueAction];
         [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
     }
+}
+
+-(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    [self showProgressBar];
+}
+
+-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [self hideProgressBar];
+}
+
+-(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error  {
+    [self hideProgressBar];
 }
 
 /*-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {

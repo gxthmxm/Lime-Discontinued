@@ -992,34 +992,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-ht-yal">
-                                        <rect key="frame" x="0.0" y="346" width="375" height="235"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DcX-go-ipE">
-                                                <rect key="frame" x="20" y="10" width="335" height="1"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.80392156862745101" green="0.80784313725490198" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0a-2M-MSK">
-                                                <rect key="frame" x="20" y="19" width="107" height="23"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eeJ-G5-MZt">
-                                                <rect key="frame" x="5" y="50" width="365" height="185"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <segue destination="pzW-4n-rl7" kind="embed" id="Rf2-yR-OA4"/>
-                                                </connections>
-                                            </containerView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                     <view contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="krA-PL-m2Y">
-                                        <rect key="frame" x="0.0" y="136" width="375" height="205"/>
+                                        <rect key="frame" x="0.0" y="136" width="375" height="192"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tweak" translatesAutoresizingMaskIntoConstraints="NO" id="93e-bo-WIs">
@@ -1116,6 +1090,36 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.26341973590000001" green="0.25507364919999997" blue="0.32870032939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-ht-yal">
+                                        <rect key="frame" x="0.0" y="336" width="375" height="235"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DcX-go-ipE">
+                                                <rect key="frame" x="20" y="10" width="335" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.80392156862745101" green="0.80784313725490198" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0a-2M-MSK">
+                                                <rect key="frame" x="20" y="19" width="107" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eeJ-G5-MZt">
+                                                <rect key="frame" x="5" y="50" width="365" height="185"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <segue destination="pzW-4n-rl7" kind="embed" id="Rf2-yR-OA4"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="b0T-yn-3ZR">
+                                        <rect key="frame" x="20" y="330" width="335" height="3"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </progressView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -1133,16 +1137,16 @@
                         <outlet property="infoView" destination="fEk-ht-yal" id="ahp-Rm-Xsd"/>
                         <outlet property="informationTitle" destination="m0a-2M-MSK" id="nrQ-NE-nSQ"/>
                         <outlet property="moreButton" destination="d5x-YY-YY9" id="wst-BR-J7t"/>
+                        <outlet property="progressView" destination="b0T-yn-3ZR" id="2aI-3l-CF7"/>
                         <outlet property="scrollView" destination="FHA-Oi-6Yu" id="bMc-VV-R9y"/>
                         <outlet property="separator" destination="dj1-hO-qWR" id="Z1r-aN-UAd"/>
                         <outlet property="separator2" destination="DcX-go-ipE" id="8jM-VU-6Hx"/>
                         <outlet property="titleLabel" destination="Z5J-2L-6ou" id="0iq-4Y-PGN"/>
-                        <segue destination="9Xg-NM-ST8" kind="show" identifier="depictionWeb" id="hLl-tf-Di9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxK-ka-DTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777.5" y="-363.38028169014086"/>
+            <point key="canvasLocation" x="1776.8" y="-363.86806596701655"/>
         </scene>
         <!--Information Table View-->
         <scene sceneID="3d1-k9-h86">
@@ -1475,38 +1479,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIY-5H-lFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2447" y="-362"/>
-        </scene>
-        <!--Depiction Web Controller-->
-        <scene sceneID="b1p-pb-nJr">
-            <objects>
-                <viewController id="9Xg-NM-ST8" customClass="DepictionWebController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Sz2-bF-1gr"/>
-                        <viewControllerLayoutGuide type="bottom" id="yRU-k7-dMW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PMR-SR-Y1z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-Ys-xun">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <connections>
-                        <outlet property="webView" destination="WfV-Ys-xun" id="vIF-fp-8eq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ht-BI-AFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3093.5999999999999" y="-362.06896551724139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l5S-ei-foT">
@@ -2231,6 +2203,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Vo4-br-HTL"/>
         <segue reference="EdO-LT-SHf"/>
-        <segue reference="REO-jp-PFU"/>
+        <segue reference="1vz-AG-io2"/>
     </inferredMetricsTieBreakers>
 </document>
