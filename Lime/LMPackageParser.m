@@ -13,9 +13,8 @@
 @implementation LMPackageParser
 
 - (instancetype)initWithFilePath:(NSString *)filePath {
-    
-    // TOREMOVE
     self = [super init];
+    
     LMPackage *package = [[LMPackage alloc] init];
     FILE *f = fopen([filePath UTF8String], "r");
     char str[1024];

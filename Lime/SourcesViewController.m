@@ -6,6 +6,8 @@
 //  Copyright © 2019 Daniel. All rights reserved.
 //
 
+// sorry, my comments are stupid. you're supposed to understand more by reading them, but in reality they're mostly for myself. :/
+
 #import "SourcesViewController.h"
 #import "Settings.h"
 #import <Foundation/Foundation.h>
@@ -33,71 +35,42 @@
     if(![[NSFileManager defaultManager] fileExistsAtPath:iconsPath isDirectory:nil]) [[NSFileManager defaultManager] createDirectoryAtPath:iconsPath withIntermediateDirectories:YES attributes:nil error:nil];
     if(![[NSFileManager defaultManager] fileExistsAtPath:sourcesPath isDirectory:nil]) [[NSFileManager defaultManager] createFileAtPath:sourcesPath contents:nil attributes:nil];
     // [self addRepoToListWithURLString:@"https://artikushg.github.io"] will add the repo to the list if it's valid; so even, when you have the UI fixed just do this with the textfield text
-    self.repoNames = [[NSMutableDictionary alloc] init];
     [self grabRepoNames];
     /*UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:filename delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
     [a show];*/
     //[self downloadRepos];
-    [self addRepoWithURLString:@"https://apt.limeinstaller.com"];
-    [self addRepoWithURLString:@"https://artikushg.github.io"];
-}
-
-// TableView stuff
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.repoNames.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"cell";
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
-    cell.textLabel.text = [self.sortedRepoNames objectAtIndex:indexPath.row];
-    NSString *urlString = [self.repoNames objectForKey:cell.textLabel.text];
-    cell.detailTextLabel.text = [urlString stringByReplacingOccurrencesOfString:@"/." withString:@""];
-    cell.detailTextLabel.alpha = 0.5;
-    NSString *filename = [self iconFilenameForURLString:[urlString stringByAppendingString:@"/CydiaIcon.png"]];
-    UIImage *icon;
-    if([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:nil]) icon = [UIImage imageWithContentsOfFile:filename];
-    else icon = [UIImage imageNamed:@"sections/Unknown.png"];
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(35,35), NO, [UIScreen mainScreen].scale);
-    [icon drawInRect:CGRectMake(0,0,35,35)];
-    icon = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 10;
-    cell.imageView.image = icon;
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
-    }
-    
-    return cell;
+    //[self addRepoWithURLString:@"https://apt.limeinstaller.com"];
+    //[self addRepoWithURLString:@"https://artikushg.github.io"];
+    //self.parser = [[LMPackageParser alloc] initWithFilePath:@"/var/mobile/Documents/Lime/lists/artikushg.yourepo.com_._Packages"];
 }
 
 // TableViewn't stuff
 
 - (void)grabRepoNames {
+    self.repos = [[NSMutableDictionary alloc] init];
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/mobile/Documents/Lime/lists/" error:nil];
+    if(files.count == 0) return; // useless but ok ok safety check. why'd we do all of the code if there's no files? just return.
     for (NSString *filename in files) {
+        // we look for the "_". then, if found, we check if text after "_" is "Release" (it's either this or "Packages"). if it is, we read the file and determine the name
+        // also, NO we CAN'T check for just "_Release". well, we can, but there's a smaaaaaaal chance this will break things on 0,25 repos. let's just leave it i guess? it works fine rn.
         NSRange range = [filename rangeOfString:@"_" options:NSBackwardsSearch];
         if(range.location != NSNotFound && [[filename substringFromIndex:range.location + 1] isEqualToString:@"Release"]) {
-            NSString *fullFilename = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:filename];
-            NSArray *lines = [[NSString stringWithContentsOfFile:fullFilename encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"];
+            NSString *fullFilename = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:filename]; // get the full path to the file since array onlt stores names
+            NSArray *lines = [[NSString stringWithContentsOfFile:fullFilename encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"]; // for reading the file line-by-line
             for (NSString *line in lines) {
+                // we look for the line that starts with "Label:"
                 if(line.length > 6 && [[line substringToIndex:6] isEqualToString:@"Label:"]) {
+                    // grab the repo link. removes the "_Release" and replaces "_"s to "/"s so the link becomes the actual link (my explanation good /s)
                     NSString *link = [[filename substringToIndex:[filename rangeOfString:@"_" options:NSBackwardsSearch].location] stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
-                    [self.repoNames setObject:link forKey:[line substringFromIndex:7]];
+                    NSString *name = [line substringFromIndex:7];
+                    LMRepo *repo = [[LMRepo alloc] initWithName:name filename:filename urlString:link];
+                    [self.repos setObject:repo forKey:name];
                     break;
                 }
             }
         } else continue;
     }
-    self.sortedRepoNames = [[NSMutableArray alloc] initWithArray:self.repoNames.allKeys];
-    [self.sortedRepoNames sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    self.sortedRepoNames = [self.repos.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
 - (NSString *)baseRepoFilenameStringForURLString:(NSString *)url {
@@ -301,6 +274,49 @@
     }];
     [self downloadRepoFileAtURL:packagesURL];
     [self downloadRepoIconForURLString:urlString];
+}
+
+// TableView stuff
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.sortedRepoNames.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"cell";
+    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
+    cell.textLabel.text = [self.sortedRepoNames objectAtIndex:indexPath.row];
+    NSString *urlString = [(LMRepo *)[self.repos objectForKey:cell.textLabel.text] urlString];
+    cell.detailTextLabel.text = [urlString stringByReplacingOccurrencesOfString:@"/." withString:@""];
+    cell.detailTextLabel.alpha = 0.5;
+    NSString *filename = [self iconFilenameForURLString:[urlString stringByAppendingString:@"/CydiaIcon.png"]];
+    UIImage *icon;
+    if([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:nil]) icon = [UIImage imageWithContentsOfFile:filename];
+    else icon = [UIImage imageNamed:@"sections/Unknown.png"];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(35,35), NO, [UIScreen mainScreen].scale);
+    [icon drawInRect:CGRectMake(0,0,35,35)];
+    icon = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.cornerRadius = 10;
+    cell.imageView.image = icon;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    LMRepo *repo = [self.repos objectForKey:cell.textLabel.text];
+    NSString *fullPath = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:repo.filename];
+    self.parser = [[LMPackageParser alloc] initWithFilePath:fullPath];
 }
 
 @end
