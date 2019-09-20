@@ -11,6 +11,7 @@
 		37D0FC86227753EF0039BE3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D0FC85227753EF0039BE3C /* main.m */; };
 		37D0FCA922776ACF0039BE3C /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = 37D0FCA822776ACF0039BE3C /* HTML */; };
 		4D0E5FEB22CCEB1C00308087 /* DepictionWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E5FEA22CCEB1C00308087 /* DepictionWebController.m */; };
+		4D131D6A233519F900B3F311 /* RepoPackagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D131D69233519F900B3F311 /* RepoPackagesViewController.m */; };
 		4D1BFFC322C799DB00122AC2 /* melogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC222C799D900122AC2 /* melogo.png */; };
 		4D1BFFC722C79B9300122AC2 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC622C79B9200122AC2 /* check.png */; };
 		4D1BFFC922C79E0E00122AC2 /* cydia.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BFFC822C79E0D00122AC2 /* cydia.png */; };
@@ -82,6 +83,8 @@
 		37D0FCA822776ACF0039BE3C /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML; sourceTree = "<group>"; };
 		4D0E5FEA22CCEB1C00308087 /* DepictionWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionWebController.m; sourceTree = "<group>"; };
 		4D0E5FEC22CCEB2C00308087 /* DepictionWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepictionWebController.h; sourceTree = "<group>"; };
+		4D131D68233519F900B3F311 /* RepoPackagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepoPackagesViewController.h; sourceTree = "<group>"; };
+		4D131D69233519F900B3F311 /* RepoPackagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepoPackagesViewController.m; sourceTree = "<group>"; };
 		4D1BFFC222C799D900122AC2 /* melogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melogo.png; sourceTree = "<group>"; };
 		4D1BFFC622C79B9200122AC2 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		4D1BFFC822C79E0D00122AC2 /* cydia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cydia.png; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 				666DC91622786B4E00B6E03C /* SearchViewController.m */,
 				4D33AB5A22787A8700CDFC49 /* SourcesViewController.h */,
 				4D33AB5822787A7700CDFC49 /* SourcesViewController.m */,
+				4D131D68233519F900B3F311 /* RepoPackagesViewController.h */,
+				4D131D69233519F900B3F311 /* RepoPackagesViewController.m */,
 				66D5B5462333ECB7006E4B0E /* LMRepo.h */,
 				66D5B5472333ECB7006E4B0E /* LMRepo.m */,
 				666DC9182278702100B6E03C /* InstalledViewController.h */,
@@ -453,6 +458,7 @@
 				4D0E5FEB22CCEB1C00308087 /* DepictionWebController.m in Sources */,
 				66D5B5482333ECB7006E4B0E /* LMRepo.m in Sources */,
 				37D0FC75227753EC0039BE3C /* AppDelegate.m in Sources */,
+				4D131D6A233519F900B3F311 /* RepoPackagesViewController.m in Sources */,
 				4D715A12227AD26C00896934 /* InstallationController.m in Sources */,
 				4D841BD8228615C200234599 /* Settings.m in Sources */,
 				4D7F12092280754300576DEF /* AddRepoController.m in Sources */,
