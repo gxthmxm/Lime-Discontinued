@@ -19,8 +19,6 @@
     // log to a txt
     freopen([@"/var/mobile/Documents/Lime/log.txt" cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
     
-    [self URLLink:[NSURL URLWithString:@"lime://url/https://evendev.org"]];
-    
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"darkMode"] == nil) {
         NSDictionary *appDefaults  = [NSDictionary dictionary];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"darkMode"];
@@ -60,10 +58,10 @@
         [self URLUpdates];
     }
     if ([[url host]  isEqual: @"installed"]) {
-        [self URLSearch];
+        [self URLInstalled];
     }
     if ([[url host]  isEqual: @"search"]) {
-        [self URLInstalled];
+        [self URLSearch];
     }
     if ([[url host]  isEqual: @"queue"]) {
         [self URLQueue];
@@ -85,38 +83,41 @@
 }
 
 -(void)URLHome {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Home" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UITabBarController *tbController = (UITabBarController *)self.window.rootViewController;
+    tbController.selectedIndex = 0;
 }
 
 -(void)URLSettings {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Settings" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UITabBarController *tbController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nController = [tbController.viewControllers objectAtIndex:0];
+    HomeViewController *hvController = (HomeViewController *)nController.visibleViewController;
+    [hvController performSegueWithIdentifier:@"settings" sender:hvController];
 }
 
 -(void)URLSources {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Sources" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UITabBarController *tbController = (UITabBarController *)self.window.rootViewController;
+    tbController.selectedIndex = 2;
 }
 
 -(void)URLUpdates {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Updates" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UITabBarController *tbController = (UITabBarController *)self.window.rootViewController;
+    tbController.selectedIndex = 1;
 }
 
 -(void)URLInstalled {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Installed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UITabBarController *tbController = (UITabBarController *)self.window.rootViewController;
+    tbController.selectedIndex = 3;
 }
 
 -(void)URLSearch {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Search" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UITabBarController *tbController = (UITabBarController *)self.window.rootViewController;
+    tbController.selectedIndex = 4;
 }
 
 -(void)URLQueue {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Queue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UITabBarController *tbController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nController = [tbController.viewControllers objectAtIndex:0];
+    [nController performSegueWithIdentifier:@"startQueue" sender:nController];
 }
 
 -(void)URLLink:(NSURL*)url {

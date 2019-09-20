@@ -649,6 +649,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="WLZ-MY-mBx" kind="relationship" relationship="rootViewController" id="4c5-Jh-uXW"/>
+                        <segue destination="SdS-52-Qz0" kind="presentation" identifier="startQueue" modalPresentationStyle="overFullScreen" id="meN-vF-qRI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1R4-ze-3mV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,7 +677,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <connections>
-                                            <segue destination="0fU-SR-3Bm" kind="show" id="Fr8-PY-Udp"/>
+                                            <segue destination="0fU-SR-3Bm" kind="show" identifier="settings" id="Fr8-PY-Udp"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FRIDAY 5 JULY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGr-r5-UDF">
@@ -2175,6 +2176,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Vo4-br-HTL"/>
-        <segue reference="1vz-AG-io2"/>
+        <segue reference="meN-vF-qRI"/>
     </inferredMetricsTieBreakers>
 </document>
