@@ -16,9 +16,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     // log to a txt
     freopen([@"/var/mobile/Documents/Lime/log.txt" cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+    
+    [self URLLink:[NSURL URLWithString:@"lime://url/https://evendev.org"]];
     
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"darkMode"] == nil) {
         NSDictionary *appDefaults  = [NSDictionary dictionary];
@@ -119,15 +120,17 @@
 }
 
 -(void)URLLink:(NSURL*)url {
-    NSString *finishedURL = @"please enter an url";
-    NSString *path = [url path];
-    
-    if(path.length > 1) {
-        finishedURL = [NSString stringWithFormat:@"Open URL: %@", [path substringFromIndex:1]];
+    NSString *theURL = [[url absoluteString] stringByReplacingOccurrencesOfString:@"lime://url/" withString:@""];
+    WebController *webController = [[WebController alloc] init];
+    UITabBarController *tbController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nController;
+    if (tbController.selectedViewController) {
+        nController = tbController.selectedViewController;
+    } else {
+        nController = [tbController.viewControllers objectAtIndex:0];
     }
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:finishedURL delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    webController.url = [NSURL URLWithString:theURL];
+    [nController pushViewController:webController animated:YES];
 }
 
 -(void)URLRepo:(NSURL*)repo {

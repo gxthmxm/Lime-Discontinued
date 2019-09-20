@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface FirstLaunchDeciderController : UIViewController
+@interface FirstLaunchDeciderController : UITabBarController
 
 @end
 

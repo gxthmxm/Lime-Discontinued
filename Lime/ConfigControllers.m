@@ -18,9 +18,6 @@
         NSLog(@" first");
         [self performSegueWithIdentifier:@"firstLaunch" sender:self];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-    } else {
-        [self performSegueWithIdentifier:@"normalLaunch" sender:self];
-        NSLog(@"not first");
     }
 }
 

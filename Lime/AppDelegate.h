@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LMDPKGParser.h"
+#import "HomeViewController.h"
+#import "WebController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
