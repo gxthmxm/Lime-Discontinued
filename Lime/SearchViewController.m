@@ -25,7 +25,8 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
         self.tableView.backgroundColor = [UIColor blackColor];
         self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
-        self.navigationController.navigationBar.barStyle = 1;
+        [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+        self.tabBarController.tabBar.barStyle = 1;
     }
 }
 

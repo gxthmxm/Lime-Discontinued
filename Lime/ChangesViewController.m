@@ -25,6 +25,7 @@
         self.tableView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
         self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
         self.navigationController.navigationBar.barStyle = 1;
+        self.tabBarController.tabBar.barStyle = 1;
     }
 }
 - (IBAction)clearFirstLaunch:(id)sender {
