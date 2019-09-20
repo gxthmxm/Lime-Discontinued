@@ -20,6 +20,10 @@
     char str[1024];
     NSMutableDictionary *mutablePackages = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *mutablePackageNames = [[NSMutableDictionary alloc] init];
+    
+    if ([filePath isEqualToString:@"/var/lib/dpkg/status"]) {
+        package.installed = YES;
+    }
 
     NSDictionary *customPropertiesDict = @{
         @"package":@"identifier",
