@@ -41,7 +41,7 @@
 @property (nonatomic, strong) NSString *section;
 @property (nonatomic, strong) NSString *iconPath;
 @property (nonatomic, strong) NSString *architecture;
-@property (nonatomic, strong) NSURL *depictionURL;
+@property (nonatomic, strong) NSString *depictionURL;
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) NSArray *dependencies;
 @property (nonatomic, strong) NSArray *conflicts;

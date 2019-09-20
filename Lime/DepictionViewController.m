@@ -180,7 +180,7 @@ static UIImage *shadowImage;
     NSRange range = [self.package.author rangeOfString:@"<"];
     if(range.location != NSNotFound) self.package.author = [self.package.author substringToIndex:range.location - 1];
     
-    NSURL *nsurl = self.package.depictionURL;
+    NSURL *nsurl = [NSURL URLWithString:self.package.depictionURL];
     NSMutableURLRequest *nsrequest=[NSMutableURLRequest requestWithURL:nsurl];
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     
