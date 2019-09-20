@@ -378,11 +378,14 @@ static UIImage *shadowImage;
         }
         
         if (self.package.depictionURL && [NSString stringWithFormat:@"%@", self.package.depictionURL].length > 0) {
-            _depictionView.frame = CGRectMake(_depictionView.frame.origin.x, _depictionView.frame.origin.y, _scrollView.frame.size.width, _depictionView.scrollView.contentSize.height);
-            _infoView.frame = CGRectMake(0, _depictionView.frame.origin.y + _depictionView.frame.size.height, _infoView.frame.size.width, _infoView.frame.size.height);
-            
-            float bottom = _infoView.frame.origin.y + _infoView.frame.size.height + 25;
-            _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom);
+            [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.depictionView.frame = CGRectMake(self.depictionView.frame.origin.x, self.depictionView.frame.origin.y, self.scrollView.frame.size.width, self.depictionView.scrollView.contentSize.height);
+                self.infoView.frame = CGRectMake(0, self.depictionView.frame.origin.y + self.depictionView.frame.size.height, self.infoView.frame.size.width, self.infoView.frame.size.height);
+            } completion:^(BOOL finished) {
+                
+                float bottom = self.infoView.frame.origin.y + self.infoView.frame.size.height + 25;
+                self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom);
+            }];
         }
     }
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
@@ -512,7 +515,7 @@ static UIImage *shadowImage;
     [self hideProgressBar];
 }
 
--(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error  {
+-(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [self hideProgressBar];
 }
 
