@@ -60,6 +60,10 @@
 
 @end
 
+@implementation LMRepository
+
+@end
+
 @implementation LMQueue
 
 -(instancetype)init {

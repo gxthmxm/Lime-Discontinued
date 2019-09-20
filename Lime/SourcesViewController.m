@@ -33,32 +33,34 @@
     if(![[NSFileManager defaultManager] fileExistsAtPath:iconsPath isDirectory:nil]) [[NSFileManager defaultManager] createDirectoryAtPath:iconsPath withIntermediateDirectories:YES attributes:nil error:nil];
     if(![[NSFileManager defaultManager] fileExistsAtPath:sourcesPath isDirectory:nil]) [[NSFileManager defaultManager] createFileAtPath:sourcesPath contents:nil attributes:nil];
     // [self addRepoToListWithURLString:@"https://artikushg.github.io"] will add the repo to the list if it's valid; so even, when you have the UI fixed just do this with the textfield text
-    self.repoNames = [[NSMutableDictionary alloc] init];
-    [self grabRepoNames];
+    self.repoIdentifiers = [[NSMutableArray alloc] init];
+    self.repositories = [[NSMutableDictionary alloc] init];
+    [self grabRepoInfo];
     /*UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:filename delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
     [a show];*/
     //[self downloadRepos];
-    [self addRepoWithURLString:@"https://apt.limeinstaller.com"];
-    [self addRepoWithURLString:@"https://artikushg.github.io"];
 }
 
 // TableView stuff
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.repoNames.count;
+    return self.repositories.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LMRepository *repo = [self.repositories objectForKey:[self.repoIdentifiers objectAtIndex:indexPath.row]];
+                          
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
-    cell.textLabel.text = [self.sortedRepoNames objectAtIndex:indexPath.row];
-    NSString *urlString = [self.repoNames objectForKey:cell.textLabel.text];
-    cell.detailTextLabel.text = [urlString stringByReplacingOccurrencesOfString:@"/." withString:@""];
+    cell.textLabel.text = repo.label;
+    //cell.detailTextLabel.text = [repo.repoURL stringByReplacingOccurrencesOfString:@"/." withString:@""];
+    cell.detailTextLabel.text = repo.desc;
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:9];
     cell.detailTextLabel.alpha = 0.5;
-    NSString *filename = [self iconFilenameForURLString:[urlString stringByAppendingString:@"/CydiaIcon.png"]];
+    NSString *filename = [self iconFilenameForURLString:[repo.repoURL stringByAppendingString:@"/CydiaIcon.png"]];
     UIImage *icon;
     if([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:nil]) icon = [UIImage imageWithContentsOfFile:filename];
     else icon = [UIImage imageNamed:@"sections/Unknown.png"];
@@ -80,24 +82,68 @@
 
 // TableViewn't stuff
 
-- (void)grabRepoNames {
+- (IBAction)refreshRepos:(id)sender {
+    [self downloadRepos];
+}
+
+- (void)grabRepoInfo {
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/mobile/Documents/Lime/lists/" error:nil];
     for (NSString *filename in files) {
         NSRange range = [filename rangeOfString:@"_" options:NSBackwardsSearch];
+        LMRepository *repo = [[LMRepository alloc] init];
         if(range.location != NSNotFound && [[filename substringFromIndex:range.location + 1] isEqualToString:@"Release"]) {
             NSString *fullFilename = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:filename];
             NSArray *lines = [[NSString stringWithContentsOfFile:fullFilename encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"];
-            for (NSString *line in lines) {
-                if(line.length > 6 && [[line substringToIndex:6] isEqualToString:@"Label:"]) {
-                    NSString *link = [[filename substringToIndex:[filename rangeOfString:@"_" options:NSBackwardsSearch].location] stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
-                    [self.repoNames setObject:link forKey:[line substringFromIndex:7]];
-                    break;
-                }
+            NSString *link = [[filename substringToIndex:[filename rangeOfString:@"_" options:NSBackwardsSearch].location] stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
+            repo.repoURL = link;
+            repo.releaseFileName = filename;
+            repo.packageFileName = [filename stringByReplacingOccurrencesOfString:@"Release" withString:@"Packages"];
+            if (![filename isEqual:@"repo.dynastic.co_._Release"]) {
+                LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:[fullFilename stringByReplacingOccurrencesOfString:@"Release" withString:@"Packages"]];
+                repo.packages = [parser.packages mutableCopy];
+                repo.desc = [NSString stringWithFormat:@"%ld", repo.packages.count];
             }
+            [self.repoIdentifiers addObject:repo.repoURL];
+            for (NSString *line in lines) {
+                // Origin
+                if(line.length > 7 && [[line substringToIndex:7] isEqualToString:@"Origin:"]) {
+                    repo.origin = [line substringFromIndex:8];
+                }
+                // Label
+                if(line.length > 6 && [[line substringToIndex:6] isEqualToString:@"Label:"]) {
+                    repo.label = [line substringFromIndex:7];
+                }
+                // Suite
+                if(line.length > 6 && [[line substringToIndex:6] isEqualToString:@"Suite:"]) {
+                    repo.suite = [line substringFromIndex:7];
+                }
+                // Version
+                if(line.length > 8 && [[line substringToIndex:8] isEqualToString:@"Version:"]) {
+                    repo.version = [line substringFromIndex:9];
+                }
+                // Codename
+                if(line.length > 9 && [[line substringToIndex:9] isEqualToString:@"Codename:"]) {
+                    repo.codename = [line substringFromIndex:10];
+                }
+                // Architectures
+                if(line.length > 14 && [[line substringToIndex:14] isEqualToString:@"Architectures:"]) {
+                    repo.architectures = [line substringFromIndex:15];
+                }
+                // Components
+                if(line.length > 11 && [[line substringToIndex:11] isEqualToString:@"Components:"]) {
+                    repo.architectures = [line substringFromIndex:12];
+                }
+                // Description
+                //if(line.length > 12 && [[line substringToIndex:12] isEqualToString:@"Description:"]) {
+                    //repo.desc = [line substringFromIndex:13];
+                //}
+            }
+            [self.repositories setObject:repo forKey:repo.repoURL];
         } else continue;
     }
-    self.sortedRepoNames = [[NSMutableArray alloc] initWithArray:self.repoNames.allKeys];
-    [self.sortedRepoNames sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    [self.repoIdentifiers sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    /*self.sortedRepoNames = [[NSMutableArray alloc] initWithArray:self.repoNames.allKeys];
+    [self.sortedRepoNames sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];*/
 }
 
 - (NSString *)baseRepoFilenameStringForURLString:(NSString *)url {
@@ -130,7 +176,15 @@
 
 - (void)downloadRepoFileAtURL:(NSString *)url {
     //if(![[url substringFromIndex:url.length - 1] isEqualToString:@"/"]) url = [url stringByAppendingString:@"/"];
-    [self downloadFileAtURL:url writeToPath:[self repoFilenameStringForURLString:url] completion:nil];
+    [self downloadFileAtURL:url writeToPath:[self repoFilenameStringForURLString:url] completion:^(BOOL finished) {
+        if (finished) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Did Finish" message:[NSString stringWithFormat:@"Finished downloading %@", url] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed" message:[NSString stringWithFormat:@"Failed downloading %@", url] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }];
 }
 
 // Repos backend
@@ -142,28 +196,32 @@
     
     NSMutableArray *fileLines = [[[NSString stringWithContentsOfFile:@"/var/mobile/Documents/Lime/sources.list" encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"] mutableCopy];
     for (NSString *fileLine in fileLines) {
-        NSString *strippedFileLine = [fileLine substringFromIndex:4]; // removes "deb "
-        // i separate the string into two parts: "https://an.example.repourl/" and "./" (or some kinda "stable main" like bigboss and modmyi do)
-        NSInteger locationOfSpace = [strippedFileLine rangeOfString:@" "].location;
-        // the actual url
-        NSString *repoURL = [strippedFileLine substringToIndex:locationOfSpace];
-        // either the "./" or "stable main" etc at the end
-        NSString *repoDirectory = [strippedFileLine substringFromIndex:locationOfSpace + 1];
-        if(![repoDirectory isEqualToString:@"./"]) {
-            NSArray *repoComponents = [repoDirectory componentsSeparatedByString:@" "];
-            NSString *releaseURL = [NSString stringWithFormat:@"%@./dists/%@/Release",repoURL,[repoComponents objectAtIndex:0]];
-            NSString *iconURL = [NSString stringWithFormat:@"%@./dists/%@/",repoURL,[repoComponents objectAtIndex:0]];
-            NSString *packagesURL = [NSString stringWithFormat:@"%@./dists/%@/%@/binary-iphoneos-arm/Packages.bz2",repoURL,[repoComponents objectAtIndex:0],[repoComponents objectAtIndex:1]];
-            [self downloadRepoFileAtURL:releaseURL];
-            [self downloadRepoFileAtURL:packagesURL];
-            [self downloadRepoIconForURLString:iconURL];
-        } else {
-            repoURL = [repoURL stringByAppendingString:repoDirectory];
-            [self downloadRepoFileAtURL:[repoURL stringByAppendingString:@"Release"]];
-            [self downloadRepoFileAtURL:[repoURL stringByAppendingString:@"Packages.bz2"]];
-            [self downloadRepoIconForURLString:repoURL];
+        if (fileLine.length > 4) {
+            NSString *strippedFileLine = [fileLine substringFromIndex:4]; // removes "deb "
+            // i separate the string into two parts: "https://an.example.repourl/" and "./" (or some kinda "stable main" like bigboss and modmyi do)
+            NSInteger locationOfSpace = [strippedFileLine rangeOfString:@" "].location;
+            // the actual url
+            NSString *repoURL = [strippedFileLine substringToIndex:locationOfSpace];
+            // either the "./" or "stable main" etc at the end
+            NSString *repoDirectory = [strippedFileLine substringFromIndex:locationOfSpace + 1];
+            if(![repoDirectory isEqualToString:@"./"]) {
+                NSArray *repoComponents = [repoDirectory componentsSeparatedByString:@" "];
+                NSString *releaseURL = [NSString stringWithFormat:@"%@./dists/%@/Release",repoURL,[repoComponents objectAtIndex:0]];
+                NSString *iconURL = [NSString stringWithFormat:@"%@./dists/%@/",repoURL,[repoComponents objectAtIndex:0]];
+                NSString *packagesURL = [NSString stringWithFormat:@"%@./dists/%@/%@/binary-iphoneos-arm/Packages.bz2",repoURL,[repoComponents objectAtIndex:0],[repoComponents objectAtIndex:1]];
+                [self downloadRepoFileAtURL:releaseURL];
+                [self downloadRepoFileAtURL:packagesURL];
+                [self downloadRepoIconForURLString:iconURL];
+            } else {
+                repoURL = [repoURL stringByAppendingString:repoDirectory];
+                [self downloadRepoFileAtURL:[repoURL stringByAppendingString:@"Release"]];
+                [self downloadRepoFileAtURL:[repoURL stringByAppendingString:@"Packages.bz2"]];
+                [self downloadRepoIconForURLString:repoURL];
+            }
         }
     }
+    
+    [self grabRepoInfo];
 }
 
 // For downloading files;
@@ -195,7 +253,6 @@
                 [self bunzip_one:path];
             }
             if(completion) completion(YES);
-            [self grabRepoNames];
             [self.tableView reloadData];
         }
         completed = YES;
