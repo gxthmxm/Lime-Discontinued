@@ -809,11 +809,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sources" id="q2O-Nh-nqX">
-                        <barButtonItem key="leftBarButtonItem" title="Refresh" id="WWg-Hj-sph">
-                            <connections>
-                                <action selector="refreshRepos:" destination="3i0-lW-DYa" id="daO-Jl-UBi"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Refresh" id="WWg-Hj-sph"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="NK5-E1-vJm">
                             <connections>
                                 <action selector="addRepoController:" destination="CEa-EV-tYC" id="SUW-EQ-Psf"/>
@@ -821,6 +817,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="KAU-yf-a8n" kind="presentation" identifier="addRepo" modalPresentationStyle="overFullScreen" id="4L2-3L-VUM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvf-nD-QAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CEa-EV-tYC" userLabel="Exit" sceneMemberID="exit"/>
@@ -1853,7 +1852,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E3u-cP-6fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3214" y="1019"/>
+            <point key="canvasLocation" x="1841.25" y="990.84507042253517"/>
         </scene>
         <!--Transfer Repos-->
         <scene sceneID="dPP-es-k6n">
@@ -2198,6 +2197,7 @@
         <image name="vrzHBVF.png" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Vo4-br-HTL"/>
         <segue reference="EdO-LT-SHf"/>
         <segue reference="REO-jp-PFU"/>
     </inferredMetricsTieBreakers>

@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "LimeHelper.h"
-#import "LMPackageParser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SourcesViewController : UITableViewController <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
 
-@property (nonatomic,retain) NSMutableArray *repoIdentifiers;
-@property (nonatomic,retain) NSMutableDictionary *repositories;
+@property (nonatomic,retain) NSMutableDictionary *repoNames;
+@property (nonatomic,retain) NSMutableArray *sortedRepoNames;
 
 typedef void(^downloadCompletion)(BOOL);
 
