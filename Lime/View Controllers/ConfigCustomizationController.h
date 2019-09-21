@@ -8,30 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
+#import "../Lime.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@interface ConfigStartController : UIViewController
-
-@end
-
-@interface ConfigRepoController : UIViewController
-
-@end
-
-@interface ConfigSelectRepoController : UITableViewController
-
-@end
 
 @interface ConfigCustomizationController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *lightToggle;
 @property (strong, nonatomic) IBOutlet UIImageView *darkToggle;
 @property (strong, nonatomic) IBOutlet UILabel *lightText;
 @property (strong, nonatomic) IBOutlet UILabel *darkText;
-
-@end
-
-@interface FirstLaunchDeciderController : UITabBarController
 
 @end
 

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LimeHelper.h"
-#import "NSTask.h"
+#import "../Lime.h"
+#include <spawn.h>
+#include <signal.h>
+#import "../Random Object/NSArray+Random.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

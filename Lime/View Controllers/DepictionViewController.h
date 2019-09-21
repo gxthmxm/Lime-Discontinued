@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
-#import "LimeHelper.h"
-#import <SafariServices/SafariServices.h>
+#import "../Lime.h"
 #import "WebController.h"
+#import "InstallationController.h"
+#import "HomeViewController.h"
+#import "Settings.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

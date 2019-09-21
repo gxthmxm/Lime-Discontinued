@@ -1,8 +1,8 @@
 //
-//  ChangesViewController.h
+//  ConfigRepoController.h
 //  Lime
 //
-//  Created by ArtikusHG on 4/30/19.
+//  Created by EvenDev on 21/09/2019.
 //  Copyright © 2019 Daniel. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChangesViewController : UITableViewController
+@interface ConfigRepoController : UIViewController
 
 @end
 

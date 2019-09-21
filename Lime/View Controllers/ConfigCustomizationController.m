@@ -6,54 +6,7 @@
 //  Copyright © 2019 Daniel. All rights reserved.
 //
 
-#import "ConfigControllers.h"
-#import "LimeHelper.h"
-
-@implementation FirstLaunchDeciderController
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"] == YES) {
-        NSLog(@" first");
-        [self performSegueWithIdentifier:@"firstLaunch" sender:self];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-    }
-}
-
-@end
-
-@implementation ConfigStartController
-
--(void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-}
-
-@end
-
-@implementation ConfigRepoController
-
-@end
-
-@implementation ConfigSelectRepoController
-
--(void)viewDidLoad {
-    [super viewDidLoad];
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell.accessoryType == UITableViewCellAccessoryNone) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-}
-
-@end
+#import "ConfigCustomizationController.h"
 
 @implementation ConfigCustomizationController
 

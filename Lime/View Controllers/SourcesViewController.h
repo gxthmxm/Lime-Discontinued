@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "LMPackageParser.h"
-#import "LMRepo.h"
+#import "../Lime.h"
+#import "Settings.h"
+#include <bzlib.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

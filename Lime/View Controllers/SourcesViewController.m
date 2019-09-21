@@ -9,9 +9,6 @@
 // sorry, my comments are stupid. you're supposed to understand more by reading them, but in reality they're mostly for myself. :/
 
 #import "SourcesViewController.h"
-#import "Settings.h"
-#import <Foundation/Foundation.h>
-#include <bzlib.h>
 
 @implementation SourcesViewController
 

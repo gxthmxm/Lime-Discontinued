@@ -7,8 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "InstallationController.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface HomeViewController ()
 

@@ -7,10 +7,6 @@
 //
 
 #import "InstalledViewController.h"
-#import "DepictionViewController.h"
-#import "../UIColor/UIImageAverageColorAddition.h"
-#import "LimeHelper.h"
-#import "AppDelegate.h"
 
 @interface InstalledViewController ()
 

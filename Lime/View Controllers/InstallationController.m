@@ -7,9 +7,6 @@
 //
 
 #import "InstallationController.h"
-#include <spawn.h>
-#include <signal.h>
-#import "../Random Object/NSArray+Random.h"
 
 @interface InstallationController ()
 

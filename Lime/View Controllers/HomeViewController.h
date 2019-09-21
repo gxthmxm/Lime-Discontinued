@@ -7,6 +7,9 @@
 //
 
 #import <WebKit/WebKit.h>
+#import "../Lime.h"
+#import "InstallationController.h"
+#import <QuartzCore/QuartzCore.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
