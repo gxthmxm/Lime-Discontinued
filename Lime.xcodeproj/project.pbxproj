@@ -116,9 +116,9 @@
 		4D7F120A2280754D00576DEF /* AddRepoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddRepoController.h; sourceTree = "<group>"; };
 		4D7F120F2280950E00576DEF /* UIImageAverageColorAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageAverageColorAddition.h; sourceTree = "<group>"; };
 		4D7F12102280951300576DEF /* UIImageAverageColorAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAverageColorAddition.m; sourceTree = "<group>"; };
+		4D82AE7A2336494600AC3F6C /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MobileGestalt.h; path = ../../../../../.Trash/MobileGestalt.h; sourceTree = "<group>"; };
 		4D841BD6228615AD00234599 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		4D841BD7228615C200234599 /* Settings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
-		4D841BEE22861F8D00234599 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MobileGestalt.h; path = "../../../../Downloads/Undecimus-master-2/Undecimus/include/MobileGestalt.h"; sourceTree = "<group>"; };
 		4D841BEF228620D000234599 /* libMobileGestalt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libMobileGestalt.tbd; path = usr/lib/libMobileGestalt.tbd; sourceTree = SDKROOT; };
 		4DACF2BA227CB07B003F527C /* NSArray+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Random.h"; sourceTree = "<group>"; };
 		4DACF2BB227CB08A003F527C /* NSArray+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Random.m"; sourceTree = "<group>"; };
@@ -202,46 +202,19 @@
 				4D1BFFB922C798C600122AC2 /* PNG */,
 				4DE09915227B5A2300A00A43 /* output */,
 				66381721227A078000E92BE7 /* sections */,
-				4DAD694322C0DD2000338FCA /* LimeHelper.h */,
-				4DAD694022C0DD0500338FCA /* LimeHelper.m */,
+				4D82AE722336487400AC3F6C /* View Controllers */,
+				4D82AE732336488700AC3F6C /* UI Elements */,
 				4D33AB51227873E500CDFC49 /* Main.storyboard */,
+				4D82AE742336489000AC3F6C /* Parsers */,
 				4D33AB532278742A00CDFC49 /* LaunchScreen.storyboard */,
-				4DD1D58022A066A800CC9824 /* ConfigControllers.h */,
-				4DD1D57E22A0669D00CC9824 /* ConfigControllers.m */,
+				4D82AE752336489A00AC3F6C /* Helpers */,
+				4D82AE76233648A000AC3F6C /* Objects */,
 				37D0FC73227753EC0039BE3C /* AppDelegate.h */,
+				4D82AE772336492500AC3F6C /* Other */,
 				37D0FC74227753EC0039BE3C /* AppDelegate.m */,
-				4D7F120A2280754D00576DEF /* AddRepoController.h */,
-				4D7F12082280754300576DEF /* AddRepoController.m */,
-				4D715A13227AD27800896934 /* InstallationController.h */,
-				4D715A11227AD26C00896934 /* InstallationController.m */,
 				4D841BD6228615AD00234599 /* Settings.h */,
 				4D841BD7228615C200234599 /* Settings.m */,
-				666DC90F2278690100B6E03C /* HomeViewController.h */,
-				666DC9102278690100B6E03C /* HomeViewController.m */,
-				4D33AB5B227888F800CDFC49 /* DepictionViewController.h */,
-				4D33AB5C2278890600CDFC49 /* DepictionViewController.m */,
-				666DC91222786B4600B6E03C /* ChangesViewController.h */,
-				666DC91322786B4600B6E03C /* ChangesViewController.m */,
-				666DC91522786B4E00B6E03C /* SearchViewController.h */,
-				666DC91622786B4E00B6E03C /* SearchViewController.m */,
-				4D33AB5A22787A8700CDFC49 /* SourcesViewController.h */,
-				4D33AB5822787A7700CDFC49 /* SourcesViewController.m */,
-				4D131D68233519F900B3F311 /* RepoPackagesViewController.h */,
-				4D131D69233519F900B3F311 /* RepoPackagesViewController.m */,
-				66D5B5462333ECB7006E4B0E /* LMRepo.h */,
-				66D5B5472333ECB7006E4B0E /* LMRepo.m */,
-				666DC9182278702100B6E03C /* InstalledViewController.h */,
-				666DC9192278702100B6E03C /* InstalledViewController.m */,
-				4D131D6E23351E6C00B3F311 /* WebController.h */,
-				4D131D6F23351E6C00B3F311 /* WebController.m */,
-				66B9FCA022788D7400F1FB08 /* LMDPKGParser.h */,
-				66B9FCA122788D7400F1FB08 /* LMDPKGParser.m */,
-				662803B722E99CBC008BDBDE /* LMPackageParser.h */,
-				662803B822E99CBC008BDBDE /* LMPackageParser.m */,
 				4D330CA322C789BE000A1C85 /* Images.xcassets */,
-				6626F4C5228059A100F94ED3 /* MobileGestalt.h */,
-				6626F4C6228059A100F94ED3 /* NSTask.h */,
-				4D841BEE22861F8D00234599 /* MobileGestalt.h */,
 				37D0FC84227753EF0039BE3C /* Info.plist */,
 				4D7F120E2280950200576DEF /* UIColor */,
 				4DACF2B9227CB06B003F527C /* Random Object */,
@@ -294,6 +267,81 @@
 				4D7F12102280951300576DEF /* UIImageAverageColorAddition.m */,
 			);
 			path = UIColor;
+			sourceTree = "<group>";
+		};
+		4D82AE722336487400AC3F6C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DD1D57E22A0669D00CC9824 /* ConfigControllers.m */,
+				4DD1D58022A066A800CC9824 /* ConfigControllers.h */,
+				4D7F120A2280754D00576DEF /* AddRepoController.h */,
+				4D7F12082280754300576DEF /* AddRepoController.m */,
+				4D715A13227AD27800896934 /* InstallationController.h */,
+				4D715A11227AD26C00896934 /* InstallationController.m */,
+				666DC90F2278690100B6E03C /* HomeViewController.h */,
+				666DC9102278690100B6E03C /* HomeViewController.m */,
+				4D33AB5B227888F800CDFC49 /* DepictionViewController.h */,
+				4D33AB5C2278890600CDFC49 /* DepictionViewController.m */,
+				666DC91222786B4600B6E03C /* ChangesViewController.h */,
+				666DC91322786B4600B6E03C /* ChangesViewController.m */,
+				666DC91522786B4E00B6E03C /* SearchViewController.h */,
+				666DC91622786B4E00B6E03C /* SearchViewController.m */,
+				4D33AB5A22787A8700CDFC49 /* SourcesViewController.h */,
+				4D33AB5822787A7700CDFC49 /* SourcesViewController.m */,
+				4D131D68233519F900B3F311 /* RepoPackagesViewController.h */,
+				4D131D69233519F900B3F311 /* RepoPackagesViewController.m */,
+				666DC9182278702100B6E03C /* InstalledViewController.h */,
+				666DC9192278702100B6E03C /* InstalledViewController.m */,
+				4D131D6E23351E6C00B3F311 /* WebController.h */,
+				4D131D6F23351E6C00B3F311 /* WebController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		4D82AE732336488700AC3F6C /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "UI Elements";
+			sourceTree = "<group>";
+		};
+		4D82AE742336489000AC3F6C /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				662803B722E99CBC008BDBDE /* LMPackageParser.h */,
+				662803B822E99CBC008BDBDE /* LMPackageParser.m */,
+				66B9FCA022788D7400F1FB08 /* LMDPKGParser.h */,
+				66B9FCA122788D7400F1FB08 /* LMDPKGParser.m */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		4D82AE752336489A00AC3F6C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4DAD694322C0DD2000338FCA /* LimeHelper.h */,
+				4DAD694022C0DD0500338FCA /* LimeHelper.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4D82AE76233648A000AC3F6C /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				66D5B5462333ECB7006E4B0E /* LMRepo.h */,
+				66D5B5472333ECB7006E4B0E /* LMRepo.m */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		4D82AE772336492500AC3F6C /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4D82AE7A2336494600AC3F6C /* MobileGestalt.h */,
+				6626F4C6228059A100F94ED3 /* NSTask.h */,
+				6626F4C5228059A100F94ED3 /* MobileGestalt.h */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		4DACF2B9227CB06B003F527C /* Random Object */ = {

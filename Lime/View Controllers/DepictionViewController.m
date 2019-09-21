@@ -9,7 +9,7 @@
 #import "DepictionViewController.h"
 #import "InstallationController.h"
 #import "HomeViewController.h"
-#import "UIColor/UIImageAverageColorAddition.h"
+#import "../UIColor/UIImageAverageColorAddition.h"
 #import "Settings.h"
 #import "LimeHelper.h"
 
