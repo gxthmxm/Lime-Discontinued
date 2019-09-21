@@ -46,16 +46,16 @@
     
     self.sectionCell.detailTextLabel.text = depictionViewController.package.section;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
-        self.tableView.backgroundColor = [UIColor blackColor];
+    if ([LimeHelper darkMode]) {
+        self.tableView.separatorColor = [LMColor separatorColor];
+        self.tableView.backgroundColor = [LMColor backgroundColor];
     }
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
+    if ([LimeHelper darkMode]) {
+        cell.textLabel.textColor = [LMColor labelColor];
+        cell.detailTextLabel.textColor = [LMColor labelColor];
         cell.backgroundColor = [UIColor clearColor];
     }
 }
@@ -180,7 +180,7 @@ static UIImage *shadowImage;
     NSMutableURLRequest *nsrequest=[NSMutableURLRequest requestWithURL:nsurl];
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+    if ([LimeHelper darkMode]) {
         configuration.applicationNameForUserAgent = @"Lime (Cydia) Dark";
         [nsrequest setValue:@"Telesphoreo APT-HTTP/1.0.592 Dark" forHTTPHeaderField:@"User-Agent"];
         [nsrequest setValue:@"true" forHTTPHeaderField:@"dark"];
@@ -272,7 +272,7 @@ static UIImage *shadowImage;
     [button addTarget:self action:@selector(addToQueue) forControlEvents:UIControlEventTouchUpInside];
     button.frame = CGRectMake(0, 0, 74, 30);
     [button setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.2] forState:UIControlStateHighlighted];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleColor:[LMColor labelColor] forState:UIControlStateNormal];
     if (self.package.installed) {
         [button setTitle:@"MORE" forState:UIControlStateNormal];
     } else {
@@ -298,20 +298,20 @@ static UIImage *shadowImage;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barStyle = 1;
     self.navigationItem.titleView.hidden = YES;
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.bigView.backgroundColor = [UIColor blackColor];
-        self.titleLabel.textColor = [UIColor whiteColor];
-        self.authorLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-        self.descriptionLabel.textColor = [UIColor whiteColor];
-        self.separator.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
-        self.descriptionTitleLabel.textColor = [UIColor whiteColor];
-        self.depictionView.backgroundColor = [UIColor blackColor];
-        self.depictionView.scrollView.backgroundColor = [UIColor blackColor];
-        self.scrollView.backgroundColor = [UIColor blackColor];
-        self.infoView.backgroundColor = [UIColor blackColor];
-        self.separator2.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
-        self.informationTitle.textColor = [UIColor whiteColor];
-        self.view.backgroundColor = [UIColor blackColor];
+    if ([LimeHelper darkMode]) {
+        self.bigView.backgroundColor = [LMColor backgroundColor];
+        self.titleLabel.textColor = [LMColor labelColor];
+        self.authorLabel.textColor = [LMColor secondaryLabelColor];
+        self.descriptionLabel.textColor = [LMColor labelColor];
+        self.separator.backgroundColor = [LMColor separatorColor];
+        self.descriptionTitleLabel.textColor = [LMColor labelColor];
+        self.depictionView.backgroundColor = [LMColor backgroundColor];
+        self.depictionView.scrollView.backgroundColor = [LMColor backgroundColor];
+        self.scrollView.backgroundColor = [LMColor backgroundColor];
+        self.infoView.backgroundColor = [LMColor backgroundColor];
+        self.separator2.backgroundColor = [LMColor separatorColor];
+        self.informationTitle.textColor = [LMColor labelColor];
+        self.view.backgroundColor = [LMColor backgroundColor];
         [self.moreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
 }
@@ -363,12 +363,12 @@ static UIImage *shadowImage;
 {
     if (object == _depictionView.scrollView && [keyPath isEqual:@"contentSize"]) {
         // we are here because the contentSize of the WebView's scrollview changed.
-        self.depictionView.scrollView.backgroundColor = [UIColor blackColor];
-        self.depictionView.backgroundColor = [UIColor blackColor];
+        self.depictionView.scrollView.backgroundColor = [LMColor backgroundColor];
+        self.depictionView.backgroundColor = [LMColor backgroundColor];
         NSString *css = @"body { background-color: #000 !important }";
         NSString *javascript = @"var style = document.createElement('style'); style.innerHTML = '%@'; document.head.appendChild(style)";
         NSString *javascriptWithCSSString = [NSString stringWithFormat:javascript, css];
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+        if ([LimeHelper darkMode]) {
             [self.depictionView evaluateJavaScript:javascriptWithCSSString completionHandler:nil];
         }
         
@@ -414,7 +414,7 @@ static UIImage *shadowImage;
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
-    self.navigationController.navigationBar.barStyle = [[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"] ? 1 : 0;
+    self.navigationController.navigationBar.barStyle = [LimeHelper darkMode] ? 1 : 0;
     self.navigationController.navigationBar.tintColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = nil;
@@ -428,7 +428,7 @@ static UIImage *shadowImage;
         self.navigationItem.titleView.hidden = NO;
         [UIView animateWithDuration:0.2f animations:^{
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-            if([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+            if([LimeHelper darkMode]) {
                 self.navigationController.navigationBar.barStyle = 1;
             } else {
                 self.navigationController.navigationBar.barStyle = 0;

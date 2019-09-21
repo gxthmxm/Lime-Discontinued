@@ -13,7 +13,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+    if ([LimeHelper darkMode]) {
         [self makeDarkMode];
     } else {
         [self makeLightMode];
@@ -29,8 +29,8 @@
     [self.lightToggle setImage:[UIImage new]];
     
     [UIView animateWithDuration:0.2 animations:^{
-        self.darkText.textColor = [UIColor whiteColor];
-        self.lightText.textColor = [UIColor whiteColor];
+        self.darkText.textColor = [LMColor labelColor];
+        self.lightText.textColor = [LMColor labelColor];
         self.navigationController.navigationBar.barStyle = 1;
         self.view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];

@@ -81,10 +81,10 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController setNavigationBarHidden:YES];
     self.navigationController.navigationBar.barStyle = 1;
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+    if ([LimeHelper darkMode]) {
         self.tabBarController.tabBar.barStyle = 1;
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        self.view.backgroundColor = [UIColor blackColor];
+        self.view.backgroundColor = [LMColor backgroundColor];
     }
 }
 

@@ -21,9 +21,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.tableView.backgroundColor = [UIColor blackColor];
-        self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
+    if ([LimeHelper darkMode]) {
+        self.tableView.backgroundColor = [LMColor backgroundColor];
+        self.tableView.separatorColor = [LMColor separatorColor];
         [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
         self.tabBarController.tabBar.barStyle = 1;
     }

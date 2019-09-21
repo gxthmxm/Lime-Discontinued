@@ -21,8 +21,8 @@
     _repoURL.leftView = paddingView;
     _repoURL.leftViewMode = UITextFieldViewModeAlways;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        _repoURL.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_repoURL.placeholder attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5]}];
+    if ([LimeHelper darkMode]) {
+        _repoURL.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_repoURL.placeholder attributes:@{NSForegroundColorAttributeName: [LMColor secondaryLabelColor]}];
     }
 }
 
@@ -31,14 +31,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     self.effectView.translatesAutoresizingMaskIntoConstraints = YES;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+    if ([LimeHelper darkMode]) {
         self.effectView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        self.titleLabel.textColor = [UIColor whiteColor];
-        self.line.backgroundColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
-        self.repoURL.textColor = [UIColor whiteColor];
-        [self.addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.titleLabel.textColor = [LMColor labelColor];
+        self.line.backgroundColor = [LMColor separatorColor];
+        self.repoURL.textColor = [LMColor labelColor];
+        [self.addButton setTitleColor:[LMColor labelColor] forState:UIControlStateNormal];
         _arrowImg.image = [UIImage imageNamed:@"arrowdark"];
-        self.logView.textColor = [UIColor whiteColor];
+        self.logView.textColor = [LMColor labelColor];
         self.repoURL.keyboardAppearance = UIKeyboardAppearanceDark;
     }
 }

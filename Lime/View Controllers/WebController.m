@@ -23,7 +23,7 @@
     self.webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
     self.webView.navigationDelegate = self;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+    if ([LimeHelper darkMode]) {
         configuration.applicationNameForUserAgent = @"Lime (Cydia) Dark";
         [request setValue:@"Telesphoreo APT-HTTP/1.0.592 Dark" forHTTPHeaderField:@"User-Agent"];
         [request setValue:@"true" forHTTPHeaderField:@"dark"];
@@ -80,8 +80,8 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.view.backgroundColor = [UIColor blackColor];
+    if ([LimeHelper darkMode]) {
+        self.view.backgroundColor = [LMColor backgroundColor];
     }
 }
 

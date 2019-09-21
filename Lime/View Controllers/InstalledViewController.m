@@ -25,9 +25,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        self.tableView.backgroundColor = [UIColor blackColor];
-        self.tableView.separatorColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1];
+    if ([LimeHelper darkMode]) {
+        self.tableView.backgroundColor = [LMColor backgroundColor];
+        self.tableView.separatorColor = [LMColor separatorColor];
         self.navigationController.navigationBar.barStyle = 1;
         self.tabBarController.tabBar.barStyle = 1;
     }
@@ -58,9 +58,9 @@
     cell.imageView.image = icon;
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+    if ([LimeHelper darkMode]) {
         UIView *bgColorView = [[UIView alloc] init];
-        bgColorView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
+        bgColorView.backgroundColor = [LMColor selectedTableViewCellColor];
         [cell setSelectedBackgroundView:bgColorView];
     }
     
@@ -74,9 +74,9 @@
     [cell addSubview:getButton];
      */
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
+    if ([LimeHelper darkMode]) {
+        cell.textLabel.textColor = [LMColor labelColor];
+        cell.detailTextLabel.textColor = [LMColor labelColor];
     }
     
     return cell;

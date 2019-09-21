@@ -93,9 +93,9 @@
         default:
             break;
     }
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.textColor = [UIColor whiteColor];
+    if ([LimeHelper darkMode]) {
+        cell.detailTextLabel.textColor = [LMColor labelColor];
+        cell.textLabel.textColor = [LMColor labelColor];
     }
     cell.detailTextLabel.alpha = 0.5;
     UIImage *icon = [LimeHelper iconFromPackage:package];
@@ -115,15 +115,15 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if([[NSUserDefaults standardUserDefaults] boolForKey:@"darkMode"]) {
+    if([LimeHelper darkMode]) {
         self.effectView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         self.arrowIMG.image = [UIImage imageNamed:@"arrowdark"];
-        [_actionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.queueTable.separatorColor = [UIColor colorWithRed:0.235 green:0.235 blue:0.235 alpha:1];
-        self.logView.textColor = [UIColor whiteColor];
-        self.greatLabel.textColor = [UIColor whiteColor];
-        self.finishedLabel.textColor = [UIColor whiteColor];
-        [self.clearQueueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_actionButton setTitleColor:[LMColor labelColor] forState:UIControlStateNormal];
+        self.queueTable.separatorColor = [LMColor separatorColor];
+        self.logView.textColor = [LMColor labelColor];
+        self.greatLabel.textColor = [LMColor labelColor];
+        self.finishedLabel.textColor = [LMColor labelColor];
+        [self.clearQueueButton setTitleColor:[LMColor labelColor] forState:UIControlStateNormal];
         self.ecksView.image = [LimeHelper imageWithName:@"darkx"];
     }
 }
