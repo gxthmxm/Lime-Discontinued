@@ -296,7 +296,6 @@ static UIImage *shadowImage;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barStyle = 1;
     self.navigationItem.titleView.hidden = YES;
     if ([LimeHelper darkMode]) {
         self.bigView.backgroundColor = [LMColor backgroundColor];
@@ -313,6 +312,7 @@ static UIImage *shadowImage;
         self.informationTitle.textColor = [LMColor labelColor];
         self.view.backgroundColor = [LMColor backgroundColor];
         [self.moreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.navigationController.navigationBar.barStyle = 1;
     }
 }
 
@@ -414,11 +414,9 @@ static UIImage *shadowImage;
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
-    self.navigationController.navigationBar.barStyle = [LimeHelper darkMode] ? 1 : 0;
+    [self.navigationController.navigationBar setBarStyle:[LimeHelper darkMode] ? 1 : 0];
     self.navigationController.navigationBar.tintColor = [[[UIApplication sharedApplication] delegate] window].tintColor;
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = nil;
-
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
