@@ -28,4 +28,15 @@
     [[NSUserDefaults standardUserDefaults] setBool:state forKey:@"darkMode"];
 }
 
++(NSString *)dpkgStatusLocation {
+#if !(TARGET_IPHONE_SIMULATOR)
+    if ([[NSFileManager defaultManager] fileExistsAtPath:@"/bin/bash"]) {
+        return @"/var/lib/dpkg/status";
+    } else {
+        return [[NSBundle mainBundle] pathForResource:@"status" ofType:@""];
+    }
+#endif
+    return [[NSBundle mainBundle] pathForResource:@"status" ofType:@""];
+}
+
 @end

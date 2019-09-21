@@ -53,6 +53,7 @@
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
 		4DF84F5722CFF16A00E43E20 /* vrzHBVF.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF84F5622CFF16900E43E20 /* vrzHBVF.png */; };
 		4DF9B70E23364DCE00D560E5 /* LMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9B70D23364DCE00D560E5 /* LMColor.m */; };
+		4DF9B710233657AD00D560E5 /* status in Resources */ = {isa = PBXBuildFile; fileRef = 4DF9B70F233657AD00D560E5 /* status */; };
 		6622F62222DF56BC007C7B40 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6622F62122DF56BC007C7B40 /* libbz2.tbd */; };
 		662803B922E99CBC008BDBDE /* LMPackageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 662803B822E99CBC008BDBDE /* LMPackageParser.m */; };
 		66381722227A078100E92BE7 /* sections in Resources */ = {isa = PBXBuildFile; fileRef = 66381721227A078000E92BE7 /* sections */; };
@@ -156,6 +157,7 @@
 		4DF84F5622CFF16900E43E20 /* vrzHBVF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vrzHBVF.png; sourceTree = "<group>"; };
 		4DF9B70C23364DCE00D560E5 /* LMColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMColor.h; sourceTree = "<group>"; };
 		4DF9B70D23364DCE00D560E5 /* LMColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMColor.m; sourceTree = "<group>"; };
+		4DF9B70F233657AD00D560E5 /* status */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
 		6622F62122DF56BC007C7B40 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		6626F4C5228059A100F94ED3 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
 		6626F4C6228059A100F94ED3 /* NSTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTask.h; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				37D0FC74227753EC0039BE3C /* AppDelegate.m */,
 				4D841BD6228615AD00234599 /* Settings.h */,
 				4D841BD7228615C200234599 /* Settings.m */,
+				4DF9B70F233657AD00D560E5 /* status */,
 				4D330CA322C789BE000A1C85 /* Images.xcassets */,
 				37D0FC84227753EF0039BE3C /* Info.plist */,
 				4D7F120E2280950200576DEF /* UIColor */,
@@ -518,6 +521,7 @@
 				4D1BFFC322C799DB00122AC2 /* melogo.png in Resources */,
 				66381722227A078100E92BE7 /* sections in Resources */,
 				4D5F340D22CA5F8C003A3C61 /* darkx.png in Resources */,
+				4DF9B710233657AD00D560E5 /* status in Resources */,
 				4D33AB542278742A00CDFC49 /* LaunchScreen.storyboard in Resources */,
 				4D1BFFDF22C7A1D200122AC2 /* respringlight.png in Resources */,
 				4D1BFFD522C79E2E00122AC2 /* UICache.png in Resources */,
@@ -733,7 +737,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_OPTIMIZATION = "";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = YES;
@@ -757,7 +761,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_OPTIMIZATION = "";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = YES;

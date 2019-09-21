@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.parser = [[LMPackageParser alloc] initWithFilePath:@"/var/lib/dpkg/status"];
+    self.parser = [[LMPackageParser alloc] initWithFilePath:[LimeHelper dpkgStatusLocation]];
     self.sortedPackages = [self.parser.packageNames.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     /*NSArray *sortedPackages = [self.parser.packages allKeys];
     sortedPackages = [sortedPackages sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];*/

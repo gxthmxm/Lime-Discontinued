@@ -19,4 +19,6 @@
 +(BOOL)darkMode;
 +(void)setDarkMode:(BOOL)state;
 
++(NSString *)dpkgStatusLocation;
+
 @end
