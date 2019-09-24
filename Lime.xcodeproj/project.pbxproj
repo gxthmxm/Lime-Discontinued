@@ -37,6 +37,7 @@
 		4D715A12227AD26C00896934 /* InstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D715A11227AD26C00896934 /* InstallationController.m */; };
 		4D7F12092280754300576DEF /* AddRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F12082280754300576DEF /* AddRepoController.m */; };
 		4D7F12112280951300576DEF /* UIImageAverageColorAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F12102280951300576DEF /* UIImageAverageColorAddition.m */; };
+		4D81476223369D97006BD20F /* UIViewCloneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D81476123369D97006BD20F /* UIViewCloneView.m */; };
 		4D82AE7D233649BE00AC3F6C /* FirstLaunchDeciderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D82AE7C233649BE00AC3F6C /* FirstLaunchDeciderController.m */; };
 		4D82AE8023364A3100AC3F6C /* ConfigStartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D82AE7F23364A3100AC3F6C /* ConfigStartController.m */; };
 		4D82AE8323364A5800AC3F6C /* ConfigRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D82AE8223364A5800AC3F6C /* ConfigRepoController.m */; };
@@ -49,7 +50,9 @@
 		4D9DAC2A23364C94000734A1 /* Lime.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DAC2923364C94000734A1 /* Lime.m */; };
 		4DACF2BC227CB08A003F527C /* NSArray+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DACF2BB227CB08A003F527C /* NSArray+Random.m */; };
 		4DAD694122C0DD0500338FCA /* LimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD694022C0DD0500338FCA /* LimeHelper.m */; };
+		4DB501D0233A5B3700545B55 /* THOTWCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB501CF233A5B3700545B55 /* THOTWCard.m */; };
 		4DD1D57F22A0669D00CC9824 /* ConfigCustomizationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1D57E22A0669D00CC9824 /* ConfigCustomizationController.m */; };
+		4DD5411E23369226003F2BAF /* StoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5411D23369226003F2BAF /* StoryController.m */; };
 		4DE09916227B5A2300A00A43 /* output in Resources */ = {isa = PBXBuildFile; fileRef = 4DE09915227B5A2300A00A43 /* output */; };
 		4DF84F5722CFF16A00E43E20 /* vrzHBVF.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF84F5622CFF16900E43E20 /* vrzHBVF.png */; };
 		4DF9B70E23364DCE00D560E5 /* LMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9B70D23364DCE00D560E5 /* LMColor.m */; };
@@ -126,6 +129,8 @@
 		4D7F120A2280754D00576DEF /* AddRepoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddRepoController.h; sourceTree = "<group>"; };
 		4D7F120F2280950E00576DEF /* UIImageAverageColorAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageAverageColorAddition.h; sourceTree = "<group>"; };
 		4D7F12102280951300576DEF /* UIImageAverageColorAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAverageColorAddition.m; sourceTree = "<group>"; };
+		4D81476023369D83006BD20F /* UIViewCloneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewCloneView.h; sourceTree = "<group>"; };
+		4D81476123369D97006BD20F /* UIViewCloneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewCloneView.m; sourceTree = "<group>"; };
 		4D82AE7A2336494600AC3F6C /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MobileGestalt.h; path = ../../../../../.Trash/MobileGestalt.h; sourceTree = "<group>"; };
 		4D82AE7B233649BE00AC3F6C /* FirstLaunchDeciderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstLaunchDeciderController.h; sourceTree = "<group>"; };
 		4D82AE7C233649BE00AC3F6C /* FirstLaunchDeciderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstLaunchDeciderController.m; sourceTree = "<group>"; };
@@ -150,8 +155,12 @@
 		4DACF2BB227CB08A003F527C /* NSArray+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Random.m"; sourceTree = "<group>"; };
 		4DAD694022C0DD0500338FCA /* LimeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LimeHelper.m; sourceTree = "<group>"; };
 		4DAD694322C0DD2000338FCA /* LimeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimeHelper.h; sourceTree = "<group>"; };
+		4DB501CE233A5B3700545B55 /* THOTWCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THOTWCard.h; sourceTree = "<group>"; };
+		4DB501CF233A5B3700545B55 /* THOTWCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THOTWCard.m; sourceTree = "<group>"; };
 		4DD1D57E22A0669D00CC9824 /* ConfigCustomizationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigCustomizationController.m; sourceTree = "<group>"; };
 		4DD1D58022A066A800CC9824 /* ConfigCustomizationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigCustomizationController.h; sourceTree = "<group>"; };
+		4DD5411C23369226003F2BAF /* StoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryController.h; sourceTree = "<group>"; };
+		4DD5411D23369226003F2BAF /* StoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryController.m; sourceTree = "<group>"; };
 		4DE098D5227B53E800A00A43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4DE09915227B5A2300A00A43 /* output */ = {isa = PBXFileReference; lastKnownFileType = folder; path = output; sourceTree = "<group>"; };
 		4DF84F5622CFF16900E43E20 /* vrzHBVF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vrzHBVF.png; sourceTree = "<group>"; };
@@ -334,6 +343,8 @@
 				666DC9192278702100B6E03C /* InstalledViewController.m */,
 				4D131D6E23351E6C00B3F311 /* WebController.h */,
 				4D131D6F23351E6C00B3F311 /* WebController.m */,
+				4DD5411C23369226003F2BAF /* StoryController.h */,
+				4DD5411D23369226003F2BAF /* StoryController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -341,6 +352,8 @@
 		4D82AE732336488700AC3F6C /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				4DB501CE233A5B3700545B55 /* THOTWCard.h */,
+				4DB501CF233A5B3700545B55 /* THOTWCard.m */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -388,6 +401,8 @@
 				4D82AE7A2336494600AC3F6C /* MobileGestalt.h */,
 				6626F4C6228059A100F94ED3 /* NSTask.h */,
 				6626F4C5228059A100F94ED3 /* MobileGestalt.h */,
+				4D81476023369D83006BD20F /* UIViewCloneView.h */,
+				4D81476123369D97006BD20F /* UIViewCloneView.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -570,9 +585,11 @@
 				4D82AE7D233649BE00AC3F6C /* FirstLaunchDeciderController.m in Sources */,
 				37D0FC86227753EF0039BE3C /* main.m in Sources */,
 				4D82AE8C23364B4F00AC3F6C /* LMQueueAction.m in Sources */,
+				4DD5411E23369226003F2BAF /* StoryController.m in Sources */,
 				4D82AE8623364A8000AC3F6C /* ConfigSelectRepoController.m in Sources */,
 				4D7F12112280951300576DEF /* UIImageAverageColorAddition.m in Sources */,
 				666DC91722786B4E00B6E03C /* SearchViewController.m in Sources */,
+				4DB501D0233A5B3700545B55 /* THOTWCard.m in Sources */,
 				66B9FCA222788D7400F1FB08 /* LMDPKGParser.m in Sources */,
 				4D131D7023351E6C00B3F311 /* WebController.m in Sources */,
 				4D82AE8023364A3100AC3F6C /* ConfigStartController.m in Sources */,
@@ -581,6 +598,7 @@
 				4D82AE8F23364B8B00AC3F6C /* LMQueue.m in Sources */,
 				4DF9B70E23364DCE00D560E5 /* LMColor.m in Sources */,
 				666DC9112278690100B6E03C /* HomeViewController.m in Sources */,
+				4D81476223369D97006BD20F /* UIViewCloneView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

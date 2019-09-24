@@ -10,6 +10,9 @@
 #import "../Lime.h"
 #import "InstallationController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "StoryController.h"
+#import "../Other/UIViewCloneView.h"
+#import "../UI Elements/THOTWCard.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,8 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *todayLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (nonatomic, strong) NSDictionary *stories;
+
 // CARD 1
-@property (weak, nonatomic) IBOutlet UIView *cardOne;
+@property (strong, nonatomic) IBOutlet THOTWCard *cardOne;
 
 @end
 

@@ -14,61 +14,46 @@
 
 @implementation HomeViewController
 
-- (IBAction)closeCard:(UIButton *)sender {
-    UIView *card = sender.superview.superview.superview;
-    [sender.superview.superview.superview removeFromSuperview];
-    [self.scrollView addSubview:card];
-    [UIView animateWithDuration:0.2 animations:^{
-        card.frame = CGRectMake(20, 96, self.scrollView.frame.size.width - 40, 411);
-    }];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longPress.minimumPressDuration = 0;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCard:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCardOne:)];
     [self.cardOne addGestureRecognizer:tap];
+    
+    [self grabStories];
 }
 
-- (void)openCard:(UITapGestureRecognizer*)sender {
-    [sender.view removeFromSuperview];
-    [self.tabBarController.view addSubview:sender.view];
-    sender.view.frame = CGRectMake(sender.view.frame.origin.x, sender.view.frame.origin.y + 20, sender.view.frame.size.width, sender.view.frame.size.height);
-    [UIView animateWithDuration:0.1 animations:^{
-        sender.view.transform = CGAffineTransformScale(sender.view.transform, 0.96, 0.96);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.3 animations:^{
-            sender.view.transform = CGAffineTransformScale(sender.view.transform, 1.04, 1.04);
-            sender.view.frame = CGRectMake(20, -20, sender.view.frame.size.width, sender.view.frame.size.height);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.2 animations:^{
-                sender.view.frame = CGRectMake(0, 0, sender.view.frame.size.width + 40, sender.view.frame.size.height + 40);
-            } completion:^(BOOL finished) {
-                [sender.view.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
-                    [sender.view removeGestureRecognizer:obj];
-                }];
-            }];
-        }];
-    }];
-    [UIView animateWithDuration:0.9 animations:^{
-        sender.view.layer.cornerRadius = 0;
-    }];
+-(void)grabStories {
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://evendev.org/lime/story/stories.json"]];
+    self.stories = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    if (self.stories) {
+        // Card 1
+        NSDictionary *firstCard = [self.stories objectForKey:@"card-1"];
+        NSData *bgImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:(NSString *)[firstCard valueForKey:@"background-image"]]];
+        self.cardOne.backgroundView.image = [UIImage imageWithData:bgImage];
+        
+        NSData *fgImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:(NSString *)[firstCard valueForKey:@"foreground-image"]]];
+        self.cardOne.foregroundView.image = [UIImage imageWithData:fgImage];
+        
+        NSData *icon = [NSData dataWithContentsOfURL:[NSURL URLWithString:(NSString *)[firstCard valueForKey:@"package-icon"]]];
+        self.cardOne.iconView.image = [UIImage imageWithData:icon];
+        
+        self.cardOne.packageTitle.text = [firstCard valueForKey:@"package-name"];
+        self.cardOne.storyURL = [firstCard valueForKey:@"story"];
+        self.cardOne.packageDescription.text = [firstCard valueForKey:@"package-desc"];
+        self.cardOne.packageIdentifier = [firstCard valueForKey:@"package-identifier"];
+        self.cardOne.titleLabel.text = [firstCard valueForKey:@"title"];
+        self.cardOne.repository = [firstCard valueForKey:@"repository"];
+    }
 }
 
-
-- (void)handleLongPress:(UILongPressGestureRecognizer*)sender {
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        [UIView animateWithDuration:0.2 animations:^{
-            sender.view.transform = CGAffineTransformScale(sender.view.transform, 1.04, 1.04);
-        }];
-    }
-    else if (sender.state == UIGestureRecognizerStateBegan) {
-        [UIView animateWithDuration:0.2 animations:^{
-            sender.view.transform = CGAffineTransformScale(sender.view.transform, 0.96, 0.96);
-        }];
-    }
+- (void)openCardOne:(UITapGestureRecognizer*)sender {
+    StoryController *controller = [[StoryController alloc] init];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cardOne];
+    THOTWCard *card = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    controller.topView = card;
+    controller.storyURL = [NSURL URLWithString:@"https://evendev.org/lime/story/story1.html"];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
