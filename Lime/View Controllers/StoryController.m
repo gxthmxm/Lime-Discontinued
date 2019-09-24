@@ -26,6 +26,7 @@
     
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, self.topView.frame.size.height, self.view.frame.size.width, 0) configuration:config];
+    self.webView.customUserAgent = @"dark";
     self.webView.navigationDelegate = self;
     [self.webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.storyURL]];
@@ -45,6 +46,17 @@
 
 -(void)dismiss:(UITapGestureRecognizer *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([LimeHelper darkMode]) {
+        self.view.backgroundColor = [UIColor colorWithRed:0.10 green:0.10 blue:0.11 alpha:1.0];
+        self.scrollView.backgroundColor = [UIColor colorWithRed:0.10 green:0.10 blue:0.11 alpha:1.0];
+        self.webView.backgroundColor = [UIColor colorWithRed:0.10 green:0.10 blue:0.11 alpha:1.0];
+        self.webView.scrollView.backgroundColor = [UIColor colorWithRed:0.10 green:0.10 blue:0.11 alpha:1.0];
+        self.topView.backgroundColor = [UIColor colorWithRed:0.10 green:0.10 blue:0.11 alpha:1.0];
+    }
 }
 
 -(void)dealloc {

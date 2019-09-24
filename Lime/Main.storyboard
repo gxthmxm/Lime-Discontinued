@@ -673,15 +673,15 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xos-7x-eQT">
-                                        <rect key="frame" x="323" y="40" width="32" height="32"/>
+                                        <rect key="frame" x="324" y="41" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="Settings"/>
                                         <connections>
                                             <segue destination="0fU-SR-3Bm" kind="show" identifier="settings" id="Fr8-PY-Udp"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FRIDAY 5 JULY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGr-r5-UDF">
-                                        <rect key="frame" x="20" y="24" width="88" height="15"/>
+                                        <rect key="frame" x="20" y="24" width="296" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                         <nil key="textColor"/>
@@ -736,7 +736,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                            <state key="normal" title="GET"/>
+                                                            <state key="normal" title="$2.99"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                     <integer key="value" value="15"/>
@@ -771,6 +771,7 @@ WEEK</string>
                                             <outlet property="backgroundView" destination="mcI-Aw-0KO" id="i4b-yH-GEI"/>
                                             <outlet property="effectView" destination="AkJ-8z-lyb" id="HOY-vV-n9O"/>
                                             <outlet property="foregroundView" destination="E4r-6y-EXg" id="hZy-TB-aIA"/>
+                                            <outlet property="getButton" destination="x9D-QB-ORb" id="aHK-Io-RWM"/>
                                             <outlet property="iconView" destination="3LE-Kd-rfy" id="OJa-bM-1Y7"/>
                                             <outlet property="packageDescription" destination="B7k-Ba-5di" id="eL5-Zr-jxa"/>
                                             <outlet property="packageTitle" destination="FaS-bq-28M" id="J9a-aY-N5b"/>
@@ -2167,6 +2168,7 @@ WEEK</string>
         <image name="Luis" width="400" height="400"/>
         <image name="Pencil.png" width="104" height="104"/>
         <image name="Search" width="28" height="24"/>
+        <image name="Settings" width="90" height="90"/>
         <image name="Silleo" width="399" height="399"/>
         <image name="Sources" width="28" height="24"/>
         <image name="Speed.png" width="104" height="104"/>

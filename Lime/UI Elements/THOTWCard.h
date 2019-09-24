@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) IBOutlet UIVisualEffectView *effectView;
 @property (nonatomic, strong) IBOutlet UILabel *packageTitle;
 @property (nonatomic, strong) IBOutlet UILabel *packageDescription;
+@property (nonatomic, strong) IBOutlet UIButton *getButton;
 @property (nonatomic, strong) NSString *repository;
 @property (nonatomic, strong) NSString *packageIdentifier;
 @property (nonatomic, strong) NSString *storyURL;

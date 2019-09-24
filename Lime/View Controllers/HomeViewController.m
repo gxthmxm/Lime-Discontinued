@@ -19,6 +19,11 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCardOne:)];
     [self.cardOne addGestureRecognizer:tap];
+    self.cardOne.layer.cornerRadius = 15;
+    
+    NSDateFormatter *dateFormattor = [NSDateFormatter new];
+    dateFormattor.dateFormat = @"EEEE d MMMM";
+    self.dateLabel.text = [[dateFormattor stringFromDate:[NSDate date]] uppercaseString];
     
     [self grabStories];
 }
@@ -70,6 +75,8 @@
         self.tabBarController.tabBar.barStyle = 1;
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         self.view.backgroundColor = [LMColor backgroundColor];
+        self.dateLabel.textColor = [LMColor labelColor];
+        self.todayLabel.textColor = [LMColor labelColor];
     }
 }
 
