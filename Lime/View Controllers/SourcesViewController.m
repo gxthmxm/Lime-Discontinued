@@ -305,6 +305,9 @@
     if ([LimeHelper darkMode]) {
         cell.textLabel.textColor = [LMColor labelColor];
         cell.detailTextLabel.textColor = [LMColor labelColor];
+        UIView *bgColorView = [[UIView alloc] init];
+        bgColorView.backgroundColor = [LMColor selectedTableViewCellColor];
+        [cell setSelectedBackgroundView:bgColorView];
     }
     
     return cell;
