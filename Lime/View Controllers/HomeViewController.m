@@ -52,7 +52,7 @@
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cardOne];
     THOTWCard *card = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     controller.topView = card;
-    controller.storyURL = [NSURL URLWithString:@"https://evendev.org/lime/story/story1.html"];
+    controller.storyURL = [NSURL URLWithString:self.cardOne.storyURL];
     [self presentViewController:controller animated:YES completion:nil];
 }
 
