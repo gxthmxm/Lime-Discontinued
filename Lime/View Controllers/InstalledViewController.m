@@ -99,7 +99,8 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         LMPackage *package = (LMPackage*)[self.parser.packages objectForKey:[self.parser.packageNames objectForKey:[self.sortedPackages objectAtIndex:indexPath.row]]];
         [LMQueue addQueueAction:[[LMQueueAction alloc] initWithPackage:package action:1]];
-        [self performSegueWithIdentifier:@"openQue" sender:self];
+        FirstLaunchDeciderController *vc = (FirstLaunchDeciderController *)self.tabBarController;
+        [vc showBannerWithMessage:[NSString stringWithFormat:@"Successfully added %@ to the queue", package.identifier] type:0 target:self selector:@selector(openQueue:)];
     }
 }
 
