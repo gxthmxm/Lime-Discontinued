@@ -50,15 +50,11 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [UIView animateWithDuration:0.2 animations:^{
-            [tableView cellForRowAtIndexPath:indexPath].alpha = 0;
-        } completion:^(BOOL finished) {
-            [LMQueue removeObjectFromQueueWithIndex:indexPath.row];
-            [self.queueTable reloadData];
-            if ([LMQueue queueActions].count < 1) {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-        }];
+        [LMQueue removeObjectFromQueueWithIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        if ([LMQueue queueActions].count < 1) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 
