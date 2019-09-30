@@ -18,6 +18,7 @@
 #import "Parsers/LMDPKGParser.h"
 #import "Objects/LMColor.h"
 #import "UIColor/UIImageAverageColorAddition.h"
+#import "View Controllers/FirstLaunchDeciderController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

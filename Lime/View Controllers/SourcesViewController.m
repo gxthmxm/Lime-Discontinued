@@ -22,6 +22,9 @@
     }
 }
 
+- (IBAction)refresh:(id)sender {
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *limePath = @"/var/mobile/Documents/Lime/";

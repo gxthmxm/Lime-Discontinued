@@ -287,7 +287,7 @@ static UIImage *shadowImage;
 }
 
 -(void)addToQueue {
-    [self performSegueWithIdentifier:@"openQueue" sender:self];
+    [self addToQueue:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -471,19 +471,26 @@ static UIImage *shadowImage;
 	_bannerView.bounds = CGRectMake(0, 0, screenWidth, h);
 	_bannerView.center = CGPointMake(screenWidth / 2, (_bannerView.bounds.size.height / 2) + offsetY - navBarLowerY);
 }
+
+-(void)pressedBanner:(id)sender {
+    [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
+}
+
 - (IBAction)addToQueue:(id)sender {
-    if(!self.package.installed) {
+    if(self.package.installed) {
         UIAlertController* actionAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
         UIAlertAction* removeAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
             LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:1];
             [LMQueue addQueueAction:queueAction];
-            [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
+            FirstLaunchDeciderController *vc = (FirstLaunchDeciderController *)self.tabBarController;
+            [vc showBannerWithMessage:[NSString stringWithFormat:@"Successfully added %@ to the queue", self.package.identifier] type:0 target:self selector:@selector(pressedBanner:)];
         }];
         UIAlertAction* reinstallAction = [UIAlertAction actionWithTitle:@"Reinstall" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:2];
             [LMQueue addQueueAction:queueAction];
-            [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
+            FirstLaunchDeciderController *vc = (FirstLaunchDeciderController *)self.tabBarController;
+            [vc showBannerWithMessage:[NSString stringWithFormat:@"Successfully added %@ to the queue", self.package.identifier] type:0 target:self selector:@selector(pressedBanner:)];
         }];
         
         UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel
@@ -496,7 +503,8 @@ static UIImage *shadowImage;
     } else {
         LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:0];
         [LMQueue addQueueAction:queueAction];
-        [self performSegueWithIdentifier:@"openQueue" sender:self.getButton];
+        FirstLaunchDeciderController *vc = (FirstLaunchDeciderController *)self.tabBarController;
+        [vc showBannerWithMessage:[NSString stringWithFormat:@"Successfully added %@ to the queue", self.package.identifier] type:0 target:self selector:@selector(pressedBanner:)];
     }
 }
 

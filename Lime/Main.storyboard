@@ -674,7 +674,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xos-7x-eQT">
                                         <rect key="frame" x="324" y="41" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Settings"/>
                                         <connections>
                                             <segue destination="0fU-SR-3Bm" kind="show" identifier="settings" id="Fr8-PY-Udp"/>
@@ -696,7 +696,7 @@
                                     </label>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LrB-ap-4FJ" customClass="THOTWCard">
                                         <rect key="frame" x="20" y="96" width="335" height="427"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cardPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="mcI-Aw-0KO">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="427"/>
@@ -825,7 +825,11 @@ WEEK</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sources" id="q2O-Nh-nqX">
-                        <barButtonItem key="leftBarButtonItem" title="Refresh" id="WWg-Hj-sph"/>
+                        <barButtonItem key="leftBarButtonItem" title="Refresh" id="WWg-Hj-sph">
+                            <connections>
+                                <action selector="refresh:" destination="3i0-lW-DYa" id="mbb-ph-D16"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="NK5-E1-vJm">
                             <connections>
                                 <action selector="addRepoController:" destination="CEa-EV-tYC" id="SUW-EQ-Psf"/>
@@ -1705,10 +1709,10 @@ WEEK</string>
             </objects>
             <point key="canvasLocation" x="414" y="331"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--First Launch Decider Controller-->
         <scene sceneID="ykM-cw-G8Y">
             <objects>
-                <tabBarController id="Ofe-eB-Og1" sceneMemberID="viewController">
+                <tabBarController id="Ofe-eB-Og1" customClass="FirstLaunchDeciderController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jKm-DD-Jcg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2188,6 +2192,6 @@ WEEK</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Vo4-br-HTL"/>
-        <segue reference="1vz-AG-io2"/>
+        <segue reference="REO-jp-PFU"/>
     </inferredMetricsTieBreakers>
 </document>

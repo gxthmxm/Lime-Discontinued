@@ -33,6 +33,7 @@
 		4D33AB57227877EA00CDFC49 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D33AB56227877EA00CDFC49 /* WebKit.framework */; };
 		4D33AB5922787A7700CDFC49 /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5822787A7700CDFC49 /* SourcesViewController.m */; };
 		4D33AB5D2278890600CDFC49 /* DepictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33AB5C2278890600CDFC49 /* DepictionViewController.m */; };
+		4D389FA023423FAF0017CF8C /* LMInfoBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D389F9F23423FAF0017CF8C /* LMInfoBanner.m */; };
 		4D5F340D22CA5F8C003A3C61 /* darkx.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5F340C22CA5F8B003A3C61 /* darkx.png */; };
 		4D715A12227AD26C00896934 /* InstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D715A11227AD26C00896934 /* InstallationController.m */; };
 		4D7F12092280754300576DEF /* AddRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F12082280754300576DEF /* AddRepoController.m */; };
@@ -121,6 +122,8 @@
 		4D33AB5A22787A8700CDFC49 /* SourcesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourcesViewController.h; sourceTree = "<group>"; };
 		4D33AB5B227888F800CDFC49 /* DepictionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepictionViewController.h; sourceTree = "<group>"; };
 		4D33AB5C2278890600CDFC49 /* DepictionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepictionViewController.m; sourceTree = "<group>"; };
+		4D389F9E23423FAF0017CF8C /* LMInfoBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMInfoBanner.h; sourceTree = "<group>"; };
+		4D389F9F23423FAF0017CF8C /* LMInfoBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMInfoBanner.m; sourceTree = "<group>"; };
 		4D5F340C22CA5F8B003A3C61 /* darkx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = darkx.png; sourceTree = "<group>"; };
 		4D5F340E22CA5F96003A3C61 /* lightx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lightx.png; path = ../../../../../Downloads/lightx.png; sourceTree = "<group>"; };
 		4D715A11227AD26C00896934 /* InstallationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstallationController.m; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 			children = (
 				4DB501CE233A5B3700545B55 /* THOTWCard.h */,
 				4DB501CF233A5B3700545B55 /* THOTWCard.m */,
+				4D389F9E23423FAF0017CF8C /* LMInfoBanner.h */,
+				4D389F9F23423FAF0017CF8C /* LMInfoBanner.m */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -577,6 +582,7 @@
 				4D7F12092280754300576DEF /* AddRepoController.m in Sources */,
 				4DAD694122C0DD0500338FCA /* LimeHelper.m in Sources */,
 				4DACF2BC227CB08A003F527C /* NSArray+Random.m in Sources */,
+				4D389FA023423FAF0017CF8C /* LMInfoBanner.m in Sources */,
 				4DD1D57F22A0669D00CC9824 /* ConfigCustomizationController.m in Sources */,
 				4D82AE8323364A5800AC3F6C /* ConfigRepoController.m in Sources */,
 				666DC91A2278702100B6E03C /* InstalledViewController.m in Sources */,

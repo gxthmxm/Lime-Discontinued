@@ -51,6 +51,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) bool installed;*/
 @property (strong, nonatomic) LMPackage* package;
 
+-(void)pressedBanner:(id)sender;
+
 @end
 
 @interface InformationTableView : UITableViewController

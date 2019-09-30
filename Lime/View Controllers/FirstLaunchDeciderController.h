@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "../Lime.h"
+#import "../UI Elements/LMInfoBanner.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FirstLaunchDeciderController : UITabBarController
+
+-(void)showBannerWithMessage:(NSString *)message type:(NSUInteger)type target:(id)target selector:(SEL)selector;
 
 @end
 
