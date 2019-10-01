@@ -252,6 +252,7 @@
             if(completion) completion(NO);
         } else {
             // download the source prolly
+            if (![[NSFileManager defaultManager] fileExistsAtPath:path]) [[NSFileManager defaultManager] createFileAtPath:path contents:[NSData new] attributes:nil];
             [data writeToFile:path atomically:YES];
             if([[path substringFromIndex:path.length - 4] isEqualToString:@".bz2"]) {
                 // we out there with the repos refreshing, ayy
