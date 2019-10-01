@@ -435,7 +435,7 @@ static UIImage *shadowImage;
             } else {
                 self.navigationController.navigationBar.barStyle = 0;
             }
-            self.navigationController.navigationBar.tintColor = [[LimeHelper iconFromPackage:self.package] averageColor];
+            self.navigationController.navigationBar.tintColor = [self.iconView.image averageColor];
         }];
     } else {
         [UIView animateWithDuration:0.2f animations:^{
