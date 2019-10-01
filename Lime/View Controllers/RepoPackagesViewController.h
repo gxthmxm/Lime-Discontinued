@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "../Lime.h"
+#import "DepictionViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RepoPackagesViewController : UITableViewController
+
+@property (nonatomic, strong) LMRepo *repo;
 
 @end
 

@@ -214,9 +214,13 @@ static UIImage *shadowImage;
     }
     //_depictionView.scrollView.userInteractionEnabled = NO;
     if (![self.package.iconPath isEqual:@""]) {
-        self.iconView.image = [LimeHelper iconFromPackage:self.package];
+        UIImage *icon = [UIImage imageNamed:[NSString stringWithFormat:@"sections/%@", self.package.section]];
+            if (![self.package.iconPath containsString:@"https://"] || [self.package.iconPath containsString:@"http://"]) {
+                icon = [LimeHelper iconFromPackage:self.package];
+            }
+        self.iconView.image = icon;
     }
-    self.bannerView.backgroundColor = [[LimeHelper iconFromPackage:self.package] averageColor];
+    self.bannerView.backgroundColor = [self.iconView.image averageColor];
     self.titleLabel.text = self.package.name;
     [_titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [_titleLabel sizeToFit];
@@ -279,7 +283,7 @@ static UIImage *shadowImage;
         [button setTitle:@"GET" forState:UIControlStateNormal];
     }
     button.titleLabel.font = [UIFont fontWithName:@".SFUIText-Bold" size:13];
-    button.backgroundColor = [[LimeHelper iconFromPackage:self.package] averageColor];
+    button.backgroundColor = [self.iconView.image averageColor];
     button.layer.cornerRadius = 15.0;
     
     UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];

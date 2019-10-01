@@ -15,8 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface InstalledViewController : UITableViewController
 
-@property (nonatomic, retain) LMPackageParser *parser;
-@property (nonatomic, retain) NSArray *sortedPackages;
+@property (nonatomic, retain) NSMutableArray *packages;
 
 @end
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LMPackage.h"
+#import "../Lime.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

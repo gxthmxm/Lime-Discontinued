@@ -18,19 +18,22 @@
     LMPackage *package = [[LMPackage alloc] init];
     FILE *f = fopen([filePath UTF8String], "r");
     char str[1024];
-    NSMutableDictionary *mutablePackages = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *mutablePackageNames = [[NSMutableDictionary alloc] init];
-    
-    if ([filePath isEqualToString:[LimeHelper dpkgStatusLocation]]) {
-        package.installed = YES;
-    }
+    NSMutableArray *mutablePackages = [[NSMutableArray alloc] init];
 
     NSDictionary *customPropertiesDict = @{
         @"package":@"identifier",
         @"description":@"desc",
+        @"name":@"name",
+        @"version":@"version",
         @"icon":@"iconPath",
         @"depiction":@"depictionURL",
         @"tag":@"tags",
+        @"architecture":@"architecture",
+        @"author":@"author",
+        @"maintainer":@"maintainer",
+        @"size":@"size",
+        @"section":@"section",
+        @"filename":@"filename",
         @"depends":@"dependencies",
         @"installed-size":@"installedSize",
         @"sileodepiction":@"sileoDepiction"
@@ -47,8 +50,7 @@
                 else package.iconPath = [package.iconPath stringByReplacingOccurrencesOfString:@" " withString:@"_"];
                 if(![[NSFileManager defaultManager] fileExistsAtPath:package.iconPath]) package.iconPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/sections/Unknown.png"];
             }
-            [mutablePackages setObject:package forKey:package.identifier];
-            [mutablePackageNames setObject:package.identifier forKey:package.name];
+            [mutablePackages addObject:package];
             // reset it
             package = nil;
             package = [[LMPackage alloc] init];
@@ -79,8 +81,7 @@
     }
     
     fclose(f);
-    self.packages = [mutablePackages copy];
-    self.packageNames = [mutablePackageNames copy];
+    self.packages = mutablePackages;
     //UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:[NSString stringWithFormat:@"%@",self.packages] delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
     //[a show];
     return self;

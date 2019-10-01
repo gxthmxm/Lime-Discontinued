@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "../Objects/LMQueueAction.h"
+#import "../Lime.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray *actions;
 
-+(void)addQueueAction:(LMQueueAction*)action;
++(void)addQueueAction:(LMPackage *)action;
 +(NSArray*)queueActions;
 +(void)setQueueWithMutableArray:(NSMutableArray*)array;
 +(void)removeObjectFromQueueWithIndex:(NSInteger)index;

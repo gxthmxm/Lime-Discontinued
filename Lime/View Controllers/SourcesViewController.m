@@ -23,6 +23,7 @@
 }
 
 - (IBAction)refresh:(id)sender {
+    [[LimeHelper sharedInstance] refresh];
 }
 
 - (void)viewDidLoad {
@@ -35,148 +36,9 @@
     if(![[NSFileManager defaultManager] fileExistsAtPath:listsPath isDirectory:nil]) [[NSFileManager defaultManager] createDirectoryAtPath:listsPath withIntermediateDirectories:YES attributes:nil error:nil];
     if(![[NSFileManager defaultManager] fileExistsAtPath:iconsPath isDirectory:nil]) [[NSFileManager defaultManager] createDirectoryAtPath:iconsPath withIntermediateDirectories:YES attributes:nil error:nil];
     if(![[NSFileManager defaultManager] fileExistsAtPath:sourcesPath isDirectory:nil]) [[NSFileManager defaultManager] createFileAtPath:sourcesPath contents:nil attributes:nil];
-    // [self addRepoToListWithURLString:@"https://artikushg.github.io"] will add the repo to the list if it's valid; so even, when you have the UI fixed just do this with the textfield text
-    [self grabRepoNames];
-    /*UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"a" message:filename delegate:nil cancelButtonTitle:@"a" otherButtonTitles:nil];
-    [a show];*/
-    //[self downloadRepos];
-    //[self addRepoWithURLString:@"https://apt.limeinstaller.com"];
-    //[self addRepoWithURLString:@"https://artikushg.github.io"];
-    //self.parser = [[LMPackageParser alloc] initWithFilePath:@"/var/mobile/Documents/Lime/lists/artikushg.yourepo.com_._Packages"];
 }
 
-// TableViewn't stuff
-
-- (void)grabRepoNames {
-    self.repos = [[NSMutableDictionary alloc] init];
-    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/mobile/Documents/Lime/lists/" error:nil];
-    if(files.count == 0) return; // useless but ok ok safety check. why'd we do all of the code if there's no files? just return.
-    for (NSString *filename in files) {
-        // we look for the "_". then, if found, we check if text after "_" is "Release" (it's either this or "Packages"). if it is, we read the file and determine the name
-        // also, NO we CAN'T check for just "_Release". well, we can, but there's a smaaaaaaal chance this will break things on 0,25 repos. let's just leave it i guess? it works fine rn.
-        NSRange range = [filename rangeOfString:@"_" options:NSBackwardsSearch];
-        if(range.location != NSNotFound && [[filename substringFromIndex:range.location + 1] isEqualToString:@"Release"]) {
-            NSString *fullFilename = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:filename]; // get the full path to the file since array onlt stores names
-            NSArray *lines = [[NSString stringWithContentsOfFile:fullFilename encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"]; // for reading the file line-by-line
-            for (NSString *line in lines) {
-                // we look for the line that starts with "Label:"
-                if(line.length > 6 && [[line substringToIndex:6] isEqualToString:@"Label:"]) {
-                    // grab the repo link. removes the "_Release" and replaces "_"s to "/"s so the link becomes the actual link (my explanation good /s)
-                    NSString *link = [[filename substringToIndex:[filename rangeOfString:@"_" options:NSBackwardsSearch].location] stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
-                    NSString *name = [line substringFromIndex:7];
-                    LMRepo *repo = [[LMRepo alloc] initWithName:name filename:filename urlString:link];
-                    [self.repos setObject:repo forKey:name];
-                    break;
-                }
-            }
-        } else continue;
-    }
-    self.sortedRepoNames = [self.repos.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-}
-
-- (NSString *)baseRepoFilenameStringForURLString:(NSString *)url {
-    NSString *strippedURL = url;
-    NSUInteger location = [url rangeOfString:@"://"].location;
-    if(location != NSNotFound) strippedURL = [strippedURL substringFromIndex:location + 3];
-    strippedURL = [strippedURL stringByReplacingOccurrencesOfString:@"www." withString:@""];
-    NSString *baseFilename = [strippedURL stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
-    return baseFilename;
-}
-
-- (NSString *)iconFilenameForURLString:(NSString *)url {
-    NSString *baseFilename = [self baseRepoFilenameStringForURLString:url];
-    NSString *fullPathFilename = [@"/var/mobile/Documents/Lime/icons/" stringByAppendingString:baseFilename];
-    return fullPathFilename;
-}
-
-- (NSString *)repoFilenameStringForURLString:(NSString *)url {
-    NSString *baseFilename = [self baseRepoFilenameStringForURLString:url];
-    NSString *fullPathFilename = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:baseFilename];
-    return fullPathFilename;
-}
-
-- (void)downloadRepoIconForURLString:(NSString *)urlString {
-    if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
-    urlString = [urlString stringByAppendingString:@"CydiaIcon.png"];
-    NSString *filename = [self iconFilenameForURLString:urlString];
-    [self downloadFileAtURL:urlString writeToPath:filename completion:nil];
-}
-
-- (void)downloadRepoFileAtURL:(NSString *)url {
-    //if(![[url substringFromIndex:url.length - 1] isEqualToString:@"/"]) url = [url stringByAppendingString:@"/"];
-    [self downloadFileAtURL:url writeToPath:[self repoFilenameStringForURLString:url] completion:nil];
-}
-
-// Repos backend
-
-- (void)downloadRepos {
-    // clean up the repos dir just in case
-    for (NSString *filename in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/mobile/Documents/Lime/lists/" error:nil]) [[NSFileManager defaultManager] removeItemAtPath:[@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:filename] error:nil];
-    for (NSString *filename in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/mobile/Documents/Lime/icons/" error:nil]) [[NSFileManager defaultManager] removeItemAtPath:[@"/var/mobile/Documents/Lime/icons/" stringByAppendingString:filename] error:nil];
-    
-    NSMutableArray *fileLines = [[[NSString stringWithContentsOfFile:@"/var/mobile/Documents/Lime/sources.list" encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByString:@"\n"] mutableCopy];
-    for (NSString *fileLine in fileLines) {
-        NSString *strippedFileLine = [fileLine substringFromIndex:4]; // removes "deb "
-        // i separate the string into two parts: "https://an.example.repourl/" and "./" (or some kinda "stable main" like bigboss and modmyi do)
-        NSInteger locationOfSpace = [strippedFileLine rangeOfString:@" "].location;
-        // the actual url
-        NSString *repoURL = [strippedFileLine substringToIndex:locationOfSpace];
-        // either the "./" or "stable main" etc at the end
-        NSString *repoDirectory = [strippedFileLine substringFromIndex:locationOfSpace + 1];
-        if(![repoDirectory isEqualToString:@"./"]) {
-            NSArray *repoComponents = [repoDirectory componentsSeparatedByString:@" "];
-            NSString *releaseURL = [NSString stringWithFormat:@"%@./dists/%@/Release",repoURL,[repoComponents objectAtIndex:0]];
-            NSString *iconURL = [NSString stringWithFormat:@"%@./dists/%@/",repoURL,[repoComponents objectAtIndex:0]];
-            NSString *packagesURL = [NSString stringWithFormat:@"%@./dists/%@/%@/binary-iphoneos-arm/Packages.bz2",repoURL,[repoComponents objectAtIndex:0],[repoComponents objectAtIndex:1]];
-            [self downloadRepoFileAtURL:releaseURL];
-            [self downloadRepoFileAtURL:packagesURL];
-            [self downloadRepoIconForURLString:iconURL];
-        } else {
-            repoURL = [repoURL stringByAppendingString:repoDirectory];
-            [self downloadRepoFileAtURL:[repoURL stringByAppendingString:@"Release"]];
-            [self downloadRepoFileAtURL:[repoURL stringByAppendingString:@"Packages.bz2"]];
-            [self downloadRepoIconForURLString:repoURL];
-        }
-    }
-}
-
-// For downloading files;
-- (void)downloadFileAtURL:(NSString *)url writeToPath:(NSString *)path completion:(downloadCompletion)completion {
-    __block NSInteger responseCode;
-    __block BOOL completed = NO;
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-    [request setValue:@"Telesphoreo APT-HTTP/1.0.592" forHTTPHeaderField:@"User-Agent"];
-    [request setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
-    [request setValue:[DeviceInfo deviceName] forHTTPHeaderField:@"X-Machine"];
-    [request setValue:[DeviceInfo getUDID] forHTTPHeaderField:@"X-Unique-ID"];
-    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        responseCode = httpResponse.statusCode;
-        if(error || responseCode != 200) {
-            NSLog(@"Status code: %ld\nError: %@",responseCode,[error localizedDescription]);
-            // VERY VERY GOOD ERROR MESSAGE FOR THE USER SAYING THE REPOS MESSED UP GOES HERE
-            // HOPE I DONT FORGET TO IMPLEMENT IT YES
-            if(completion) completion(NO);
-        } else {
-            // download the source prolly
-            [data writeToFile:path atomically:YES];
-            if([[path substringFromIndex:path.length - 4] isEqualToString:@".bz2"]) {
-                // we out there with the repos refreshing, ayy
-                // we out there with an ui that looks refreshing
-                // go follow @limeinstaller and your life will get better, ayy
-                // we out there, we decompress the compression
-                // (when u a programmer but also a rapper lmao)
-                [self bunzip_one:path];
-            }
-            if(completion) completion(YES);
-            [self grabRepoNames];
-            [self.tableView reloadData];
-        }
-        completed = YES;
-    }] resume];
-    //while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !completed) {};
-}
-
+/*
 // code reuse is amazing and this piece of stackoverflow "why does it work" magic actually works and i even have a clue how
 // originally from icy btw
 - (int)bunzip_one:(NSString *)filepathString {
@@ -215,7 +77,7 @@
     [[NSFileManager defaultManager] removeItemAtPath:filepathString error:nil];
     return 0;
 }
-
+*/
 - (void)addRepoWithURLString:(NSString *)urlString {
     NSString *sourcesPath = @"/var/mobile/Documents/Lime/sources.list";
     if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
@@ -229,73 +91,29 @@
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-    
-    // download the files
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //THIS
-    //
-    //
-    //DONT
-    //
-    //WORK!!!!!
-    //
-    //
-    //at least rn
-    //
-    //TODO FIXXXXX
-    //
-    if(![[urlString substringFromIndex:urlString.length - 1] isEqualToString:@"/"]) urlString = [urlString stringByAppendingString:@"/"];
-    // urls
-    NSString *releaseURL = [urlString stringByAppendingString:@"./Release"];
-    NSString *packagesURL = [urlString stringByAppendingString:@"./Packages.bz2"];
-    NSString *packagesUnpackedURL = [urlString stringByAppendingString:@"./Packages"];
-    // filenames
-    NSString *releasePath = [self repoFilenameStringForURLString:releaseURL];
-    NSString *packagesPath = [self repoFilenameStringForURLString:packagesUnpackedURL];
-    // download 'em
-    [self downloadFileAtURL:releaseURL writeToPath:releasePath completion:^(BOOL wroteFile) {
-        // check if they there, if yes - write the repo to the list & get icon
-        if(wroteFile) {
-            NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:sourcesPath];
-            [fileHandle seekToEndOfFile];
-            [fileHandle writeData:[formatted dataUsingEncoding:NSUTF8StringEncoding]];
-        } else {
-            // error message
-        }
-    }];
-    [self downloadRepoFileAtURL:packagesURL];
-    [self downloadRepoIconForURLString:urlString];
+    [self refresh:self];
 }
 
 // TableView stuff
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sortedRepoNames.count;
+    return [[LimeHelper sharedInstance] sources].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LMRepo *repo = [[[LimeHelper sharedInstance] sources] objectAtIndex:indexPath.row];
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
-    cell.textLabel.text = [self.sortedRepoNames objectAtIndex:indexPath.row];
-    NSString *urlString = [(LMRepo *)[self.repos objectForKey:cell.textLabel.text] urlString];
-    cell.detailTextLabel.text = [urlString stringByReplacingOccurrencesOfString:@"/." withString:@""];
+    cell.textLabel.text = repo.label;
+    NSString *urlString = repo.packagesPath;
+    //cell.detailTextLabel.text = [[urlString componentsSeparatedByString:@"/"] lastObject];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Packages: %ld", (long)repo.packages.count];
     cell.detailTextLabel.alpha = 0.5;
-    NSString *filename = [self iconFilenameForURLString:[urlString stringByAppendingString:@"/CydiaIcon.png"]];
     UIImage *icon;
-    if([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:nil]) icon = [UIImage imageWithContentsOfFile:filename];
+    if([[NSFileManager defaultManager] fileExistsAtPath:repo.imagePath isDirectory:nil]) icon = [UIImage imageWithContentsOfFile:repo.imagePath];
     else icon = [UIImage imageNamed:@"sections/Unknown.png"];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(35,35), NO, [UIScreen mainScreen].scale);
     [icon drawInRect:CGRectMake(0,0,35,35)];
@@ -316,11 +134,15 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    LMRepo *repo = [self.repos objectForKey:cell.textLabel.text];
-    NSString *fullPath = [@"/var/mobile/Documents/Lime/lists/" stringByAppendingString:repo.filename];
-    self.parser = [[LMPackageParser alloc] initWithFilePath:fullPath];
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"openRepo"]) {
+        RepoPackagesViewController *vc = segue.destinationViewController;
+        vc.repo = [[[LimeHelper sharedInstance] sources] objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"openRepo" sender:self];
 }
 
 @end

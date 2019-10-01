@@ -815,7 +815,7 @@ WEEK</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="TgF-Y0-teq" kind="show" id="dZK-4L-5fU"/>
+                                    <segue destination="TgF-Y0-teq" kind="show" identifier="openRepo" id="rgn-tN-xZf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2150,6 +2150,9 @@ WEEK</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Repo" id="gou-NW-jw0"/>
+                    <connections>
+                        <segue destination="Xxj-q3-ulK" kind="show" identifier="repoPackage" id="6Bj-Xf-rMB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Di1-LH-GJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2193,5 +2196,6 @@ WEEK</string>
     <inferredMetricsTieBreakers>
         <segue reference="Vo4-br-HTL"/>
         <segue reference="REO-jp-PFU"/>
+        <segue reference="6Bj-Xf-rMB"/>
     </inferredMetricsTieBreakers>
 </document>

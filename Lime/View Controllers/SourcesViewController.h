@@ -11,16 +11,12 @@
 #import "../Lime.h"
 #import "Settings.h"
 #include <bzlib.h>
+#import "RepoPackagesViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SourcesViewController : UITableViewController <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
-
-@property (nonatomic, retain) NSMutableDictionary *repos;
-@property (nonatomic, retain) NSArray *sortedRepoNames;
 @property (nonatomic, retain) LMPackageParser *parser;
-
-typedef void(^downloadCompletion)(BOOL);
 
 @end
 

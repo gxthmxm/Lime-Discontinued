@@ -22,12 +22,16 @@
 }
 
 + (NSString *)machineID {
-    size_t size;
-    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
-    char *answer = malloc(size);
-    sysctlbyname("hw.machine", answer, &size, NULL, 0);
-    NSString *machineIdentifier = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
-    free(answer);
+    static NSString *machineIdentifier = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        size_t size;
+        sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+        char *answer = malloc(size);
+        sysctlbyname("hw.machine", answer, &size, NULL, 0);
+        machineIdentifier = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
+        free(answer);
+    });
     return machineIdentifier;
 }
 

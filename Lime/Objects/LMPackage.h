@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LMRepo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *iconPath;
 @property (nonatomic, strong) NSString *architecture;
 @property (nonatomic, strong) NSString *depictionURL;
-@property (nonatomic, strong) NSArray *tags;
-@property (nonatomic, strong) NSArray *dependencies;
+@property (nonatomic, strong) NSString *tags;
+@property (nonatomic, strong) NSString *dependencies;
 @property (nonatomic, strong) NSArray *conflicts;
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSString *maintainer;
@@ -29,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *sileoDepiction;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *installedSize;
+@property (nonatomic, strong) NSString *debURL;
+@property (nonatomic, strong) LMRepo *repository;
 @property (nonatomic) BOOL commercial;
 @property (nonatomic) BOOL ignoreUpgrades;
 @property (nonatomic) BOOL installed;

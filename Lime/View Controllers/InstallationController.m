@@ -94,7 +94,10 @@
         cell.textLabel.textColor = [LMColor labelColor];
     }
     cell.detailTextLabel.alpha = 0.5;
-    UIImage *icon = [LimeHelper iconFromPackage:package];
+    UIImage *icon = [UIImage imageNamed:[NSString stringWithFormat:@"sections/%@", package.section]];
+    if (![package.iconPath containsString:@"https://"] || [package.iconPath containsString:@"http://"]) {
+        icon = [LimeHelper iconFromPackage:package];
+    }
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(30,30), NO, [UIScreen mainScreen].scale);
     [icon drawInRect:CGRectMake(0,0,30,30)];
     icon = UIGraphicsGetImageFromCurrentImageContext();

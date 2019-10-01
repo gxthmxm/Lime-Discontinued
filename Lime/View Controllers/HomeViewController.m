@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [LimeHelper sharedInstance];
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCardOne:)];
     [self.cardOne addGestureRecognizer:tap];
     self.cardOne.layer.cornerRadius = 15;

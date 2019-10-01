@@ -16,8 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.parser = [[LMPackageParser alloc] initWithFilePath:[LimeHelper dpkgStatusLocation]];
-    self.sortedPackages = [self.parser.packageNames.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    self.packages = [[LimeHelper sharedInstance] installedPackagesArray];
     /*NSArray *sortedPackages = [self.parser.packages allKeys];
     sortedPackages = [sortedPackages sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];*/
 
@@ -34,11 +33,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sortedPackages.count;
+    return self.packages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LMPackage *package = (LMPackage*)[self.parser.packages objectForKey:[self.parser.packageNames objectForKey:[self.sortedPackages objectAtIndex:indexPath.row]]];
+    LMPackage *package = [self.packages objectAtIndex:indexPath.row];
     
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -97,7 +96,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        LMPackage *package = (LMPackage*)[self.parser.packages objectForKey:[self.parser.packageNames objectForKey:[self.sortedPackages objectAtIndex:indexPath.row]]];
+        LMPackage *package = [self.packages objectAtIndex:indexPath.row];
         [LMQueue addQueueAction:[[LMQueueAction alloc] initWithPackage:package action:1]];
         FirstLaunchDeciderController *vc = (FirstLaunchDeciderController *)self.tabBarController;
         [vc showBannerWithMessage:[NSString stringWithFormat:@"Successfully added %@ to the queue", package.identifier] type:0 target:self selector:@selector(openQueue:)];
@@ -111,9 +110,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual:@"packageInfo"]) {
         DepictionViewController *depictionViewController = segue.destinationViewController;
-        NSInteger index = [(UITableView *)self.view indexPathForSelectedRow].row;
+        NSInteger index = [self.tableView indexPathForSelectedRow].row;
         
-        LMPackage *package = (LMPackage*)[self.parser.packages objectForKey:[self.parser.packageNames objectForKey:[self.sortedPackages objectAtIndex:index]]];
+        LMPackage *package = [self.packages objectAtIndex:index];
         depictionViewController.package = package;
     }
 }

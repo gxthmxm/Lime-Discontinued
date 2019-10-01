@@ -13,8 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LMPackageParser : NSObject
 
 - (instancetype)initWithFilePath:(NSString *)filePath;
-@property (nonatomic,retain) NSDictionary *packages;
-@property (nonatomic,retain) NSDictionary *packageNames;
+@property (nonatomic,retain) NSMutableArray *packages;
 
 @end
 
