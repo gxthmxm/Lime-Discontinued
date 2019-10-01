@@ -189,6 +189,8 @@ static UIImage *shadowImage;
         [nsrequest setValue:@"Telesphoreo APT-HTTP/1.0.592 Light" forHTTPHeaderField:@"User-Agent"];
     }
     
+    self.title = self.package.name;
+    
     self.depictionView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
     
     [_depictionView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
