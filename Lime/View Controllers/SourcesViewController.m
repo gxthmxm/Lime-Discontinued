@@ -197,8 +197,7 @@
     while (bzError == BZ_OK) {
         int nread = BZ2_bzRead(&bzError, bzf, buf, sizeof buf);
         if (bzError == BZ_OK || bzError == BZ_STREAM_END) {
-            size_t nwritten = fwrite(buf, 1, nread, stdout);
-            fprintf(outfile, "%s", buf);
+            size_t nwritten = fwrite(buf, 1, nread, outfile);
             if (nwritten != (size_t) nread) {
                 printf("E: short write\n");
                 return -1;
