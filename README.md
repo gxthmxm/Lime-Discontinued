@@ -1,6 +1,9 @@
 # Lime
 Deadline: Summer 2020?
 
+## How to Build
+run ```make lime```
+
 # Important Classes
 List of important classes, how to use them and how they work.
 
