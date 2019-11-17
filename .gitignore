@@ -4,3 +4,6 @@ deb*.deb
 Makefile
 build
 .DS_Store
+EvenDev/
+Original/
+Artikus/
