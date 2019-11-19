@@ -1,19 +1,20 @@
 //
-//  LMTHOTWCard.h
+//  LMTweakOfTheWeekCell.h
 //  Lime
 //
-//  Created by Even Flatabø on 16/11/2019.
+//  Created by Even Flatabø on 18/11/2019.
 //  Copyright © 2019 EvenDev. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "LimeHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LMTHOTWCard : UIView
+@interface LMTweakOfTheWeekCell : UICollectionViewCell
 
-@property (nonatomic, strong) IBOutlet UIImageView *backgroundView;
 @property (nonatomic, strong) IBOutlet UIImageView *foregroundView;
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
 @property (nonatomic, strong) IBOutlet UIImageView *iconView;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) IBOutlet UIVisualEffectView *effectView;
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *repository;
 @property (nonatomic, strong) NSString *packageIdentifier;
 @property (nonatomic, strong) NSString *storyURL;
+@property (nonatomic) float ratio;
 
 @end
 

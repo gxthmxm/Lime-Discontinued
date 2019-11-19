@@ -7,20 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D0576BA2380675C002F2968 /* LMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0576B92380675C002F2968 /* LMHomeController.m */; };
-		4D0576BE23806801002F2968 /* LMTHOTWCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0576BD23806801002F2968 /* LMTHOTWCard.m */; };
 		4D2D53DB23802CD500A7076C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2D53DA23802CD500A7076C /* AppDelegate.m */; };
 		4D2D53E423802CD500A7076C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D53E223802CD500A7076C /* Main.storyboard */; };
 		4D2D53E623802CD500A7076C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D53E523802CD500A7076C /* Assets.xcassets */; };
 		4D2D53E923802CD600A7076C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D53E723802CD600A7076C /* LaunchScreen.storyboard */; };
 		4D2D53EC23802CD600A7076C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2D53EB23802CD600A7076C /* main.m */; };
+		4D54C08D23842A69002F8394 /* LMThemeOfTheWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C08B23842A69002F8394 /* LMThemeOfTheWeekCell.m */; };
+		4D54C08E23842A69002F8394 /* LMThemeOfTheWeekCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D54C08C23842A69002F8394 /* LMThemeOfTheWeekCell.xib */; };
+		4D54C09123842B91002F8394 /* LMHomeStoryDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C09023842B91002F8394 /* LMHomeStoryDownloader.m */; };
+		4D54C09423843328002F8394 /* LMDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C09323843328002F8394 /* LMDeviceInfo.m */; };
+		4D54C0A123843586002F8394 /* libMobileGestalt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D54C0A023843586002F8394 /* libMobileGestalt.tbd */; };
+		4D54C0A523843739002F8394 /* LMPackageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0A423843739002F8394 /* LMPackageParser.m */; };
+		4D54C0AF2384376E002F8394 /* LMQueueAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0A82384376D002F8394 /* LMQueueAction.m */; };
+		4D54C0B02384376E002F8394 /* LMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0AB2384376D002F8394 /* LMColor.m */; };
+		4D54C0B12384376E002F8394 /* LMPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0AC2384376D002F8394 /* LMPackage.m */; };
+		4D54C0B22384376E002F8394 /* LMRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0AD2384376E002F8394 /* LMRepo.m */; };
+		4D54C0B6238437CC002F8394 /* status in Resources */ = {isa = PBXBuildFile; fileRef = 4D54C0B5238437CC002F8394 /* status */; };
+		4D54C0B923844032002F8394 /* LMInstalledPackagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */; };
+		4DD4C0CE2382E5FD00B90138 /* LMTweakOfTheWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4C0CC2382E5FD00B90138 /* LMTweakOfTheWeekCell.m */; };
+		4DD4C0CF2382E5FD00B90138 /* LMTweakOfTheWeekCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD4C0CD2382E5FD00B90138 /* LMTweakOfTheWeekCell.xib */; };
+		4DD4C0D22382EC6B00B90138 /* LMHomeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4C0D12382EC6B00B90138 /* LMHomeCollectionController.m */; };
+		4DDBFC3C2383133700245D0C /* LimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBFC3B2383133700245D0C /* LimeHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D0576B82380675C002F2968 /* LMHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMHomeController.h; sourceTree = "<group>"; };
-		4D0576B92380675C002F2968 /* LMHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMHomeController.m; sourceTree = "<group>"; };
-		4D0576BC23806801002F2968 /* LMTHOTWCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMTHOTWCard.h; sourceTree = "<group>"; };
-		4D0576BD23806801002F2968 /* LMTHOTWCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMTHOTWCard.m; sourceTree = "<group>"; };
 		4D2D53D623802CD500A7076C /* Lime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2D53D923802CD500A7076C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4D2D53DA23802CD500A7076C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -29,6 +39,35 @@
 		4D2D53E823802CD600A7076C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D2D53EA23802CD600A7076C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D2D53EB23802CD600A7076C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4D54C08A23842A69002F8394 /* LMThemeOfTheWeekCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMThemeOfTheWeekCell.h; sourceTree = "<group>"; };
+		4D54C08B23842A69002F8394 /* LMThemeOfTheWeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMThemeOfTheWeekCell.m; sourceTree = "<group>"; };
+		4D54C08C23842A69002F8394 /* LMThemeOfTheWeekCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMThemeOfTheWeekCell.xib; sourceTree = "<group>"; };
+		4D54C08F23842B91002F8394 /* LMHomeStoryDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMHomeStoryDownloader.h; sourceTree = "<group>"; };
+		4D54C09023842B91002F8394 /* LMHomeStoryDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMHomeStoryDownloader.m; sourceTree = "<group>"; };
+		4D54C09223843328002F8394 /* LMDeviceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDeviceInfo.h; sourceTree = "<group>"; };
+		4D54C09323843328002F8394 /* LMDeviceInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDeviceInfo.m; sourceTree = "<group>"; };
+		4D54C096238433A4002F8394 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
+		4D54C0A023843586002F8394 /* libMobileGestalt.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libMobileGestalt.tbd; path = ../../../libMobileGestalt.tbd; sourceTree = "<group>"; };
+		4D54C0A323843739002F8394 /* LMPackageParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMPackageParser.h; sourceTree = "<group>"; };
+		4D54C0A423843739002F8394 /* LMPackageParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMPackageParser.m; sourceTree = "<group>"; };
+		4D54C0A72384376D002F8394 /* LMRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMRepo.h; sourceTree = "<group>"; };
+		4D54C0A82384376D002F8394 /* LMQueueAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMQueueAction.m; sourceTree = "<group>"; };
+		4D54C0A92384376D002F8394 /* LMQueueAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMQueueAction.h; sourceTree = "<group>"; };
+		4D54C0AA2384376D002F8394 /* LMColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMColor.h; sourceTree = "<group>"; };
+		4D54C0AB2384376D002F8394 /* LMColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMColor.m; sourceTree = "<group>"; };
+		4D54C0AC2384376D002F8394 /* LMPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPackage.m; sourceTree = "<group>"; };
+		4D54C0AD2384376E002F8394 /* LMRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMRepo.m; sourceTree = "<group>"; };
+		4D54C0AE2384376E002F8394 /* LMPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPackage.h; sourceTree = "<group>"; };
+		4D54C0B5238437CC002F8394 /* status */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
+		4D54C0B723844032002F8394 /* LMInstalledPackagesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMInstalledPackagesController.h; sourceTree = "<group>"; };
+		4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMInstalledPackagesController.m; sourceTree = "<group>"; };
+		4DD4C0CB2382E5FD00B90138 /* LMTweakOfTheWeekCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMTweakOfTheWeekCell.h; sourceTree = "<group>"; };
+		4DD4C0CC2382E5FD00B90138 /* LMTweakOfTheWeekCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMTweakOfTheWeekCell.m; sourceTree = "<group>"; };
+		4DD4C0CD2382E5FD00B90138 /* LMTweakOfTheWeekCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMTweakOfTheWeekCell.xib; sourceTree = "<group>"; };
+		4DD4C0D02382EC6B00B90138 /* LMHomeCollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMHomeCollectionController.h; sourceTree = "<group>"; };
+		4DD4C0D12382EC6B00B90138 /* LMHomeCollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMHomeCollectionController.m; sourceTree = "<group>"; };
+		4DDBFC3A2383133700245D0C /* LimeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimeHelper.h; sourceTree = "<group>"; };
+		4DDBFC3B2383133700245D0C /* LimeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LimeHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D54C0A123843586002F8394 /* libMobileGestalt.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,8 +85,10 @@
 		4D0576B723806714002F2968 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4D0576B82380675C002F2968 /* LMHomeController.h */,
-				4D0576B92380675C002F2968 /* LMHomeController.m */,
+				4DD4C0D02382EC6B00B90138 /* LMHomeCollectionController.h */,
+				4DD4C0D12382EC6B00B90138 /* LMHomeCollectionController.m */,
+				4D54C0B723844032002F8394 /* LMInstalledPackagesController.h */,
+				4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -54,8 +96,12 @@
 		4D0576BB238067CD002F2968 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
-				4D0576BC23806801002F2968 /* LMTHOTWCard.h */,
-				4D0576BD23806801002F2968 /* LMTHOTWCard.m */,
+				4DD4C0CB2382E5FD00B90138 /* LMTweakOfTheWeekCell.h */,
+				4DD4C0CC2382E5FD00B90138 /* LMTweakOfTheWeekCell.m */,
+				4DD4C0CD2382E5FD00B90138 /* LMTweakOfTheWeekCell.xib */,
+				4D54C08A23842A69002F8394 /* LMThemeOfTheWeekCell.h */,
+				4D54C08B23842A69002F8394 /* LMThemeOfTheWeekCell.m */,
+				4D54C08C23842A69002F8394 /* LMThemeOfTheWeekCell.xib */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -65,6 +111,7 @@
 			children = (
 				4D2D53D823802CD500A7076C /* Lime */,
 				4D2D53D723802CD500A7076C /* Products */,
+				4D54C097238434D4002F8394 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,13 +130,71 @@
 				4D2D53DA23802CD500A7076C /* AppDelegate.m */,
 				4D0576BB238067CD002F2968 /* UI Elements */,
 				4D0576B723806714002F2968 /* View Controllers */,
+				4D54C0A22384365E002F8394 /* Parsers */,
+				4DDBFC3D2383134400245D0C /* Helpers */,
+				4D54C0A623843755002F8394 /* Objects */,
+				4D54C09523843395002F8394 /* Other */,
 				4D2D53E223802CD500A7076C /* Main.storyboard */,
 				4D2D53E523802CD500A7076C /* Assets.xcassets */,
 				4D2D53E723802CD600A7076C /* LaunchScreen.storyboard */,
 				4D2D53EA23802CD600A7076C /* Info.plist */,
 				4D2D53EB23802CD600A7076C /* main.m */,
+				4D54C0B5238437CC002F8394 /* status */,
 			);
 			path = Lime;
+			sourceTree = "<group>";
+		};
+		4D54C09523843395002F8394 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4D54C096238433A4002F8394 /* MobileGestalt.h */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		4D54C097238434D4002F8394 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D54C0A023843586002F8394 /* libMobileGestalt.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D54C0A22384365E002F8394 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				4D54C0A323843739002F8394 /* LMPackageParser.h */,
+				4D54C0A423843739002F8394 /* LMPackageParser.m */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		4D54C0A623843755002F8394 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4D54C0AA2384376D002F8394 /* LMColor.h */,
+				4D54C0AB2384376D002F8394 /* LMColor.m */,
+				4D54C0AE2384376E002F8394 /* LMPackage.h */,
+				4D54C0AC2384376D002F8394 /* LMPackage.m */,
+				4D54C0A92384376D002F8394 /* LMQueueAction.h */,
+				4D54C0A82384376D002F8394 /* LMQueueAction.m */,
+				4D54C0A72384376D002F8394 /* LMRepo.h */,
+				4D54C0AD2384376E002F8394 /* LMRepo.m */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		4DDBFC3D2383134400245D0C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4DDBFC3A2383133700245D0C /* LimeHelper.h */,
+				4DDBFC3B2383133700245D0C /* LimeHelper.m */,
+				4D54C09223843328002F8394 /* LMDeviceInfo.h */,
+				4D54C09323843328002F8394 /* LMDeviceInfo.m */,
+				4D54C08F23842B91002F8394 /* LMHomeStoryDownloader.h */,
+				4D54C09023842B91002F8394 /* LMHomeStoryDownloader.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +254,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D54C0B6238437CC002F8394 /* status in Resources */,
+				4DD4C0CF2382E5FD00B90138 /* LMTweakOfTheWeekCell.xib in Resources */,
 				4D2D53E923802CD600A7076C /* LaunchScreen.storyboard in Resources */,
 				4D2D53E623802CD500A7076C /* Assets.xcassets in Resources */,
+				4D54C08E23842A69002F8394 /* LMThemeOfTheWeekCell.xib in Resources */,
 				4D2D53E423802CD500A7076C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,9 +270,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D0576BA2380675C002F2968 /* LMHomeController.m in Sources */,
-				4D0576BE23806801002F2968 /* LMTHOTWCard.m in Sources */,
+				4DD4C0D22382EC6B00B90138 /* LMHomeCollectionController.m in Sources */,
+				4D54C09123842B91002F8394 /* LMHomeStoryDownloader.m in Sources */,
+				4DD4C0CE2382E5FD00B90138 /* LMTweakOfTheWeekCell.m in Sources */,
 				4D2D53DB23802CD500A7076C /* AppDelegate.m in Sources */,
+				4D54C0B923844032002F8394 /* LMInstalledPackagesController.m in Sources */,
+				4D54C0B02384376E002F8394 /* LMColor.m in Sources */,
+				4D54C08D23842A69002F8394 /* LMThemeOfTheWeekCell.m in Sources */,
+				4DDBFC3C2383133700245D0C /* LimeHelper.m in Sources */,
+				4D54C0B12384376E002F8394 /* LMPackage.m in Sources */,
+				4D54C0AF2384376E002F8394 /* LMQueueAction.m in Sources */,
+				4D54C09423843328002F8394 /* LMDeviceInfo.m in Sources */,
+				4D54C0A523843739002F8394 /* LMPackageParser.m in Sources */,
+				4D54C0B22384376E002F8394 /* LMRepo.m in Sources */,
 				4D2D53EC23802CD600A7076C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,12 +424,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 9859KQSN8L;
 				INFOPLIST_FILE = Lime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.citrusware.Lime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -324,12 +447,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 9859KQSN8L;
 				INFOPLIST_FILE = Lime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.citrusware.Lime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
