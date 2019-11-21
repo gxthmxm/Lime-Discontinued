@@ -42,13 +42,6 @@
     while(fgets(str, sizeof(str), f) != NULL) {
         if(!str[1] && ![package.identifier hasPrefix:@"cy+"] && ![package.identifier hasPrefix:@"gsc."]) { // a line THAT short is obviously a newline, and we wanna go to the next package and add the current one if so; also we don't add packages prefixed with gsc and cy+
             if(package.name.length < 1) package.name = package.identifier;
-            if(package.iconPath.length > 0) package.iconPath = [package.iconPath stringByReplacingOccurrencesOfString:@"file://" withString:@""];
-            else {
-                package.iconPath = [NSString stringWithFormat:@"%@/sections/%@.png",[[NSBundle mainBundle] resourcePath], package.section];
-                if([package.iconPath rangeOfString:@"Themes"].location != NSNotFound) package.iconPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/sections/Themes.png"];
-                else package.iconPath = [package.iconPath stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-                if(![[NSFileManager defaultManager] fileExistsAtPath:package.iconPath]) package.iconPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/sections/Unknown.png"];
-            }
             [mutablePackages addObject:package];
             // reset it
             package = nil;

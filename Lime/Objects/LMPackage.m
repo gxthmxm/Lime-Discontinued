@@ -16,7 +16,6 @@
     [aCoder encodeObject:self.version forKey:@"version"];
     [aCoder encodeObject:self.desc forKey:@"desc"];
     [aCoder encodeObject:self.section forKey:@"section"];
-    [aCoder encodeObject:self.iconPath forKey:@"iconPath"];
     [aCoder encodeObject:self.architecture forKey:@"architecture"];
     [aCoder encodeObject:self.depictionURL forKey:@"depictionURL"];
     [aCoder encodeObject:self.tags forKey:@"tags"];
@@ -45,7 +44,6 @@
         self.version = [aCoder decodeObjectForKey:@"version"];
         self.desc = [aCoder decodeObjectForKey:@"desc"];
         self.section = [aCoder decodeObjectForKey:@"section"];
-        self.iconPath = [aCoder decodeObjectForKey:@"iconPath"];
         self.architecture = [aCoder decodeObjectForKey:@"architecture"];
         self.depictionURL = [aCoder decodeObjectForKey:@"depictionURL"];
         self.tags = [aCoder decodeObjectForKey:@"tags"];

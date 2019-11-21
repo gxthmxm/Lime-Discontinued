@@ -25,8 +25,9 @@
         } else {
             return [[NSBundle mainBundle] pathForResource:@"status" ofType:@""];
         }
+    #else
+        return [[NSBundle mainBundle] pathForResource:@"status" ofType:@""];
     #endif
-    return [[NSBundle mainBundle] pathForResource:@"status" ofType:@""];
 }
 
 + (id)sharedInstance {

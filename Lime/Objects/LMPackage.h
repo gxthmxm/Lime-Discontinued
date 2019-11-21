@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *version;
 @property (nonatomic, strong) NSString *desc;
 @property (nonatomic, strong) NSString *section;
-@property (nonatomic, strong) NSString *iconPath;
 @property (nonatomic, strong) NSString *architecture;
 @property (nonatomic, strong) NSString *depictionURL;
 @property (nonatomic, strong) NSString *tags;

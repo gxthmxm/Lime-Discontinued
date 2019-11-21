@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LimeHelper.h"
+#import "../UI Elements/LMInstalledPackageCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -34,11 +34,19 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"installedcell" forIndexPath:indexPath];
+    LMInstalledPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"installedcell" forIndexPath:indexPath];
     
     LMPackage *pkg = [self.packages objectAtIndex:indexPath.row];
     cell.textLabel.text = pkg.name;
     cell.detailTextLabel.text = pkg.desc;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    
+    if ([UIImage imageNamed:pkg.section]) {
+        cell.imageView.image = [UIImage imageNamed:pkg.section];
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"Unknown"];
+    }
     
     return cell;
 }
