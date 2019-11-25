@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSMutableArray *installedPackagesArray;
 @property (nonatomic, retain) NSMutableArray *sourcesInList;
 @property (nonatomic, retain) NSMutableArray *sources;
-
+@property (nonatomic, retain) UINavigationController *defaultNavigationController;
 
 @end
 

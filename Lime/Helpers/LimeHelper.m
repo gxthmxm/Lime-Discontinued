@@ -56,8 +56,9 @@
         self.packagesDict = [NSMutableDictionary new];
         self.installedPackagesArray = [NSMutableArray new];
         self.installedPackagesDict = [NSMutableDictionary new];
-        self.sources = [[NSMutableArray alloc] init];
-        self.sourcesInList = [[NSMutableArray alloc] init];
+        self.sources = [NSMutableArray new];
+        self.sourcesInList = [NSMutableArray new];
+        self.defaultNavigationController = [[UINavigationController alloc] initWithRootViewController:[UIViewController new]];
         [self getInstalledPackages];
         //[self grabSourcesInLists];
     }

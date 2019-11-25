@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.packages = [[LimeHelper sharedInstance] installedPackagesArray];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -39,7 +40,7 @@
     LMPackage *pkg = [self.packages objectAtIndex:indexPath.row];
     cell.textLabel.text = pkg.name;
     cell.detailTextLabel.text = pkg.desc;
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    //cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     
     if ([UIImage imageNamed:pkg.section]) {
@@ -51,6 +52,9 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"depiction" sender:self];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -86,14 +90,16 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"depiction"]) {
+        LMDepictionController *dest = segue.destinationViewController;
+        dest.package = [self.packages objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    }
 }
-*/
+
 
 @end

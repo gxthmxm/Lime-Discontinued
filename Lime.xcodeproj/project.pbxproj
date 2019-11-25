@@ -12,11 +12,12 @@
 		4D2D53E623802CD500A7076C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D53E523802CD500A7076C /* Assets.xcassets */; };
 		4D2D53E923802CD600A7076C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D53E723802CD600A7076C /* LaunchScreen.storyboard */; };
 		4D2D53EC23802CD600A7076C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2D53EB23802CD600A7076C /* main.m */; };
+		4D4A5478238C462B00EF7FA0 /* libMobileGestalt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4A5477238C462B00EF7FA0 /* libMobileGestalt.tbd */; };
+		4D4A547B238C4F5300EF7FA0 /* UIImageAverageColorAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A547A238C4F5300EF7FA0 /* UIImageAverageColorAddition.m */; };
 		4D54C08D23842A69002F8394 /* LMThemeOfTheWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C08B23842A69002F8394 /* LMThemeOfTheWeekCell.m */; };
 		4D54C08E23842A69002F8394 /* LMThemeOfTheWeekCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D54C08C23842A69002F8394 /* LMThemeOfTheWeekCell.xib */; };
 		4D54C09123842B91002F8394 /* LMHomeStoryDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C09023842B91002F8394 /* LMHomeStoryDownloader.m */; };
 		4D54C09423843328002F8394 /* LMDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C09323843328002F8394 /* LMDeviceInfo.m */; };
-		4D54C0A123843586002F8394 /* libMobileGestalt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D54C0A023843586002F8394 /* libMobileGestalt.tbd */; };
 		4D54C0A523843739002F8394 /* LMPackageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0A423843739002F8394 /* LMPackageParser.m */; };
 		4D54C0AF2384376E002F8394 /* LMQueueAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0A82384376D002F8394 /* LMQueueAction.m */; };
 		4D54C0B02384376E002F8394 /* LMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0AB2384376D002F8394 /* LMColor.m */; };
@@ -24,6 +25,7 @@
 		4D54C0B22384376E002F8394 /* LMRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0AD2384376E002F8394 /* LMRepo.m */; };
 		4D54C0B6238437CC002F8394 /* status in Resources */ = {isa = PBXBuildFile; fileRef = 4D54C0B5238437CC002F8394 /* status */; };
 		4D54C0B923844032002F8394 /* LMInstalledPackagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */; };
+		4D7DC610238835BF006907C5 /* LMDepictionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DC60F238835BF006907C5 /* LMDepictionController.m */; };
 		4DCEE9B92386F7EE00F8E499 /* LMInstalledPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEE9B82386F7EE00F8E499 /* LMInstalledPackageCell.m */; };
 		4DD4C0CE2382E5FD00B90138 /* LMTweakOfTheWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4C0CC2382E5FD00B90138 /* LMTweakOfTheWeekCell.m */; };
 		4DD4C0CF2382E5FD00B90138 /* LMTweakOfTheWeekCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD4C0CD2382E5FD00B90138 /* LMTweakOfTheWeekCell.xib */; };
@@ -40,6 +42,9 @@
 		4D2D53E823802CD600A7076C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D2D53EA23802CD600A7076C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D2D53EB23802CD600A7076C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4D4A5477238C462B00EF7FA0 /* libMobileGestalt.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libMobileGestalt.tbd; sourceTree = "<group>"; };
+		4D4A5479238C4F5300EF7FA0 /* UIImageAverageColorAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAverageColorAddition.h; sourceTree = "<group>"; };
+		4D4A547A238C4F5300EF7FA0 /* UIImageAverageColorAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAverageColorAddition.m; sourceTree = "<group>"; };
 		4D54C08A23842A69002F8394 /* LMThemeOfTheWeekCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMThemeOfTheWeekCell.h; sourceTree = "<group>"; };
 		4D54C08B23842A69002F8394 /* LMThemeOfTheWeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMThemeOfTheWeekCell.m; sourceTree = "<group>"; };
 		4D54C08C23842A69002F8394 /* LMThemeOfTheWeekCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMThemeOfTheWeekCell.xib; sourceTree = "<group>"; };
@@ -48,7 +53,6 @@
 		4D54C09223843328002F8394 /* LMDeviceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDeviceInfo.h; sourceTree = "<group>"; };
 		4D54C09323843328002F8394 /* LMDeviceInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDeviceInfo.m; sourceTree = "<group>"; };
 		4D54C096238433A4002F8394 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
-		4D54C0A023843586002F8394 /* libMobileGestalt.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libMobileGestalt.tbd; path = ../../../libMobileGestalt.tbd; sourceTree = "<group>"; };
 		4D54C0A323843739002F8394 /* LMPackageParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMPackageParser.h; sourceTree = "<group>"; };
 		4D54C0A423843739002F8394 /* LMPackageParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMPackageParser.m; sourceTree = "<group>"; };
 		4D54C0A72384376D002F8394 /* LMRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMRepo.h; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		4D54C0B5238437CC002F8394 /* status */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
 		4D54C0B723844032002F8394 /* LMInstalledPackagesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMInstalledPackagesController.h; sourceTree = "<group>"; };
 		4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMInstalledPackagesController.m; sourceTree = "<group>"; };
+		4D7DC60E238835BF006907C5 /* LMDepictionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDepictionController.h; sourceTree = "<group>"; };
+		4D7DC60F238835BF006907C5 /* LMDepictionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDepictionController.m; sourceTree = "<group>"; };
 		4DCEE9B72386F7EE00F8E499 /* LMInstalledPackageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMInstalledPackageCell.h; sourceTree = "<group>"; };
 		4DCEE9B82386F7EE00F8E499 /* LMInstalledPackageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMInstalledPackageCell.m; sourceTree = "<group>"; };
 		4DD4C0CB2382E5FD00B90138 /* LMTweakOfTheWeekCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMTweakOfTheWeekCell.h; sourceTree = "<group>"; };
@@ -78,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D54C0A123843586002F8394 /* libMobileGestalt.tbd in Frameworks */,
+				4D4A5478238C462B00EF7FA0 /* libMobileGestalt.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +98,8 @@
 				4DD4C0D12382EC6B00B90138 /* LMHomeCollectionController.m */,
 				4D54C0B723844032002F8394 /* LMInstalledPackagesController.h */,
 				4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */,
+				4D7DC60E238835BF006907C5 /* LMDepictionController.h */,
+				4D7DC60F238835BF006907C5 /* LMDepictionController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -153,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				4D54C096238433A4002F8394 /* MobileGestalt.h */,
+				4D4A5479238C4F5300EF7FA0 /* UIImageAverageColorAddition.h */,
+				4D4A547A238C4F5300EF7FA0 /* UIImageAverageColorAddition.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -160,7 +170,7 @@
 		4D54C097238434D4002F8394 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4D54C0A023843586002F8394 /* libMobileGestalt.tbd */,
+				4D4A5477238C462B00EF7FA0 /* libMobileGestalt.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -275,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D4A547B238C4F5300EF7FA0 /* UIImageAverageColorAddition.m in Sources */,
 				4DD4C0D22382EC6B00B90138 /* LMHomeCollectionController.m in Sources */,
 				4D54C09123842B91002F8394 /* LMHomeStoryDownloader.m in Sources */,
 				4DD4C0CE2382E5FD00B90138 /* LMTweakOfTheWeekCell.m in Sources */,
@@ -289,6 +300,7 @@
 				4D54C09423843328002F8394 /* LMDeviceInfo.m in Sources */,
 				4D54C0A523843739002F8394 /* LMPackageParser.m in Sources */,
 				4D54C0B22384376E002F8394 /* LMRepo.m in Sources */,
+				4D7DC610238835BF006907C5 /* LMDepictionController.m in Sources */,
 				4D2D53EC23802CD600A7076C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

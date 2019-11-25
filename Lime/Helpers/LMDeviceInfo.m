@@ -29,6 +29,8 @@
     return machineIdentifier;
 }
 
+
+#if !(TARGET_IPHONE_SIMULATOR)
 + (NSString *)ecid {
     NSString *ECID = nil;
     CFStringRef value = MGCopyAnswer(kMGUniqueChipID);
@@ -48,6 +50,7 @@
     }
     return UDID;
 }
+#endif
 
 + (BOOL)isJailbroken {
     if ([[NSFileManager defaultManager] fileExistsAtPath:@"/bin/bash"]) {
