@@ -42,6 +42,7 @@
     while(fgets(str, sizeof(str), f) != NULL) {
         if(!str[1] && ![package.identifier hasPrefix:@"cy+"] && ![package.identifier hasPrefix:@"gsc."]) { // a line THAT short is obviously a newline, and we wanna go to the next package and add the current one if so; also we don't add packages prefixed with gsc and cy+
             if(package.name.length < 1) package.name = package.identifier;
+            if(package.iconPath.length > 0) package.iconPath = [package.iconPath stringByReplacingOccurrencesOfString:@"file://" withString:@""];
             [mutablePackages addObject:package];
             // reset it
             package = nil;

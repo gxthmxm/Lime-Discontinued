@@ -42,11 +42,12 @@
     cell.detailTextLabel.text = pkg.desc;
     //cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
-    
-    if ([UIImage imageNamed:pkg.section]) {
-        cell.imageView.image = [UIImage imageNamed:pkg.section];
+    if (pkg.iconPath.length > 0
+        && [[NSFileManager defaultManager] fileExistsAtPath:pkg.iconPath]) {
+        cell.imageView.image = [UIImage imageWithContentsOfFile:pkg.iconPath];
     } else {
-        cell.imageView.image = [UIImage imageNamed:@"Unknown"];
+        if ([UIImage imageNamed:pkg.section]) cell.imageView.image = [UIImage imageNamed:pkg.section];
+        else cell.imageView.image = [UIImage imageNamed:@"Unknown"];
     }
     
     return cell;

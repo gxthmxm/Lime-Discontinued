@@ -7,6 +7,8 @@ Maintainer: EvenDev
 Architecture: iphoneos-arm
 Version: 6.9
 Description: Daniel liker sterke menn med store tisser
+Depiction: https://evendev.org
+SileoDepiction: https://evendeveloper.github.io/lime/sileo.json
 
 Package: org.evendev.SandboxPackage2
 Name: Sandboxed Application

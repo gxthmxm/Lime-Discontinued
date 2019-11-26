@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *dependencies;
 @property (nonatomic, strong) NSArray *conflicts;
 @property (nonatomic, strong) NSString *author;
+@property (nonatomic, strong) NSString *iconPath;
 @property (nonatomic, strong) NSString *maintainer;
 @property (nonatomic, strong) NSString *filename;
 @property (nonatomic, strong) NSString *sileoDepiction;

@@ -10,14 +10,17 @@
 #import "../Objects/LMPackage.h"
 #import "../Helpers/LimeHelper.h"
 #import "../Other/UIImageAverageColorAddition.h"
+#import <WebKit/WebKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LMDepictionController : UIViewController <UIScrollViewDelegate>
+@interface LMDepictionController : UIViewController <UIScrollViewDelegate, WKNavigationDelegate, WKUIDelegate>
 
 @property (nonatomic, strong) LMPackage *package;
+
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIVisualEffectView *navbar;
+
 @property (weak, nonatomic) IBOutlet UIImageView *bannerView;
 @property (weak, nonatomic) IBOutlet UIView *bigView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
@@ -26,8 +29,27 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *getButton;
 @property (weak, nonatomic) IBOutlet UIButton *moreButton;
 @property (weak, nonatomic) IBOutlet UIView *separator;
+
+@property (weak, nonatomic) IBOutlet UIView *separator2;
 @property (weak, nonatomic) IBOutlet UILabel *depictionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UILabel *informatonTitle;
+@property (retain, nonatomic) WKWebView *depictionView;
+
+@property (strong, nonatomic) NSString *finalSize;
+
+@end
+
+@interface LMDepictionInformationTableView : UITableViewController
+
+@property (strong, nonatomic) IBOutlet UITableViewCell *developerCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *sizeCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *sectionCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *versionCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *installedVersionCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *identifierCell;
 
 @end
 
