@@ -27,6 +27,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [LimeHelper sharedInstance];
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:[[LimeHelper documentDirectory] stringByAppendingString:@"stories"]]) [[NSFileManager defaultManager] createDirectoryAtPath:[[LimeHelper documentDirectory] stringByAppendingString:@"stories"] withIntermediateDirectories:YES attributes:0 error:nil];
     if (![[NSFileManager defaultManager] fileExistsAtPath:[[LimeHelper documentDirectory] stringByAppendingString:@"stories/icons"]]) [[NSFileManager defaultManager] createDirectoryAtPath:[[LimeHelper documentDirectory] stringByAppendingString:@"stories/icons"] withIntermediateDirectories:YES attributes:0 error:nil];
     if (![[NSFileManager defaultManager] fileExistsAtPath:[[LimeHelper documentDirectory] stringByAppendingString:@"stories/background"]]) [[NSFileManager defaultManager] createDirectoryAtPath:[[LimeHelper documentDirectory] stringByAppendingString:@"stories/background"] withIntermediateDirectories:YES attributes:0 error:nil];

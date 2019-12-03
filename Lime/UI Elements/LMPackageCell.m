@@ -6,9 +6,9 @@
 //  Copyright © 2019 EvenDev. All rights reserved.
 //
 
-#import "LMInstalledPackageCell.h"
+#import "LMPackageCell.h"
 
-@implementation LMInstalledPackageCell
+@implementation LMPackageCell
 
 @synthesize textLabel;
 @synthesize detailTextLabel;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LimeHelper.h"
-#import "../UI Elements/LMInstalledPackageCell.h"
+#import "../UI Elements/LMPackageCell.h"
 #import "LMDepictionController.h"
 
 NS_ASSUME_NONNULL_BEGIN

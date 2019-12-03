@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "LMDeviceInfo.h"
 #import "../Parsers/LMPackageParser.h"
+#import "../Parsers/LMRepoParser.h"
+#import <bzlib.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,13 +21,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)documentDirectory;
 + (NSString *)dpkgStatusLocation;
++ (NSString *)limePath;
++ (NSString *)sourcesPath;
++ (NSString *)listsPath;
++ (NSString *)iconsPath;
 
 @property (nonatomic, retain) NSMutableDictionary *packagesDict;
 @property (nonatomic, retain) NSMutableArray *packagesArray;
 @property (nonatomic, retain) NSMutableDictionary *installedPackagesDict;
 @property (nonatomic, retain) NSMutableArray *installedPackagesArray;
-@property (nonatomic, retain) NSMutableArray *sourcesInList;
-@property (nonatomic, retain) NSMutableArray *sources;
 @property (nonatomic, retain) UINavigationController *defaultNavigationController;
 
 @end

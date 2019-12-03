@@ -27,6 +27,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (IBAction)openQueue:(id)sender {
+    
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -35,7 +39,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LMInstalledPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"installedcell" forIndexPath:indexPath];
+    LMPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"installedcell" forIndexPath:indexPath];
     
     LMPackage *pkg = [self.packages objectAtIndex:indexPath.row];
     cell.textLabel.text = pkg.name;
@@ -55,6 +59,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"depiction" sender:self];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 
 /*

@@ -35,6 +35,7 @@
     // Setting information
     
     if (self.package) {
+        if ([[[LimeHelper sharedInstance] installedPackagesDict] objectForKey:self.package.identifier]) self.package.installed = YES;
         
         NSLog(@"%@", self.package.depictionURL);
         // Banner
@@ -153,7 +154,7 @@
         iv.image = self.iconView.image;
         iv.contentMode = UIViewContentModeScaleAspectFit;
         iv.clipsToBounds = YES;
-        iv.layer.cornerRadius = 8;
+        iv.layer.cornerRadius = 6.3;
 
         UIView* ivContainer = [[UIView alloc] initWithFrame:CGRectMake(0,0,28,28)];
         [ivContainer addSubview:iv];
@@ -256,10 +257,43 @@
     }
 }
 
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.navigationController.navigationBar.tintColor = self.view.tintColor;
+    }];
+}
+
 -(void)dealloc {
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [self.depictionView.scrollView removeObserver:self forKeyPath:@"contentSize" context:nil];
     [self.depictionView removeObserver:self forKeyPath:@"estimatedProgress"];
+}
+
+- (IBAction)mainAction:(id)sender {
+    if(self.package.installed) {
+        UIAlertController* actionAlert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction* removeAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:1];
+            [LMQueue addQueueAction:queueAction];
+        }];
+        UIAlertAction* reinstallAction = [UIAlertAction actionWithTitle:@"Reinstall" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:2];
+            [LMQueue addQueueAction:queueAction];
+        }];
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * action) {}];
+        
+        [actionAlert addAction:removeAction];
+        [actionAlert addAction:reinstallAction];
+        [actionAlert addAction:cancelAction];
+        [self presentViewController:actionAlert animated:YES completion:nil];
+    } else {
+        LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:0];
+        [LMQueue addQueueAction:queueAction];
+    }
 }
 
 - (IBAction)shareStart:(id)sender {
@@ -305,10 +339,6 @@
         self.navigationController.navigationBar.tintColor = [UIColor colorWithHue:0.5861 saturation:1.0 brightness:1.0 alpha:1.0];
         self.navbar.alpha = 1.0;
     }
-}
-
--(void)viewWillDisappear:(BOOL)animated {
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewDidAppear:(BOOL)animated {

@@ -10,6 +10,7 @@
 #import "../UI Elements/LMTweakOfTheWeekCell.h"
 #import "../UI Elements/LMThemeOfTheWeekCell.h"
 #import "../Helpers/LMHomeStoryDownloader.h"
+#import "../Parsers/LMRepoParser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

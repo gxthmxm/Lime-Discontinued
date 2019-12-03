@@ -29,7 +29,6 @@
     return machineIdentifier;
 }
 
-
 #if !(TARGET_IPHONE_SIMULATOR)
 + (NSString *)ecid {
     NSString *ECID = nil;

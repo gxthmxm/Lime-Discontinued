@@ -11,14 +11,8 @@
 
 @interface LMRepo : NSObject
 
-- (instancetype)initWithName:(NSString *)name filename:(NSString *)filename urlString:(NSString *)urlString;
-
-// Artikus
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *filename;
-@property (nonatomic, retain) NSString *urlString;
 
-// EvenDev
 @property (nonatomic, retain) NSString *origin;
 @property (nonatomic, retain) NSString *label;
 @property (nonatomic, retain) NSString *suite;
@@ -27,6 +21,7 @@
 @property (nonatomic, retain) NSString *architectures;
 @property (nonatomic, retain) NSString *components;
 @property (nonatomic, retain) NSString *desc;
+
 @property (nonatomic, retain) NSMutableArray *packages;
 @property (nonatomic, retain) NSDate *lastUpdated;
 
@@ -34,11 +29,27 @@
 @property (nonatomic, retain) NSString *packagesURL;
 @property (nonatomic, retain) NSString *releasePath;
 @property (nonatomic, retain) NSString *packagesPath;
-@property (nonatomic, retain) NSURL *imageURL;
+@property (nonatomic, retain) NSString *imageURL;
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) NSString *imagePath;
 @property (nonatomic, retain) NSString *repoURL;
-@property (nonatomic, retain) NSString *repoDirectory;
-@property (nonatomic, retain) NSArray *repoComponents;
+@property (nonatomic, retain) NSString *distro;
+@property (nonatomic, retain) NSArray *distrosArray;
+
+@property (nonatomic) long long releaseExpectedLength;
+@property (nonatomic) long long packagesExpectedLength;
+@property (nonatomic) long long iconExpectedLength;
+@property (nonatomic) long long totalExpectedLength;
+
+@property (nonatomic) long long releaseDownloaded;
+@property (nonatomic) long long packagesDownloaded;
+@property (nonatomic) long long iconDownloaded;
+@property (nonatomic) long long totalDownloaded;
+
+@property (nonatomic) BOOL releaseTotalAdded;
+@property (nonatomic) BOOL packagesTotalAdded;
+@property (nonatomic) BOOL iconTotalAdded;
+
+@property (nonatomic, retain) NSString *sourcesFileLine;
 
 @end

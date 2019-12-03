@@ -10,12 +10,4 @@
 
 @implementation LMRepo
 
-- (instancetype)initWithName:(NSString *)name filename:(NSString *)filename urlString:(NSString *)urlString {
-    self = [super init];
-    self.name = name;
-    self.filename = filename;
-    self.urlString = urlString;
-    return self;
-}
-
 @end
