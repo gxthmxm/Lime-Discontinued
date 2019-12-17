@@ -17,7 +17,6 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.progressView.progress = 0;
-    self.imageView.image = nil;
 }
 
 @end

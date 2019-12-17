@@ -324,7 +324,7 @@
     [super viewWillLayoutSubviews];
     self.navigationItem.titleView.hidden = YES;
     self.navigationItem.rightBarButtonItem.customView.hidden = YES;
-    self.navigationItem.rightBarButtonItem.customView.alpha = 1;
+    self.navigationItem.rightBarButtonItem.customView.alpha = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated {

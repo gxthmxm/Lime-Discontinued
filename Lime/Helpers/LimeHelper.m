@@ -7,6 +7,7 @@
 //
 
 #import "LimeHelper.h"
+extern char **environ;
 
 @implementation LimeHelper
 
@@ -73,6 +74,34 @@
     return self;
 }
 
++(void)runAPTWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(void(^)(NSTask *task))completionHandler {
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:@"/usr/bin/LimeHelper"];
+    [task setArguments:args];
+    task.terminationHandler = ^(NSTask *task){
+        completionHandler(task);
+    };
+        
+    NSMutableDictionary *defaultEnv = [[NSMutableDictionary alloc] initWithDictionary:[[NSProcessInfo processInfo] environment]];
+    [defaultEnv setObject:@"YES" forKey:@"NSUnbufferedIO"] ;
+    task.environment = defaultEnv;
+        
+    NSPipe *stdoutPipe = [NSPipe pipe];
+    task.standardOutput = stdoutPipe;
+    //NSPipe *stderrPipe = [NSPipe pipe];
+    task.standardError = stdoutPipe;
+    [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
+        NSData *data = [file availableData];
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            textView.text = [textView.text stringByAppendingString:string];
+            [textView scrollRangeToVisible:NSMakeRange(textView.text.length, 0)];
+        });
+    }];
+    [task launch];
+}
+
 -(void)getInstalledPackages {
     // Inits a parser on the dpkg status file
     LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:[LimeHelper dpkgStatusLocation]];
@@ -88,16 +117,17 @@
 }
 
 -(void)addPackagesToArrays {
-    [self.packagesDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        LMPackage *pkg = obj;
-        [self.packagesArray addObject:pkg];
-    }];
-    [self.installedPackagesDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        LMPackage *pkg = obj;
-        [self.installedPackagesArray addObject:pkg];
-    }];
+    self.installedPackagesArray = [NSMutableArray arrayWithArray:self.installedPackagesDict.allValues];
+    self.packagesArray = [NSMutableArray arrayWithArray:self.packagesDict.allValues];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)];
     self.installedPackagesArray = [NSMutableArray arrayWithArray:[[self installedPackagesArray] sortedArrayUsingDescriptors:@[sort]]];
+    self.packagesArray = [NSMutableArray arrayWithArray:[self.packagesArray sortedArrayUsingDescriptors:@[sort]]];
+}
+
+-(void)refreshInstalledPackages {
+    self.installedPackagesArray = [NSMutableArray new];
+    self.installedPackagesDict = [NSMutableDictionary new];
+    [self getInstalledPackages];
 }
 
 @end

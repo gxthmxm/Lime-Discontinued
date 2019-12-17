@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "../Helpers/LMQueue.h"
 #import "../Other/NSArray+Random.h"
+#import "../Helpers/LimeHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIView *completeView;
 @property (strong, nonatomic) IBOutlet UITableView *queueTable;
 @property (strong, nonatomic) IBOutlet UITextView *logView;
-@property (strong, nonatomic) IBOutlet UIButton *tempNext;
 @property (strong, nonatomic) IBOutlet UIVisualEffectView *effectView;
 @property (strong, nonatomic) IBOutlet UIImageView *arrowIMG;
 @property (strong, nonatomic) IBOutlet UILabel *finishedLabel;

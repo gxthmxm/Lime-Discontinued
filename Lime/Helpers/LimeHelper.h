@@ -12,6 +12,8 @@
 #import "../Parsers/LMPackageParser.h"
 #import "../Parsers/LMRepoParser.h"
 #import <bzlib.h>
+#include <spawn.h>
+#import "../Other/NSTask.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)sourcesPath;
 + (NSString *)listsPath;
 + (NSString *)iconsPath;
++ (void)runAPTWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(void(^)(NSTask *task))completionHandler;
+- (void)refreshInstalledPackages;
 
 @property (nonatomic, retain) NSMutableDictionary *packagesDict;
 @property (nonatomic, retain) NSMutableArray *packagesArray;

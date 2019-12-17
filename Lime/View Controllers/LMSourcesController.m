@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self parseRepoData];
+    //[self parseRepoData];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
     UINavigationBar *navBar = self.navigationController.navigationBar;
@@ -28,12 +28,12 @@
 }
 
 -(IBAction)refreshButtonAction:(id)sender {
-    [self downloadRepos];
+    //[self downloadRepos];
 }
 
 // TableViewn't stuff
 
-- (NSString *)filenameFromURLString:(NSString *)URLString {
+/*- (NSString *)filenameFromURLString:(NSString *)URLString {
     NSRange range = [URLString rangeOfString:@"://"];
     NSString *filename = URLString;
     filename = [filename substringFromIndex:range.location + 3];
@@ -399,15 +399,15 @@
     [self.repoIconsCache setObject:[self iconForRepo:repo forIconUpdate:NO] forKey:repo.repoURL];
     [self.tableView reloadData];
     [self downloadRepo:repo forAdd:YES];
-}
+}*/
 
 // UITableView stuff
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.repos.count;
+    return [LMSourceManager.sharedInstance sources].count;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+/*- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
@@ -434,23 +434,18 @@
         [self removeRepo:repo];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-}
+}*/
 
 - (LMSourceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"sourcecell";
     LMSourceCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
-    LMRepo *repo = [self.repos objectAtIndex:indexPath.row];
-    cell.textLabel.text = repo.label;
-    cell.detailTextLabel.text = repo.desc;
-    if(cell.imageView.image == nil) {
-        UIImage *icon = [self iconForRepo:repo forIconUpdate:NO];
-        cell.imageView.layer.masksToBounds = YES;
-        cell.imageView.layer.cornerRadius = 10;
-        cell.imageView.image = icon;
-    }
+    LMRepo *repo = [[LMSourceManager.sharedInstance sources] objectAtIndex:indexPath.row];
+    cell.textLabel.text = repo.parsedRepo.label;
+    cell.detailTextLabel.text = repo.rawRepo.repoURL;
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.cornerRadius = 10;
+    cell.imageView.image = repo.rawRepo.image;
+    /*
     if(cell.progressView == nil) {
         cell.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
         cell.progressView.frame = CGRectMake(0, 56.5, cell.contentView.frame.size.width, 0);
@@ -463,16 +458,16 @@
     }
     if(repo.totalDownloaded != 0 && repo.totalExpectedLength != 0) {
         cell.progressView.progress = (float)repo.totalDownloaded / repo.totalExpectedLength;
-    }
+    }*/
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    /*UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    LMRepo *repo = [self.repos objectForKey:cell.textLabel.text];
-    NSString *fullPath = [[LimeHelper listsPath] stringByAppendingString:repo.packagesFilename];
-    self.parser = [[LMPackageParser alloc] initWithFilePath:fullPath];
-    [self performSegueWithIdentifier:@"repoPackageList" sender:self];*/
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"viewsource"]) {
+        LMRepo *repo = [[LMSourceManager.sharedInstance sources] objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        LMViewSourcePackagesController *dest = segue.destinationViewController;
+        dest.repo = repo;
+    }
 }
 
 @end

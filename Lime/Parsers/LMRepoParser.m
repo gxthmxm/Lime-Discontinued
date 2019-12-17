@@ -11,8 +11,7 @@
 @implementation LMRepoParser
 
 +(LMRepo *)parseRepo:(LMRepo *)repo {
-    LMRepo *returnRepo = [LMRepo new];
-    FILE *f = fopen([repo.releasePath UTF8String], "r");
+    FILE *f = fopen([repo.rawRepo.releasePath UTF8String], "r");
     char str[1024];
 
     NSDictionary *customPropertiesDict = @{
@@ -33,7 +32,7 @@
             // multiline descriptions
             NSString *nextLine = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]; // remove 4 spaces
             NSString *oldValue = [repo valueForKey:lastKey];
-            [repo setValue:[NSString stringWithFormat:@"%@%@", (oldValue ? [oldValue stringByAppendingString:@"\n"] : @""), nextLine] forKey:lastKey];
+            [repo.parsedRepo setValue:[NSString stringWithFormat:@"%@%@", (oldValue ? [oldValue stringByAppendingString:@"\n"] : @""), nextLine] forKey:lastKey];
         }
         else if([line containsString:@": "]) {
             NSMutableArray *lineArray = [line componentsSeparatedByString:@": "].mutableCopy; // Separate the line into the key and the value
@@ -44,17 +43,16 @@
             // the value (most useless comment in the world)
             [lineArray removeObjectAtIndex:0];
             NSString *value = [lineArray componentsJoinedByString:@": "];
-            if(key && value && [repo respondsToSelector:NSSelectorFromString(key)]) {
-                [repo setValue:value forKey:(lastKey = key)];
+            if(key && value && [repo.parsedRepo respondsToSelector:NSSelectorFromString(key)]) {
+                [repo.parsedRepo setValue:value forKey:(lastKey = key)];
             }
         }
     }
     
     fclose(f);
-    LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:repo.packagesPath];
-    repo.packages = parser.packages;
     
-    repo.lastUpdated = [NSDate date];
+    repo.rawRepo.lastUpdated = [NSDate date];
+    if ([NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.imagePath]) repo.rawRepo.image = [UIImage imageWithContentsOfFile:repo.rawRepo.imagePath];
     
     return repo;
 }

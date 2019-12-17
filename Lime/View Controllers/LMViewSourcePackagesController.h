@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "../Objects/LMRepo.h"
+#import "../UI Elements/LMPackageCell.h"
+#import "../Helpers/LimeHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LMViewSourcePackagesController : UITableViewController
+
+@property (nonatomic, retain) LMRepo *repo;
 
 @end
 

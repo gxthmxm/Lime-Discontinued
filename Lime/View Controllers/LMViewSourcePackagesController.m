@@ -16,29 +16,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = self.repo.parsedRepo.label;
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.repo.packages.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    LMPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sourcepkgcell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    LMPackage *pkg = [self.repo.packages objectAtIndex:indexPath.row];
+    cell.textLabel.text = pkg.name;
+    cell.detailTextLabel.text = pkg.desc;
+    if ([[LimeHelper.sharedInstance installedPackagesDict] objectForKey:pkg.identifier]) cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    if (pkg.iconPath.length > 0
+        && [[NSFileManager defaultManager] fileExistsAtPath:pkg.iconPath]) {
+        cell.imageView.image = [UIImage imageWithContentsOfFile:pkg.iconPath];
+    } else {
+        if ([UIImage imageNamed:pkg.section]) cell.imageView.image = [UIImage imageNamed:pkg.section];
+        else cell.imageView.image = [UIImage imageNamed:@"Unknown"];
+    }
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class LMRepo;
+
 @interface LMPackage : NSObject
 
 @property (nonatomic, strong) NSString *identifier;

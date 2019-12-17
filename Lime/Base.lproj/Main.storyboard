@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NXc-6J-2CP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NXc-6J-2CP">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -102,6 +102,7 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="detailTextLabel" destination="22B-QG-29n" id="nOO-sO-V4z"/>
                                     <outlet property="imageView" destination="emM-G5-KM2" id="cEz-zH-fWv"/>
@@ -169,6 +170,7 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="detailTextLabel" destination="6OK-Ii-1cS" id="PBC-Hd-VIN"/>
                                     <outlet property="imageView" destination="ZNH-g0-a7J" id="iS3-AP-Mh4"/>
@@ -727,14 +729,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KnZ-pN-OcH">
-                                            <rect key="frame" x="77" y="441" width="220" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <state key="normal" title="click here to go to finished page"/>
-                                            <connections>
-                                                <action selector="temporaryNext:" destination="wUP-EB-p7y" eventType="touchUpInside" id="bZn-bx-c5P"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjZ-FX-Ybo">
                                             <rect key="frame" x="28" y="427" width="318" height="58"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -824,7 +818,7 @@
                                             <sections/>
                                         </tableView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NRv-V7-VWO">
-                                            <rect key="frame" x="300" y="64" width="318" height="355"/>
+                                            <rect key="frame" x="300" y="8" width="318" height="477"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <string key="text">Downloading Lime Done: Lime Running Debian Packager Selecting previously deselected package com.notdan.lime. (Reading database ... 3032 files and directories currently installed.) Unpacking com.notdan.lime (from ../com.notdan.lime_0.0.1_iphoneos-arm.deb) ... Installing Lime Preparing Lime Unpacking Lime Preparing to configure Lime Running Debian Packager Setting up com.notdan.lime (0.0.1) ... Configuring Lime Configuring Lime Installed Lime</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -861,12 +855,11 @@
                         <outlet property="greatLabel" destination="0w9-dY-U11" id="7nK-Q5-I63"/>
                         <outlet property="logView" destination="NRv-V7-VWO" id="BnL-CR-kQ4"/>
                         <outlet property="queueTable" destination="h0l-J9-aoV" id="v0X-EA-pZp"/>
-                        <outlet property="tempNext" destination="KnZ-pN-OcH" id="oG0-AZ-1my"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgK-nd-hEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-153" y="-879"/>
+            <point key="canvasLocation" x="-154.40000000000001" y="-879.31034482758628"/>
         </scene>
     </scenes>
     <resources>

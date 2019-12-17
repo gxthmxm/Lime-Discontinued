@@ -10,4 +10,13 @@
 
 @implementation LMRepo
 
+-(id)init {
+    self = [super init];
+    if (self) {
+        self.parsedRepo = [LMParsedRepo new];
+        self.rawRepo = [LMRawRepo new];
+    }
+    return self;
+}
+
 @end

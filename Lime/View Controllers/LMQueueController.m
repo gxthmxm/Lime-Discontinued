@@ -29,8 +29,6 @@
     
     [self.actionButton setTitle:@"Confirm" forState:UIControlStateNormal];
     
-    self.tempNext.hidden = YES;
-    
     self.queue = [[LMQueue alloc] init];
     
     self.queueTable.delegate = self;
@@ -129,7 +127,6 @@
         self.actionButton.alpha = 0;
         self.actionButton.enabled = NO;
         
-        self.tempNext.hidden = NO;
         
         self.effectView.frame = self.view.frame;
         self.effectView.layer.cornerRadius = 0;
@@ -143,63 +140,60 @@
     //
     // INSTALLATION
     //
+    self.logView.text = @"";
     
-    NSMutableArray *remove = [NSMutableArray new];
-    NSMutableArray *install = [NSMutableArray new];
-    NSMutableArray *reinstall = [NSMutableArray new];
+    NSInteger tasks = [LMQueue queueActions].count;
+    __block NSInteger completedTasks = 0;
+    
+    // 0 install 1 remove 2 reinstall
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    NSMutableArray *operations = [NSMutableArray new];
+    queue.maxConcurrentOperationCount = 1;
     for (NSData *encodedAction in [LMQueue queueActions]) {
-        LMQueueAction *decodedAction = [NSKeyedUnarchiver unarchiveObjectWithData:encodedAction];
-        
-        switch (decodedAction.action) {
-            case 0:
-                [install addObject:[NSString stringWithFormat:@"%@", decodedAction.package.identifier]];
-                break;
-                
-            case 1:
-                [remove addObject:[NSString stringWithFormat:@"%@", decodedAction.package.identifier]];
-                break;
-                
-            case 2:
-                [reinstall addObject:[NSString stringWithFormat:@"%@", decodedAction.package.identifier]];
-                break;
-                
-            default:
-                break;
-        }
-        
-        self.logView.text = [NSString stringWithFormat:@"Install:\n%@\n\nRemove:\n%@\n\nReinstall:\n%@", [install componentsJoinedByString:@"\n"], [remove componentsJoinedByString:@"\n"], [reinstall componentsJoinedByString:@"\n"]];
+        NSOperation *operation = [NSOperation new];
+        operation.completionBlock = ^{
+            LMQueueAction *decodedAction = [NSKeyedUnarchiver unarchiveObjectWithData:encodedAction];
+            
+            if (decodedAction.action == 0) {
+                [LimeHelper runAPTWithArguments:[NSArray arrayWithObjects:@"-y", @"install", decodedAction.package.identifier, nil] textView:self.logView completionHandler:^(NSTask * _Nonnull task) {
+                    completedTasks++;
+                    if (completedTasks == tasks) {
+                        [[NSUserDefaults standardUserDefaults] setObject:[NSArray new] forKey:@"queue"];
+                        [self finished];
+                    }
+                }];
+            } else if (decodedAction.action == 1) {
+                [LimeHelper runAPTWithArguments:[NSArray arrayWithObjects:@"-y", @"remove", decodedAction.package.identifier, nil] textView:self.logView completionHandler:^(NSTask * _Nonnull task) {
+                    completedTasks++;
+                    if (completedTasks == tasks) {
+                        [[NSUserDefaults standardUserDefaults] setObject:[NSArray new] forKey:@"queue"];
+                        [self finished];
+                    }
+                }];
+            } else if (decodedAction.action == 2) {
+                [LimeHelper runAPTWithArguments:[NSArray arrayWithObjects:@"-y", @"reinstall", decodedAction.package.identifier, nil] textView:self.logView completionHandler:^(NSTask * _Nonnull task) {
+                    completedTasks++;
+                    if (completedTasks == tasks) {
+                        [self finished];
+                    }
+                }];
+            }
+        };
+        [operations addObject:operation];
+        [operation waitUntilFinished];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:[NSArray new] forKey:@"queue"];
-    
-    NSString *installCmd = [NSString stringWithFormat:@"apt install %@", [install componentsJoinedByString:@" "]];
-    NSString *removeCmd = [NSString stringWithFormat:@"unbuffer apt-get -y remove %@", [remove componentsJoinedByString:@" "]];
-    NSString *cmd = [NSString new];
-    if (install.count > 0 && remove.count > 0) {
-        cmd = [NSString stringWithFormat:@"%@ && %@", installCmd, removeCmd];
-    } else if (install.count > 0 && remove.count < 1) {
-        cmd = installCmd;
-    } else if (install.count < 1 && remove.count > 0) {
-        cmd = removeCmd;
-    }
-    [[NSUserDefaults standardUserDefaults] setObject:cmd forKey:@"command"];
-    
-    //
-    // WHEN DONE:
-    //
-    // DO [self finished];
-    //
-}
-- (IBAction)temporaryNext:(id)sender {
-    [self finished];
+    [queue addOperations:[operations copy] waitUntilFinished:YES];
+    [queue waitUntilAllOperationsAreFinished];
+    NSLog(@"[Queue] DONE!");
 }
 
 -(void)finished {
     _state = 2;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSArray new] forKey:@"queue"];
     [UIView animateWithDuration:0.2f animations:^{
         self.actionButton.alpha = 1;
         self.actionButton.enabled = YES;
-        
-        self.tempNext.hidden = YES;
         
         self.effectView.frame = self.logViewFrame;
         self.effectView.layer.cornerRadius = 20;

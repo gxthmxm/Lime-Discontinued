@@ -11,6 +11,7 @@
 #import "LMViewSourcePackagesController.h"
 #import "LMRepo.h"
 #import "../Parsers/LMPackageParser.h"
+#import "../Helpers/LMSourceManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

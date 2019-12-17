@@ -37,7 +37,6 @@
     return self.packages.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LMPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"installedcell" forIndexPath:indexPath];
     
