@@ -137,6 +137,7 @@
         [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [self.descriptionLabel sizeToFit];
         self.bigView.frame = CGRectMake(self.bigView.frame.origin.x, self.bannerView.frame.size.height - self.navbar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height, self.bigView.frame.size.width, self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 17);
+        self.progressView.frame = CGRectMake(self.progressView.frame.origin.x, self.bigView.frame.origin.y + self.bigView.frame.size.height, self.progressView.frame.size.width, self.progressView.frame.size.height);
         self.depictionView.frame = CGRectMake(0, self.bigView.frame.origin.y + self.bigView.frame.size.height, self.depictionView.frame.size.width, self.depictionView.frame.size.height);
         
         self.getButton.backgroundColor = self.tabBarController.tabBar.tintColor; //[[[UIApplication sharedApplication] delegate] window].tintColor;
