@@ -80,14 +80,17 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"viewrepopkg"]) {
+        LMPackage *pkg = [self.repo.packages objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        LMDepictionController *dest = segue.destinationViewController;
+        dest.package = pkg;
+    }
 }
-*/
+
 
 @end

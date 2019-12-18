@@ -175,6 +175,7 @@
                                     <outlet property="detailTextLabel" destination="6OK-Ii-1cS" id="PBC-Hd-VIN"/>
                                     <outlet property="imageView" destination="ZNH-g0-a7J" id="iS3-AP-Mh4"/>
                                     <outlet property="textLabel" destination="xaJ-4j-KxH" id="gyg-CH-rqg"/>
+                                    <segue destination="3TB-hh-8WJ" kind="show" identifier="viewrepopkg" id="lRE-2W-jQt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -874,4 +875,7 @@
         <image name="Utilities" width="70" height="70"/>
         <image name="arrow" width="40" height="13"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="lRE-2W-jQt"/>
+    </inferredMetricsTieBreakers>
 </document>

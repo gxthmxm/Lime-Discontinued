@@ -420,10 +420,9 @@
     } else {
         self.developerCell.detailTextLabel.text = @"Unknown";
     }
-    LMPackage *latest = [[[LimeHelper sharedInstance] packagesDict] objectForKey:depictionViewController.package.identifier];
-    self.versionCell.detailTextLabel.text = latest.version;
+    self.versionCell.detailTextLabel.text = depictionViewController.package.version;
     LMPackage *installed = [[[LimeHelper sharedInstance] installedPackagesDict] objectForKey:depictionViewController.package.identifier];
-    self.installedVersionCell.detailTextLabel.text = installed.version;
+    if (installed) self.installedVersionCell.detailTextLabel.text = installed.version;
     self.identifierCell.detailTextLabel.text = depictionViewController.package.identifier;
     
     int sizeInt = [depictionViewController.finalSize intValue];
