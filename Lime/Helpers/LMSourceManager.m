@@ -66,7 +66,7 @@
                 // /var/mobile/Documents/Lime/lists/apt.thebigboss.org_repofiles_cydia_dists_stable_Release
                 repo.rawRepo.packagesURL = [NSString stringWithFormat:@"%@/dists/%@/%@/binary-iphoneos-arm/Packages", repoURL, [distrosArray objectAtIndex:0], [distrosArray objectAtIndex:1]];
                 // http://apt.thebigboss.org/repofiles/cydia/dists/stable/main/binary-iphoneos-arm/Packages
-                repo.rawRepo.packagesPath = [NSString stringWithFormat:@"/var/mobile/Documents/Lime/lists/%@", [[repo.rawRepo.packagesURL stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"_"]];
+                repo.rawRepo.packagesPath = [NSString stringWithFormat:@"/var/mobile/Documents/Lime/lists/%@", [[[repo.rawRepo.packagesURL stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"http://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"_"]];
                 // /var/mobile/Documents/Lime/lists/apt.thebigboss.org_repofiles_cydia_dists_stable_main_binary-iphoneos-arm_Packages
             } else {
                 // if it only has ./
@@ -87,7 +87,7 @@
                 // /var/mobile/Documents/Lime/lists/repo.packix.com_._Packages
             }
             repo.rawRepo.imageURL = [repo.rawRepo.releaseURL stringByReplacingOccurrencesOfString:@"Release" withString:@"CydiaIcon.png"];
-            repo.rawRepo.imagePath = [NSString stringWithFormat:@"/var/mobile/Documents/Lime/icons/%@", [[repo.rawRepo.imageURL stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"_"]];
+            repo.rawRepo.imagePath = [NSString stringWithFormat:@"/var/mobile/Documents/Lime/icons/%@", [[[repo.rawRepo.imageURL stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"http://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"_"]];
             [self.sources addObject:repo];
         }
     }];

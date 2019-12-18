@@ -31,7 +31,7 @@
         if(line.length && [[NSCharacterSet whitespaceCharacterSet] characterIsMember:[line characterAtIndex:0]]) {
             // multiline descriptions
             NSString *nextLine = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]; // remove 4 spaces
-            NSString *oldValue = [repo valueForKey:lastKey];
+            NSString *oldValue = [repo.parsedRepo valueForKey:lastKey];
             [repo.parsedRepo setValue:[NSString stringWithFormat:@"%@%@", (oldValue ? [oldValue stringByAppendingString:@"\n"] : @""), nextLine] forKey:lastKey];
         }
         else if([line containsString:@": "]) {

@@ -1,5 +1,4 @@
 deb/
-deb*.deb
 .DS_Store
 Makefile
 build
