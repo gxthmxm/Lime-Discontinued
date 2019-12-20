@@ -1,8 +1,13 @@
 # Lime
 Deadline: Summer 2020?
 
-## How to Build
-run ```make compile```
+## Build
+Set the Environment Variables for your device's IP
+**ZSH**  
+```echo "export LIMEIP=*ip*" >> ~/.zprofile```  
+**Bash**  
+```echo "export LIMEIP=*ip*" >> ~/.bash_profile```  
+Now re-open your shell, navigate to the Lime directory and run ```make compile```
 
 # Important Classes
 List of important classes, how to use them and how they work.
