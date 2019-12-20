@@ -24,7 +24,7 @@
         
         self.sources = [NSMutableArray new];
         [self getRawSources];
-        [self parseSourcesAndDownloadMissing:YES];
+        [self parseSourcesAndDownloadMissing:YES completionHandler:^{}];
         
         NSLog(@"[SourceManager] Init done. Got %lu source(s)", (unsigned long)self.sources.count);
     }
@@ -83,7 +83,7 @@
                 // /var/mobile/Documents/Lime/lists/repo.packix.com_._Release
                 repo.rawRepo.packagesURL = [NSString stringWithFormat:@"%@Packages", repoURL];
                 // https://repo.packix.com/./Packages
-                repo.rawRepo.packagesPath = [NSString stringWithFormat:@"/var/mobile/Documents/Lime/lists/%@", [[repo.rawRepo.packagesURL stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"_"]];
+                repo.rawRepo.packagesPath = [NSString stringWithFormat:@"/var/mobile/Documents/Lime/lists/%@", [[[repo.rawRepo.packagesURL stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"http://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"_"]];
                 // /var/mobile/Documents/Lime/lists/repo.packix.com_._Packages
             }
             repo.rawRepo.imageURL = [repo.rawRepo.releaseURL stringByReplacingOccurrencesOfString:@"Release" withString:@"CydiaIcon.png"];
@@ -93,7 +93,7 @@
     }];
 }
 
--(void)parseSourcesAndDownloadMissing:(BOOL)download {
+-(void)parseSourcesAndDownloadMissing:(BOOL)download completionHandler:(void (^)(void))completion {
     [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         __block LMRepo *repo = obj;
         if ([NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.packagesPath] && [NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.releasePath]) {
@@ -116,21 +116,42 @@
             }
         }
     }];
+    completion();
 }
 
--(void)refreshSources {
+-(void)refreshSourcesCompletionHandler:(void (^)(void))completion {
     self.sources = [NSMutableArray new];
+    NSLog(@"[SourceManager] Refreshing sources...");
     [self getRawSources];
     __block NSUInteger tasks = self.sources.count;
     __block int completedTasks = 0;
     [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        tasks++;
         __block LMRepo *repo = obj;
         NSLog(@"[SourceManager] Downloading %@", repo.rawRepo.repoURL);
         LMSourceDownloader *sourceDL = [[LMSourceDownloader alloc] initWithRepo:repo];
+        if (self.sourceController) sourceDL.sourceController = self.sourceController;
         [sourceDL downloadRepoAndIcon:YES completionHandler:^{
             completedTasks++;
-            if (completedTasks == tasks) [self parseSourcesAndDownloadMissing:NO];
+            if (self.sourceController) {
+                float progress = (float)completedTasks / (float)tasks;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.sourceController.topProgressView setProgress:progress animated:YES];
+                });
+            }
+            NSLog(@"[SourceManager] %d out of %lu repos done refreshing", completedTasks, (unsigned long)tasks);
+            if (completedTasks == tasks) [self parseSourcesAndDownloadMissing:NO completionHandler:^{
+                NSLog(@"[SourceManager] Done refreshing sources.");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion();
+                    if (self.sourceController) {
+                        [self.sourceController.topProgressView setProgress:0];
+                        [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            LMSourceCell *cell = [self.sourceController.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]];
+                            [cell.progressView setProgress:0];
+                        }];
+                    }
+                });
+            }];
         }];
     }];
 }

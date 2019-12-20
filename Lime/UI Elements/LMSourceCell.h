@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) IBOutlet UILabel *textLabel;
 @property (nonatomic, retain) IBOutlet UILabel *detailTextLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
-@property (nonatomic, retain) UIProgressView *progressView;
+@property (nonatomic, retain) IBOutlet UIProgressView *progressView;
 
 @end
 

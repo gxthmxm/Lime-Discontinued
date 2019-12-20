@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //[self parseRepoData];
+    [LMSourceManager.sharedInstance setSourceController:self];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
     UINavigationBar *navBar = self.navigationController.navigationBar;
@@ -28,7 +29,17 @@
 }
 
 -(IBAction)refreshButtonAction:(id)sender {
-    //[self downloadRepos];
+    self.navigationController.navigationBar.userInteractionEnabled = NO;
+    [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.userInteractionEnabled = NO;
+    }];
+    [LMSourceManager.sharedInstance refreshSourcesCompletionHandler:^{
+        [self.tableView reloadData];
+        self.navigationController.navigationBar.userInteractionEnabled = YES;
+        [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.userInteractionEnabled = YES;
+        }];
+    }];
 }
 
 // TableViewn't stuff

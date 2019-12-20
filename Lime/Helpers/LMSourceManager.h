@@ -12,14 +12,19 @@
 #import "LimeHelper.h"
 #import "../Parsers/LMRepoParser.h"
 #import "LMSourceDownloader.h"
+#import "../View Controllers/LMSourcesController.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class LMSourcesController;
 
 @interface LMSourceManager : NSObject
 
 + (id)sharedInstance;
+-(void)refreshSourcesCompletionHandler:(void (^)(void))completion;
 
 @property (nonatomic, strong) NSMutableArray *sources;
+@property (nonatomic, strong) LMSourcesController *sourceController;
 
 @end
 

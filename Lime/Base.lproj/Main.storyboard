@@ -69,7 +69,7 @@
         <!--Sources-->
         <scene sceneID="GMn-LR-Aex">
             <objects>
-                <tableViewController id="6y4-xf-ACM" customClass="LMSourcesController" sceneMemberID="viewController">
+                <tableViewController title="Sources" id="6y4-xf-ACM" customClass="LMSourcesController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="raK-Cw-1Ss">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,12 +100,17 @@
                                             <rect key="frame" x="16" y="11" width="35" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="DUS-90-zXf">
+                                            <rect key="frame" x="0.0" y="53" width="375" height="3"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        </progressView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="detailTextLabel" destination="22B-QG-29n" id="nOO-sO-V4z"/>
                                     <outlet property="imageView" destination="emM-G5-KM2" id="cEz-zH-fWv"/>
+                                    <outlet property="progressView" destination="DUS-90-zXf" id="zpi-m2-0bq"/>
                                     <outlet property="textLabel" destination="8a0-L5-HIw" id="EZk-FR-qvp"/>
                                     <segue destination="6fq-BM-gvn" kind="show" identifier="viewsource" id="d8H-2Y-rZR"/>
                                 </connections>
@@ -119,7 +124,7 @@
                     <navigationItem key="navigationItem" title="Sources" id="oLc-ff-MUM">
                         <barButtonItem key="leftBarButtonItem" title="Refresh" id="7wL-cy-eDu">
                             <connections>
-                                <action selector="refreshButtonAction:" destination="6y4-xf-ACM" id="9bS-P9-hCQ"/>
+                                <action selector="refreshButtonAction:" destination="6y4-xf-ACM" id="Pat-nh-sEA"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="cf9-nG-x6s"/>
@@ -127,7 +132,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYf-7w-1QZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="-228"/>
+            <point key="canvasLocation" x="1120.8" y="-228.03598200899552"/>
         </scene>
         <!--Repo-->
         <scene sceneID="PVL-fa-38n">

@@ -15,7 +15,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LMSourcesController : UITableViewController <NSURLSessionDownloadDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
+@interface LMSourcesController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray *repos;
 

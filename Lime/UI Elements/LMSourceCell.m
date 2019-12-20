@@ -14,9 +14,4 @@
 @synthesize detailTextLabel;
 @synthesize imageView;
 
-- (void)prepareForReuse {
-    [super prepareForReuse];
-    self.progressView.progress = 0;
-}
-
 @end
