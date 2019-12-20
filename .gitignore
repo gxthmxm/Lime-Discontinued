@@ -1,6 +1,5 @@
 deb/
 .DS_Store
-Makefile
 build
 .DS_Store
 EvenDev/
