@@ -101,7 +101,7 @@
     icon = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 6;
+    cell.imageView.layer.cornerRadius = 6.75;
     cell.imageView.image = icon;
     cell.separatorInset = UIEdgeInsetsMake(0, 73, 0, 28);
     cell.layoutMargins = UIEdgeInsetsMake(cell.contentView.layoutMargins.top, 28, cell.contentView.layoutMargins.bottom, cell.contentView.layoutMargins.right);

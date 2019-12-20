@@ -454,7 +454,7 @@
     cell.textLabel.text = repo.parsedRepo.label;
     cell.detailTextLabel.text = repo.rawRepo.repoURL;
     cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 10;
+    cell.imageView.layer.cornerRadius = 7.65;
     cell.imageView.image = repo.rawRepo.image;
     /*
     if(cell.progressView == nil) {
