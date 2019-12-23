@@ -8,10 +8,10 @@ package:
 	dpkg -b deb
 
 install:
-	cat deb.deb | ssh root@192.168.0.101 "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c uicache"
+	cat deb.deb | ssh root@$(LIMEIP) "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c uicache"
 
 remove:
-	ssh root@192.168.0.101 "rm -rf /Applications/Lime.app; su mobile -c uicache"
+	ssh root@$(LIMEIP) "rm -rf /Applications/Lime.app; su mobile -c uicache"
 
 clean:
 	xcodebuild clean
