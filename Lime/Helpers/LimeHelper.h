@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSMutableDictionary *installedPackagesDict;
 @property (nonatomic, retain) NSMutableArray *installedPackagesArray;
 @property (nonatomic, retain) UINavigationController *defaultNavigationController;
+@property (nonatomic, retain) NSString *addRepoURL;
 
 @end
 

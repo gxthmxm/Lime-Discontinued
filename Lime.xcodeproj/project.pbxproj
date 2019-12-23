@@ -36,6 +36,7 @@
 		4D7DC610238835BF006907C5 /* LMDepictionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DC60F238835BF006907C5 /* LMDepictionController.m */; };
 		4D9A9EEF23A93CF10046F16B /* LMSourceDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A9EEE23A93CF10046F16B /* LMSourceDownloader.m */; };
 		4D9ACD3023AD1EE800311038 /* LMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9ACD2F23AD1EE800311038 /* LMHomeController.m */; };
+		4D9ACD3323AD22B100311038 /* LMAddRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9ACD3223AD22B100311038 /* LMAddRepoController.m */; };
 		4DCEE9B92386F7EE00F8E499 /* LMPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEE9B82386F7EE00F8E499 /* LMPackageCell.m */; };
 		4DDBFC3C2383133700245D0C /* LimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBFC3B2383133700245D0C /* LimeHelper.m */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,8 @@
 		4D9A9EEE23A93CF10046F16B /* LMSourceDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMSourceDownloader.m; sourceTree = "<group>"; };
 		4D9ACD2C23AD1C2800311038 /* LMHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMHomeController.h; sourceTree = "<group>"; };
 		4D9ACD2F23AD1EE800311038 /* LMHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHomeController.m; sourceTree = "<group>"; };
+		4D9ACD3123AD22B100311038 /* LMAddRepoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMAddRepoController.h; sourceTree = "<group>"; };
+		4D9ACD3223AD22B100311038 /* LMAddRepoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMAddRepoController.m; sourceTree = "<group>"; };
 		4DCEE9B72386F7EE00F8E499 /* LMPackageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMPackageCell.h; sourceTree = "<group>"; };
 		4DCEE9B82386F7EE00F8E499 /* LMPackageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMPackageCell.m; sourceTree = "<group>"; };
 		4DDBFC3A2383133700245D0C /* LimeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimeHelper.h; sourceTree = "<group>"; };
@@ -121,6 +124,8 @@
 			children = (
 				4D9ACD2C23AD1C2800311038 /* LMHomeController.h */,
 				4D9ACD2F23AD1EE800311038 /* LMHomeController.m */,
+				4D9ACD3123AD22B100311038 /* LMAddRepoController.h */,
+				4D9ACD3223AD22B100311038 /* LMAddRepoController.m */,
 				4D54C0B723844032002F8394 /* LMInstalledPackagesController.h */,
 				4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */,
 				4D7DC60E238835BF006907C5 /* LMDepictionController.h */,
@@ -329,6 +334,7 @@
 				4D4A547B238C4F5300EF7FA0 /* UIImageAverageColorAddition.m in Sources */,
 				4D7D6B1E239588900027D101 /* LMQueueAction.m in Sources */,
 				4D7D6B152395800E0027D101 /* LMQueueController.m in Sources */,
+				4D9ACD3323AD22B100311038 /* LMAddRepoController.m in Sources */,
 				4D7CA4F0238FFA130014486C /* LMViewSourcePackagesController.m in Sources */,
 				4D5C826723A91C8700E6E27E /* LMParsedRepo.m in Sources */,
 				4DCEE9B92386F7EE00F8E499 /* LMPackageCell.m in Sources */,

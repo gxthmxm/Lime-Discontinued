@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain, nullable) NSMutableArray *addRepoTasks;
 @property (nonatomic, retain, nullable) LMRepo *addRepo;
 
+@property (nonatomic, retain) NSString *addRepoURL;
+
 @end
 
 NS_ASSUME_NONNULL_END
