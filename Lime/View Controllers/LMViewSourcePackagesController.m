@@ -17,11 +17,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.repo.parsedRepo.label;
+    
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    self.topProgressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+    [navBar addSubview:self.topProgressView];
+    self.topProgressView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.topProgressView.widthAnchor constraintEqualToAnchor:navBar.widthAnchor constant:0].active = YES;
+    [self.topProgressView.topAnchor constraintEqualToAnchor:navBar.bottomAnchor constant:-2.5].active = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+}
+
+- (IBAction)refreshSource:(id)sender {
+    self.navigationController.navigationBar.userInteractionEnabled = NO;
+    [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.userInteractionEnabled = NO;
+    }];
+    [LMSourceManager.sharedInstance refreshSource:self.repo viewSourceController:self completionHandler:^{
+        [self.topProgressView setProgress:0];
+        [self.tableView reloadData];
+        self.navigationController.navigationBar.userInteractionEnabled = YES;
+        [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.userInteractionEnabled = YES;
+        }];
+        self.title = self.repo.parsedRepo.label;
+    }];
 }
 
 #pragma mark - Table view data source

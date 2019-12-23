@@ -11,12 +11,14 @@
 #import "../UI Elements/LMPackageCell.h"
 #import "../Helpers/LimeHelper.h"
 #import "LMDepictionController.h"
+#import "../Helpers/LMSourceManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LMViewSourcePackagesController : UITableViewController
 
 @property (nonatomic, retain) LMRepo *repo;
+@property (nonatomic, retain) UIProgressView *topProgressView;
 
 @end
 

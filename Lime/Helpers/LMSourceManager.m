@@ -119,6 +119,42 @@
     completion();
 }
 
+-(void)parseRepo:(LMRepo *)repo completionHandler:(void (^)(void))completion {
+    if ([NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.packagesPath] && [NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.releasePath]) {
+        NSLog(@"[SourceManager] Parsing %@", repo.rawRepo.repoURL);
+        repo = [LMRepoParser parseRepo:repo];
+        LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:repo.rawRepo.packagesPath];
+        repo.packages = parser.packages;
+        int index;
+        [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            LMRepo *newRepo = obj;
+            if (newRepo.rawRepo.packagesPath == repo.rawRepo.packagesPath) {
+                idx = idx;
+            }
+        }];
+        if (index) [self.sources replaceObjectAtIndex:index withObject:repo];
+        else [self.sources addObject:repo];
+    }
+    completion();
+}
+
+-(void)refreshSource:(LMRepo *)repo viewSourceController:(LMViewSourcePackagesController *)viewSrcController completionHandler:(void (^)(void))completion {
+    NSLog(@"[SourceManager] Downloading %@", repo.rawRepo.repoURL);
+    LMSourceDownloader *sourceDL = [[LMSourceDownloader alloc] initWithRepo:repo];
+    if (viewSrcController) sourceDL.viewSourceController = viewSrcController;
+    [sourceDL downloadRepoAndIcon:YES completionHandler:^{
+        [self parseSourcesAndDownloadMissing:NO completionHandler:^{
+            NSLog(@"[SourceManager] Done refreshing source: %@", repo.rawRepo.repoURL);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion();
+                if (viewSrcController) {
+                    [self.sourceController.topProgressView setProgress:0];
+                }
+            });
+        }];
+    }];
+}
+
 -(void)refreshSourcesCompletionHandler:(void (^)(void))completion {
     self.sources = [NSMutableArray new];
     NSLog(@"[SourceManager] Refreshing sources...");

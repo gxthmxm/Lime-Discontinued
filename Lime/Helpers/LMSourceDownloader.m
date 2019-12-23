@@ -38,6 +38,12 @@
                         [self.cell.progressView setProgress:progress animated:YES];
                     });
                 }
+                if (self.viewSourceController) {
+                    progress += 1 / (float)tasks;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.viewSourceController.topProgressView setProgress:progress animated:YES];
+                    });
+                }
                 [NSFileManager.defaultManager removeItemAtPath:self.repo.rawRepo.releasePath error:nil];
                 [[NSFileManager defaultManager] moveItemAtPath:[location.absoluteString stringByReplacingOccurrencesOfString:@"file://" withString:@""] toPath:self.repo.rawRepo.releasePath error:nil];
                 NSLog(@"[SourceManager] Downloaded %@ to %@", self.repo.rawRepo.releaseURL, self.repo.rawRepo.releasePath);
@@ -53,6 +59,12 @@
                     progress += 1 / (float)tasks;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.cell.progressView setProgress:progress animated:YES];
+                    });
+                }
+                if (self.viewSourceController) {
+                    progress += 1 / (float)tasks;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.viewSourceController.topProgressView setProgress:progress animated:YES];
                     });
                 }
                 [NSFileManager.defaultManager removeItemAtPath:self.repo.rawRepo.packagesPath error:nil];
@@ -73,6 +85,12 @@
             progress += 1 / (float)tasks;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.cell.progressView setProgress:progress animated:YES];
+            });
+        }
+        if (self.viewSourceController) {
+            progress += 1 / (float)tasks;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.viewSourceController.topProgressView setProgress:progress animated:YES];
             });
         }
         NSMutableURLRequest *iconRequest = [self mutableURLRequestWithHeadersWithURLString:self.repo.rawRepo.imageURL];

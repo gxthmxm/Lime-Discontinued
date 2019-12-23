@@ -12,15 +12,18 @@
 #import "LMDeviceInfo.h"
 #import <bzlib.h>
 #import "../View Controllers/LMSourcesController.h"
+#import "../View Controllers/LMViewSourcePackagesController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class LMSourcesController;
+@class LMViewSourcePackagesController;
 
 @interface LMSourceDownloader : NSObject <NSURLSessionDownloadDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
 
 @property (nonatomic, retain) LMRepo *repo;
 @property (nonatomic, retain) LMSourcesController *sourceController;
+@property (nonatomic, retain) LMViewSourcePackagesController *viewSourceController;
 @property (nonatomic, retain) LMSourceCell *cell;
 @property (nonatomic) NSMutableData *dataDowloaded;
 @property (nonatomic) float totalExpectedLength;

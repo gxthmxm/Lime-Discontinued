@@ -197,8 +197,8 @@
 				4D3EBB5D23969745003450DA /* NSTask.h */,
 				4D4A5479238C4F5300EF7FA0 /* UIImageAverageColorAddition.h */,
 				4D4A547A238C4F5300EF7FA0 /* UIImageAverageColorAddition.m */,
-				4D7D6B1F239589CE0027D101 /* NSArray+Random.h */,
 				4D7D6B20239589CE0027D101 /* NSArray+Random.m */,
+				4D7D6B1F239589CE0027D101 /* NSArray+Random.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";

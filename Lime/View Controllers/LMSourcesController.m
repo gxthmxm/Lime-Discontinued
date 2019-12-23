@@ -481,21 +481,4 @@
     }
 }
 
--(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
-    [super dismissViewControllerAnimated:flag completion:completion];
-    if (self.addRepoURL) {
-        if (![[self.addRepoURL substringFromIndex:self.addRepoURL.length - 1] isEqualToString:@"/"]) self.addRepoURL = [self.addRepoURL stringByAppendingString:@"/"];
-        NSArray *components = [self.addRepoURL componentsSeparatedByString:@" "];
-        if (components.count == 1) self.addRepoURL = [components firstObject];
-        if (components.count == 2) self.addRepoURL = [NSString stringWithFormat:@"%@ %@", [components firstObject], [components objectAtIndex:1]];
-        if (components.count == 3) self.addRepoURL = [NSString stringWithFormat:@"%@ %@ %@", [components firstObject], [components objectAtIndex:1], [components objectAtIndex:2]];
-        if (![self.addRepoURL containsString:@"https://"] && ![self.addRepoURL containsString:@"http://"]) self.addRepoURL = [@"https://" stringByAppendingString:self.addRepoURL];
-        self.addRepoURL = [@"deb " stringByAppendingString:self.addRepoURL];
-        NSString *sourcesList = [NSString stringWithContentsOfFile:[LimeHelper sourcesPath] encoding:NSUTF8StringEncoding error:nil];
-        NSMutableArray *listLines = [[sourcesList componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] mutableCopy];
-        if (![listLines containsObject:self.addRepoURL]) [sourcesList stringByAppendingFormat:@"\n%@", self.addRepoURL];
-        [sourcesList writeToFile:[LimeHelper sourcesPath] atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    }
-}
-
 @end

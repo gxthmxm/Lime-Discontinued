@@ -17,11 +17,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class LMSourcesController;
+@class LMViewSourcePackagesController;
 
 @interface LMSourceManager : NSObject
 
 + (id)sharedInstance;
 -(void)refreshSourcesCompletionHandler:(void (^)(void))completion;
+-(void)refreshSource:(LMRepo *)repo viewSourceController:(LMViewSourcePackagesController *)viewSrcController completionHandler:(void (^)(void))completion;
 
 @property (nonatomic, strong) NSMutableArray *sources;
 @property (nonatomic, strong) LMSourcesController *sourceController;
