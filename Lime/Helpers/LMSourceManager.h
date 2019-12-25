@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LMSourceManager : NSObject
 
-+ (id)sharedInstance;
++ (LMSourceManager *)sharedInstance;
 -(void)refreshSourcesCompletionHandler:(void (^)(void))completion;
 -(void)refreshSource:(LMRepo *)repo viewSourceController:(LMViewSourcePackagesController *)viewSrcController completionHandler:(void (^)(void))completion;
 

@@ -10,7 +10,7 @@
 
 @implementation LMSourceManager
 
-+ (id)sharedInstance {
++ (LMSourceManager *)sharedInstance {
     static LMSourceManager *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{ instance = [self new]; });

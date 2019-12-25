@@ -33,7 +33,9 @@
     [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.userInteractionEnabled = NO;
     }];
+    NSDate *started = [NSDate date];
     [LMSourceManager.sharedInstance refreshSourcesCompletionHandler:^{
+        NSLog(@"[SourceManager] %lu sources refreshed in %f seconds", (unsigned long)LMSourceManager.sharedInstance.sources.count, [[NSDate date] timeIntervalSinceDate:started]);
         [self.tableView reloadData];
         self.navigationController.navigationBar.userInteractionEnabled = YES;
         [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
