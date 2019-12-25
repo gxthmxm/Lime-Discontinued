@@ -278,10 +278,24 @@
         UIAlertAction* removeAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
             LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:1];
             [LMQueue addQueueAction:queueAction];
+            UIAlertView *alert = [[UIAlertView alloc]
+            initWithTitle:@"Remove"
+            message:@"Added to queue!"
+            delegate:nil
+            cancelButtonTitle:@"Close"
+            otherButtonTitles:nil];
+            [alert show];
         }];
         UIAlertAction* reinstallAction = [UIAlertAction actionWithTitle:@"Reinstall" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:2];
             [LMQueue addQueueAction:queueAction];
+            UIAlertView *alert = [[UIAlertView alloc]
+            initWithTitle:@"Reinstall"
+            message:@"Added to queue!"
+            delegate:nil
+            cancelButtonTitle:@"Close"
+            otherButtonTitles:nil];
+            [alert show];
         }];
         
         UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel
@@ -294,6 +308,13 @@
     } else {
         LMQueueAction *queueAction = [[LMQueueAction alloc] initWithPackage:self.package action:0];
         [LMQueue addQueueAction:queueAction];
+        UIAlertView *alert = [[UIAlertView alloc]
+                   initWithTitle:@"Install"
+                   message:@"Added to queue!"
+                   delegate:nil
+                   cancelButtonTitle:@"Close"
+                   otherButtonTitles:nil];
+                   [alert show];
     }
 }
 
