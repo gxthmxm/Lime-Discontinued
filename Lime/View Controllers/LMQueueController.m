@@ -150,20 +150,11 @@
     for (NSData *encodedAction in [LMQueue queueActions]) {
         LMQueueAction *decodedAction = [NSKeyedUnarchiver unarchiveObjectWithData:encodedAction];
         if (decodedAction.action == 0) {
-            [LimeHelper runAPTWithArguments:[NSArray arrayWithObjects:@"-y", @"install", decodedAction.package.identifier, nil] textView:self.logView completionHandler:^(NSTask * _Nonnull task) {
-                completedTasks++;
-                if (completedTasks == tasks) [self finished];
-            }];
+            [LimeHelper runLemonWithArguments:@[] textView:self.logView completionHandler:nil];
         } else if (decodedAction.action == 1) {
-            [LimeHelper runAPTWithArguments:[NSArray arrayWithObjects:@"-y", @"remove", decodedAction.package.identifier, nil] textView:self.logView completionHandler:^(NSTask * _Nonnull task) {
-                completedTasks++;
-                if (completedTasks == tasks) [self finished];
-            }];
+            [LimeHelper runLemonWithArguments:@[] textView:self.logView completionHandler:nil];
         } else if (decodedAction.action == 2) {
-            [LimeHelper runAPTWithArguments:[NSArray arrayWithObjects:@"-y", @"reinstall", decodedAction.package.identifier, nil] textView:self.logView completionHandler:^(NSTask * _Nonnull task) {
-                completedTasks++;
-                if (completedTasks == tasks) [self finished];
-            }];
+            [LimeHelper runLemonWithArguments:@[] textView:self.logView completionHandler:nil];
         }
     };
     NSLog(@"[Queue] DONE!");

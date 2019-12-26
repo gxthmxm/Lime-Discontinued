@@ -74,7 +74,7 @@ extern char **environ;
     return self;
 }
 
-+(void)runLemonWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(void(^)(NSTask *task))completionHandler {
++(void)runLemonWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(nullable void(^)(NSTask *task))completionHandler {
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:@"/usr/bin/lemon"];
     [task setArguments:args];
