@@ -24,6 +24,8 @@
 		4D54C0B22384376E002F8394 /* LMRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0AD2384376E002F8394 /* LMRepo.m */; };
 		4D54C0B6238437CC002F8394 /* status in Resources */ = {isa = PBXBuildFile; fileRef = 4D54C0B5238437CC002F8394 /* status */; };
 		4D54C0B923844032002F8394 /* LMInstalledPackagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */; };
+		4D56902423B56729007F7FE1 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D56902323B56729007F7FE1 /* AFNetworking.framework */; };
+		4D56902523B56729007F7FE1 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D56902323B56729007F7FE1 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4D5C826723A91C8700E6E27E /* LMParsedRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C826623A91C8700E6E27E /* LMParsedRepo.m */; };
 		4D5C826A23A91CA800E6E27E /* LMRawRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C826923A91CA800E6E27E /* LMRawRepo.m */; };
 		4D6C9B5A23902B5A004137A5 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6C9B5923902B5A004137A5 /* libbz2.1.0.tbd */; };
@@ -41,6 +43,20 @@
 		4DCEE9B92386F7EE00F8E499 /* LMPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEE9B82386F7EE00F8E499 /* LMPackageCell.m */; };
 		4DDBFC3C2383133700245D0C /* LimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBFC3B2383133700245D0C /* LimeHelper.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4D56902623B56729007F7FE1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4D56902523B56729007F7FE1 /* AFNetworking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4D09A23F23A14B360002D933 /* LMSourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSourceManager.h; sourceTree = "<group>"; };
@@ -76,6 +92,7 @@
 		4D54C0B5238437CC002F8394 /* status */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status; sourceTree = "<group>"; };
 		4D54C0B723844032002F8394 /* LMInstalledPackagesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMInstalledPackagesController.h; sourceTree = "<group>"; };
 		4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMInstalledPackagesController.m; sourceTree = "<group>"; };
+		4D56902323B56729007F7FE1 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		4D5C826523A91C8700E6E27E /* LMParsedRepo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMParsedRepo.h; sourceTree = "<group>"; };
 		4D5C826623A91C8700E6E27E /* LMParsedRepo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMParsedRepo.m; sourceTree = "<group>"; };
 		4D5C826823A91CA800E6E27E /* LMRawRepo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMRawRepo.h; sourceTree = "<group>"; };
@@ -115,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D6C9B5A23902B5A004137A5 /* libbz2.1.0.tbd in Frameworks */,
+				4D56902423B56729007F7FE1 /* AFNetworking.framework in Frameworks */,
 				4D4A5478238C462B00EF7FA0 /* libMobileGestalt.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +229,7 @@
 		4D54C097238434D4002F8394 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D56902323B56729007F7FE1 /* AFNetworking.framework */,
 				4D6C9B5923902B5A004137A5 /* libbz2.1.0.tbd */,
 				4D4A5477238C462B00EF7FA0 /* libMobileGestalt.tbd */,
 			);
@@ -274,6 +293,7 @@
 				4D2D53D223802CD500A7076C /* Sources */,
 				4D2D53D323802CD500A7076C /* Frameworks */,
 				4D2D53D423802CD500A7076C /* Resources */,
+				4D56902623B56729007F7FE1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -506,6 +526,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 9859KQSN8L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Lime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -532,6 +556,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 9859KQSN8L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Lime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
