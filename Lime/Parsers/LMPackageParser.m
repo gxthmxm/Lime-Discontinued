@@ -11,10 +11,11 @@
 
 @implementation LMPackageParser
 
-- (instancetype)initWithFilePath:(NSString *)filePath {
+- (instancetype)initWithFilePath:(NSString *)filePath repository:(nullable LMRepo *)repo {
     self = [super init];
     
     LMPackage *package = [[LMPackage alloc] init];
+    if (repo) package.repository = repo;
     FILE *f = fopen([filePath UTF8String], "r");
     char str[1024];
     NSMutableArray *mutablePackages = [[NSMutableArray alloc] init];
@@ -47,6 +48,7 @@
             // reset it
             package = nil;
             package = [[LMPackage alloc] init];
+            if (repo) package.repository = repo;
             lastKey = nil;
             //break;
         } else {
@@ -60,7 +62,7 @@
             else if([line containsString:@": "]) {
                 NSMutableArray *lineArray = [line componentsSeparatedByString:@": "].mutableCopy; // Separate the line into the key and the value
                 // initialize the key as the lowercase dpkg key (lowercase because see next comment)
-                NSString *key = [[lineArray objectAtIndex:0] lowercaseString];
+                NSString *key = [[lineArray firstObject] lowercaseString];
                 // LMPackage has custom property names (e.g. description would be desc, dependencies would be depends etc.) so if there is a custom property name set for the current key in our dictionary we change the key
                 if([customPropertiesDict objectForKey:key]) key = [customPropertiesDict objectForKey:key];
                 // the value (most useless comment in the world)

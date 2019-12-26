@@ -107,6 +107,7 @@
          self.depictionView.navigationDelegate = self;
          [_depictionView loadRequest:nsrequest];
          self.depictionView.scrollView.delegate = self;
+        self.depictionView.scrollView.scrollEnabled = NO;
          if (!(self.package.depictionURL) || !(self.package.depictionURL.length > 0) || [self.package.depictionURL isEqualToString:@""]) {
              self.progressView.alpha = 0;
          }
@@ -133,7 +134,8 @@
         [self.authorLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [self.authorLabel sizeToFit];
         self.authorLabel.frame = CGRectMake(self.authorLabel.frame.origin.x, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 3, self.authorLabel.frame.size.width, self.authorLabel.frame.size.height);
-        self.descriptionLabel.text = self.package.desc;
+        //self.descriptionLabel.text = self.package.desc;
+        self.descriptionLabel.text = self.package.debURL;
         [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [self.descriptionLabel sizeToFit];
         self.bigView.frame = CGRectMake(self.bigView.frame.origin.x, self.bannerView.frame.size.height - self.navbar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height, self.bigView.frame.size.width, self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 17);
@@ -192,7 +194,7 @@
         // Reviews
         NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.pixelomer.com/tweakDB/v1/info"]];
         [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:[[NSString stringWithFormat:@"{\"package\":\"%@\", \"package_version\":\"%@\", \"ios_version\":13.2.2, \"flags\":1}", self.package.identifier, self.package.version] dataUsingEncoding:NSUTF8StringEncoding]];
+        [urlRequest setHTTPBody:[[NSString stringWithFormat:@"{\"package\": \"%@\", \"package_version\": \"%@\", \"ios_version\": \"all\", \"flags\": 1}", self.package.identifier, self.package.version] dataUsingEncoding:NSUTF8StringEncoding]];
 
         NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;

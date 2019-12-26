@@ -32,13 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *sileoDepiction;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *installedSize;
-@property (nonatomic, strong) NSString *debURL;
 @property (nonatomic, strong) LMRepo *repository;
 @property (nonatomic) BOOL commercial;
 @property (nonatomic) BOOL ignoreUpgrades;
 @property (nonatomic) BOOL installed;
 @property (nonatomic) NSInteger possibleActions;
 @property (nonatomic, strong) NSData* installedDate;
+
+-(NSString *)debURL;
 
 @end
 

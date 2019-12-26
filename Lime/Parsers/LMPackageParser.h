@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "../Objects/LMPackage.h"
-#import "LMRepo.h"
+#import "../Objects/LMRepo.h"
 #import "LimeHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LMPackageParser : NSObject
 
-- (instancetype)initWithFilePath:(NSString *)filePath;
+- (instancetype)initWithFilePath:(NSString *)filePath repository:(nullable LMRepo *)repo;
 @property (nonatomic,retain) NSMutableArray *packages;
 
 @end

@@ -99,7 +99,7 @@
         if ([NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.packagesPath] && [NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.releasePath]) {
             NSLog(@"[SourceManager] Parsing %@", repo.rawRepo.repoURL);
             repo = [LMRepoParser parseRepo:repo];
-            LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:repo.rawRepo.packagesPath];
+            LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:repo.rawRepo.packagesPath repository:repo];
             repo.packages = parser.packages;
             [self.sources replaceObjectAtIndex:idx withObject:repo];
         } else {
@@ -109,7 +109,7 @@
                 [sourceDL downloadRepoAndIcon:![NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.imagePath] completionHandler:^{
                     NSLog(@"[SourceManager] Parsing %@", repo.rawRepo.repoURL);
                     repo = [LMRepoParser parseRepo:repo];
-                    LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:repo.rawRepo.packagesPath];
+                    LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:repo.rawRepo.packagesPath repository:repo];
                     repo.packages = parser.packages;
                     [self.sources replaceObjectAtIndex:idx withObject:repo];
                 }];
@@ -123,7 +123,7 @@
     if ([NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.packagesPath] && [NSFileManager.defaultManager fileExistsAtPath:repo.rawRepo.releasePath]) {
         NSLog(@"[SourceManager] Parsing %@", repo.rawRepo.repoURL);
         repo = [LMRepoParser parseRepo:repo];
-        LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:repo.rawRepo.packagesPath];
+        LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:repo.rawRepo.packagesPath repository:repo];
         repo.packages = parser.packages;
         int index;
         [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

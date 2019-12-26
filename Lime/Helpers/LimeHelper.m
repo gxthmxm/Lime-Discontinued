@@ -104,7 +104,7 @@ extern char **environ;
 
 -(void)getInstalledPackages {
     // Inits a parser on the dpkg status file
-    LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:[LimeHelper dpkgStatusLocation]];
+    LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:[LimeHelper dpkgStatusLocation] repository:nil];
     [parser.packages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         // Add all the packages to dictionaries
         LMPackage *pkg = obj;

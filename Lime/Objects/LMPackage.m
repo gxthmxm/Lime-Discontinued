@@ -33,7 +33,6 @@
     [aCoder encodeBool:self.ignoreUpgrades forKey:@"ignoreUpgrades"];
     [aCoder encodeBool:self.commercial forKey:@"commercial"];
     [aCoder encodeObject:self.repository forKey:@"repository"];
-    [aCoder encodeObject:self.debURL forKey:@"debURL"];
 }
 
 - (id)initWithCoder:(NSCoder *)aCoder {
@@ -61,9 +60,17 @@
         self.ignoreUpgrades = [aCoder decodeBoolForKey:@"ignoreUpgrades"];
         self.commercial = [aCoder decodeBoolForKey:@"commercial"];
         self.repository = [aCoder decodeObjectForKey:@"repository"];
-        self.debURL = [aCoder decodeObjectForKey:@"debURL"];
     }
     return self;
+}
+
+-(NSString *)debURL {
+    if ([self.filename containsString:@"http://"] || [self.filename containsString:@"https://"]) {
+        return self.filename;
+    } else {
+        if (![[self.repository.rawRepo.repoURL substringFromIndex:self.repository.rawRepo.repoURL.length - 1] isEqualToString:@"/"]) return [[self.repository.rawRepo.repoURL stringByAppendingString:@"/"] stringByAppendingString:self.filename];
+        else return [self.repository.rawRepo.repoURL stringByAppendingString:self.filename];
+    }
 }
 
 @end
