@@ -392,11 +392,11 @@
             <objects>
                 <viewController title="Depiction" id="3TB-hh-8WJ" customClass="LMDepictionController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5eq-cw-dQj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYv-qX-DhE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LbZ-rh-yb9">
@@ -496,8 +496,160 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SAr-Ue-ye7">
+                                        <rect key="frame" x="0.0" y="357" width="375" height="308"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4w8-nY-w2q">
+                                                <rect key="frame" x="20" y="10" width="335" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.80392156859999997" green="0.80784313730000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ratings &amp; Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTY-7B-fDq">
+                                                <rect key="frame" x="20" y="19" width="167" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfS-uM-Ybw">
+                                                <rect key="frame" x="0.0" y="50" width="375" height="74"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkt-nI-HSJ">
+                                                        <rect key="frame" x="20" y="-11" width="94" height="72"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="out of 5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJn-Tk-2bS">
+                                                        <rect key="frame" x="20" y="51.5" width="94" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="5Stars" translatesAutoresizingMaskIntoConstraints="NO" id="RNN-IL-KNm">
+                                                        <rect key="frame" x="137.5" y="3" width="43" height="7"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="4Stars" translatesAutoresizingMaskIntoConstraints="NO" id="cwe-kc-hPt">
+                                                        <rect key="frame" x="146.5" y="12" width="34" height="7"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3Stars" translatesAutoresizingMaskIntoConstraints="NO" id="Rr8-dI-GbL">
+                                                        <rect key="frame" x="155.5" y="21" width="25" height="7"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2Stars" translatesAutoresizingMaskIntoConstraints="NO" id="Klz-Ly-4eL">
+                                                        <rect key="frame" x="164.5" y="30" width="16" height="7"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1Star" translatesAutoresizingMaskIntoConstraints="NO" id="HY3-Vb-4w2">
+                                                        <rect key="frame" x="173.5" y="39" width="7" height="7"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.69892049999999994" translatesAutoresizingMaskIntoConstraints="NO" id="ChO-OB-F0d">
+                                                        <rect key="frame" x="191" y="5" width="164" height="2"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </progressView>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.19816990000000001" translatesAutoresizingMaskIntoConstraints="NO" id="1dT-62-A2y">
+                                                        <rect key="frame" x="191" y="14" width="164" height="2"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </progressView>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.059765510000000001" translatesAutoresizingMaskIntoConstraints="NO" id="dhp-9E-KEH">
+                                                        <rect key="frame" x="191" y="23" width="164" height="2"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </progressView>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.015620530000000001" translatesAutoresizingMaskIntoConstraints="NO" id="41j-Uv-uem">
+                                                        <rect key="frame" x="191" y="32" width="164" height="2"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </progressView>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.027523590000000001" translatesAutoresizingMaskIntoConstraints="NO" id="q70-8x-MHO">
+                                                        <rect key="frame" x="191" y="41" width="164" height="2"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="trackTintColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </progressView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="27976 Ratings" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEa-7s-fsB">
+                                                        <rect key="frame" x="191" y="52" width="164" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQm-qW-w8R">
+                                                <rect key="frame" x="310" y="16" width="45" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="See All"/>
+                                            </button>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3U-dT-RCa">
+                                                <rect key="frame" x="20" y="132" width="335" height="176"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lime Good!!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoH-qd-Dv8">
+                                                        <rect key="frame" x="20" y="12" width="241" height="15"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25 Dec" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20K-uY-3eN">
+                                                        <rect key="frame" x="269" y="12" width="48" height="15"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="5GoldStars" translatesAutoresizingMaskIntoConstraints="NO" id="mvq-H0-dWh">
+                                                        <rect key="frame" x="20" y="29" width="72" height="12"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="cool guy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehn-mo-FKu">
+                                                        <rect key="frame" x="100" y="30" width="216" height="14"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15H-PY-jOe" customClass="UITextViewFixed">
+                                                        <rect key="frame" x="20" y="54" width="297" height="110"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <string key="text">hey this is a cool guy speaking. I am be using lime for 2 weeks. Must say!, lime is very good and i enjoy. here take 5 stars bcz im cool guy. bye.</string>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YN5-CV-j1C">
+                                        <rect key="frame" x="20" y="352" width="335" height="3"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </progressView>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjN-em-Ek0">
-                                        <rect key="frame" x="0.0" y="358" width="375" height="235"/>
+                                        <rect key="frame" x="0.0" y="665" width="375" height="272"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kw0-ip-Aab">
@@ -522,10 +674,6 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YN5-CV-j1C">
-                                        <rect key="frame" x="20" y="352" width="335" height="3"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    </progressView>
                                 </subviews>
                             </scrollView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21X-Eo-Nzm">
@@ -543,23 +691,34 @@
                         <viewLayoutGuide key="safeArea" id="Amr-cN-QHS"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Ca7-6B-Dmi"/>
+                    <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="authorLabel" destination="6f0-FC-nIF" id="sKr-a6-dk7"/>
                         <outlet property="bannerView" destination="LbZ-rh-yb9" id="9lM-Hq-RvN"/>
                         <outlet property="bigView" destination="gHv-gN-z2o" id="eYr-2K-wka"/>
                         <outlet property="depictionTitleLabel" destination="ZA0-ii-qOA" id="1oX-au-476"/>
                         <outlet property="descriptionLabel" destination="qSN-fD-i6S" id="VSY-id-9I8"/>
+                        <outlet property="fiveStarProgressView" destination="ChO-OB-F0d" id="nrT-c7-H3q"/>
+                        <outlet property="fourStarProgressView" destination="1dT-62-A2y" id="G1n-uO-MOg"/>
                         <outlet property="getButton" destination="xdn-Ol-3lx" id="AYk-9k-z0R"/>
                         <outlet property="iconView" destination="JQ3-f0-T31" id="HH6-PF-dU1"/>
                         <outlet property="infoView" destination="wjN-em-Ek0" id="9jQ-RT-ycW"/>
                         <outlet property="informatonTitle" destination="BnW-E7-6yl" id="rNd-ld-Id9"/>
                         <outlet property="moreButton" destination="fSi-AE-sht" id="oG2-MM-FFb"/>
                         <outlet property="navbar" destination="21X-Eo-Nzm" id="RZ4-aS-JL9"/>
+                        <outlet property="oneStarProgressView" destination="q70-8x-MHO" id="GXU-4a-Naw"/>
                         <outlet property="progressView" destination="YN5-CV-j1C" id="EW6-mh-ef0"/>
+                        <outlet property="ratingsPossibleLabel" destination="OJn-Tk-2bS" id="OnW-c5-Ae3"/>
+                        <outlet property="ratingsScoreLabel" destination="fkt-nI-HSJ" id="BKD-yg-mEe"/>
+                        <outlet property="ratingsTitleLabel" destination="OTY-7B-fDq" id="mje-9K-50N"/>
+                        <outlet property="ratingsView" destination="SAr-Ue-ye7" id="UqR-xl-guL"/>
                         <outlet property="scrollView" destination="EYv-qX-DhE" id="84w-Re-PBp"/>
                         <outlet property="separator" destination="bRT-rN-U9r" id="8nY-EV-EN9"/>
                         <outlet property="separator2" destination="kw0-ip-Aab" id="lJU-du-RAa"/>
+                        <outlet property="threeStarProgressView" destination="dhp-9E-KEH" id="qwA-Hr-A2D"/>
                         <outlet property="titleLabel" destination="p5o-Yy-NdL" id="dTu-93-tHo"/>
+                        <outlet property="totalRatingsLabel" destination="aEa-7s-fsB" id="6dL-ky-wOS"/>
+                        <outlet property="twoStarProgressView" destination="41j-Uv-uem" id="6Pz-Cn-vZl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h5q-H1-SxD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -569,7 +728,7 @@
                     <color key="backgroundColor" red="0.26341973590000001" green="0.25507364919999997" blue="0.32870032939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
             </objects>
-            <point key="canvasLocation" x="1760.8" y="419.64017991004499"/>
+            <point key="canvasLocation" x="1760.8" y="793.40329835082468"/>
         </scene>
         <!--Depiction Information Table View-->
         <scene sceneID="NgC-2m-B7y">
@@ -578,7 +737,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X2u-aD-zP8">
                         <rect key="frame" x="0.0" y="0.0" width="365" height="222"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.92156862750000001" green="0.92549019610000005" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="pLm-CY-ulp">
@@ -1005,6 +1163,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1Star" width="14" height="14"/>
+        <image name="2Stars" width="32" height="14"/>
+        <image name="3Stars" width="50" height="14"/>
+        <image name="4Stars" width="68" height="14"/>
+        <image name="5GoldStars" width="144" height="24"/>
+        <image name="5Stars" width="86" height="14"/>
         <image name="Addons" width="70" height="70"/>
         <image name="Check" width="16" height="16"/>
         <image name="Home" width="28" height="24"/>

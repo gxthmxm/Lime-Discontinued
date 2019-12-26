@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D09A24123A14B360002D933 /* LMSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D09A24023A14B360002D933 /* LMSourceManager.m */; };
+		4D2860D923B39F1F001C8882 /* UITextViewFixed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2860D823B39F1F001C8882 /* UITextViewFixed.m */; };
 		4D2D53DB23802CD500A7076C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2D53DA23802CD500A7076C /* AppDelegate.m */; };
 		4D2D53E423802CD500A7076C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D53E223802CD500A7076C /* Main.storyboard */; };
 		4D2D53E623802CD500A7076C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D53E523802CD500A7076C /* Assets.xcassets */; };
@@ -44,6 +45,8 @@
 /* Begin PBXFileReference section */
 		4D09A23F23A14B360002D933 /* LMSourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSourceManager.h; sourceTree = "<group>"; };
 		4D09A24023A14B360002D933 /* LMSourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMSourceManager.m; sourceTree = "<group>"; };
+		4D2860D723B39F1F001C8882 /* UITextViewFixed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITextViewFixed.h; sourceTree = "<group>"; };
+		4D2860D823B39F1F001C8882 /* UITextViewFixed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITextViewFixed.m; sourceTree = "<group>"; };
 		4D2D53D623802CD500A7076C /* Lime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2D53D923802CD500A7076C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4D2D53DA23802CD500A7076C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				4DCEE9B82386F7EE00F8E499 /* LMPackageCell.m */,
 				4D7CA4F1238FFB040014486C /* LMSourceCell.h */,
 				4D7CA4F2238FFB040014486C /* LMSourceCell.m */,
+				4D2860D723B39F1F001C8882 /* UITextViewFixed.h */,
+				4D2860D823B39F1F001C8882 /* UITextViewFixed.m */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				4D7D6B182395810C0027D101 /* LMQueue.m in Sources */,
 				4D54C0B12384376E002F8394 /* LMPackage.m in Sources */,
 				4D54C09423843328002F8394 /* LMDeviceInfo.m in Sources */,
+				4D2860D923B39F1F001C8882 /* UITextViewFixed.m in Sources */,
 				4D54C0A523843739002F8394 /* LMPackageParser.m in Sources */,
 				4D09A24123A14B360002D933 /* LMSourceManager.m in Sources */,
 				4D54C0B22384376E002F8394 /* LMRepo.m in Sources */,

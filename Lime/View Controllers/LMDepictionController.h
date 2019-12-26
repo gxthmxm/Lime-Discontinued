@@ -31,6 +31,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *moreButton;
 @property (weak, nonatomic) IBOutlet UIView *separator;
 
+@property (weak, nonatomic) IBOutlet UIView *ratingsView;
+@property (weak, nonatomic) IBOutlet UILabel *ratingsTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingsScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingsPossibleLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *fiveStarProgressView;
+@property (weak, nonatomic) IBOutlet UIProgressView *fourStarProgressView;
+@property (weak, nonatomic) IBOutlet UIProgressView *threeStarProgressView;
+@property (weak, nonatomic) IBOutlet UIProgressView *twoStarProgressView;
+@property (weak, nonatomic) IBOutlet UIProgressView *oneStarProgressView;
+@property (weak, nonatomic) IBOutlet UILabel *totalRatingsLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *separator2;
 @property (weak, nonatomic) IBOutlet UILabel *depictionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;

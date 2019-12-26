@@ -149,7 +149,7 @@
         
         // Navigation bar stuff
         
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height - 23);
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.infoView.frame.origin.y + self.infoView.frame.size.height + 16);
         
         UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,28,28)];
         iv.image = self.iconView.image;
@@ -188,6 +188,23 @@
                 self.finalSize = @"0";
             }
         }
+        
+        // Reviews
+        NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.pixelomer.com/tweakDB/v1/info"]];
+        [urlRequest setHTTPMethod:@"POST"];
+        [urlRequest setHTTPBody:[[NSString stringWithFormat:@"{\"package\":\"%@\", \"package_version\":\"%@\", \"ios_version\":13.2.2, \"flags\":1}", self.package.identifier, self.package.version] dataUsingEncoding:NSUTF8StringEncoding]];
+
+        NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            if(httpResponse.statusCode == 200) {
+                NSError *parseError = nil;
+                NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+                NSLog(@"[Reviews] %@", responseDictionary);
+            } else {
+                NSLog(@"[Reviews] Error: %@", [NSString.alloc initWithData:data encoding:NSUTF8StringEncoding]);
+            }
+        }];
+        [dataTask resume];
     }
 }
 
@@ -209,7 +226,8 @@
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 self.depictionView.frame = CGRectMake(self.depictionView.frame.origin.x, self.depictionView.frame.origin.y, self.scrollView.frame.size.width, self.depictionView.scrollView.contentSize.height);
                 NSLog(@"Changed Frame");
-                self.infoView.frame = CGRectMake(0, self.depictionView.frame.origin.y + self.depictionView.frame.size.height, self.infoView.frame.size.width, self.infoView.frame.size.height);
+                self.ratingsView.frame = CGRectMake(0, self.depictionView.frame.origin.y + self.depictionView.frame.size.height, self.ratingsView.frame.size.width, self.ratingsView.frame.size.height);
+                self.infoView.frame = CGRectMake(0, self.ratingsView.frame.origin.y + self.ratingsView.frame.size.height, self.infoView.frame.size.width, self.infoView.frame.size.height);
             } completion:^(BOOL finished) {
                 
                 float bottom = self.infoView.frame.origin.y + self.infoView.frame.size.height + 62;
