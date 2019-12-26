@@ -74,9 +74,9 @@ extern char **environ;
     return self;
 }
 
-+(void)runAPTWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(void(^)(NSTask *task))completionHandler {
++(void)runLemonWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(void(^)(NSTask *task))completionHandler {
     NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:@"/usr/bin/LimeHelper"];
+    [task setLaunchPath:@"/usr/bin/lemon"];
     [task setArguments:args];
     task.terminationHandler = ^(NSTask *task){
         completionHandler(task);
@@ -90,15 +90,17 @@ extern char **environ;
     task.standardOutput = stdoutPipe;
     //NSPipe *stderrPipe = [NSPipe pipe];
     task.standardError = stdoutPipe;
-    [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
-        NSData *data = [file availableData];
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            textView.text = [textView.text stringByAppendingString:string];
-            [textView scrollRangeToVisible:NSMakeRange(textView.text.length, 0)];
-        });
-    }];
+    if (textView) {
+        [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
+            NSData *data = [file availableData];
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                textView.text = [textView.text stringByAppendingString:string];
+                [textView scrollRangeToVisible:NSMakeRange(textView.text.length, 0)];
+            });
+        }];
+    }
     [task launch];
 }
 

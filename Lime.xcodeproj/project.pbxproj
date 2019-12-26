@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		421397D07242CC511A203513 /* libPods-Lime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2428C41288C8B40F3979EBFD /* libPods-Lime.a */; };
 		4D09A24123A14B360002D933 /* LMSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D09A24023A14B360002D933 /* LMSourceManager.m */; };
 		4D2860D923B39F1F001C8882 /* UITextViewFixed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2860D823B39F1F001C8882 /* UITextViewFixed.m */; };
 		4D2D53DB23802CD500A7076C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2D53DA23802CD500A7076C /* AppDelegate.m */; };
@@ -24,8 +25,8 @@
 		4D54C0B22384376E002F8394 /* LMRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0AD2384376E002F8394 /* LMRepo.m */; };
 		4D54C0B6238437CC002F8394 /* status in Resources */ = {isa = PBXBuildFile; fileRef = 4D54C0B5238437CC002F8394 /* status */; };
 		4D54C0B923844032002F8394 /* LMInstalledPackagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D54C0B823844032002F8394 /* LMInstalledPackagesController.m */; };
-		4D56902423B56729007F7FE1 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D56902323B56729007F7FE1 /* AFNetworking.framework */; };
-		4D56902523B56729007F7FE1 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D56902323B56729007F7FE1 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4D56902723B56C87007F7FE1 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D56902323B56729007F7FE1 /* AFNetworking.framework */; };
+		4D56902823B56C87007F7FE1 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D56902323B56729007F7FE1 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4D5C826723A91C8700E6E27E /* LMParsedRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C826623A91C8700E6E27E /* LMParsedRepo.m */; };
 		4D5C826A23A91CA800E6E27E /* LMRawRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C826923A91CA800E6E27E /* LMRawRepo.m */; };
 		4D6C9B5A23902B5A004137A5 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6C9B5923902B5A004137A5 /* libbz2.1.0.tbd */; };
@@ -45,13 +46,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4D56902623B56729007F7FE1 /* Embed Frameworks */ = {
+		4D56902923B56C87007F7FE1 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4D56902523B56729007F7FE1 /* AFNetworking.framework in Embed Frameworks */,
+				4D56902823B56C87007F7FE1 /* AFNetworking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2428C41288C8B40F3979EBFD /* libPods-Lime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lime.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D09A23F23A14B360002D933 /* LMSourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSourceManager.h; sourceTree = "<group>"; };
 		4D09A24023A14B360002D933 /* LMSourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMSourceManager.m; sourceTree = "<group>"; };
 		4D2860D723B39F1F001C8882 /* UITextViewFixed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITextViewFixed.h; sourceTree = "<group>"; };
@@ -124,6 +126,8 @@
 		4DCEE9B82386F7EE00F8E499 /* LMPackageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMPackageCell.m; sourceTree = "<group>"; };
 		4DDBFC3A2383133700245D0C /* LimeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimeHelper.h; sourceTree = "<group>"; };
 		4DDBFC3B2383133700245D0C /* LimeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LimeHelper.m; sourceTree = "<group>"; };
+		8955971859A8ACE9FE82125A /* Pods-Lime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lime.release.xcconfig"; path = "Target Support Files/Pods-Lime/Pods-Lime.release.xcconfig"; sourceTree = "<group>"; };
+		C7FBBE3F94B6BC1EBDAA11A7 /* Pods-Lime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lime.debug.xcconfig"; path = "Target Support Files/Pods-Lime/Pods-Lime.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +136,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D6C9B5A23902B5A004137A5 /* libbz2.1.0.tbd in Frameworks */,
-				4D56902423B56729007F7FE1 /* AFNetworking.framework in Frameworks */,
+				4D56902723B56C87007F7FE1 /* AFNetworking.framework in Frameworks */,
 				4D4A5478238C462B00EF7FA0 /* libMobileGestalt.tbd in Frameworks */,
+				421397D07242CC511A203513 /* libPods-Lime.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +185,7 @@
 				4D2D53D823802CD500A7076C /* Lime */,
 				4D2D53D723802CD500A7076C /* Products */,
 				4D54C097238434D4002F8394 /* Frameworks */,
+				BA51CE2947D42D2D300DFEEE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,6 +238,7 @@
 				4D56902323B56729007F7FE1 /* AFNetworking.framework */,
 				4D6C9B5923902B5A004137A5 /* libbz2.1.0.tbd */,
 				4D4A5477238C462B00EF7FA0 /* libMobileGestalt.tbd */,
+				2428C41288C8B40F3979EBFD /* libPods-Lime.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,6 +290,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		BA51CE2947D42D2D300DFEEE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7FBBE3F94B6BC1EBDAA11A7 /* Pods-Lime.debug.xcconfig */,
+				8955971859A8ACE9FE82125A /* Pods-Lime.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,10 +306,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D2D53EF23802CD600A7076C /* Build configuration list for PBXNativeTarget "Lime" */;
 			buildPhases = (
+				30601ED3A97E44FA6DEE0759 /* [CP] Check Pods Manifest.lock */,
 				4D2D53D223802CD500A7076C /* Sources */,
 				4D2D53D323802CD500A7076C /* Frameworks */,
 				4D2D53D423802CD500A7076C /* Resources */,
-				4D56902623B56729007F7FE1 /* Embed Frameworks */,
+				4D56902923B56C87007F7FE1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,6 +366,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30601ED3A97E44FA6DEE0759 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lime-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4D2D53D223802CD500A7076C /* Sources */ = {
@@ -519,6 +561,7 @@
 		};
 		4D2D53F023802CD600A7076C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7FBBE3F94B6BC1EBDAA11A7 /* Pods-Lime.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lime/Lime.entitlements;
@@ -549,6 +592,7 @@
 		};
 		4D2D53F123802CD600A7076C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8955971859A8ACE9FE82125A /* Pods-Lime.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lime/Lime.entitlements;
