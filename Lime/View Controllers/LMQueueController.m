@@ -127,11 +127,12 @@
         self.actionButton.alpha = 0;
         self.actionButton.enabled = NO;
         
+        self.arrowIMG.alpha = 0;
         
         self.effectView.frame = self.view.frame;
         self.effectView.layer.cornerRadius = 0;
         
-        self.logView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - self.logView.frame.size.width / 2, self.logView.frame.origin.y, self.logView.frame.size.width, self.logView.frame.size.height);
+        self.logView.frame = CGRectMake(16, 16, self.view.frame.size.width - 32, self.view.frame.size.height - 16);
         
         self.queueTable.frame = CGRectMake(0 - [UIScreen mainScreen].bounds.size.width, self.queueTable.frame.origin.y, self.queueTable.frame.size.width, self.queueTable.frame.size.height);
         [self.actionButton setTitle:@"Next" forState:UIControlStateNormal];
@@ -147,16 +148,23 @@
     
     // 0 install 1 remove 2 reinstall
     
-    for (NSData *encodedAction in [LMQueue queueActions]) {
+    /*for (NSData *encodedAction in [LMQueue queueActions]) {
         LMQueueAction *decodedAction = [NSKeyedUnarchiver unarchiveObjectWithData:encodedAction];
         if (decodedAction.action == 0) {
-            [LimeHelper runLemonWithArguments:@[] textView:self.logView completionHandler:nil];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [LimeHelper runLemonWithArguments:@[@"--help"] textView:self.logView completionHandler:nil];
+            });
         } else if (decodedAction.action == 1) {
-            [LimeHelper runLemonWithArguments:@[] textView:self.logView completionHandler:nil];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [LimeHelper runLemonWithArguments:@[@"--help"] textView:self.logView completionHandler:nil];
+            });
         } else if (decodedAction.action == 2) {
-            [LimeHelper runLemonWithArguments:@[] textView:self.logView completionHandler:nil];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [LimeHelper runLemonWithArguments:@[@"--help"] textView:self.logView completionHandler:nil];
+            });
         }
-    };
+    };*/
+    [LimeHelper runLemonWithArguments:@[] textView:self.logView completionHandler:nil];
     NSLog(@"[Queue] DONE!");
 }
 
@@ -166,6 +174,8 @@
     [UIView animateWithDuration:0.2f animations:^{
         self.actionButton.alpha = 1;
         self.actionButton.enabled = YES;
+        
+        self.arrowIMG.alpha = 1;
         
         self.effectView.frame = self.logViewFrame;
         self.effectView.layer.cornerRadius = 20;

@@ -7,6 +7,7 @@
 //
 
 #import "LimeHelper.h"
+
 extern char **environ;
 
 @implementation LimeHelper
@@ -79,7 +80,7 @@ extern char **environ;
     [task setLaunchPath:@"/usr/bin/lemon"];
     [task setArguments:args];
     task.terminationHandler = ^(NSTask *task){
-        completionHandler(task);
+        if (completionHandler) completionHandler(task);
     };
         
     NSMutableDictionary *defaultEnv = [[NSMutableDictionary alloc] initWithDictionary:[[NSProcessInfo processInfo] environment]];
@@ -88,10 +89,19 @@ extern char **environ;
         
     NSPipe *stdoutPipe = [NSPipe pipe];
     task.standardOutput = stdoutPipe;
-    //NSPipe *stderrPipe = [NSPipe pipe];
-    task.standardError = stdoutPipe;
+    NSPipe *stderrPipe = [NSPipe pipe];
+    task.standardError = stderrPipe;
     if (textView) {
         [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
+            NSData *data = [file availableData];
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                textView.text = [textView.text stringByAppendingString:string];
+                [textView scrollRangeToVisible:NSMakeRange(textView.text.length, 0)];
+            });
+        }];
+        [[task.standardError fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
             NSData *data = [file availableData];
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 
