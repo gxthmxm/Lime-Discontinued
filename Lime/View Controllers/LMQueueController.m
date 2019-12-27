@@ -115,6 +115,7 @@
 
 - (IBAction)respring:(id)sender {
     if (self.state == 2) {
+        [LimeHelper respringDevice];
     } else {
         [self beginInstallation];
     }
