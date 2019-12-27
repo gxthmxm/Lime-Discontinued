@@ -87,6 +87,22 @@ extern char **environ;
     return self;
 }
 
++(void)respringDevice {
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:@"/usr/bin/killall"];
+    [task setArguments:@[@"-9", @"SpringBoard"];
+        
+    NSMutableDictionary *defaultEnv = [[NSMutableDictionary alloc] initWithDictionary:[[NSProcessInfo processInfo] environment]];
+    [defaultEnv setObject:@"YES" forKey:@"NSUnbufferedIO"] ;
+    task.environment = defaultEnv;
+        
+    NSPipe *stdoutPipe = [NSPipe pipe];
+    task.standardOutput = stdoutPipe;
+    NSPipe *stderrPipe = [NSPipe pipe];
+    task.standardError = stderrPipe;
+    [task launch];
+}
+
 +(void)runLemonWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(nullable void(^)(NSTask *task))completionHandler {
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:@"/usr/bin/lemon"];
