@@ -159,9 +159,9 @@
                     [LMDownloader.new downloadFileWithURLString:decodedAction.package.debURL toFile:[LimeHelper.tmpPath stringByAppendingString:[decodedAction.package.filename componentsSeparatedByString:@"/"].lastObject] progressView:nil completionHandler:^(NSError * _Nullable error) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             self.logView.text = [self.logView.text stringByAppendingFormat:@"\nFinished downloading %@", decodedAction.package.identifier];
+                            completedTasks++;
+                            if (completedTasks == tasks) [self finished];
                         });
-                        completedTasks++;
-                        if (completedTasks == tasks) [self finished];
                     }];
                 });
             }
