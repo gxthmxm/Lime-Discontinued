@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)runLemonWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(nullable void(^)(NSTask *task))completionHandler;
 - (void)refreshInstalledPackages;
 + (NSMutableURLRequest *)mutableURLRequestWithHeadersWithURLString:(NSString *)URLString;
++ (void)respringDevice;
 
 @property (nonatomic, retain) NSMutableDictionary *packagesDict;
 @property (nonatomic, retain) NSMutableArray *packagesArray;
