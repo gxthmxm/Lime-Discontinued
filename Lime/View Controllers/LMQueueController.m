@@ -161,6 +161,7 @@
                             self.logView.text = [self.logView.text stringByAppendingFormat:@"\nFinished downloading %@", decodedAction.package.identifier];
                         });
                         completedTasks++;
+                        if (completedTasks == tasks) [self finished];
                     }];
                 });
             }
