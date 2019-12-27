@@ -151,7 +151,6 @@
     [NSFileManager.defaultManager fileExistsAtPath:LimeHelper.tmpPath isDirectory:&isDir];
     if (!isDir) [NSFileManager.defaultManager createDirectoryAtPath:LimeHelper.tmpPath withIntermediateDirectories:NO attributes:0 error:nil];
     for (NSData *encodedAction in [LMQueue queueActions]) {
-        tasks++;
         LMQueueAction *decodedAction = [NSKeyedUnarchiver unarchiveObjectWithData:encodedAction];
         if (decodedAction.action == 0) {
             if (decodedAction.package.filename) {
