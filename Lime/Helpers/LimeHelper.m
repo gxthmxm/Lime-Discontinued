@@ -55,6 +55,18 @@ extern char **environ;
 + (NSString *)iconsPath {
     return [[self limePath] stringByAppendingString:@"icons/"];
 }
++ (NSString *)tmpPath {
+    return [[self limePath] stringByAppendingString:@"tmp/"];
+}
+
++ (NSMutableURLRequest *)mutableURLRequestWithHeadersWithURLString:(NSString *)URLString {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0];
+    [request setValue:@"Cydia/0.9 CFNetwork/978.0.7 Darwin/18.7.0" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
+    [request setValue:[LMDeviceInfo deviceName] forHTTPHeaderField:@"X-Machine"];
+    [request setValue:[LMDeviceInfo udid] forHTTPHeaderField:@"X-Unique-ID"];
+    return request;
+}
 
 -(id)init {
     self = [super init];

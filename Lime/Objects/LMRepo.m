@@ -19,4 +19,18 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.parsedRepo forKey:@"parsedRepo"];
+    [aCoder encodeObject:self.rawRepo forKey:@"rawRepo"];
+}
+
+-(id)initWithCoder:(NSCoder *)aCoder {
+    self = [super init];
+    if (self) {
+        self.parsedRepo = [aCoder decodeObjectForKey:@"parsedRepo"];
+        self.rawRepo = [aCoder decodeObjectForKey:@"rawRepo"];
+    }
+    return self;
+}
+
 @end

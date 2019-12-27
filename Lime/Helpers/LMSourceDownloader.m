@@ -30,7 +30,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
     
-    NSMutableURLRequest *releaseRequest = [self mutableURLRequestWithHeadersWithURLString:self.repo.rawRepo.releaseURL];
+    NSMutableURLRequest *releaseRequest = [LimeHelper mutableURLRequestWithHeadersWithURLString:self.repo.rawRepo.releaseURL];
     NSURLSessionDownloadTask *releaseTask = [session downloadTaskWithRequest:releaseRequest completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                 if (self.sourceController) {
                     progress += 1 / (float)tasks;
@@ -53,7 +53,7 @@
     releaseTask.taskDescription = [self.repo.rawRepo.repoURL stringByAppendingString:@"_Release"];
     [releaseTask resume];
     
-    NSMutableURLRequest *packagesRequest = [self mutableURLRequestWithHeadersWithURLString:[self.repo.rawRepo.packagesURL stringByAppendingFormat:@".bz2"]];
+    NSMutableURLRequest *packagesRequest = [LimeHelper mutableURLRequestWithHeadersWithURLString:[self.repo.rawRepo.packagesURL stringByAppendingFormat:@".bz2"]];
     NSURLSessionDownloadTask *packagesTask = [session downloadTaskWithRequest:packagesRequest completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                 if (self.sourceController) {
                     progress += 1 / (float)tasks;
@@ -93,7 +93,7 @@
                 [self.viewSourceController.topProgressView setProgress:progress animated:YES];
             });
         }
-        NSMutableURLRequest *iconRequest = [self mutableURLRequestWithHeadersWithURLString:self.repo.rawRepo.imageURL];
+        NSMutableURLRequest *iconRequest = [LimeHelper mutableURLRequestWithHeadersWithURLString:self.repo.rawRepo.imageURL];
         NSURLSessionDownloadTask *iconTask = [session downloadTaskWithRequest:iconRequest completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             [NSFileManager.defaultManager removeItemAtPath:self.repo.rawRepo.imagePath error:nil];
             [[NSFileManager defaultManager] moveItemAtPath:[location.absoluteString stringByReplacingOccurrencesOfString:@"file://" withString:@""] toPath:self.repo.rawRepo.imagePath error:nil];
@@ -104,15 +104,6 @@
         iconTask.taskDescription = [self.repo.rawRepo.repoURL stringByAppendingString:@"_Icon"];
         [iconTask resume];
     }
-}
-
-- (NSMutableURLRequest *)mutableURLRequestWithHeadersWithURLString:(NSString *)URLString {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0];
-    [request setValue:@"Cydia/0.9 CFNetwork/978.0.7 Darwin/18.7.0" forHTTPHeaderField:@"User-Agent"];
-    [request setValue:[[UIDevice currentDevice] systemVersion] forHTTPHeaderField:@"X-Firmware"];
-    [request setValue:[LMDeviceInfo deviceName] forHTTPHeaderField:@"X-Machine"];
-    [request setValue:[LMDeviceInfo udid] forHTTPHeaderField:@"X-Unique-ID"];
-    return request;
 }
 
 // code reuse is amazing and this piece of stackoverflow "why does it work" magic actually works and i even have a clue how

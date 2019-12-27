@@ -147,25 +147,36 @@
     __block NSInteger completedTasks = 0;
     
     // 0 install 1 remove 2 reinstall
-    
-    /*for (NSData *encodedAction in [LMQueue queueActions]) {
+    BOOL isDir;
+    [NSFileManager.defaultManager fileExistsAtPath:LimeHelper.tmpPath isDirectory:&isDir];
+    if (!isDir) [NSFileManager.defaultManager createDirectoryAtPath:LimeHelper.tmpPath withIntermediateDirectories:NO attributes:0 error:nil];
+    for (NSData *encodedAction in [LMQueue queueActions]) {
+        tasks++;
         LMQueueAction *decodedAction = [NSKeyedUnarchiver unarchiveObjectWithData:encodedAction];
         if (decodedAction.action == 0) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [LimeHelper runLemonWithArguments:@[@"--help"] textView:self.logView completionHandler:nil];
-            });
+            if (decodedAction.package.filename) {
+                self.logView.text = [self.logView.text stringByAppendingFormat:@"\nDownloading %@", decodedAction.package.identifier];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [LMDownloader.new downloadFileWithURLString:decodedAction.package.debURL toFile:[LimeHelper.tmpPath stringByAppendingString:[decodedAction.package.filename componentsSeparatedByString:@"/"].lastObject] progressView:nil completionHandler:^(NSError * _Nullable error) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.logView.text = [self.logView.text stringByAppendingFormat:@"\nFinished downloading %@", decodedAction.package.identifier];
+                        });
+                        completedTasks++;
+                    }];
+                });
+            }
         } else if (decodedAction.action == 1) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [LimeHelper runLemonWithArguments:@[@"--help"] textView:self.logView completionHandler:nil];
+                self.logView.text = [self.logView.text stringByAppendingString:@"\nLime can't remove packages yet."];
             });
         } else if (decodedAction.action == 2) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [LimeHelper runLemonWithArguments:@[@"--help"] textView:self.logView completionHandler:nil];
+                self.logView.text = [self.logView.text stringByAppendingString:@"\nLime can't reinstall packages yet."];
             });
         }
-    };*/
-    [LimeHelper runLemonWithArguments:@[] textView:self.logView completionHandler:nil];
+    };
     NSLog(@"[Queue] DONE!");
+    //[NSFileManager.defaultManager removeItemAtPath:LimeHelper.tmpPath error:nil];
 }
 
 -(void)finished {

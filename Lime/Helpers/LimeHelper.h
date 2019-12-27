@@ -27,8 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)sourcesPath;
 + (NSString *)listsPath;
 + (NSString *)iconsPath;
++ (NSString *)tmpPath;
 + (void)runLemonWithArguments:(NSArray *)args textView:(UITextView *)textView completionHandler:(nullable void(^)(NSTask *task))completionHandler;
 - (void)refreshInstalledPackages;
++ (NSMutableURLRequest *)mutableURLRequestWithHeadersWithURLString:(NSString *)URLString;
 
 @property (nonatomic, retain) NSMutableDictionary *packagesDict;
 @property (nonatomic, retain) NSMutableArray *packagesArray;

@@ -35,6 +35,7 @@
 		4D7D6B1E239588900027D101 /* LMQueueAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D6B1D239588900027D101 /* LMQueueAction.m */; };
 		4D7D6B21239589CE0027D101 /* NSArray+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D6B20239589CE0027D101 /* NSArray+Random.m */; };
 		4D7DC610238835BF006907C5 /* LMDepictionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DC60F238835BF006907C5 /* LMDepictionController.m */; };
+		4D957E6023B6A264009DB2B7 /* LMDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D957E5F23B6A264009DB2B7 /* LMDownloader.m */; };
 		4D9A9EEF23A93CF10046F16B /* LMSourceDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A9EEE23A93CF10046F16B /* LMSourceDownloader.m */; };
 		4D9ACD3023AD1EE800311038 /* LMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9ACD2F23AD1EE800311038 /* LMHomeController.m */; };
 		4D9ACD3323AD22B100311038 /* LMAddRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9ACD3223AD22B100311038 /* LMAddRepoController.m */; };
@@ -110,6 +111,8 @@
 		4D7D6B20239589CE0027D101 /* NSArray+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Random.m"; sourceTree = "<group>"; };
 		4D7DC60E238835BF006907C5 /* LMDepictionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDepictionController.h; sourceTree = "<group>"; };
 		4D7DC60F238835BF006907C5 /* LMDepictionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDepictionController.m; sourceTree = "<group>"; };
+		4D957E5E23B6A264009DB2B7 /* LMDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDownloader.h; sourceTree = "<group>"; };
+		4D957E5F23B6A264009DB2B7 /* LMDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDownloader.m; sourceTree = "<group>"; };
 		4D9A9EED23A93CF10046F16B /* LMSourceDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMSourceDownloader.h; sourceTree = "<group>"; };
 		4D9A9EEE23A93CF10046F16B /* LMSourceDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMSourceDownloader.m; sourceTree = "<group>"; };
 		4D9ACD2C23AD1C2800311038 /* LMHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMHomeController.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				4DDBFC3B2383133700245D0C /* LimeHelper.m */,
 				4D09A23F23A14B360002D933 /* LMSourceManager.h */,
 				4D09A24023A14B360002D933 /* LMSourceManager.m */,
+				4D957E5E23B6A264009DB2B7 /* LMDownloader.h */,
+				4D957E5F23B6A264009DB2B7 /* LMDownloader.m */,
 				4D9A9EED23A93CF10046F16B /* LMSourceDownloader.h */,
 				4D9A9EEE23A93CF10046F16B /* LMSourceDownloader.m */,
 				4D54C09223843328002F8394 /* LMDeviceInfo.h */,
@@ -358,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D9A9EEF23A93CF10046F16B /* LMSourceDownloader.m in Sources */,
+				4D957E6023B6A264009DB2B7 /* LMDownloader.m in Sources */,
 				4D4A547B238C4F5300EF7FA0 /* UIImageAverageColorAddition.m in Sources */,
 				4D7D6B1E239588900027D101 /* LMQueueAction.m in Sources */,
 				4D7D6B152395800E0027D101 /* LMQueueController.m in Sources */,

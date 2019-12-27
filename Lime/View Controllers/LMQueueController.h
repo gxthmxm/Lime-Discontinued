@@ -10,6 +10,7 @@
 #import "../Helpers/LMQueue.h"
 #import "../Other/NSArray+Random.h"
 #import "../Helpers/LimeHelper.h"
+#import "../Helpers/LMDownloader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
