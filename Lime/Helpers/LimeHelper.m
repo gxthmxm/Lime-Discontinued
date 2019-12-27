@@ -90,7 +90,7 @@ extern char **environ;
 +(void)respringDevice {
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:@"/usr/bin/killall"];
-    [task setArguments:@[@"-9", @"SpringBoard"];
+    [task setArguments:@[@"-9", @"SpringBoard"]];
         
     NSMutableDictionary *defaultEnv = [[NSMutableDictionary alloc] initWithDictionary:[[NSProcessInfo processInfo] environment]];
     [defaultEnv setObject:@"YES" forKey:@"NSUnbufferedIO"] ;
