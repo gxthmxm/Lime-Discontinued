@@ -18,8 +18,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) UIProgressView *progressView;
 
+@property (nonatomic, strong, nonnull) NSString *filePath;
+
 @property (nonatomic) long long int expectedLength;
 @property (nonatomic) long long int bytesDownloaded;
+
+typedef void (^ PROGRESS_BLOCK)(long long int bytesWritten, long long int totalBytesWritten, long long int totalBytesExpectedToWrite);
+@property (nonatomic, copy, readwrite, nullable) PROGRESS_BLOCK progressBlock;
+typedef void (^ COMPLETION_BLOCK)(NSError * _Nullable error);
+@property (nonatomic, copy, readwrite, nullable) COMPLETION_BLOCK completionBlock;
 
 @end
 

@@ -10,31 +10,28 @@
 
 @implementation LMDownloader
 
--(void)downloadFileWithURLString:(nonnull NSString *)url toFile:(nonnull NSString *)file progressView:(nullable UIProgressView *)progressView completionHandler:(nullable void (^)(NSError * _Nullable error))completion {
+-(void)downloadFileWithURLString:(nonnull NSString *)url toFile:(nonnull NSString *)file progressView:(nullable UIProgressView *)progressView completionHandler:(nullable void (^)(NSError * _Nullable))completion {
+    self.completionBlock = completion;
+    self.filePath = file;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
-    NSURLSessionDownloadTask *releaseTask = [session downloadTaskWithRequest:[LimeHelper mutableURLRequestWithHeadersWithURLString:url] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSString *path = [[NSString stringWithFormat:@"%@", location] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
-        NSError *fileError;
-        if ([NSFileManager.defaultManager fileExistsAtPath:path]) [NSFileManager.defaultManager moveItemAtPath:path toPath:file error:&fileError];
-        else if (completion) completion(error);
-        if (fileError) completion(fileError);
-        else (completion(nil));
-    }];
+    NSURLSessionDownloadTask *releaseTask = [session downloadTaskWithRequest:[LimeHelper mutableURLRequestWithHeadersWithURLString:url]];
     [releaseTask resume];
 }
 
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-    self.expectedLength = totalBytesExpectedToWrite;
-    self.bytesDownloaded += bytesWritten;
-    if (self.progressView) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.progressView setProgress:(float)self.bytesDownloaded / self.expectedLength];
-        });
+    if (self.progressBlock) {
+        self.progressBlock(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
     }
 }
 
 - (void)URLSession:(nonnull NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(nonnull NSURL *)location {
-    // idk
+    NSString *path = [[NSString stringWithFormat:@"%@", location] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
+    NSError *fileError;
+    if ([NSFileManager.defaultManager fileExistsAtPath:path]) [NSFileManager.defaultManager moveItemAtPath:path toPath:self.filePath error:&fileError];
+    if (self.completionBlock) {
+        if (fileError) self.completionBlock(fileError);
+        else (self.completionBlock(nil));
+    }
 }
 
 @end
