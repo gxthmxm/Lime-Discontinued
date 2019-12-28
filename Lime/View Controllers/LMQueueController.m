@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
     NSArray *excellent = [NSArray arrayWithObjects:@"Excellent!", @"Great!", @"Fantastic!", @"Awesome!", @"Epic!", @"Nice!", @"OwO!", nil];
     
-    self.greatLabel.text = [excellent randomObject];
+    self.greatLabel.text = excellent.randomObject;
     
     self.completeView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, self.completeView.frame.origin.y, self.completeView.frame.size.width, self.completeView.frame.size.height);
     
@@ -168,13 +168,9 @@
                 });
             }
         } else if (decodedAction.action == 1) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                self.logView.text = [self.logView.text stringByAppendingString:@"\nLime can't remove packages yet."];
-            });
+            self.logView.text = [self.logView.text stringByAppendingString:@"\nLime can't remove packages yet."];
         } else if (decodedAction.action == 2) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                self.logView.text = [self.logView.text stringByAppendingString:@"\nLime can't reinstall packages yet."];
-            });
+            self.logView.text = [self.logView.text stringByAppendingString:@"\nLime can't reinstall packages yet."];
         }
     };
     NSLog(@"[Queue] DONE!");
