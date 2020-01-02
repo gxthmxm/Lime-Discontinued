@@ -46,14 +46,14 @@
         releaseAdded = YES;
         if (self.sourceController) {
             progress = (float)allBytesWritten / allExpectedLength;
-            NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+            //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.cell.progressView setProgress:progress animated:YES];
             });
         }
         if (self.viewSourceController) {
             progress = (float)allBytesWritten / allExpectedLength;
-            NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+            //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.viewSourceController.topProgressView setProgress:progress animated:YES];
             });
@@ -74,14 +74,14 @@
         packagesAdded = YES;
         if (self.sourceController) {
             progress = (float)allBytesWritten / allExpectedLength;
-            NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+            //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.cell.progressView setProgress:progress animated:YES];
             });
         }
         if (self.viewSourceController) {
             progress = (float)allBytesWritten / allExpectedLength;
-            NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+            //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.viewSourceController.topProgressView setProgress:progress animated:YES];
             });
@@ -101,14 +101,14 @@
             iconAdded = YES;
             if (self.sourceController) {
                 progress = (float)allBytesWritten / allExpectedLength;
-                NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+                //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.cell.progressView setProgress:progress animated:YES];
                 });
             }
             if (self.viewSourceController) {
                 progress = (float)allBytesWritten / allExpectedLength;
-                NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+                //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.viewSourceController.topProgressView setProgress:progress animated:YES];
                 });
