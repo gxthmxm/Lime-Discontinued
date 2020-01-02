@@ -13,6 +13,7 @@
 #import <bzlib.h>
 #import "../View Controllers/LMSourcesController.h"
 #import "../View Controllers/LMViewSourcePackagesController.h"
+#import "LMDownloader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

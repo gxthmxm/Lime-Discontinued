@@ -14,14 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LMDownloader : NSObject <NSURLSessionDownloadDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
 
--(void)downloadFileWithURLString:(nonnull NSString *)url toFile:(nonnull NSString *)file progressView:(nullable UIProgressView *)progressView completionHandler:(nullable void (^)(NSError * _Nullable error))completion;
-
-@property (nonatomic, strong, nullable) UIProgressView *progressView;
+-(void)downloadFileWithURLString:(nonnull NSString *)url toFile:(nonnull NSString *)file completionHandler:(nullable void (^)(NSError * _Nullable))completion;
 
 @property (nonatomic, strong, nonnull) NSString *filePath;
-
-@property (nonatomic) long long int expectedLength;
-@property (nonatomic) long long int bytesDownloaded;
 
 typedef void (^ PROGRESS_BLOCK)(long long int bytesWritten, long long int totalBytesWritten, long long int totalBytesExpectedToWrite);
 @property (nonatomic, copy, readwrite, nullable) PROGRESS_BLOCK progressBlock;

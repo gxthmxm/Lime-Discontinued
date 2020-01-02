@@ -158,7 +158,7 @@
                 self.logView.text = [self.logView.text stringByAppendingFormat:@"\nDownloading %@", decodedAction.package.identifier];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     LMDownloader *dl = LMDownloader.new;
-                    [dl downloadFileWithURLString:decodedAction.package.debURL toFile:[LimeHelper.tmpPath stringByAppendingString:[decodedAction.package.filename componentsSeparatedByString:@"/"].lastObject] progressView:nil completionHandler:^(NSError * _Nullable error) {
+                    [dl downloadFileWithURLString:decodedAction.package.debURL toFile:[LimeHelper.tmpPath stringByAppendingString:[decodedAction.package.filename componentsSeparatedByString:@"/"].lastObject] completionHandler:^(NSError * _Nullable error) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             self.logView.text = [self.logView.text stringByAppendingFormat:@"\nFinished downloading %@", decodedAction.package.identifier];
                             completedTasks++;

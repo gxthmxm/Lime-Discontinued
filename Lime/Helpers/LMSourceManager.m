@@ -161,35 +161,40 @@
     [self getRawSources];
     __block NSUInteger tasks = self.sources.count;
     __block int completedTasks = 0;
-    [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        __block LMRepo *repo = obj;
-        NSLog(@"[SourceManager] Downloading %@", repo.rawRepo.repoURL);
-        LMSourceDownloader *sourceDL = [[LMSourceDownloader alloc] initWithRepo:repo];
-        if (self.sourceController) sourceDL.sourceController = self.sourceController;
-        [sourceDL downloadRepoAndIcon:YES completionHandler:^{
-            completedTasks++;
-            if (self.sourceController) {
-                float progress = (float)completedTasks / (float)tasks;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.sourceController.topProgressView setProgress:progress animated:YES];
-                });
-            }
-            NSLog(@"[SourceManager] %d out of %lu repos done refreshing", completedTasks, (unsigned long)tasks);
-            if (completedTasks == tasks) [self parseSourcesAndDownloadMissing:NO completionHandler:^{
-                NSLog(@"[SourceManager] Done refreshing sources.");
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion();
-                    if (self.sourceController) {
-                        [self.sourceController.topProgressView setProgress:0];
-                        [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                            LMSourceCell *cell = [self.sourceController.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]];
-                            [cell.progressView setProgress:0];
-                        }];
-                    }
-                });
+    if (self.sources.count > 0) {
+        [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            __block LMRepo *repo = obj;
+            NSLog(@"[SourceManager] Downloading %@", repo.rawRepo.repoURL);
+            LMSourceDownloader *sourceDL = [[LMSourceDownloader alloc] initWithRepo:repo];
+            if (self.sourceController) sourceDL.sourceController = self.sourceController;
+            [sourceDL downloadRepoAndIcon:YES completionHandler:^{
+                completedTasks++;
+                if (self.sourceController) {
+                    float progress = (float)completedTasks / (float)tasks;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.sourceController.topProgressView setProgress:progress animated:YES];
+                    });
+                }
+                NSLog(@"[SourceManager] %d out of %lu repos done refreshing", completedTasks, (unsigned long)tasks);
+                if (completedTasks == tasks) [self parseSourcesAndDownloadMissing:NO completionHandler:^{
+                    NSLog(@"[SourceManager] Done refreshing sources.");
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion();
+                        if (self.sourceController) {
+                            [self.sourceController.topProgressView setProgress:0];
+                            [self.sources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                LMSourceCell *cell = [self.sourceController.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]];
+                                [cell.progressView setProgress:0];
+                            }];
+                        }
+                    });
+                }];
             }];
         }];
-    }];
+    } else {
+        [self.sourceController.topProgressView setProgress:0];
+        completion();
+    }
 }
 
 @end

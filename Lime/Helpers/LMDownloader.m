@@ -10,7 +10,7 @@
 
 @implementation LMDownloader
 
--(void)downloadFileWithURLString:(nonnull NSString *)url toFile:(nonnull NSString *)file progressView:(nullable UIProgressView *)progressView completionHandler:(nullable void (^)(NSError * _Nullable))completion {
+-(void)downloadFileWithURLString:(nonnull NSString *)url toFile:(nonnull NSString *)file completionHandler:(nullable void (^)(NSError * _Nullable))completion {
     self.completionBlock = completion;
     self.filePath = file;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];

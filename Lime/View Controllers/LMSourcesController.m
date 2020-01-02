@@ -29,6 +29,10 @@
 }
 
 -(IBAction)refreshButtonAction:(id)sender {
+    [NSFileManager.defaultManager removeItemAtPath:LimeHelper.listsPath error:nil];
+    [NSFileManager.defaultManager createDirectoryAtPath:LimeHelper.listsPath withIntermediateDirectories:NO attributes:0 error:nil];
+    //[NSFileManager.defaultManager removeItemAtPath:LimeHelper.iconsPath error:nil];
+    //[NSFileManager.defaultManager createDirectoryAtPath:LimeHelper.iconsPath withIntermediateDirectories:NO attributes:0 error:nil];
     self.navigationController.navigationBar.userInteractionEnabled = NO;
     [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.userInteractionEnabled = NO;

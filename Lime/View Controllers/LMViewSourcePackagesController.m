@@ -32,6 +32,9 @@
 }
 
 - (IBAction)refreshSource:(id)sender {
+    /*BOOL isDir;
+    [NSFileManager.defaultManager fileExistsAtPath:self.repo.rawRepo.packagesPath isDirectory:&isDir];
+    if (isDir) [NSFileManager.defaultManager removeItemAtPath:self.repo.rawRepo.packagesPath error:nil];*/
     self.navigationController.navigationBar.userInteractionEnabled = NO;
     [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.userInteractionEnabled = NO;

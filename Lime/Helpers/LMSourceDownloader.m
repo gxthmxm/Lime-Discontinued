@@ -21,88 +21,99 @@
 -(void)downloadRepoAndIcon:(BOOL)icon completionHandler:(void (^)(void))completion {
     __block int tasks = icon ? 3 : 2;
     __block int completedTasks = 0;
-    __block float progress = 0;
+    __block float progress = 0.0;
+    
+    __block BOOL releaseAdded = false;
+    __block BOOL packagesAdded = false;
+    __block BOOL iconAdded = false;
+    __block long long int allBytesWritten = 0;
+    __block long long int allExpectedLength = 0;
     
     if (self.sourceController) {
         NSUInteger repoIndex = [[LMSourceManager.sharedInstance sources] indexOfObject:self.repo];
         self.cell = [self.sourceController.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:repoIndex inSection:0]];
     }
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
-    
-    NSMutableURLRequest *releaseRequest = [LimeHelper mutableURLRequestWithHeadersWithURLString:self.repo.rawRepo.releaseURL];
-    NSURLSessionDownloadTask *releaseTask = [session downloadTaskWithRequest:releaseRequest completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                if (self.sourceController) {
-                    progress += 1 / (float)tasks;
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.cell.progressView setProgress:progress animated:YES];
-                    });
-                }
-                if (self.viewSourceController) {
-                    progress += 1 / (float)tasks;
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.viewSourceController.topProgressView setProgress:progress animated:YES];
-                    });
-                }
-                [NSFileManager.defaultManager removeItemAtPath:self.repo.rawRepo.releasePath error:nil];
-                [[NSFileManager defaultManager] moveItemAtPath:[location.absoluteString stringByReplacingOccurrencesOfString:@"file://" withString:@""] toPath:self.repo.rawRepo.releasePath error:nil];
-                NSLog(@"[SourceManager] Downloaded %@ to %@", self.repo.rawRepo.releaseURL, self.repo.rawRepo.releasePath);
-                completedTasks++;
-                if (completedTasks == tasks) completion();
-           }];
-    releaseTask.taskDescription = [self.repo.rawRepo.repoURL stringByAppendingString:@"_Release"];
-    [releaseTask resume];
-    
-    NSMutableURLRequest *packagesRequest = [LimeHelper mutableURLRequestWithHeadersWithURLString:[self.repo.rawRepo.packagesURL stringByAppendingFormat:@".bz2"]];
-    NSURLSessionDownloadTask *packagesTask = [session downloadTaskWithRequest:packagesRequest completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                if (self.sourceController) {
-                    progress += 1 / (float)tasks;
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.cell.progressView setProgress:progress animated:YES];
-                    });
-                }
-                if (self.viewSourceController) {
-                    progress += 1 / (float)tasks;
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.viewSourceController.topProgressView setProgress:progress animated:YES];
-                    });
-                }
-                [NSFileManager.defaultManager removeItemAtPath:self.repo.rawRepo.packagesPath error:nil];
-                [[NSFileManager defaultManager] moveItemAtPath:[location.absoluteString stringByReplacingOccurrencesOfString:@"file://" withString:@""] toPath:self.repo.rawRepo.packagesPath error:nil];
-                int bunzip_one = [self bunzip_one:self.repo.rawRepo.packagesPath];
-                // To hide the warning
-                bunzip_one = bunzip_one;
-                [[NSFileManager defaultManager] moveItemAtPath:[self.repo.rawRepo.packagesPath substringToIndex:self.repo.rawRepo.packagesPath.length - 4] toPath:self.repo.rawRepo.packagesPath error:nil];
-                NSLog(@"[SourceManager] Downloaded %@ to %@", self.repo.rawRepo.packagesURL, self.repo.rawRepo.packagesPath);
-                completedTasks++;
-                if (completedTasks == tasks) completion();
-           }];
-    packagesTask.taskDescription = [self.repo.rawRepo.repoURL stringByAppendingString:@"_Packages"];
-    [packagesTask resume];
-    
-    if (icon) {
+    LMDownloader *releaseTask = LMDownloader.new;
+    [releaseTask downloadFileWithURLString:self.repo.rawRepo.releaseURL toFile:self.repo.rawRepo.releasePath completionHandler:^(NSError * _Nullable error) {
+        NSLog(@"[SourceManager] Downloaded %@ to %@", self.repo.rawRepo.releaseURL, self.repo.rawRepo.releasePath);
+        completedTasks++;
+        if (completedTasks == tasks) completion();
+    }];
+    [releaseTask setProgressBlock:^(long long bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        allBytesWritten += bytesWritten;
+        if (!releaseAdded) allExpectedLength += totalBytesExpectedToWrite;
+        releaseAdded = YES;
         if (self.sourceController) {
-            progress += 1 / (float)tasks;
+            progress = (float)allBytesWritten / allExpectedLength;
+            NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.cell.progressView setProgress:progress animated:YES];
             });
         }
         if (self.viewSourceController) {
-            progress += 1 / (float)tasks;
+            progress = (float)allBytesWritten / allExpectedLength;
+            NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.viewSourceController.topProgressView setProgress:progress animated:YES];
             });
         }
-        NSMutableURLRequest *iconRequest = [LimeHelper mutableURLRequestWithHeadersWithURLString:self.repo.rawRepo.imageURL];
-        NSURLSessionDownloadTask *iconTask = [session downloadTaskWithRequest:iconRequest completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            [NSFileManager.defaultManager removeItemAtPath:self.repo.rawRepo.imagePath error:nil];
-            [[NSFileManager defaultManager] moveItemAtPath:[location.absoluteString stringByReplacingOccurrencesOfString:@"file://" withString:@""] toPath:self.repo.rawRepo.imagePath error:nil];
+    }];
+    
+    LMDownloader *packagesTask = LMDownloader.new;
+    [packagesTask downloadFileWithURLString:[self.repo.rawRepo.packagesURL stringByAppendingFormat:@".bz2"] toFile:self.repo.rawRepo.packagesPath completionHandler:^(NSError * _Nullable error) {
+        int bunzip_one = [self bunzip_one:self.repo.rawRepo.packagesPath];
+        bunzip_one = bunzip_one;
+        NSLog(@"[SourceManager] Downloaded %@ to %@", self.repo.rawRepo.packagesURL, self.repo.rawRepo.packagesPath);
+        completedTasks++;
+        if (completedTasks == tasks) completion();
+    }];
+    [packagesTask setProgressBlock:^(long long bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        allBytesWritten += bytesWritten;
+        if (!packagesAdded) allExpectedLength += totalBytesExpectedToWrite;
+        packagesAdded = YES;
+        if (self.sourceController) {
+            progress = (float)allBytesWritten / allExpectedLength;
+            NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.cell.progressView setProgress:progress animated:YES];
+            });
+        }
+        if (self.viewSourceController) {
+            progress = (float)allBytesWritten / allExpectedLength;
+            NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.viewSourceController.topProgressView setProgress:progress animated:YES];
+            });
+        }
+    }];
+    
+    if (icon) {
+        LMDownloader *iconTask = LMDownloader.new;
+        [iconTask downloadFileWithURLString:self.repo.rawRepo.imageURL toFile:self.repo.rawRepo.imagePath completionHandler:^(NSError * _Nullable error) {
             NSLog(@"[SourceManager] Downloaded %@ to %@", self.repo.rawRepo.imageURL, self.repo.rawRepo.imagePath);
             completedTasks++;
             if (completedTasks == tasks) completion();
         }];
-        iconTask.taskDescription = [self.repo.rawRepo.repoURL stringByAppendingString:@"_Icon"];
-        [iconTask resume];
+        [iconTask setProgressBlock:^(long long bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+            allBytesWritten += bytesWritten;
+            if (!iconAdded) allExpectedLength += totalBytesExpectedToWrite;
+            iconAdded = YES;
+            if (self.sourceController) {
+                progress = (float)allBytesWritten / allExpectedLength;
+                NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.cell.progressView setProgress:progress animated:YES];
+                });
+            }
+            if (self.viewSourceController) {
+                progress = (float)allBytesWritten / allExpectedLength;
+                NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.viewSourceController.topProgressView setProgress:progress animated:YES];
+                });
+            }
+        }];
     }
 }
 
@@ -145,6 +156,7 @@
     fclose(outfile);
     fclose(f);
     [[NSFileManager defaultManager] removeItemAtPath:filepathString error:nil];
+    [NSFileManager.defaultManager moveItemAtPath:[filepathString substringToIndex:filepathString.length - 4] toPath:filepathString error:nil];
     return 0;
 }
 
