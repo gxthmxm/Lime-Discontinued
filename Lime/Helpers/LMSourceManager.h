@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (LMSourceManager *)sharedInstance;
 -(void)refreshSourcesCompletionHandler:(void (^)(void))completion;
 -(void)refreshSource:(LMRepo *)repo viewSourceController:(LMViewSourcePackagesController *)viewSrcController completionHandler:(void (^)(void))completion;
+-(void)softRefreshWithCompletionHandler:(void (^)(void))completion;
 
 @property (nonatomic, strong) NSMutableArray *sources;
 @property (nonatomic, strong) LMSourcesController *sourceController;

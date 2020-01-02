@@ -197,4 +197,12 @@
     }
 }
 
+-(void)softRefreshWithCompletionHandler:(void (^)(void))completion {
+    self.sources = [NSMutableArray new];
+    NSLog(@"[SourceManager] Soft-refreshing sources...");
+    [self getRawSources];
+    if (self.sources.count > 0) [self parseSourcesAndDownloadMissing:NO completionHandler:^{ if (completion) completion(); }];
+    else if (completion) completion();
+}
+
 @end
