@@ -40,7 +40,7 @@
         obj.userInteractionEnabled = NO;
     }];
     NSDate *started = [NSDate date];
-    [LMSourceManager.sharedInstance refreshSource:self.repo viewSourceController:self completionHandler:^{
+    [LMSourceManager.sharedInstance refreshSource:self.repo progressView:self.topProgressView completionHandler:^{
         NSLog(@"[SourceManager] %@ refreshed in %f seconds", self.repo.parsedRepo.label, [[NSDate date] timeIntervalSinceDate:started]);
         [self.topProgressView setProgress:0];
         [self.tableView reloadData];

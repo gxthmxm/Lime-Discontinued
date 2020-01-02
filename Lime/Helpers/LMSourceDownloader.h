@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain) LMRepo *repo;
 @property (nonatomic, retain) LMSourcesController *sourceController;
-@property (nonatomic, retain) LMViewSourcePackagesController *viewSourceController;
+@property (nonatomic, retain) UIProgressView *progressView;
 @property (nonatomic, retain) LMSourceCell *cell;
 @property (nonatomic) NSMutableData *dataDowloaded;
 @property (nonatomic) float totalExpectedLength;

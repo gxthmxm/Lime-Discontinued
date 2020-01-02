@@ -138,16 +138,16 @@
     completion();
 }
 
--(void)refreshSource:(LMRepo *)repo viewSourceController:(LMViewSourcePackagesController *)viewSrcController completionHandler:(void (^)(void))completion {
+-(void)refreshSource:(LMRepo *)repo progressView:(UIProgressView * _Nullable)progressView completionHandler:(void (^)(void))completion {
     NSLog(@"[SourceManager] Downloading %@", repo.rawRepo.repoURL);
     LMSourceDownloader *sourceDL = [[LMSourceDownloader alloc] initWithRepo:repo];
-    if (viewSrcController) sourceDL.viewSourceController = viewSrcController;
+    if (progressView) sourceDL.progressView = progressView;
     [sourceDL downloadRepoAndIcon:YES completionHandler:^{
         [self parseSourcesAndDownloadMissing:NO completionHandler:^{
             NSLog(@"[SourceManager] Done refreshing source: %@", repo.rawRepo.repoURL);
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion();
-                if (viewSrcController) {
+                if (progressView) {
                     [self.sourceController.topProgressView setProgress:0];
                 }
             });

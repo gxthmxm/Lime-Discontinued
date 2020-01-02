@@ -54,12 +54,28 @@
     return [LMSourceManager.sharedInstance sources].count;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+-(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewRowAction *refreshBtn = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Refresh" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        self.navigationController.navigationBar.userInteractionEnabled = NO;
+        [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.userInteractionEnabled = NO;
+        }];
+        
+        LMRepo *repo = [LMSourceManager.sharedInstance.sources objectAtIndex:indexPath.row];
+        LMSourceCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        NSDate *started = [NSDate date];
+        [LMSourceManager.sharedInstance refreshSource:repo progressView:cell.progressView completionHandler:^{
+               NSLog(@"[SourceManager] %@ refreshed in %f seconds", repo.parsedRepo.label, [[NSDate date] timeIntervalSinceDate:started]);
+            [cell.progressView setProgress:0];
+            [self.tableView reloadData];
+            self.navigationController.navigationBar.userInteractionEnabled = YES;
+            [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                obj.userInteractionEnabled = YES;
+            }];
+            cell.textLabel.text = repo.parsedRepo.label;
+        }];
+    }];
+    UITableViewRowAction *deleteBtn = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         LMRepo *repo = [LMSourceManager.sharedInstance.sources objectAtIndex:indexPath.row];
         // ---------------
         // ADD A CONFIRMATION ALERT OR SOMETHING? ITS UP TO YOU EVEN
@@ -67,8 +83,16 @@
         [LimeHelper removeRepo:repo];
         [LMSourceManager.sharedInstance.sources removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+    }];
+
+    return @[deleteBtn, refreshBtn];
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {}
 
 - (LMSourceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"sourcecell";

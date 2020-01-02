@@ -15,7 +15,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LMSourcesController : UITableViewController
+@interface LMSourcesController : UITableViewController <UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *repos;
 

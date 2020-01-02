@@ -51,11 +51,11 @@
                 [self.cell.progressView setProgress:progress animated:YES];
             });
         }
-        if (self.viewSourceController) {
+        if (self.progressView) {
             progress = (float)allBytesWritten / allExpectedLength;
             //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.viewSourceController.topProgressView setProgress:progress animated:YES];
+                [self.progressView setProgress:progress animated:YES];
             });
         }
     }];
@@ -79,11 +79,11 @@
                 [self.cell.progressView setProgress:progress animated:YES];
             });
         }
-        if (self.viewSourceController) {
+        if (self.progressView) {
             progress = (float)allBytesWritten / allExpectedLength;
             //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.viewSourceController.topProgressView setProgress:progress animated:YES];
+                [self.progressView setProgress:progress animated:YES];
             });
         }
     }];
@@ -106,11 +106,11 @@
                     [self.cell.progressView setProgress:progress animated:YES];
                 });
             }
-            if (self.viewSourceController) {
+            if (self.progressView) {
                 progress = (float)allBytesWritten / allExpectedLength;
                 //NSLog(@"[Progress] %lld / %lld", allBytesWritten, allExpectedLength);
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.viewSourceController.topProgressView setProgress:progress animated:YES];
+                    [self.progressView setProgress:progress animated:YES];
                 });
             }
         }];
