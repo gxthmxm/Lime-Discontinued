@@ -170,4 +170,17 @@ extern char **environ;
     [self getInstalledPackages];
 }
 
++(void)removeRepo:(LMRepo *)repo {
+    NSString *sourcesList = [NSString stringWithContentsOfFile:LimeHelper.sourcesPath encoding:NSUTF8StringEncoding error:nil];
+    if (sourcesList.length > 0) {
+        NSMutableArray *array = [sourcesList componentsSeparatedByCharactersInSet:NSCharacterSet.newlineCharacterSet].mutableCopy;
+        [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *line = obj;
+            if ([line containsString:repo.rawRepo.repoURL]) [array removeObjectAtIndex:idx];
+        }];
+        NSString *newSourcesList = [array componentsJoinedByString:@"\n"];
+        [newSourcesList writeToFile:LimeHelper.sourcesPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    }
+}
+
 @end

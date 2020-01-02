@@ -58,29 +58,15 @@
     return YES;
 }
 
-- (void)removeRepo:(LMRepo *)repo {
-    NSString *sourcesList = [NSString stringWithContentsOfFile:LimeHelper.sourcesPath encoding:NSUTF8StringEncoding error:nil];
-    if (sourcesList.length > 0) {
-        NSMutableArray *array = [sourcesList componentsSeparatedByCharactersInSet:NSCharacterSet.newlineCharacterSet].mutableCopy;
-        [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *line = obj;
-            if ([line containsString:repo.rawRepo.repoURL]) [array removeObjectAtIndex:idx];
-        }];
-        NSString *newSourcesList = [array componentsJoinedByString:@"\n"];
-        [newSourcesList writeToFile:LimeHelper.sourcesPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    }
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         LMRepo *repo = [LMSourceManager.sharedInstance.sources objectAtIndex:indexPath.row];
         // ---------------
         // ADD A CONFIRMATION ALERT OR SOMETHING? ITS UP TO YOU EVEN
         // ---------------
-        [self removeRepo:repo];
-        [LMSourceManager.sharedInstance softRefreshWithCompletionHandler:^{
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        }];
+        [LimeHelper removeRepo:repo];
+        [LMSourceManager.sharedInstance.sources removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
