@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain) LMRepo *repo;
 @property (nonatomic, retain) UIProgressView *topProgressView;
+@property (nonatomic, retain) UIRefreshControl *theRefreshControl;
 
 @end
 

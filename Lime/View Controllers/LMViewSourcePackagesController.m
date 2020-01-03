@@ -24,6 +24,12 @@
     self.topProgressView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.topProgressView.widthAnchor constraintEqualToAnchor:navBar.widthAnchor constant:0].active = YES;
     [self.topProgressView.topAnchor constraintEqualToAnchor:navBar.bottomAnchor constant:-2.5].active = YES;
+    
+    self.theRefreshControl = [UIRefreshControl.alloc init];
+    [self.theRefreshControl addTarget:self action:@selector(refreshControlRefresh) forControlEvents:UIControlEventValueChanged];
+    
+    if (@available(iOS 10.0, *)) self.tableView.refreshControl = self.theRefreshControl;
+    else [self.tableView addSubview:self.theRefreshControl];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -31,10 +37,7 @@
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 
-- (IBAction)refreshSource:(id)sender {
-    /*BOOL isDir;
-    [NSFileManager.defaultManager fileExistsAtPath:self.repo.rawRepo.packagesPath isDirectory:&isDir];
-    if (isDir) [NSFileManager.defaultManager removeItemAtPath:self.repo.rawRepo.packagesPath error:nil];*/
+-(void)refreshWithCompletionHandler:(nullable void(^)(void))completion {
     self.navigationController.navigationBar.userInteractionEnabled = NO;
     [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.userInteractionEnabled = NO;
@@ -49,7 +52,18 @@
             obj.userInteractionEnabled = YES;
         }];
         self.title = self.repo.parsedRepo.label;
+        if (completion) completion();
     }];
+}
+
+-(void)refreshControlRefresh {
+    [self refreshWithCompletionHandler:^{
+        [self.theRefreshControl endRefreshing];
+    }];
+}
+
+- (IBAction)refreshSource:(id)sender {
+    [self refreshWithCompletionHandler:nil];
 }
 
 #pragma mark - Table view data source
