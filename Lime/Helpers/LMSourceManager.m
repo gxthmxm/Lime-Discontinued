@@ -143,6 +143,7 @@
     LMSourceDownloader *sourceDL = [[LMSourceDownloader alloc] initWithRepo:repo];
     if (progressView) sourceDL.progressView = progressView;
     [sourceDL downloadRepoAndIcon:YES completionHandler:^{
+        [self getRawSources];
         [self parseSourcesAndDownloadMissing:NO completionHandler:^{
             NSLog(@"[SourceManager] Done refreshing source: %@", repo.rawRepo.repoURL);
             dispatch_async(dispatch_get_main_queue(), ^{
