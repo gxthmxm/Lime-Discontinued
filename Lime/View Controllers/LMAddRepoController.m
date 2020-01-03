@@ -57,8 +57,13 @@
         [sourcesList writeToFile:[LimeHelper sourcesPath] atomically:YES encoding:NSUTF8StringEncoding error:nil];
         self.progressView.hidden = NO;
         self.titleLabel.text = @"Adding...";
+        self.addButton.enabled = NO;
+        self.closeButton.enabled = NO;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.closeView.alpha = 0;
+        }];
         [LMSourceManager.sharedInstance refreshSource:[LimeHelper rawRepoWithDebLine:addRepoURL] progressView:self.progressView completionHandler:^{
-            self.sourcesController.tableView.reloadData;
+            [self.sourcesController.tableView reloadData];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }];
     }

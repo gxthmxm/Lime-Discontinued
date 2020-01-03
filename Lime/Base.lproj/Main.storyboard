@@ -1156,6 +1156,8 @@
                     <connections>
                         <outlet property="addButton" destination="sXy-Q9-VTZ" id="OsZ-4D-GVv"/>
                         <outlet property="arrowImageView" destination="r0f-gp-AvU" id="SbM-Wp-RZE"/>
+                        <outlet property="closeButton" destination="sCQ-Yn-n6F" id="ZMj-Fq-EjB"/>
+                        <outlet property="closeView" destination="Ohe-20-rLX" id="96b-5Y-fMF"/>
                         <outlet property="effectView" destination="SKC-2N-PI8" id="jNV-Wk-e3m"/>
                         <outlet property="progressView" destination="rlt-Xr-6P2" id="cb5-PW-Akm"/>
                         <outlet property="repoURLTextField" destination="M6R-Zo-92B" id="Kb1-8y-XGh"/>

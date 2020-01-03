@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (nullable, nonatomic, retain) LMSourcesController *sourcesController;
+@property (weak, nonatomic) IBOutlet UIView *closeView;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
 @end
 
