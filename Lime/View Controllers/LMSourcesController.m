@@ -26,9 +26,15 @@
     self.topProgressView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.topProgressView.widthAnchor constraintEqualToAnchor:navBar.widthAnchor constant:0].active = YES;
     [self.topProgressView.topAnchor constraintEqualToAnchor:navBar.bottomAnchor constant:-2.5].active = YES;
+    
+    self.refreshControl = [UIRefreshControl.alloc init];
+    [self.refreshControl addTarget:self action:@selector(pullDownToRefresh) forControlEvents:UIControlEventValueChanged];
+    
+    if (@available(iOS 10.0, *)) self.tableView.refreshControl = self.refreshControl;
+    else [self.tableView addSubview:self.refreshControl];
 }
 
--(IBAction)refreshButtonAction:(id)sender {
+-(void)refreshWithCompletionHandler:(nullable void(^)(void))completion {
     [NSFileManager.defaultManager removeItemAtPath:LimeHelper.listsPath error:nil];
     [NSFileManager.defaultManager createDirectoryAtPath:LimeHelper.listsPath withIntermediateDirectories:NO attributes:0 error:nil];
     //[NSFileManager.defaultManager removeItemAtPath:LimeHelper.iconsPath error:nil];
@@ -45,7 +51,18 @@
         [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             obj.userInteractionEnabled = YES;
         }];
+        if (completion) completion();
     }];
+}
+
+-(void)pullDownToRefresh {
+    [self refreshWithCompletionHandler:^{
+        [self.refreshControl endRefreshing];
+    }];
+}
+
+-(IBAction)refreshButtonAction:(id)sender {
+    [self refreshWithCompletionHandler:nil];
 }
 
 // UITableView stuff

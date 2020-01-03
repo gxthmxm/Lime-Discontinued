@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain) NSString *addRepoURL;
 
+@property (nonatomic, retain) UIRefreshControl *refreshControl;
+
 @end
 
 NS_ASSUME_NONNULL_END
