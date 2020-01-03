@@ -14,6 +14,8 @@
 
 @implementation LMSourcesController
 
+@synthesize refreshControl;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //[self parseRepoData];
