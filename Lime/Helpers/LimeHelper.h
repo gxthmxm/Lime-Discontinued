@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSMutableURLRequest *)mutableURLRequestWithHeadersWithURLString:(NSString *)URLString;
 + (void)respringDevice;
 + (void)removeRepo:(LMRepo *)repo;
++ (LMRepo *)rawRepoWithDebLine:(NSString *)line;
 
 @property (nonatomic, retain) NSMutableDictionary *packagesDict;
 @property (nonatomic, retain) NSMutableArray *packagesArray;

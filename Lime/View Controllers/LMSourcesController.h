@@ -12,8 +12,11 @@
 #import "LMRepo.h"
 #import "../Parsers/LMPackageParser.h"
 #import "../Helpers/LMSourceManager.h"
+#import "LMAddRepoController.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class LMAddRepoController;
 
 @interface LMSourcesController : UITableViewController <UITableViewDelegate>
 

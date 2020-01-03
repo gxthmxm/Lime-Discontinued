@@ -142,6 +142,9 @@
         LMRepo *repo = [[LMSourceManager.sharedInstance sources] objectAtIndex:self.tableView.indexPathForSelectedRow.row];
         LMViewSourcePackagesController *dest = segue.destinationViewController;
         dest.repo = repo;
+    } else if ([segue.identifier isEqualToString:@"addRepoSegue"]) {
+        LMAddRepoController *dest = segue.destinationViewController;
+        dest.sourcesController = self;
     }
 }
 

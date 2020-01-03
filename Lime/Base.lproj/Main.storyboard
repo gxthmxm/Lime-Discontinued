@@ -130,7 +130,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="cf9-nG-x6s">
                             <connections>
-                                <segue destination="rdG-hp-VFv" kind="popoverPresentation" popoverAnchorBarButtonItem="cf9-nG-x6s" id="CDa-fk-gCv">
+                                <segue destination="rdG-hp-VFv" kind="popoverPresentation" identifier="addRepoSegue" popoverAnchorBarButtonItem="cf9-nG-x6s" id="CDa-fk-gCv">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -1101,17 +1101,21 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kd2-ey-8Sb">
-                                            <rect key="frame" x="27" y="64" width="319" height="164"/>
+                                            <rect key="frame" x="27" y="56" width="319" height="167"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Repo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dH-Tx-a1C">
-                                                    <rect key="frame" x="0.0" y="0.0" width="317" height="32"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rlt-Xr-6P2">
+                                                    <rect key="frame" x="0.0" y="34" width="319" height="2"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </progressView>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://" placeholder="https://" adjustsFontSizeToFit="NO" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="M6R-Zo-92B">
-                                                    <rect key="frame" x="0.0" y="40" width="317" height="58"/>
+                                                    <rect key="frame" x="0.0" y="43" width="317" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.58431372550000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="0.14035744859999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -1123,7 +1127,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXy-Q9-VTZ">
-                                                    <rect key="frame" x="2" y="106" width="317" height="58"/>
+                                                    <rect key="frame" x="2" y="109" width="317" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.58431372550000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -1153,6 +1157,7 @@
                         <outlet property="addButton" destination="sXy-Q9-VTZ" id="OsZ-4D-GVv"/>
                         <outlet property="arrowImageView" destination="r0f-gp-AvU" id="SbM-Wp-RZE"/>
                         <outlet property="effectView" destination="SKC-2N-PI8" id="jNV-Wk-e3m"/>
+                        <outlet property="progressView" destination="rlt-Xr-6P2" id="cb5-PW-Akm"/>
                         <outlet property="repoURLTextField" destination="M6R-Zo-92B" id="Kb1-8y-XGh"/>
                         <outlet property="titleLabel" destination="1dH-Tx-a1C" id="wkH-yg-4RM"/>
                     </connections>

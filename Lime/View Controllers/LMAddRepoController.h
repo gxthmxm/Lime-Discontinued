@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class LMSourcesController;
+
 @interface LMAddRepoController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *effectView;
@@ -18,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *repoURLTextField;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (nullable, nonatomic, retain) LMSourcesController *sourcesController;
+
 @end
 
 NS_ASSUME_NONNULL_END

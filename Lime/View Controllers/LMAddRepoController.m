@@ -41,8 +41,10 @@
 - (IBAction)addRepo:(id)sender {
     if (self.repoURLTextField.text.length > 0) {
         NSString *addRepoURL = self.repoURLTextField.text;
-        if (![[addRepoURL substringFromIndex:addRepoURL.length - 1] isEqualToString:@"/"]) addRepoURL = [addRepoURL stringByAppendingString:@"/"];
-        NSArray *components = [addRepoURL componentsSeparatedByString:@" "];
+        NSMutableArray *components = [addRepoURL componentsSeparatedByString:@" "].mutableCopy;
+        NSString *url = components.firstObject;
+        if (![[url substringFromIndex:url.length - 1] isEqualToString:@"/"]) url = [url stringByAppendingString:@"/"];
+        [components replaceObjectAtIndex:0 withObject:url];
         if (components.count == 1) addRepoURL = [[components firstObject] stringByAppendingString:@" ./"];
         if (components.count == 2) addRepoURL = [NSString stringWithFormat:@"%@ %@", [components firstObject], [components objectAtIndex:1]];
         if (components.count == 3) addRepoURL = [NSString stringWithFormat:@"%@ %@ %@", [components firstObject], [components objectAtIndex:1], [components objectAtIndex:2]];
@@ -53,8 +55,13 @@
         if (![listLines containsObject:addRepoURL]) sourcesList = [sourcesList stringByAppendingFormat:@"\n%@", addRepoURL];
         NSLog(@"[SourceManager] Should add %@", addRepoURL);
         [sourcesList writeToFile:[LimeHelper sourcesPath] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        self.progressView.hidden = NO;
+        self.titleLabel.text = @"Adding...";
+        [LMSourceManager.sharedInstance refreshSource:[LimeHelper rawRepoWithDebLine:addRepoURL] progressView:self.progressView completionHandler:^{
+            self.sourcesController.tableView.reloadData;
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }];
     }
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
