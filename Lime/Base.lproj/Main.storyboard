@@ -393,11 +393,11 @@
             <objects>
                 <viewController title="Depiction" id="3TB-hh-8WJ" customClass="LMDepictionController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5eq-cw-dQj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYv-qX-DhE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LbZ-rh-yb9">
