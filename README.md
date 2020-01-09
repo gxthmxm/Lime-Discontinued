@@ -2,7 +2,7 @@
 Deadline: Summer 2020?
 
 ## Build
-Set the Environment Variables for your device's IP
+Set the Environment Variables for your device's IP  
 **ZSH**  
 ```echo "export LIMEIP=*ip*" >> ~/.zprofile```  
 **Bash**  
