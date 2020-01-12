@@ -135,7 +135,7 @@
         [self.authorLabel sizeToFit];
         self.authorLabel.frame = CGRectMake(self.authorLabel.frame.origin.x, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 3, self.authorLabel.frame.size.width, self.authorLabel.frame.size.height);
         //self.descriptionLabel.text = self.package.desc;
-        self.descriptionLabel.text = self.package.debURL;
+        self.descriptionLabel.text = self.package.desc;
         [self.descriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [self.descriptionLabel sizeToFit];
         self.bigView.frame = CGRectMake(self.bigView.frame.origin.x, self.bannerView.frame.size.height - self.navbar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height, self.bigView.frame.size.width, self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 17);
