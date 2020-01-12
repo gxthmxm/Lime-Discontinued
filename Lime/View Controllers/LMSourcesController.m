@@ -114,28 +114,15 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {}
 
 - (LMSourceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier = @"sourcecell";
-    LMSourceCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    LMSourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sourcecell" forIndexPath:indexPath];
+    
     LMRepo *repo = [[LMSourceManager.sharedInstance sources] objectAtIndex:indexPath.row];
     cell.textLabel.text = repo.parsedRepo.label;
     cell.detailTextLabel.text = repo.rawRepo.repoURL;
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 7.65;
     cell.imageView.image = repo.rawRepo.image;
-    /*
-    if(cell.progressView == nil) {
-        cell.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
-        cell.progressView.frame = CGRectMake(0, 56.5, cell.contentView.frame.size.width, 0);
-        if(!cell.progressView.superview) {
-            [cell.contentView addSubview:cell.progressView];
-            cell.progressView.translatesAutoresizingMaskIntoConstraints = NO;
-            [cell.progressView.widthAnchor constraintEqualToAnchor:cell.contentView.widthAnchor constant:0].active = YES;
-            [cell.progressView.topAnchor constraintEqualToAnchor:cell.contentView.bottomAnchor constant:-2.5].active = YES;
-        }
-    }
-    if(repo.totalDownloaded != 0 && repo.totalExpectedLength != 0) {
-        cell.progressView.progress = (float)repo.totalDownloaded / repo.totalExpectedLength;
-    }*/
+    
     return cell;
 }
 
