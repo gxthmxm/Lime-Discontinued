@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LimeHelper.h"
+#import "../Helpers/LimeHelper.h"
 #import "../UI Elements/LMPackageCell.h"
 #import "LMDepictionController.h"
 
@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LMInstalledPackagesController : UITableViewController
 
 @property (nonatomic, retain) NSMutableArray *packages;
+@property (nonatomic, retain) UIRefreshControl *refreshControl;
 
 @end
 

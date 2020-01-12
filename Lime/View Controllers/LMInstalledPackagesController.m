@@ -20,15 +20,23 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.packages = [[LimeHelper sharedInstance] installedPackagesArray];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.refreshControl = [UIRefreshControl.alloc init];
+    [self.refreshControl addTarget:self action:@selector(pullDownToRefresh) forControlEvents:UIControlEventValueChanged];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (@available(iOS 10.0, *)) self.tableView.refreshControl = self.refreshControl;
+    else [self.tableView addSubview:self.refreshControl];
 }
 
 - (IBAction)openQueue:(id)sender {
     
+}
+
+-(void)pullDownToRefresh {
+    [LimeHelper.sharedInstance refreshInstalledPackagesWithCompletionHandler:^{
+        self.packages = [LimeHelper.sharedInstance installedPackagesArray];
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    }];
 }
 
 #pragma mark - Table view data source
@@ -43,7 +51,6 @@
     LMPackage *pkg = [self.packages objectAtIndex:indexPath.row];
     cell.textLabel.text = pkg.name;
     cell.detailTextLabel.text = pkg.desc;
-    //cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     if (pkg.iconPath.length > 0
         && [[NSFileManager defaultManager] fileExistsAtPath:pkg.iconPath]) {

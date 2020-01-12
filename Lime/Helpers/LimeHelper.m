@@ -82,7 +82,7 @@ extern char **environ;
         if(![[NSFileManager defaultManager] fileExistsAtPath:[LimeHelper iconsPath] isDirectory:nil]) [[NSFileManager defaultManager] createDirectoryAtPath:[LimeHelper iconsPath] withIntermediateDirectories:YES attributes:nil error:nil];
         if(![[NSFileManager defaultManager] fileExistsAtPath:[LimeHelper sourcesPath] isDirectory:nil]) [[NSFileManager defaultManager] createFileAtPath:[LimeHelper sourcesPath] contents:[@"deb https://repo.dynastic.co/ ./" dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
         
-        [self getInstalledPackages];
+        [self getInstalledPackagesWithCompletionHandler:nil];
     }
     return self;
 }
@@ -142,7 +142,11 @@ extern char **environ;
     [task launch];
 }
 
--(void)getInstalledPackages {
+-(void)getInstalledPackagesWithCompletionHandler:(nullable void(^)(void))completion {
+    self.packagesArray = [NSMutableArray new];
+    self.packagesDict = [NSMutableDictionary new];
+    self.installedPackagesArray = [NSMutableArray new];
+    self.installedPackagesDict = [NSMutableDictionary new];
     // Inits a parser on the dpkg status file
     LMPackageParser *parser = [[LMPackageParser alloc] initWithFilePath:[LimeHelper dpkgStatusLocation] repository:nil];
     [parser.packages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -154,6 +158,7 @@ extern char **environ;
         [self.packagesDict setObject:pkg forKey:pkg.identifier];
     }];
     [self addPackagesToArrays];
+    if (completion) completion();
 }
 
 -(void)addPackagesToArrays {
@@ -164,10 +169,12 @@ extern char **environ;
     self.packagesArray = [NSMutableArray arrayWithArray:[self.packagesArray sortedArrayUsingDescriptors:@[sort]]];
 }
 
--(void)refreshInstalledPackages {
+-(void)refreshInstalledPackagesWithCompletionHandler:(nullable void(^)(void))completion {
     self.installedPackagesArray = [NSMutableArray new];
     self.installedPackagesDict = [NSMutableDictionary new];
-    [self getInstalledPackages];
+    [self getInstalledPackagesWithCompletionHandler:^{
+        if (completion) completion();
+    }];
 }
 
 +(void)removeRepo:(LMRepo *)repo {
