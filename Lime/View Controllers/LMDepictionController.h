@@ -12,6 +12,7 @@
 #import "../Other/UIImageAverageColorAddition.h"
 #import <WebKit/WebKit.h>
 #import "../Helpers/LMQueue.h"
+#import "LMWebController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

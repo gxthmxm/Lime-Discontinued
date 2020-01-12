@@ -439,15 +439,16 @@
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        LMWebController *controller = [LMWebController new];
+        controller.url = navigationAction.request.URL;
+        [self.navigationController pushViewController:controller animated:YES];
+        decisionHandler(NO);
+    } else {
+        decisionHandler(YES);
+    }
 }
-*/
 
 @end
 

@@ -39,6 +39,7 @@
 		4D9A9EEF23A93CF10046F16B /* LMSourceDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A9EEE23A93CF10046F16B /* LMSourceDownloader.m */; };
 		4D9ACD3023AD1EE800311038 /* LMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9ACD2F23AD1EE800311038 /* LMHomeController.m */; };
 		4D9ACD3323AD22B100311038 /* LMAddRepoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9ACD3223AD22B100311038 /* LMAddRepoController.m */; };
+		4DA9878C23CB62BA00EB3F6D /* LMWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9878B23CB62BA00EB3F6D /* LMWebController.m */; };
 		4DCEE9B92386F7EE00F8E499 /* LMPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEE9B82386F7EE00F8E499 /* LMPackageCell.m */; };
 		4DDBFC3C2383133700245D0C /* LimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBFC3B2383133700245D0C /* LimeHelper.m */; };
 /* End PBXBuildFile section */
@@ -119,6 +120,8 @@
 		4D9ACD2F23AD1EE800311038 /* LMHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMHomeController.m; sourceTree = "<group>"; };
 		4D9ACD3123AD22B100311038 /* LMAddRepoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMAddRepoController.h; sourceTree = "<group>"; };
 		4D9ACD3223AD22B100311038 /* LMAddRepoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMAddRepoController.m; sourceTree = "<group>"; };
+		4DA9878A23CB62BA00EB3F6D /* LMWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMWebController.h; sourceTree = "<group>"; };
+		4DA9878B23CB62BA00EB3F6D /* LMWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMWebController.m; sourceTree = "<group>"; };
 		4DCEE9B72386F7EE00F8E499 /* LMPackageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMPackageCell.h; sourceTree = "<group>"; };
 		4DCEE9B82386F7EE00F8E499 /* LMPackageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMPackageCell.m; sourceTree = "<group>"; };
 		4DDBFC3A2383133700245D0C /* LimeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimeHelper.h; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				4D7CA4EF238FFA130014486C /* LMViewSourcePackagesController.m */,
 				4D7D6B132395800E0027D101 /* LMQueueController.h */,
 				4D7D6B142395800E0027D101 /* LMQueueController.m */,
+				4DA9878A23CB62BA00EB3F6D /* LMWebController.h */,
+				4DA9878B23CB62BA00EB3F6D /* LMWebController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				4D2D53DB23802CD500A7076C /* AppDelegate.m in Sources */,
 				4D54C0B923844032002F8394 /* LMInstalledPackagesController.m in Sources */,
 				4D54C0B02384376E002F8394 /* LMColor.m in Sources */,
+				4DA9878C23CB62BA00EB3F6D /* LMWebController.m in Sources */,
 				4D5C826A23A91CA800E6E27E /* LMRawRepo.m in Sources */,
 				4D7D6B21239589CE0027D101 /* NSArray+Random.m in Sources */,
 				4DDBFC3C2383133700245D0C /* LimeHelper.m in Sources */,
