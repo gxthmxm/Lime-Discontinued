@@ -18,7 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSString *distribution;
 @property (nonatomic, strong, readonly) NSString *packagesFilename;
 @property (nonatomic, strong, readonly) NSString *releaseFilename;
-- (nullable instancetype)initWithRepositoryID:(NSInteger)repoID;
+@property (nonatomic, assign, readonly) int databaseID;
+@property (nonatomic, strong, readonly) NSFileHandle *packagesFileHandle;
+@property (nonatomic, strong, readonly) NSFileHandle *releaseFileHandle;
+- (nullable instancetype)initWithRepositoryID:(int)repoID;
 - (nullable instancetype)initWithURLString:(NSString *)urlString
 	distribution:(NSString * _Nullable)dist
 	spaceSeparatedComponents:(NSString * _Nullable)components

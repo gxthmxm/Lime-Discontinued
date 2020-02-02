@@ -37,7 +37,7 @@
 	return [self initWithURL:URL distribution:dist components:componentsArray architecture:architecture];
 }
 
-- (instancetype)initWithRepositoryID:(NSInteger)repoID {
+- (instancetype)initWithRepositoryID:(int)repoID {
 	NSArray * __block data = nil;
 	BOOL success = [LMDatabase.sharedInstance
 		executeQuery:@"SELECT `PACKAGES`, `RELEASE`, `URL`, `COMPONENTS`, `DISTRIBUTION`, `ARCH`, `LOCKED` FROM `REPOSITORIES` WHERE `REPO_ID`=?"
@@ -56,6 +56,7 @@
 	];
 	if (!self) return nil;
 	_isLocked = [(NSNumber *)data[6] boolValue];
+	_databaseID = repoID;
 	_packagesFilename = data[0];
 	_releaseFilename = data[1];
 	return self;

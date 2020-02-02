@@ -10,6 +10,28 @@
 
 @implementation LMDatabase
 
+static NSArray<NSString *> *fieldsInDatabase;
+
++ (void)load {
+	if (self == [LMDatabase class]) {
+		fieldsInDatabase = @[
+			@"package",
+			@"version",
+			@"description",
+			@"name",
+			@"sileoDepiction",
+			@"depiction",
+			@"md5",
+			@"sha1",
+			@"sha256"
+		];
+	}
+}
+
++ (NSArray<NSString *> *)fieldsInDatabase {
+	return fieldsInDatabase;
+}
+
 + (instancetype)alloc {
 	[NSException raise:NSInvalidArgumentException format:@"Do not use +[LMDatabase alloc]."];
 	return nil;
@@ -51,7 +73,19 @@
 		if (status != SQLITE_OK) {
 			[NSException raise:NSInternalInconsistencyException format:@"sqlite3_open(\"%@\") failed: %s", databasePath, (sqlite3_errmsg(db) ?: sqlite3_errstr(status))];
 		}
+		NSMutableString *optionalPackageFields = [NSMutableString new];
+		for (int i=2; i<fieldsInDatabase.count; i++) {
+			[optionalPackageFields appendFormat:@"`FIELD_%@` TEXT NULL, ", fieldsInDatabase[i]];
+		}
 		NSArray *queries = @[
+			#if DEBUG
+			@(
+				"DROP TABLE IF EXISTS `REPOSITORIES`"
+			),
+			@(
+				"DROP TABLE IF EXISTS `PACKAGES`"
+			),
+			#endif
 			@(
 				"PRAGMA foreign_keys = ON"
 			),
@@ -67,17 +101,15 @@
 				"    `LOCKED` INTEGER NOT NULL"
 				")"
 			),
-			@(
+			[NSString stringWithFormat:@(
 				"CREATE TABLE IF NOT EXISTS `PACKAGES` ("
 				"    `REPO_ID` INTEGER NOT NULL,"
 				"    `PACKAGE_ID` INTEGER PRIMARY KEY AUTOINCREMENT,"
 				"    `FIELD_PACKAGE` TEXT NOT NULL,"
-				"    `FIELD_VERSION` TEXT NOT NULL,"
-				"    `FIELD_NAME` TEXT NULL,"
-				"    `FIELD_SILEODEPICTION` TEXT NULL,"
+				"    `FIELD_VERSION` TEXT NOT NULL, %@"
 				"    FOREIGN KEY (`REPO_ID`) REFERENCES REPOSITORIES (`REPO_ID`) ON DELETE CASCADE"
 				")"
-			)
+			), optionalPackageFields]
 		];
 		for (NSString *query in queries) {
 			char *errmsg = NULL;
