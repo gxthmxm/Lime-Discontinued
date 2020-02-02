@@ -44,6 +44,7 @@
 
 - (instancetype)init {
 	dispatch_once(initToken, ^{
+		if (![super init]) [NSException raise:NSInternalInconsistencyException format:@"-[NSObject init] returned null."];
 		sqlite3 *db;
 		NSString *databasePath = [[self.class rootPath] stringByAppendingPathComponent:@"db.sqlite"];
 		int status = sqlite3_open(databasePath.UTF8String, &db);
@@ -51,6 +52,9 @@
 			[NSException raise:NSInternalInconsistencyException format:@"sqlite3_open(\"%@\") failed: %s", databasePath, (sqlite3_errmsg(db) ?: sqlite3_errstr(status))];
 		}
 		NSArray *queries = @[
+			@(
+				"PRAGMA foreign_keys = ON"
+			),
 			@(
 				"CREATE TABLE IF NOT EXISTS `REPOSITORIES` ("
 				"    `REPO_ID` INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -82,6 +86,7 @@
 			}
 			if (errmsg) sqlite3_free(errmsg);
 		}
+		self->_databaseHandle = db;
 	});
 	return self;
 }
