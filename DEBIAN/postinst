@@ -1,2 +1,0 @@
-chown 0:0 /usr/bin/lemon
-chmod 4755 /usr/bin/lemon

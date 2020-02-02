@@ -1,1 +1,0 @@
-apt-cache policy -o Dir::Etc::SourceLists="/var/mobile/Documents/Lime/sources.list" -o Dir::Etc::Lists="/var/mobile/Documents/Lime/lists/"
