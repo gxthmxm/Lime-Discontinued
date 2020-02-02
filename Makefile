@@ -10,7 +10,7 @@ package:
 
 install:
 	export PWD $(/usr/bin/pwd)
-	cat LimePackage.deb | $(PWD)/helpers/remotecmd.helper "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; uicache -a"
+	cat LimePackage.deb | $(PWD)/helpers/remotecmd.helper "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; uicache -a --respring"
 
 clean:
 	xcodebuild clean
