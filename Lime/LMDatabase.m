@@ -91,4 +91,72 @@
 	return self;
 }
 
+- (BOOL)executeQuery:(NSString *)query
+	parameters:(NSArray<__kindof NSObject *> *)params
+	block:(BOOL(^)(NSArray<NSString *> *, NSArray *))block
+{
+	sqlite3_stmt *stmt = NULL;
+	int status = sqlite3_prepare_v2(_databaseHandle, query.UTF8String, -1, &stmt, NULL);
+	if (status != SQLITE_OK) {
+		if (stmt) sqlite3_finalize(stmt);
+		return NO;
+	}
+	int i=1;
+	for (__kindof NSObject *object in params) {
+		if ([object isKindOfClass:[NSString class]]) {
+			sqlite3_bind_text(stmt, i++, [(NSString *)object UTF8String], -1, SQLITE_TRANSIENT);
+		}
+		else if ([object isKindOfClass:[NSNumber class]]) {
+			sqlite3_bind_int(stmt, i++, [(NSNumber *)object intValue]);
+		}
+		else if ([object isKindOfClass:[NSNull class]]) {
+			sqlite3_bind_null(stmt, i++);
+		}
+		else {
+			[NSException
+				raise:NSInvalidArgumentException
+				format:@"An unsupported object was passed to -[%@ %@]: %@",
+				NSStringFromClass(self.class),
+				NSStringFromSelector(_cmd),
+				object
+			];
+		}
+	}
+	__kindof NSArray *columns = [NSMutableArray new];
+	NSMutableArray *row = [NSMutableArray new];
+	if (block) {
+		while ((status = sqlite3_step(stmt)) == SQLITE_ROW) {
+			for (i=0; i<sqlite3_column_count(stmt); i++) {
+				switch (sqlite3_column_type(stmt, i)) {
+					case SQLITE_TEXT:
+						[row addObject:[NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, i)]];
+						break;
+					case SQLITE_INTEGER:
+						[row addObject:@(sqlite3_column_int(stmt, i))];
+						break;
+					case SQLITE_NULL:
+						[row addObject:NSNull.null];
+						break;
+					default:
+						[NSException
+							raise:NSInternalInconsistencyException
+							format:@"Received an unknown type of object from query: %@",
+							query
+						];
+						break;
+				}
+				if ([columns isKindOfClass:[NSMutableArray class]]) {
+					[(NSMutableArray *)columns addObject:@(sqlite3_column_name(stmt, i))];
+				}
+			}
+			if ([columns isKindOfClass:[NSMutableArray class]]) {
+				columns = columns.copy;
+			}
+			if (!block(columns, (id)row)) break;
+		}
+	}
+	status = sqlite3_finalize(stmt);
+	return (status == SQLITE_OK);
+}
+
 @end

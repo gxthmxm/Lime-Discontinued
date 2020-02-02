@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE437CEC23E6E86300C26D54 /* LMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CE437CEB23E6E86300C26D54 /* LMDatabase.m */; };
 		CE437CEF23E6EDD200C26D54 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE437CEE23E6EDD200C26D54 /* libsqlite3.tbd */; };
+		CE7478D923E70E9900D65C99 /* LMRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7478D823E70E9900D65C99 /* LMRepository.m */; };
+		CE7478DC23E70EA600D65C99 /* LMPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7478DB23E70EA600D65C99 /* LMPackage.m */; };
 		CEA6391E23E6D90B0046CFEF /* LMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA6391D23E6D90B0046CFEF /* LMAppDelegate.m */; };
 		CEA6392A23E6D90B0046CFEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA6392823E6D90B0046CFEF /* Main.storyboard */; };
 		CEA6392C23E6D90E0046CFEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA6392B23E6D90E0046CFEF /* Assets.xcassets */; };
@@ -24,6 +26,10 @@
 		CE437CEA23E6E86300C26D54 /* LMDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDatabase.h; sourceTree = "<group>"; };
 		CE437CEB23E6E86300C26D54 /* LMDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDatabase.m; sourceTree = "<group>"; };
 		CE437CEE23E6EDD200C26D54 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CE7478D723E70E9900D65C99 /* LMRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMRepository.h; sourceTree = "<group>"; };
+		CE7478D823E70E9900D65C99 /* LMRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMRepository.m; sourceTree = "<group>"; };
+		CE7478DA23E70EA600D65C99 /* LMPackage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMPackage.h; sourceTree = "<group>"; };
+		CE7478DB23E70EA600D65C99 /* LMPackage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMPackage.m; sourceTree = "<group>"; };
 		CEA6391923E6D90B0046CFEF /* Lime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA6391C23E6D90B0046CFEF /* LMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMAppDelegate.h; sourceTree = "<group>"; };
 		CEA6391D23E6D90B0046CFEF /* LMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMAppDelegate.m; sourceTree = "<group>"; };
@@ -94,6 +100,10 @@
 				CE437CEA23E6E86300C26D54 /* LMDatabase.h */,
 				CE437CEB23E6E86300C26D54 /* LMDatabase.m */,
 				E12727AF23E6F190006443FF /* Lime.entitlements */,
+				CE7478D723E70E9900D65C99 /* LMRepository.h */,
+				CE7478D823E70E9900D65C99 /* LMRepository.m */,
+				CE7478DA23E70EA600D65C99 /* LMPackage.h */,
+				CE7478DB23E70EA600D65C99 /* LMPackage.m */,
 			);
 			path = Lime;
 			sourceTree = "<group>";
@@ -185,7 +195,9 @@
 			files = (
 				E12727AB23E6EDC9006443FF /* LMManageTableViewController.m in Sources */,
 				CEA6393223E6D90E0046CFEF /* main.m in Sources */,
+				CE7478D923E70E9900D65C99 /* LMRepository.m in Sources */,
 				CE437CEC23E6E86300C26D54 /* LMDatabase.m in Sources */,
+				CE7478DC23E70EA600D65C99 /* LMPackage.m in Sources */,
 				E12727A823E6EDB5006443FF /* LMSourcesTableViewController.m in Sources */,
 				CEA6391E23E6D90B0046CFEF /* LMAppDelegate.m in Sources */,
 				E12727AE23E6EDDD006443FF /* LMSearchTableViewController.m in Sources */,

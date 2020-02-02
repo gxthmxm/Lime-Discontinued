@@ -18,6 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)alloc;
 + (instancetype)sharedInstance;
 + (NSString *)rootPath;
+
+// Supports TEXT, NULL and INTEGER types
+// Return NO from block to finish looping, YES to continue looping
+- (BOOL)executeQuery:(NSString *)query
+	parameters:(NSArray<__kindof NSObject *> *)params
+	block:(BOOL(^)(NSArray<NSString *> *columns, NSArray *rowData))block;
+
 @end
 
 NS_ASSUME_NONNULL_END
