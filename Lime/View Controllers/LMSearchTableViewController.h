@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LMSearchTableViewController : UITableViewController
+@interface LMSearchTableViewController : UITableViewController <UISearchResultsUpdating>
 
 @end
 
