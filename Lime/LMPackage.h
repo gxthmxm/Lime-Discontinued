@@ -14,4 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface LMPackage(FieldMethods)
+- (NSString *)package;
+- (NSString *)version;
+- (NSString *)sileoDepiction;
+- (NSString *)depiction;
+@end
+
 NS_ASSUME_NONNULL_END
