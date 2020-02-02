@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LMAppDelegate.h"
+#import "LMDatabase.h"
 
 int main(int argc, char * argv[]) {
+	[LMDatabase sharedInstance]; // Initialize shared instance
 	NSString * appDelegateClassName;
 	@autoreleasepool {
 	    // Setup code that might create autoreleased objects goes here.

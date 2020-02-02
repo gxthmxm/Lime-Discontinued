@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE437CEC23E6E86300C26D54 /* LMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CE437CEB23E6E86300C26D54 /* LMDatabase.m */; };
+		CE437CEF23E6EDD200C26D54 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE437CEE23E6EDD200C26D54 /* libsqlite3.tbd */; };
 		CEA6391E23E6D90B0046CFEF /* LMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA6391D23E6D90B0046CFEF /* LMAppDelegate.m */; };
 		CEA6392A23E6D90B0046CFEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA6392823E6D90B0046CFEF /* Main.storyboard */; };
 		CEA6392C23E6D90E0046CFEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA6392B23E6D90E0046CFEF /* Assets.xcassets */; };
@@ -15,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE437CEA23E6E86300C26D54 /* LMDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDatabase.h; sourceTree = "<group>"; };
+		CE437CEB23E6E86300C26D54 /* LMDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDatabase.m; sourceTree = "<group>"; };
+		CE437CEE23E6EDD200C26D54 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CEA6391923E6D90B0046CFEF /* Lime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA6391C23E6D90B0046CFEF /* LMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMAppDelegate.h; sourceTree = "<group>"; };
 		CEA6391D23E6D90B0046CFEF /* LMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMAppDelegate.m; sourceTree = "<group>"; };
@@ -30,17 +35,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE437CEF23E6EDD200C26D54 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE437CED23E6EDD100C26D54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE437CEE23E6EDD200C26D54 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CEA6391023E6D90B0046CFEF = {
 			isa = PBXGroup;
 			children = (
 				CEA6391B23E6D90B0046CFEF /* Lime */,
 				CEA6391A23E6D90B0046CFEF /* Products */,
+				CE437CED23E6EDD100C26D54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +77,8 @@
 				CEA6392D23E6D90E0046CFEF /* LaunchScreen.storyboard */,
 				CEA6393023E6D90E0046CFEF /* Info.plist */,
 				CEA6393123E6D90E0046CFEF /* main.m */,
+				CE437CEA23E6E86300C26D54 /* LMDatabase.h */,
+				CE437CEB23E6E86300C26D54 /* LMDatabase.m */,
 			);
 			path = Lime;
 			sourceTree = "<group>";
@@ -137,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA6393223E6D90E0046CFEF /* main.m in Sources */,
+				CE437CEC23E6E86300C26D54 /* LMDatabase.m in Sources */,
 				CEA6391E23E6D90B0046CFEF /* LMAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
