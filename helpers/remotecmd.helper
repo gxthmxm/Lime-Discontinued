@@ -1,0 +1,18 @@
+#!/bin/bash
+args=(ssh)
+
+if [[ ! -z "$LIME_PORT" ]]; then
+	args+=(-p "$LIME_PORT")
+fi
+
+if [ -z "$LIME_IP" ]; then
+	echo "ERROR! The variable LIME_IP is not set!"
+	exit
+fi
+
+args+=(-l "root")
+
+args+=($LIME_IP)
+args+=("$@")
+
+exec ${args[@]}
