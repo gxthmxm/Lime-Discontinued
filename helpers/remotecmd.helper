@@ -1,12 +1,12 @@
 #!/bin/bash
 args=(ssh)
 
-if [[ ! -z "$LIME_PORT" ]]; then
-	args+=(-p "$LIME_PORT")
+if [[ ! -z "$THEOS_DEVICE_PORT" ]]; then
+	args+=(-p "$THEOS_DEVICE_PORT")
 fi
 
-if [ -z "$LIME_IP" ]; then
-	echo "ERROR! The variable LIME_IP is not set!"
+if [ -z "$THEOS_DEVICE_IP" ]; then
+	echo "ERROR! The variable THEOS_DEVICE_IP is not set!"
 	exit
 fi
 
