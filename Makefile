@@ -11,7 +11,7 @@ install:
 	cat deb.deb | ssh root@$(LIMEIP) "cat > /tmp/_.deb; dpkg -i /tmp/_.deb; rm /tmp/_.deb; su mobile -c sbreload"
 
 remove:
-	ssh root@$LIMEIP "rm -rf /Applications/Lime.app; su mobile -c sbreload"
+	ssh root@$LIMEIP "apt-get remove com.citrusware.Lime; uicache"
 
 clean:
 	xcodebuild clean
