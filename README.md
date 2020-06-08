@@ -4,6 +4,13 @@ but feel free to complete our work!
 
 (You'll have to credit all the developers in the app though!!)
 
+Developers:
+- @EvenDev
+- @Coronux
+- @ArtikusHG
+- @Pixelomer
+- @Magnetardev
+
 ## Build
 Set the Environment Variables for your device's IP  
 **ZSH**  
