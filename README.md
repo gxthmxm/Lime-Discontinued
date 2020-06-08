@@ -1,5 +1,8 @@
 # Lime
-Deadline: Summer 2020?
+Unfortunately the project have come to an end, 
+but feel free to complete our work!
+
+(You'll have to credit all the developers in the app though!!)
 
 ## Build
 Set the Environment Variables for your device's IP  
