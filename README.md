@@ -5,7 +5,7 @@ but feel free to complete our work!
 (You'll have to credit all the developers in the app though!!)
 
 Developers:
-- @EvenDev
+- @Even_Dev
 - @Coronux
 - @ArtikusHG
 - @Pixelomer
